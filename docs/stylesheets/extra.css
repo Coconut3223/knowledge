@@ -1,0 +1,390 @@
+
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+:root {
+  --emphasize_bg_color: #a1fb41b8;
+  --underline_color: #fe5f58;
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+  border-width: 0;
+  border-left-width: 4px;
+}
+
+/* blockquote {
+  line-height     : 24px;
+  border-radius   : 5px;
+  border-color    : #6e6969;
+  border-style: solid solid dashed dashed;
+  border-width: 2px;
+  display         : block;
+  
+  background-color: #ffffff;
+  padding-left    : 1em;
+  margin-bottom   :1em;
+  margin-right: 1px;
+  font-family:sans-serif;
+  font-size: 112%;
+  color: #000;
+}
+
+blockquote p {
+  padding-left: 3px; 
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-size: 77%;
+  color: #000;
+}
+/*
+blockquote code {
+  background-color: transparent;
+  font-weight: bold;
+}
+*/
+/* blockquote.warning {
+  background: rgba(230,162,60,.1);
+  border-color: #e6a23c;
+  padding-left: 3px; 
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-size: 77%;
+  color: #000;
+  padding-left: 1em;
+}
+
+blockquote.danger {
+  background: hsla(0,87%,69%,.1);
+  border-color: #f56c6c;
+  padding-left: 3px; 
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-size: 77%;
+  color: #000;
+  padding-left: 1em;
+} */ */
+
+mark {/* 高亮 */
+  color: #000000df;
+  background: var(--emphasize_bg_color)/*#e7be1b42*/;
+  padding: 1px 2px 1px 2px;
+}
+/* 
+<mark> highlight with background color </mark>
+== highlight with background color ==
+
+*/
+
+del { /* 删除线 */
+  text-decoration-line: line-through;
+  text-decoration-color: var(--underline_color);
+  text-decoration-style: solid;
+  text-decoration-thickness: 2px;
+}
+
+
+u { /* 下划线 */
+  text-decoration-line: underline;
+  text-decoration-color: var(--underline_color);
+  text-decoration-style: wavy;
+  text-underline-offset: 3px; /*与字间距*/
+  text-decoration-thickness: 2px;
+  text-decoration-skip-ink: none;
+}
+
+kbd {
+  font-family: 'Consolas';
+
+}
+
+
+
+span[alt='wavy'] {/* 波浪线 */
+  text-decoration-line: underline;
+  text-decoration-color: var(--underline_color);
+  text-decoration-style: wavy;
+  text-underline-offset: 3px; 
+  /* //与字间距 */
+  text-decoration-thickness: 2px;
+  text-decoration-skip-ink: none;
+}
+span[alt='dotted'] {/* 点点线 */
+  text-decoration-line: underline;
+  text-decoration-color: var(--underline_color);
+  text-decoration-style: dotted;
+  text-underline-offset: 3px; 
+  /* //与字间距 */
+  text-decoration-thickness: 3px;
+  text-decoration-skip-ink: none;
+}
+/* ------------------------------------------ 折叠标签 ------------------------------------ */
+details {
+  margin: 20px 0px;
+    padding: 16px 8px;
+}
+
+details>summary {
+    display: list-item;
+    position: relative;
+    margin: -16px -8px;
+    padding: 16px 8px;
+    font-size: 1.0rem;
+    font-weight: 600;
+    line-height:1.5;
+    color: rgba(0,0,0,0.75);
+    background: #ffffff;
+    border: 2px solid #000;
+    border-width: 1px 1px 1px 1px ;
+    border-radius: 2px;
+}
+
+details[open] {
+    padding: 16px 8px 0px 8px;
+    font-size: 1.0rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: rgba(0,0,0,0.75);
+    background-color: #ffffff;
+    border: 2px solid #000;
+    border-width: 1px 1px 1px 1px ;
+    border-radius: 5px;
+}
+
+details[open]>summary {
+    margin-bottom: 0px;
+    padding: 16px 8px;
+    font-size: 1.0rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: rgba(0,0,0,0.75);
+    background-color: #ffffff;
+    border: none;
+    border-bottom-right-radius: 0px;
+    border-width: 1px 1px 1px 1px ;
+    border-bottom-left-radius: 0px;
+}
+.box2 {
+  display: flex;
+  justify-content: space-between; /* 调整空间分配，也可以使用其他值如center */
+}
+.pics2 {
+  text-align: center;
+  width: 48%;
+}
+.pics2 img {
+    max-width: 100%;
+    height: auto;
+}
+
+.text2 {
+  text-align: left;
+  width: 48%;
+}
+
+.pic1 {
+  text-align: center;
+}
+.pic1 img{
+  max-width: 100%; 
+  height: auto;
+}
+
+
+/* .md-task-list-item:hover > input:before,
+input[type='checkbox']:hover:before {
+	opacity: 1;
+	transition: 0.5s;
+	background-color: var(--side-bar-bg-color);
+}
+
+#col {
+  column-count: 2;
+} */
+
+
+
+
+/*
+
+
+目录
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+  - [](#)
+  - [行内标记](#行内标记)
+  - [task_list](#task_list)
+  - [math](#math)
+  - [Annotation 标注](#annotation-标注)
+  - [code](#code)
+- [图表](#图表)
+  - [table](#table)
+  - [导入](#导入)
+
+<!-- /code_chunk_output -->
+
+[TOC]
+-------
+#### 
+- emoji
+    :smile:
+    :pen:
+- 上标^th^
+- H~2~O 中间往下
+- 
+
+
+#### 行内标记
+
+- 强调
+  - <mark>强调</mark>
+
+  - _This will also be italic_
+  - **This text will be bold**
+
+
+- 删除线
+  - <del>不要的东西</del>
+#### task_list
+
+- [x] list syntax required (any unordered or ordered list supported)
+- [x] this is a complete item
+- [ ] this is an incomplete item
+  
+#### math
+
+- LaTeX 输出配置
+    Latex_zoom 如果设置latex_zoom=num，则结果将缩放num倍。
+
+    Latex_width 结果的宽度。
+
+    Latex_height 结果的高度。
+
+    Latex_engine 用于编译tex文件的乳胶引擎。默认情况下pdflatex使用。
+
+
+#### Annotation 标注
+
+!!! note
+    this is note
+
+!!! success
+    this is success
+
+!!! danger 
+    this is danger
+
+!!! question 
+    this is question
+
+!!! quote
+    this is quote
+
+!!! quote ""
+    没有标题的引用
+
+!!! example ""
+    this example
+
+
+
+[mkdocs-material]: 使用 Markdown 编写文档并在几分钟内创建专业的静态网站 - 可搜索、可定制、支持 60 多种语言、适用于所有设备。
+
+
+
+
+#### code
+
+``` python {highlight=[1-2, 5]}
+
+def square_args(func):
+    def inner(a, b):
+        return func(a**2, b**2)
+    return inner
+
+
+def multiply(a, b):
+    return a*b
+
+
+```
+
+
+### 图表
+[diagrams]
+
+#### table
+
+!!! note 要打开MPE extension setting的 `enableExtendedTableSyntax`
+
+|ddd|dddd|dd|
+|--|--|--|
+|>|ddd|kk|
+|dd|ddd|^|
+
+@import "./csv_file.csv"
+
+#### 导入
+- 图片
+    @import "./image3.png" {width="300px" height="200px" title="my title" alt="my alt"}
+    ![](./image3.png)
+
+
+
+
+
+
+[diagrams]: https://shd101wyy.github.io/markdown-preview-enhanced/#/diagrams
+
+[mkdocs-material]: https://squidfunk.github.io/mkdocs-material/publishing-your-site/
+
+
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_multicol_layout/Using_multicol_layouts
+
+
+```mermaid
+graph LR
+A[Hard edge] -->B(Round edge)
+    B --> C{Decision}
+    C -->|One| D[Result one]
+    C -->|Two| E[Result two]
+```
+
+
+
+
+
+
+<div class="box2">
+    <div class="pics2">
+        <img src="pics/RES_fit_2.png" alt="图片1">
+        <p>欠拟合</p>
+    </div>
+    <div class="pics2">
+        <img src="pics/RES_fit_1.png" alt="图片1">
+        <p>过拟合</p>
+    </div>
+</div>
+
+<div class="box2">
+    <div class="text2">
+<p>ddd</p>
+</div>
+    <div class="text2">
+<p>ddsssadefefrefgghhhjjhhhhhhhhjjjjjjjjjjjjjjjjjjd</p>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+*/

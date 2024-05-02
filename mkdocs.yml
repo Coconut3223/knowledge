@@ -56,8 +56,13 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - md_in_html
+extra_css:
+  - stylesheets/extra.css
+  - stylesheets/markdown-it-admonition.css
 
-
+# extra_javascript:
+#   - javascripts/extra.js
 
 copyright: |
   &copy; 2023 <a href="https://github.com/james-willett"  target="_blank" rel="noopener">Coconut</a>
