@@ -86,6 +86,7 @@ os.getenv('HANLP_HOME')
     ==赋值==。是把变量分配给对象。对象在赋值之前就已经创建。
     赋值语句 从右到左执行。
 
+
     ```python
     var = 'obj'  # 先创建 obj 对象，再把 var 绑定给 obj (贴给 obj 上)
 
