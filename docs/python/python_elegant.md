@@ -1,4 +1,14 @@
-# Python
+---
+date: 2024-01-31
+tags:
+  - Foo
+  - Bar
+categories:
+  - Hello
+  - World
+---
+
+# Elegant Python
 
 !!! question "迭代器 & 生成器 区别 哪个更好"
 
@@ -120,7 +130,7 @@ var1 == var3  # 内容相同
 `A is B` id地址 是否同一个对象引用。【标识】
 经常用来确定是不是 `None`: `is None` & `is not None`
 
-!!! p `is` 通常比 `==` 快。
+!!! p "`is` 通常比 `==` 快。"
     因为 `is` 不能重载，所以 python 不需要寻找和调用特殊方法，而是直接比较两个整数ID。`==` 挂钩的是 `__eq__` 能重载，考虑更有实际意义的比较，相比于直接继承 `object` 的 直接比较ID的 `__eq__`，大多数类重载了 `__eq__`，设计到对象的类型、属性、可能复杂嵌套架构的值。需要多种比较。
 
 !!! danger "`is` & `==` SyntaxWarning"
@@ -264,11 +274,9 @@ b += [1]
 # >>> lst=[1, [1, 1]]
 ```
 
-<div class=box2><div class=pic>
-<img src="./pics/memory_1.png", class=big></div>
-<p>a 是不可变；b是可变。假设创建对象的ID从1开始。<br>1. 创建 ID=1的1 & ID=2列表[1]<br>2. 把 a & b 分别贴到 ID=1 & ID=2上<br>3. 创建 ID=3的列表，把[0]位贴到ID=1，[1]位贴到ID=2。而不是贴到 a & b 上<br>4. 创建 ID=4的2，把 a 从ID=1撕掉，给ID=3<br>5. 修改b，b没有撕掉，其实修改ID=3<br>lst的位[0]在ID=1上与a无关；位[1]在ID=3上，所以也修改了。</p>
+<div class="grid" markdown>
+![h](pics/memory_1.png) <p>a 是不可变；b是可变。假设创建对象的ID从1开始。<br>1. 创建 ID=1的1 & ID=2列表[1]<br>2. 把 a & b 分别贴到 ID=1 & ID=2上<br>3. 创建 ID=3的列表，把[0]位贴到ID=1，[1]位贴到ID=2。而不是贴到 a & b 上<br>4. 创建 ID=4的2，把 a 从ID=1撕掉，给ID=3<br>5. 修改b，b没有撕掉，其实修改ID=3<br>lst的位[0]在ID=1上与a无关；位[1]在ID=3上，所以也修改了。</p>
 </div>
-
 
 ```python hl_lines="4 5"
 import copy
@@ -293,8 +301,7 @@ l1[2]+=(9, 10)
 # >>> l3=[0, [11, 22], (7, 8)]
 ```
 
-<div class=pic>
-<img src="./pics/memory_2.jpg", class=BIG></div>
+![](./pics/memory_2.jpg){width=90%}
 
 #### 整数池
 
@@ -428,7 +435,7 @@ f(x, y)
 # >>> x, y=([1, 1, 2, 2], [2, 2])  # 可变类型对象被修改
 ```
 
-!!! danger 不要使用可变类型 `[]` & `dict{}` 作为默认参数，而是选择 `None`
+!!! danger "不要使用可变类型 `[]` & `dict{}` 作为默认参数，而是选择 `None`"
     默认参数会自建对象，如果没有指定，就一律贴在其上，所以如果可变类型变化，引用的ID对象变了，只要绑定在这个ID对象（只要不是赋值），都随着一起变化。
     默认值在定义函数计算（通常在加载模块时进行对象创建），因此默认值会变成函数对象的属性，凡是没有传入，都会指向这个在一开始就创建好的默认值对象（ID为同一个）。
 
@@ -448,7 +455,7 @@ f(x, y)
     # >>> res=[1, 2, 3, -1, 3]
     ```
 
-!!! warning 如果定义参数接受可变参数，谨慎考虑调用方是否期望修改传入的参数。
+!!! warning "如果定义参数接受可变参数，谨慎考虑调用方是否期望修改传入的参数。"
 
     ```python
     class C():
@@ -471,9 +478,9 @@ f(x, y)
 
 不设默认值 🟰 强制传入实参。无论是 args & kwargs
 
-!!! quote `*` 展开 tuple 🟰 一般参数 & `**` 展开 dict 🟰 关键词参数
+!!! quote "`*` 展开 tuple 🟰 一般参数 & `**` 展开 dict 🟰 关键词参数"
 
-```python{highlight=[1, 5,7,9,11,13,16,18]}
+```python hl_lines="1 5 7 9 11 13 16 18"
 def func(general, *args, kw_only=None, **kwargs):
     print(f'*args={args}')
     print(f'**kwargs={kwargs}')
@@ -507,14 +514,14 @@ func(*params)
 
 ### 变量作用域
 
-!!! danger python 在没有任何声明的前提下，假定在函数定义体内中<u>赋值</u>的变量是==局部变量==。
+!!! danger "python 在没有任何声明的前提下，假定在函数定义体内中<u>赋值</u>的变量是==局部变量==。"
     如果想在函数定义体内赋值，还想 python 解释器把其认为全局变量，需要声明 `global`
     [Python 全局变量]
 
 ==闭包==。延伸了作用域的函数，其中包含函数定义体中运用，但不在定义体内定义的**非全局变量**。一般出现在嵌套函数里。闭包是一种函数，他会保留定义函数时存在的自由变量的绑定，哪怕是定义作用域不能用，绑定也能使用。
 ==自由变量==。未在本地作用域内绑定的变量。用 `nonlocal` 声明，哪怕是在函数定义体内赋值，python 解释器会把其认为自由变量(类 `global` )。保存在 返回对象的`.__code__.co_afreevars`  & `.__closure__[idx].cell_contents` 一一对应。
 
-```python{highlight=[3-10]}
+```python hl_lines="3-10"
 def outer():
     # 3-10 inner 的闭包延伸到 inner 之外，包含 自由变量 的定义
     series = []
@@ -590,7 +597,7 @@ print(glo)  # 外部变量不变
 
 ##### map
 
-!!! p 为什么 map 运行速度比 for 循环要快
+!!! p "为什么 map 运行速度比 for 循环要快"
     map 用 C 编写的并且经过高度优化, **底层自动实现并行**
     使用 map() 的第二个优势与内存消耗有关。使用 for 循环，您需要将整个列表存储在系统的内存中。使用 map() 可以按需获得项目，并且在给定时间系统内存中只有一个项目。
 
@@ -600,7 +607,7 @@ print(glo)  # 外部变量不变
 
 如果我们将n序列传递给map()，则该函数必须采用n个参数，并且并行使用序列中的项，直到用尽最短的序列。
 
-!!! danger 死循环
+!!! danger "死循环"
     纯计算无 IO 的死循环会导致致命的效率问题
 
     ```python
@@ -634,7 +641,7 @@ def func():
     pass
 ```
 
-!!! danger 等于的是  `func = decorate(func)` 而不是 `func() = decorate(func)`
+!!! danger "等于的是  `func = decorate(func)` 而不是 `func() = decorate(func)`"
 
     - 装饰器会在被装饰函数定义之后立刻执行，通常是加载模块时。即背地里运行。所以一般会分开定义。装饰器在一个模块，应用在其他模块的函数上。但是不代表马上运行被装饰的函数。
 
@@ -650,7 +657,7 @@ def func():
         ```python
         func() # 等同于 decorate(func)() 
         ```
-!!! warning 被装饰的函数完全是作为参数传入.
+!!! warning "被装饰的函数完全是作为参数传入."
      `decorate(func)` ，此时没有带`()`, 所以 `func` 还没被调用。
     在 `deco1` 函数体内 带着 `()` 或者在 `deco2` 里 被返回 才是被调用运行, `deco3` 就是完全没运行
 
@@ -671,7 +678,7 @@ def func():
         return inner  # deco3(func) () = inner ()
     ```
 
-!!! p 装饰器可以叠放
+!!! p "装饰器可以叠放"
 
     ```python
     @d1
@@ -713,13 +720,13 @@ der best_promo(order):
 1. 被装饰的函数本身需要参数
 2. 装饰器本身也想拥有参数
 
-!!! p 装饰器需要返回 **一个可调用对象或者函数**，才能在运行 `func()` 时返回来 跟后面的 `()` 继续用。<u>所以如果 func 需要传参，一般装饰器需要进行嵌套。</u>
+!!! p "装饰器需要返回 **一个可调用对象或者函数**，才能在运行 `func()` 时返回来 跟后面的 `()` 继续用。<u>所以如果 func 需要传参，一般装饰器需要进行嵌套。</u>"
 
 > > 被装饰的函数本身需要参数 + 装饰器本身也想拥有参数
 >
 > 一个参数化的注册计时装饰器
 
-```python{highlight=[4,5,12,13,17, 19, 21, 23,27,31]}
+```python hl_lines="4 5 12 13 17 19 21 23 27 31"
 import time, functools
 registry = set()  # 增删更快
 
@@ -781,7 +788,7 @@ def fibonacci(n):
 装饰器 叠放 支持不同类型
 注册的函数不一定与原来的函数放在一块，可以在不同的模块去做，也可以为不是自己写的或者不能修改那里去加。
 
-!!! p 使用抽象基类 `numbers.Integral` & `abc.MutableSequence` 而不是具体实现 `int` & `list`
+!!! p "使用抽象基类 `numbers.Integral` & `abc.MutableSequence` 而不是具体实现 `int` & `list`"
     可以支持抽象基类以及未来的具体子类或虚拟子类，使得代码支持的兼容类型1更广泛。
 
 > 想要生成一个标签，常规的前后用 “p” 包围。如果是
@@ -789,7 +796,7 @@ def fibonacci(n):
 > str：里面的换行符“\n” 变成 “br”
 > list：对每个元素都产生相应的标签
 
-```python{highlight=[5,9,13,18-19]}
+```python hl_lines="5 9 13 18-19"
 from functools import singledispatch
 from collections import abc
 import numbers
@@ -828,7 +835,7 @@ tag(['a/nb',2] )
 `attrgetter('a')` 🟰`lambda obj: obj.a`
 如果传入的是多个参数，返回来的就会是对应的元组
 
-``` python{highlight=[10,12,14,16]}
+``` python hl_lines="10 12 14 16"
 from operator import itemgetter, attrgetter
 seq = [('A', 3), ('D', 2), ('B', 2), ('C', 1)]
 class Obj():
@@ -859,7 +866,7 @@ sorted(objs, key=attrgetter('b','a'))
 - `partialmethod` 和 `partial` 类似，后者处理**方法**
 - `lru_cache` 做备忘。【自动优化】。储存耗时的函数调用结果，避免重新计算。
 
-```python{highlight=[4,7]}
+```python hl_lines="4 7"
 from functools import partial
 from operator import mul
 
@@ -872,7 +879,7 @@ triple.func
 
 ## Class
 
-!!! danger  方法和函數
+!!! danger  "方法和函數"
     |||inplaced
     |--|--|--|
     方法| `var.func()`|内置, ✅
@@ -880,7 +887,7 @@ triple.func
 
 ### 空 `None`
 
-!!! danger 数据为空不代表是空对象
+!!! danger "数据为空不代表是空对象"
     ||包括|判别|
     |--|--|--|
     空的对象|`None`|`instance == None`
@@ -896,7 +903,7 @@ triple.func
 
 与 `char` 的转换
 
-!!! danger 万事先转 `float()`
+!!! danger "万事先转 `float()`"
     在不确定这个字符串是整形还是浮点数的情况下, 先转成`float()`，再转`int()`
     [ValueError: invalid literal for int() with base 10问题处理]
 
@@ -926,9 +933,9 @@ triple.func
 
 所有进制之间的转换都是如此，2可以换成任何数字。十进制转二进制、八进制、十六进制、64进制，
 
-<div class=pic1><img src="./pics/baseconvertion1.png", class=Big></div>
-<div class=pic1><img src="./pics/baseconvertion2.png", class=Big></div>
-<div class=pic1><img src="./pics/baseconvertion3.png", class=Big></div>
+![](./pics/baseconvertion1.png)
+![](./pics/baseconvertion2.png)
+![](./pics/baseconvertion3.png)
 
 ```python
 def two_ten(a: str):
@@ -976,7 +983,7 @@ list, tuple, collections.deque
 - ❌==扁平序列==。存放的是**值**, 一段连续的内存空间，更紧凑，只能存放字符、字节和数值这种**原子数据类型**。每次只能存放一种类型。
 str, bytes, bytearray, memoryview, array.array
 
-!!! warning set & dict 属于 容器 但是不属于序列。
+!!! warning "set & dict 属于 容器 但是不属于序列。"
 
 按<u>能否迭代</u>
 
@@ -990,11 +997,11 @@ list, bytearray, array.array, collections.deque, memoryview
 - ❌==Sequence==
 tuple, str, bytes
 
-!!! question 一定要知道常用的容器底层都是如何实现的，最基本的就是map、set等等，否则自己写的代码，自己对其性能分析都分析不清楚
-
+!!! question "一定要知道常用的容器底层都是如何实现的，最基本的就是map、set等等，否则自己写的代码，自己对其性能分析都分析不清楚
+"
 [collections --- 容器数据类型]
 
-!!! p 如何选序列。
+!!! p "如何选序列。"
     - `list`: 方便又快捷，可修改，
     - `set`: 去掉重复元素, 不关心元素的顺序问题，经常检查是否包含
     - `tuple`: 不可变的列表
@@ -1016,7 +1023,7 @@ tuple, str, bytes
 原则是：只用列表推导来创建新的列表，并且尽量保持简短，**不要超过了两行**
 [python中，(x for y in z for x in y)这个结构怎么理解？]
 
-``` python{highlight=[3, 6, 12]}
+```python hl_lines="3 6 12"
 """ listcomps """
 # 1. 一层
 [item for item in items]
@@ -1035,9 +1042,11 @@ for x in list_x:  # 所以是先按 y 再按 x
             yield (x,y)
 ```
 
-!!! p 笛卡尔积  with Listcomps
+!!! p "笛卡尔积  with Listcomps"
     $\text{Cartesian Product}, A×B=\{(x,y)|x∈A∧y∈B\}\in\R^{\#A*\#B}$
+
     `[(a, b) for a in A for b in B]`
+
     内存里不会留下一个有组合的列表。因为在每次 for 循环的时候才会产生一个组合，所以内存变成是<u>一个组合的大小</u>
 
 ==generator expression, genexps, 生成器表达式==。具有生成各种类型的元素并用它们来填充**除列表外其他序列**的功能。
@@ -1057,11 +1066,11 @@ genexps 遵守了<u>迭代器协议</u>，**可以逐个地产出元素（节省
 **唯一的要求：** 被可迭代对象中的元素数量必须是和接受这些元素的元组的空档数一致。
 允许**嵌套拆包**
 
-!!! warning `_` & `*`
+!!! warning "`_` & `*`"
     对待<u>少量不需要</u>的元素：`_` 占位符。必须数量对应，和位置对应
     对待<u>不确定数量无谓需不需要</u>的元素 `*`。可以出现在前中后
 
-```python{highlight=[1,2,4,10,11,19]}
+```python hl_lines="1 2 4 10 11 19"
 a, b = ('a', 'b')  # 平行赋值
 a, b = b, a  # 不使用中间变量交换两个变量
 a = (20,8)
@@ -1085,7 +1094,7 @@ city, cc, (latitude, longitude) = area  # 嵌套拆包
 
 ##### 切片
 
-!!! p `seq[n]` 获得是一个元素，元素什么类型，返回就什么类型；<br> `seq[n-1:n]` 获得是一个长度为1的 seq 对象，seq 什么类型，返回就什么类型。
+!!! p "`seq[n]` 获得是一个元素，元素什么类型，返回就什么类型；<br> `seq[n-1:n]` 获得是一个长度为1的 seq 对象，seq 什么类型，返回就什么类型。"
 
 - `seq[a:b:c]` 对 s 在 $[a, b)$ 之间以 c 为间隔取值。【1d】
 其实是调用 `seq.__getitem__(slice(a,b,c))`
@@ -1093,12 +1102,12 @@ city, cc, (latitude, longitude) = area  # 嵌套拆包
 - `seq[m:n, k:l]` 对 **多维** s 取 $[m, n)$ 行 $[k, l)$ 列 交叠的值。【>2d】
 其实是调用 `seq.__getitem__([(m,k)(m,k+1)...])`
 
-    !!! warning `seq[i, j]` 取 i 行 j 列的<u>一个值</u>
+    !!! warning "`seq[i, j]` 取 i 行 j 列的<u>一个值</u>"
         其实是 `seq.__getitem__((i,j))`
 - 切片赋值
 如果赋值的对象是一个切片，那么赋值的右边**必须**是一个<u>可迭代序列</u>，哪怕只有单独一个值。
 
-```python{highlight=[4,6,11]}
+```python hl_lines="4 6 11"
 s = list('abcd')
 s[::1]
 # >>> ['a', 'b', 'c', 'd']
@@ -1126,7 +1135,7 @@ s[:2] = [1]  # 哪怕只有单独一个值。
 🟰`seA[seqB]`➡️ `seqA[seqB1, seqB2, ...]` 里面相互独立。
 `seqA(seqB) *n` 🟰 `seA[seqB]`➡️ `seqA[seqB, seqB, ...]`（第一个方法，里面一改全改。）
 
-```python{highlight=[1, 6, 11, 18, 25]}
+```python hl_lines="1 6 11 18 25"
 a = [0] * 3  # [0] 是 seq， 0 是元素 = 值
 # >>> a = [0, 0, 0]
 a[0]=1
@@ -1156,7 +1165,7 @@ e = ['-'*3]
 ```
 
 ```mermaid
-graph TB
+graph LR
 subgraph 栈区
 c --一直没变--> c_address
 end
@@ -1187,7 +1196,7 @@ D -.- 1
 `+=`, `*=`, `__iadd__`, `__imul__`
 **重要**：对 ==Seq== & ==MutableSeq== 内存地址的变化
 
-```python{highlight=[2,7]}
+```python hl_lines="2 7"
 # Seq 变了
 t = (1, 2)
 # >>> t=(1,2), id(t)=4313022720
@@ -1200,7 +1209,7 @@ l *= 2
 # >>> l=[1,2,1,2], id(l)=4311024448
 ```
 
-!!! warning 关于就地加乘一个还没解决的问题
+!!! warning "关于就地加乘一个还没解决的问题"
 
     ```python
     t = (1,2,[30,40])
@@ -1211,7 +1220,7 @@ l *= 2
 
 ##### 排序
 
-!!! p 稳定的`Timsort`  
+!!! p "稳定的`Timsort`  "
     两个元素同样大小的情况下，在排序的时候位置是相互固定的。如果在比较长的时候，两个元素一样长，那么结果的先后会以原本本身列表的先后决定，这样相对稳定。
 
     `lst.sort()` & `sorted(iterableObject)` 背后用的都是 Timsort。
@@ -1231,7 +1240,7 @@ l *= 2
   - `=str.lower` 忽略大小写的的排序
   - `=reverse` 从左到右进行比较
 
-```python{highlight=[2,4,6]}
+```python hl_lines="2 4 6"
 lst = ['Aa', 'b', 'Cc']
 sorted(lst)
 # >>> ['Aa', 'Cc', 'b']  # 按 首字母 ord
@@ -1241,10 +1250,7 @@ sorted(lst, key=len)
 # >>> ['b', 'Aa', 'Cc']
 ```
 
-``` python
-"""
-    - 不支持原生比较的对象
-"""
+``` python title="不支持原生比较的对象"
 
 class User:
     def __init__(self, id, age):
@@ -1268,7 +1274,7 @@ print(users, "\n",
 
 **需要维护排序：**
 
-!!! quote 已经排好了序，如何查找&维护
+!!! quote "已经排好了序，如何查找&维护"
     排序很耗时，得到有序序列后最好保持它一直有序。
 
 `bisect module` 底下的 `bisect` & `insort` 都是用<u>二分查找</u>在有序序列上 查找并插入元素。
@@ -1319,7 +1325,7 @@ def grade(score):
 - 查 search
 `lst.index(val)` 返回第一个找到的idx。找不到就会 `ValueError`
 
-!!! warning `lst_1r = lst_1[:]`  切片等于浅拷贝
+!!! warning "`lst_1r = lst_1[:]`  切片等于浅拷贝"
 
     ```python
     a = 'a:a:a:b'
@@ -1351,10 +1357,10 @@ def grade(score):
   返回：`Tuple`
   - 【多列合并】 `list(zip(col1, col2, ...))`
 
-    !!! warning `zip`
+    !!! warning "`zip`"
         zip 返回来的是 `<zip object at 0x103abc288>`: 元组组成的对象。需要叠层 list。
 
-        ``` python{highlight=[2, 4]}
+        ``` python hl_lines="2 4"
         col1, col2 = [1, 2, 3], ['a', 'b', 'c']
         >>> zip(col1, col2)
         # >>> <zip object at 0x103abc288>
@@ -1392,7 +1398,7 @@ def grade(score):
   - `rec1._asdict()`把 namedtuple 以 `collections.OrderedDict` 形式返回。友好呈现信息
   - `rec1._replace(field_name=v)` 修改值。
 
-``` python{highlight=[2,3,6]}
+``` python hl_lines="2 3 6"
 from collections import namedtuple
 Point = namedtuple('Point', ['x', 'y'])
 p = Point(11, y=22)  # 根据位置和kw实例化
@@ -1408,7 +1414,7 @@ p._replace(x=100)
 
 #### array 数组
 
-!!! p 需要纯数字的列表是，array 比 list 更高效。
+!!! p "需要纯数字的列表是，array 比 list 更高效。"
     在存数字时，array 背后存的不是 float 或者 int 对象，而是数字的机器翻译==字节表述==。
     指定数据类型，当序列很大的时候，可以节省很多时间。
     还提供从文件读取和存入文件更快的方法。
@@ -1426,7 +1432,7 @@ p._replace(x=100)
 
 但是不支持 浅复制 `s.copy()` 操作，
 
-```python{highlight=[4,7,10]}
+```python hl_lines="4 7 10"
 from array import array
 from random import random
 
@@ -1453,7 +1459,7 @@ with open('floats.bin', 'rb') as fp:
 - 但是只在两端做了优化，从中间增删还是慢的。
 - append & popleft 都是原子操作，deque 可以在多线程程序中安全地作为先进先出的队列使用，而不需要考虑资源锁的问题。
 
-!!! question 原子操作
+!!! question "原子操作"
 适合做类似“最近用到的几个元素”。因为在初始化的时候，指定队列的大小(一旦设定之后不能改)。如果满员的话，可以从**反向端**删除过期的元素，在尾端添加新元素。
 
 - init
@@ -1468,11 +1474,11 @@ with open('floats.bin', 'rb') as fp:
 `deque.extend(iterable)` & `deque.extendleft(iterable)`
 如果满员的话，可以从**反向端**删除过期的元素，在尾端添加新元素。
 
-    !!! warning `deque.extendleft(lst)` 将迭代器的元素逐个增加到队列上，最后呈现出来的是逆序。
+    !!! warning "`deque.extendleft(lst)` 将迭代器的元素逐个增加到队列上，最后呈现出来的是逆序。"
 - 删除 **O(1)**
 `deque.pop()` & `deque.popleft()`
 
-```python{highlight=[3,7]}
+```python hl_lines="3 7"
 from collections import deque
 
 dq = deque([1,2,3], maxlen=5)
@@ -1494,7 +1500,7 @@ dq.extendleft(range(1,3))
 - 制表符、换行符、回车符、\对应的字节 ➡️ 转义序列
 - 其他字节的值 ➡️ 16进制转义序列
 
-```python{highlight=[3,4]}
+```python hl_lines="3 4"
 b = bytes('A\t啊', encoding='utf8')
 # >>> b=b'A\t\xe5\x95\x8a'
 # >>> b[0]=65    b[1]=9       b[2]=229 其实是整数
@@ -1505,19 +1511,19 @@ b = bytes('A\t啊', encoding='utf8')
 
 ==Sequence==
 
-!!! danger `s[i] = 'n'` 切片赋值 ❌ $\impliedby$ str 不可变
+!!! danger "`s[i] = 'n'` 切片赋值 ❌ $\impliedby$ str 不可变"
 
 **字符编码问题：**
 `t` 文本
 `b` 二进制/bytes,非文本只能 byte 模式
 
-!!! p 内存固定使用 <kbd>unicode</kbd>, 我们改变的是从<u>内存存入硬盘的格式</u>
+!!! p "内存固定使用 <kbd>unicode</kbd>, 我们改变的是从<u>内存存入硬盘的格式</u>"
     linux 默认 utf-8， windows 默认 gbk
 
-!!! p 存储数据 - 大小写
+!!! p "存储数据 - 大小写"
     存储数据时，方法`lower()`很有用。很多时候，你无法依靠用户来提供正确的大小写，因此需要将字符串先转换为小写，再存储它们。以后需要显示这些信息时，再将其转换为最合适的大小写方式。
 
-!!! danger 空白泛指任何非打印字符，如空格、制表符和换行符
+!!! danger "空白泛指任何非打印字符，如空格、制表符和换行符"
 
 |cases|code|return=non-inplaced|
 |--|--|--|
@@ -1605,7 +1611,7 @@ a.rsplit(':', 1)
 - <u>包含的所有元素都是可散列的</u> tuple
 - 一般用户自定义的的类型的对象是可散列的。所有对象在比较的时候都是不相等，哪怕是内容一样。
 
-    !!! question 散列值是 `id()`?
+    !!! question "散列值是 `id()`?"
 
     ```python
     class Fruit():
@@ -1617,10 +1623,10 @@ a.rsplit(':', 1)
     # >>> False
     ```
 
-!!! p 从 python3.3 开始，str & byte & datetime 的单列值计算多了 ==随机加盐==这一步。
+!!! p "从 python3.3 开始，str & byte & datetime 的单列值计算多了 ==随机加盐==这一步。"
     所加的盐值是 python 进程的一个常量，但是每次启动时 python.exe 都会生成一个不同的盐值。随机盐值是为了防止 DOS 攻击而采取的一种安全措施。
 
-!!! danger python 里所有不可变的类型都是 hashable ❌
+!!! danger "python 里所有不可变的类型都是 hashable ❌"
     虽然 tuple 是不可变的，但是里面的元素可能是其他可变类型的引用。
 
 **散列表的工作原理。**
@@ -1628,7 +1634,7 @@ a.rsplit(':', 1)
 > 1 == 1.0 $\implies$ hash(1) == hash(1.0)
 > 哪怕是整型和浮点的内部结构完全不一样。
 
-!!! danger 散列值一定是一样 $\nRightarrow$ 两个可散列的对象是相等
+!!! danger "散列值一定是一样 $\nRightarrow$ 两个可散列的对象是相等"
 
 为了让散列值能胜任散列表索引这一角色，散列值必须在索引空间尽量分散开。在最理想的情况下，越相似但不想等的两个对象的散列值差异应该越大。
 ==表元==，散列表里的单元，所有的表元的大小一致，所以可以通过偏移量来读取某个单元。
@@ -1660,7 +1666,7 @@ a.rsplit(':', 1)
 ==散列表== 是一个稀疏数组(**总是**有空白元素)。**为了减少散列冲突的概率**，python 会设法保证大概还有三分之一的表元是空白的，每快到这个阈值时，python 会重新分配内存，所有的散列表就会被复制到一个更大的空间里面。**【空间换时间】** 如果增加散列表的大小，散列值所占的位数和索引的位数都随之增加。
 在扩容的过程中，有可能发生新的散列冲突，导致新散列表中元素的次序变化。所以是无序且不稳定。
 
-!!! danger 不要在迭代的过程中 对 dict & set 进行修改。有可能会跳过一些键。
+!!! danger "不要在迭代的过程中 对 dict & set 进行修改。有可能会跳过一些键。"
     1. 首先迭代，记录要修改的东西，再在迭代后进行更新。
 
 #### dict
@@ -1678,7 +1684,7 @@ a.rsplit(':', 1)
 `d[k]`, 没有就`KeyError`.
 `d.get(k, [default=None])`, 没有就返回`default`， 纯粹 get
 
-    !!! warning 1. `d.__getitem__(v)` 的 call 是 `d[k]`； 和`d.get(..)` 一点关系都没有。<br> 2. `d.get(..)` 不会改变原有的字典。
+    !!! warning "1. `d.__getitem__(v)` 的 call 是 `d[k]`； 和`d.get(..)` 一点关系都没有。<br> 2. `d.get(..)` 不会改变原有的字典。"
 - contains
 `k in d.keys()` & `k in d:` & `v in d.values()`
 - loop
@@ -1690,12 +1696,12 @@ a.rsplit(':', 1)
   `d.setdefault(k, default)` 值的格式不统一
   `from collections import defaultdict` 值的格式统一，都是 list | str | int
 
-!!! warning 为什么不用 get 的方法。【针对部分改变 v 值 情况】
+!!! warning "为什么不用 get 的方法。【针对部分改变 v 值 情况】"
     更新 1️⃣ 彻底改变 v 值(包括新增 k-v 对) 2️⃣ 部分改变 v 值（`d[k]+=1` & `d[v].append()`）
     对于 1️⃣：`k[v]` 是可以的，标准赋值语句，但是 2️⃣ 会引发 `KeyError` 直接报错，因为操作需要 k-v 存在。
     如果用 `.get()` 的方法 就必须涉及二次查询，因为当不存在时，返回的 default 并没有跟 `d[k]` 绑定在一起，需要赋值语句进行绑定，其中涉及再次查询。
 
-    ```python{highlight=[1,4,7]}
+    ```python hl_lines="1 4 7"
     v = d.get(k, [])  # 查一次
     v.append(a) 
     d[k] = v  # 查两次
@@ -1706,7 +1712,7 @@ a.rsplit(':', 1)
     d[k].append(a)
     ```
 
-!!! question 如非需要，`defaultdict` 比 `.setdefault()`更快
+!!! question "如非需要，`defaultdict` 比 `.setdefault()`更快"
     因为一个是在创建初期就设好统一的初始值，一个是根据值的不一样，在找的时候设值
     [setdefault vs defaultdict performance](https://stackoverflow.com/questions/38625608/setdefault-vs-defaultdict-performance)
 
@@ -1716,7 +1722,7 @@ a.rsplit(':', 1)
 
 具体而言，在实例化一个 defaultdict 对象时，给构造方法提供了一个**可调用对象(不是方法)**。当 `.__getitem__` 找不到键时，调用`.__missing__`, 然后 `.__missing__` 调用存放在 `default_factory`属性的这个可调用对象，可调用对象产生默认值，让 `.__getitem__` 返回。
 
-!!! p 关键是实现了 `.__missing__`方法。
+!!! p "关键是实现了 `.__missing__`方法。"
     为了自定义映射类型在找不到键时的反应，可以重定义`.__missing__`（见魔法方法那一节）。
     基类 dict 没有定义，但是它知道，所以如果某个类继承了 dict，又是实现了 `__missing__` ，那么在 `__getitem__` 找不到键时，python 会自动调用它，而不是抛出  KeyError.
 
@@ -1750,7 +1756,7 @@ d.default_factory
 
 `collections.Counter` 整数计数器
 
-```python{highlight=[3,5,7,9]}
+```python hl_lines="3 5 7 9"
 from collections import Counter
 
 ct = Counter('abbcbcbb')
@@ -1769,7 +1775,7 @@ sum(ct.values()) # 求总数
 
 提供一个映射的**只读的动态视图**。不能进行修改，但是如果原映射改了，作为的动态视图 MappingProxyType 也能看见。
 
-```python{highlight=[3,6,7]}
+```python hl_lines="3 6 7"
 from types import MappingProxyType
 d = {1:'A'}  # dict \in mapping
 d_proxy = MappingProxyType(d)
@@ -1786,7 +1792,7 @@ d[2] = 'B'
 专为**检查元素是否存在**做过优化。
 set 里的元素必须是 hashable，但 set 本身是 unhashable。如果set 底下是要放集合，必须放 **frozenset**
 
-!!! p 姊妹类型 frozenset ： ==unmutable== + ==hashable==
+!!! p "姊妹类型 frozenset ： ==unmutable== + ==hashable=="
 
 - init
 `s = set()` <u>空集合必须</u>。
@@ -1825,7 +1831,7 @@ set 里的元素必须是 hashable，但 set 本身是 unhashable。如果set �
 
 ### 堆
 
-!!! p 最小的元素总是在根结点：`heap[0] is smallest`
+!!! p "最小的元素总是在根结点：`heap[0] is smallest`"
     堆是一个二叉树，它的每个父节点的值都只会小于或等于所有孩子节点
         `parent <= childs`。
 
@@ -1850,7 +1856,7 @@ set 里的元素必须是 hashable，但 set 本身是 unhashable。如果set �
 
 `heap.sort()` 维护了堆的不变性
 
-!!! danger heapq 不是一个类而是一个模块
+!!! danger "heapq 不是一个类而是一个模块"
     ``` python
     import heapq
 
@@ -1921,14 +1927,14 @@ list(z2)
 
 ### 运算符
 
-!!! p 中缀运算符的基本原则是返回来一个新的值，而不改变操作对象本身。
+!!! p "中缀运算符的基本原则是返回来一个新的值，而不改变操作对象本身。"
 
 |❗算术运算符|a/b|a//b|a%b|a**b|
 |--|--|--|--|--|
 |a=3,b=2|整数+小数|只要整数|余数|幂|
 |^|1.5|1|1|9|
 
-!!! warning 逻辑运算符 not 》 and 》  or  的优先级
+!!! warning "逻辑运算符 not 》 and 》  or  的优先级"
     ==最好用括号括起来==
     1. 先算 `not`
     2. 如果全 `and` 或 全 `or`,从左到右
@@ -1989,7 +1995,7 @@ for index, (name, age, sex) in enumerate(zip(names, ages, sexs)):
 
 ### `itertools` module
 
-!!! p 读取大型文件数据
+!!! p "读取大型文件数据"
     当我们需要处理大量数据时，将整个数据集加载到内存中可能会导致程序崩溃或效率低下。使用Python迭代器来处理大型文件数据非常理想，这种方式只在内存中维护当前处理的数据块，而不需要一次性读取整个文件。
 
     ``` python
@@ -2017,7 +2023,7 @@ for idx, animal in enumerate(animals):
 # >>> 2 - monkey
 ```
 
-!!! danger 看清楚循环的是啥
+!!! danger "看清楚循环的是啥"
 
     ```python
     for a, b, c in ['abc', 'def', 'ghj']:
@@ -2037,21 +2043,21 @@ for idx, animal in enumerate(animals):
 
 ## 类 cls
 
-!!! p ==实例化==。根据类来创建对象
+!!! p "==实例化==。根据类来创建对象"
     `MyClass`: 类,==驼峰命名法==，即将类名中的 **每个单词的首字母都大写，而不使用下划线**。
     `myclass_1`: 根据类创建的实例。实例名采用 **小写格式，并在单词之间加上下划线**。
 
 ### 协议
 
-!!! quote ==鸭子类型 duck typing==。主要是一种思想。不要去**严格验证**是不是鸭子，而是检查有没有鸭子的**重点特征和行为**。何谓重点特征和行为，取决于你想使用的类型的根本特征是什么。忽略对象的真正类别，转而关注对象又没有实现所需的 方法 & 签名 & 语义。
+!!! quote "==鸭子类型 duck typing==。主要是一种思想。不要去**严格验证**是不是鸭子，而是检查有没有鸭子的**重点特征和行为**。何谓重点特征和行为，取决于你想使用的类型的根本特征是什么。忽略对象的真正类别，转而关注对象又没有实现所需的 方法 & 签名 & 语义。"
     > 序列类型，只要迭代就行。🟰 只要能迭代都是序列类型，而不需要继承什么或者什么严格定义。
     > 说序列，是因为它的行为像序列。如果只想迭代，只需要 `__iter__` 就行，而不需要`__len__` 多余的但是属于序列的行为。
 
-!!! quote ==白鹅类型==。只要 cls 是抽象基类 🟰 cls 的元类是 `abc.ABCMeta`，就可以使用 `isinstance(obj, cls)`
+!!! quote "==白鹅类型==。只要 cls 是抽象基类 🟰 cls 的元类是 `abc.ABCMeta`，就可以使用 `isinstance(obj, cls)`"
 ==协议==。是一种约定，用于指导对象之间的交互和行为。Python并没有严格的接口定义，而是通过协议来实现接口的概念。**协议是非正式的接口**。对象的类型无关紧要，只要实现特定的协议即可。
 协议是**动态**的：函数不关心参数的类型，只要求对象实现了部分所需协议，即使一开始定义时没有实现，**也可以之后再补上**。
 
-!!! p 不一定要自己实现所需协议，如果能委托给对象的带有所需协议的属性也可以。但是单纯委托有缺点，可能会返回 委托类型，而不是自定义的类型。
+!!! p "不一定要自己实现所需协议，如果能委托给对象的带有所需协议的属性也可以。但是单纯委托有缺点，可能会返回 委托类型，而不是自定义的类型。"
     > 向量的切片操作委托给 list 的切片。但是有缺点：切片返回的是 list 类型，而不是自定义的 vector 类型。
     ✏️ 看 getitem
 
@@ -2103,14 +2109,14 @@ Sequence <|-- MutableSequence
 ==抽象方法 Abstract Methods==。(后面加`@`)在类中声明**但没有具体实现**，它只包含方法的签名（返回类型、方法名和参数列表），没有方法体。**子类必须实现抽象方法**，才能创建对象并调用这个方法。否则就会产生 `NotImplentedError`，或子类也必须声明为抽象类。
 ==具体方法Concrete Methods==。在类中实现了具体功能的方法，它**包含了具体的代码实现**。
 
-!!! p Sequence 抽象方法没有 `__iter__`。
+!!! p "Sequence 抽象方法没有 `__iter__`。"
     python 存在一种**后备机制**：当有 `__getitem__` 时，python 会调用它，传入从 0 开始的整数索引，尝试迭代对象。哪怕是没有 `__iter__` & `__contains__` python 也会设法使迭代 & in 可用。
 
-!!! p 猴子补丁：运行时实现协议。
+!!! p "猴子补丁：运行时实现协议。"
     > FrenchDeck 类已经定义好了，但是突然想实现可变协议，就是需要添加 `__setitem__`方法。
     ✏️ 在运行时修改修改类或模块，而**不改动源码**。但是关键是要和源码耦合十分紧密（即知道源码，并对上来写
 
-    ``` python{highlight=[5]}
+    ``` python hl_lines="5"
     # 终端台写
     def set_card(deck, pos, card):
         deck._card[pos] = card
@@ -2146,11 +2152,11 @@ myclass = module.MyClass()
 
 ##### UserDict
 
-!!! p quote 更倾向继承 UserDict 而不是 dict
+!!! p "quote 更倾向继承 UserDict 而不是 dict"
     dict 会在某些方法的实现上走一些捷径，如果继承的话，可能需要在子类中重写这些方法。
     ==UserDict==。把标准 dict 用纯 python 实现了一遍，所以就不会遇到这个问题。
 
-!!! question UserDict 不是 Dict 的子类，但是 用来给 UserDict 最终存储数据的 `UserDict.data` 属性是 dict 的实例。所以
+!!! question "UserDict 不是 Dict 的子类，但是 用来给 UserDict 最终存储数据的 `UserDict.data` 属性是 dict 的实例。所以"
 
 ### 魔法方法
 
@@ -2184,7 +2190,7 @@ myclass = module.MyClass()
 - `__call__(self)` ➡️ `myclass()`
     成为可调用对象，也可以作为类方法的快捷方式。
 
-    ```python{highlight=[5,6]}
+    ```python hl_lines="5 6"
     class MyClass():
         def func1(self):
             ...
@@ -2203,13 +2209,13 @@ myclass = module.MyClass()
 所有的映射类型在处理找不到键时，都会牵扯`.__missing__` 方法。`.__missing__`会调用 `default_factory` 里存的可调用对象产生默认值，给 `__getitem__` 返回。
 基类 dict 没有定义，但是它知道，所以如果某个类继承了 dict，又是实现了 `__missing__` ，那么在 `__getitem__` 找不到键时，python 会自动调用它，而不是抛出  KeyError.
 
-    !!! warning `__missing__` 只会被 `__getitem__` 调用，对 `.get(k)` & `__contains__` 没有影响。所以
+    !!! warning "`__missing__` 只会被 `__getitem__` 调用，对 `.get(k)` & `__contains__` 没有影响。所以"
 
 #### Example
 
 > 一叠纸牌
 
-```python{highlight=[4]}
+```python hl_lines="4"
 class FrenchDeck():
 def __init__(self, a:int):
       self._cards = list(range(a))
@@ -2220,7 +2226,7 @@ def __init__(self, a:int):
 > 二维向量
 > 为生成字节序列，将 typecode 转成字节序列，然后迭代实例得到数组，再将数组转成字节序列。
 
-```python{highlight=[5,7,9,11]}
+```python hl_lines="5 7 9 11"
 from math import sqrt
 class Vector():
     typecode = 'd'  # 类属性，在 Vector 实例 & 字节序列之间转换时使用
@@ -2374,7 +2380,7 @@ class StrKeyDict(UserDict):
 根据类**创建新实例**时，Python都会自动运行它。
 不用显式地包含return语句，但Python自动返回一个表示 `NewClass` 的实例
 
-!!! p 序列类型的构造最好接受可迭代的对象参数
+!!! p "序列类型的构造最好接受可迭代的对象参数"
 
 创建子类时，父类必须包含在当前文件中，且位于子类前面。子类必须在括号内指定父类的名称
 
@@ -2401,9 +2407,9 @@ class StrKeyDict(UserDict):
 2️⃣ 遵循私下约定俗成的设定 `_`一个前导线。标记为**受保护的**
 python 不会对这种的属性进行特殊处理。
 
-!!! warning 其实不能实现真正的私有和不可变。
+!!! warning "其实不能实现真正的私有和不可变。"
 
-``` python{highlight=[4,10-12,14,16]}
+```python hl_lines="4 10 12 14 16"
 class Vector():
     def __init__(self, x, y):
         self.__x = x  # 两个下划线标记为 私有属性
@@ -2425,9 +2431,9 @@ v1._Vector__x = 2  # 知道之后故意修改
 
 #### call
 
-!!! p 对象也可以成为函数类对象。实现 `__call__`
+!!! p "对象也可以成为函数类对象。实现 `__call__`"
 
-```python{highlight=[8]}
+```python hl_lines="8"
 class NormClass():
     def __init__(self):
         self.a = 1
@@ -2454,15 +2460,15 @@ func()
 
 如果切片传入不合格：一般返回 `msg = f'{cls.__name__} indices must be integers'`
 
-!!!  warning 如果单个索引，就会返回一个元素，**元素类型**。<br> 一般切片之后，返回一个子序列，**序列的类型**。
+!!!  warning "如果单个索引，就会返回一个元素，**元素类型**。<br> 一般切片之后，返回一个子序列，**序列的类型**"
     如果有底层序列类型，可以委托，但不能单纯委托给具有序列协议的属性，需要 额外处理一下
     如果没有底层的序列类型，可以用 `slice` 进行操作。（参见向量类型）
 
-!!! p 切片原理
+!!! p "切片原理"
     单个切片返回 `silce(start, stop, step)`; 多个切片(有 `,` )返回 `tuple(slice)`
     ==slice==。内置类。有个属性 `.indices(len)->(start, stop, stride)` 给定长度 len 的序列，计算 S 表示的扩展切片的起始 & 结尾 & 步伐，使其不超出列表序列长度&转换负数。
 
-    ```python{highlight=[5, 9, 10]}
+    ```python hl_lines="5 9 10"
     class Seq():
         def __getitem__(self, index):
             return index
@@ -2501,10 +2507,10 @@ func()
    - 序列协议，sequence protocol `__getitem__()`
 2. `__next __(self)`, 逐个访问容器中的元素。
 
-    !!! danger `StopIteration` 异常
+    !!! danger "`StopIteration` 异常"
         超出范围
 
-``` python{highlight=[6, 14, 29, 30, 32, 33]}
+``` python hl_lines="6 14 29 30 32 33"
 class Users:
   def __init__(self, data):
     self.data = data
@@ -2540,7 +2546,7 @@ class Users:
 >>>    user = next(users_iterator)
 ```
 
-!!! warning 可迭代对象的赋值
+!!! warning "可迭代对象的赋值"
     不需要或者不定量的时候, `*variables`可在开头也可在结尾
 
     ``` python
@@ -2564,15 +2570,15 @@ class Users:
 使用**特殊的格式**显示对象的字符串表现形式。
 如果没有定义`__format__`, `format()` 会找`__str__`，但不能传入 format_spec，否则就会 `TypeError`
 
-!!! p 如果非要二者选其一来实现，`__repr__` 是更好的选择。因为当没有 `__str__` 时， 解释器会找 `__repr__`
+!!! p "如果非要二者选其一来实现，`__repr__` 是更好的选择。因为当没有 `__str__` 时， 解释器会找 `__repr__`"
 
-!!! quote ==格式规范微语言 format_spec==。指导格式的字符串。
+!!! quote "==格式规范微语言 format_spec==。指导格式的字符串。"
     int ：`bedoxXn` ; float：`eEfFgGcn`； str：`s`
     自定义格式代码尽量避免使用已有的，而不至于使别的读者困惑。
     > `'b'` 二进制 int & `'x'` 十六进制 int
     > `'f'` 小数形式 float `'.4f'` & `'%'` 百分数形式 float
 
-!!! p 关于显示上
+!!! p "关于显示上"
     - 如果分量太多，考虑用 `...` 表示截断部分，而不需要展开很多的数据占据视窗，同时提醒不止展现这几行.  
     `reprlib.repr(data)` 超过6个元素，用省略号代替。用于生成大型结构或递归结构的**安全表现形式**，限制字符串输出长度。
 
@@ -2617,7 +2623,7 @@ format(v, '.5fp')
 
 重载运算符是为了让自定义对象使用 中缀运算符 `+ |` & 一元运算符 `- ~`
 
-!!! p 中缀运算符的基本原则是**创建并返回类型合适的一个新的对象，而不改变操作对象本身**。只有增量赋值可能修改第一个操作对象<br> 不能重载内置类型的运算符 <br> 不能新建运算符，只能重载。<br> 不能重载 `is and or not` <br> 当序列进行按元素运算，要处理序列**长度不一的情况**。（迭代多个可迭代对象`itertools.zip_longest(.., fillvalue=None)`）
+!!! p "中缀运算符的基本原则是**创建并返回类型合适的一个新的对象，而不改变操作对象本身**。只有增量赋值可能修改第一个操作对象<br> 不能重载内置类型的运算符 <br> 不能新建运算符，只能重载。<br> 不能重载 `is and or not` <br> 当序列进行按元素运算，要处理序列**长度不一的情况**。（迭代多个可迭代对象`itertools.zip_longest(.., fillvalue=None)`）"
 
 |magic|运算符|meaning|
 |--|--|---|
@@ -2627,17 +2633,17 @@ format(v, '.5fp')
 |`__pos__(self)`|`+a`|一元取正 通常 `x==+x`|
 |`__invert__(self)`|`~a`|对整数按位取反|
 
-!!! p `i` 就地运算，增量赋值可能修改第一个操作对象 <br> `r` 反向运算，右位
+!!! p "`i` 就地运算，增量赋值可能修改第一个操作对象 <br> `r` 反向运算，右位"
     `__radd___` 是 `__add__` 的 反射 reflected | 反向 reversed
     > `__add__(a,b) = a+b` 左位 & `__iadd__(a,b)= a+=b` & `__radd__(a,b) = b+a` 右位
 
 特殊的分配机制。
 
-<div class=pic1><img src='./pics/operate_1.jpeg', class=BIg></div>
+![](./pics/operate_1.jpeg)
 
 算 `a+b`，a左b右。先找 a 有没有左加b(1.有没有左加；2.能不能左加b)，不能的话再找b有没有右加a(1.有没有右加；2.能不能右加a)
 
-!!! quote “”
+!!! quote ""
     `x==+x` 的特殊情况:当精度不一样的时候会 `False`
 
 #### hash
@@ -2651,7 +2657,7 @@ format(v, '.5fp')
 
 1. `__`
 
-``` python{highlight=[17]}
+``` python hl_lines="17"
 class Vector():
     def __init__(self, x, y):
         self.__x = x  # 两个下划线标记为 私有属性
@@ -2683,7 +2689,7 @@ set([Vector(1,1), Vector(1,1), Vector(1,2)])
 
 #### 一些优化
 
-!!! p 如果数百万个数值，使用 numpy
+!!! p "如果数百万个数值，使用 numpy"
 
 `__slots__` 节省空间，建议储存数百万（而不是几千）使用，而且内存严重不足时。
 为提高访问速度，python 在实例中将属性存进 **dict**，但消耗大量内存。使用 `__slots__`，python 在实例中将属性存进 **tuple**， 节省内存。（有点像 namedtuple，告诉 python 这个类中所有的实例属性都在这里）
@@ -2731,7 +2737,7 @@ class Vector():
 
 ### Input
 
-!!! danger input 接收后字符串性质
+!!! danger "input 接收后字符串性质"
 
 ```python
 a = input('plz input a number:')
@@ -2784,7 +2790,7 @@ files_lst = os.listdir('dirctory_path')
 |文件不存在|❌||||
 |指针|开头||||
 
-!!! danger 留意指针
+!!! danger "留意指针"
     写完再读就会读不出东西
 
 ### txt
@@ -2799,7 +2805,7 @@ read(), readline(), readlines()
 |notes|全部读取的需要考虑内存|||
 |^|`readlines()`比`readline()`快|||
 
-```python{highlight=[8, 13,20]}
+```python hl_lines="8 13 20"
 """1.txt
 aaa
 bbb
@@ -2849,7 +2855,7 @@ with open('./built-in.json', 'w', encoding='utf-8') as f:
 
 简单感觉时间可用time，但是对优化来说，得看quota，看哪部分占比比较明显，如果是那些外调的函数比较明显的话，那也木有办法。
 
-!!! warning 加载模型尽量在外部一次加载，load是比较慢的，不要每次调每次都加载。
+!!! warning "加载模型尽量在外部一次加载，load是比较慢的，不要每次调每次都加载。"
 
 #### time
 
@@ -2881,8 +2887,7 @@ print(time.time()-start)  # 秒
 
 1. step1
 
-    ```python
-    """main.py"""
+    ```python title="main.py"
     def run():
         pass
     
@@ -2897,8 +2902,7 @@ print(time.time()-start)  # 秒
 
 3. step3
 
-    ```python
-    """analysis.py"""
+    ```python title="analysis.py"
     import pstats
     from pstats import SortKey
     p = pstats.Stats('./output_file')
@@ -2940,7 +2944,7 @@ numb('a')
 # >>> It is over.
 ```
 
-!!! danger NotImplementedError 未实现父类接口重写
+!!! danger "NotImplementedError 未实现父类接口重写"
     在继承的时候，父类有可能留下接口需要子类去重写，但子类并没有重写.
     ==Sol==: 重写方法
 
@@ -2968,7 +2972,7 @@ numb('a')
 ==UnicodeEncodeError==。选定的编码方式不能编码这个字符。
 ==UnicodeDecodeError==。选定的解码方式不能解码这个字符。
 
-!!! danger 文本存取乱码问题
+!!! danger "文本存取乱码问题"
     - 存乱了，编码格式应该设置成支持文本内字符串的格式。日文就不要用 <kbd>gbk</kbd>
     - 取乱了，编码格式应该对应该文件存入硬盘的格式
 

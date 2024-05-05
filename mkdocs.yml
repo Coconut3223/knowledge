@@ -2,7 +2,7 @@ site_name: Coconut3223  # 网站名
 theme:  
   name: material
   language: en  # 一些部件的语言
-  font: false # T for google F for sysytem
+  #font: true # T for google F for sysytem
   palette:  # 白黑模式
     - scheme: default
       toggle:
@@ -20,16 +20,24 @@ theme:
     - navigation.tabs  # 选项卡
     - navigation.sections  # 不知道
     - navigation.top
-    - toc.integrate  # toc 目录
+    - navigation.indexes
+    # - navigation.footer
+    # - navigation.prune
+    #- navigation.expand  # 导航展开
+    # - toc.follow
+    #- toc.integrate  # toc 目录 放左边
     - search.suggest  # 补全搜索
     - search.highlight  # 搜索高亮
-    #- content.tabs.link
+    # - content.tabs.link
     - content.code.annotation # ？
     - content.code.copy  # 代码copy
   
 plugins:
   - social
   - search
+  - blog
+  - tags  
+  - glightbox  # 圖像縮放
   # - exclude:
   #     glob:
   #       - snippets/*
@@ -51,7 +59,9 @@ extra: # 脚注那边有 logo
 # - !relative $config_dir  # Path of the directory that contains the main mkdocs.yml
 # - !relative $config_dir/some/child/dir  # Some subdirectory of the root config directory
 markdown_extensions:
+
   - pymdownx.highlight:
+      linenums: true  # 自动标行号
       anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets:
@@ -68,17 +78,62 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.mark:
       smart_mark: true
-  - attr_list
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - attr_list
   - md_in_html
+  # - pymdownx.tilde
+  - pymdownx.arithmatex:
+      generic: true
+  - toc:
+      permalink: true  # 該擴充功能在每個標題的末尾插入一個錨點，這樣就可以直接連結到文件的子部分
+
+
 extra_css:
   - stylesheets/extra.css
   - stylesheets/markdown-it-admonition.css
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
 
-# extra_javascript:
+extra_javascript:
 #   - javascripts/extra.js
+  - javascripts/katex.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+  # - https://polyfill.io/v3/polyfill.min.js?features=es6
 
+nav:
+  - "Home": index.md
+  - "python":
+      - python/index.md
+      - "elegant": python/python_elegant.md
+      - "enhanced": python/enhanced.md
+      - "numpy": python/numpy.md
+      - "八股文": python/exam.md
+  - "AI":
+    - AI/index.md
+    - "ML":
+      - "LinearRegreesion": AI/ML/lr.md
+      - "NaiveBayes": AI/ML/nb.md
+      - "Logistics Regression": AI/ML/logr.md
+      - "KNN": AI/ML/knn.md
+      - "Decision Tree": AI/ML/dt.md
+  - "NLP":
+    - NLP/index.md
+    - "Embedding": NLP/embedding.md
+    - "Subword": NLP/subword.md
+    - "Keyword Extraction Algorithm": NLP/kea.md
+    - "Neural Machine Translation": NLP/nmt.md
+    - "GPT": NLP/gpt.md
+  - "SQL":
+    - SQL/index.md
+    - "八股文": SQL/exam.md
+
+
+# not_in_nav: |
+#   automated-migration.md
+#   other-environments.md
 copyright: |
   &copy; 2023 <a href="https://github.com/james-willett"  target="_blank" rel="noopener">Coconut</a>
+
+  
