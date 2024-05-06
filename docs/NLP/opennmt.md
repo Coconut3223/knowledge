@@ -7,7 +7,7 @@ The system is successor to **seq2seq-attn** developed at Harvard, and has been c
 It includes vanilla NMT models along with support for **attention, gating, stacking, input feeding, regularization, beam search and all other options** necessary for state-of-the-art performance.
 The project is fully self-contained depending on minimal number of external Lua libraries and including also a simple language independent reversible tokenization and detokenization tools. 完全独立，只有少部分依赖 标记 & 去标记 的东西。
 
-!!! quote 官方 paper 【Abstract】
+!!! quote "官方 paper 【Abstract】"
     We describe an open-source toolkit for neural machine translation (NMT). The toolkit **prioritizes efficiency, modularity, and extensibility with the goal of supporting NMT research into model architectures, feature representations, and source modalities**, while maintaining competitive performance and reasonable training requirements. The toolkit consists of modeling and translation support, as well as detailed pedagogical documentation about the underlying techniques.
     [Open-Source Toolkit for Neural Machine Translation]
 
@@ -17,7 +17,7 @@ The project is fully self-contained depending on minimal number of external Lua 
     两种语言分为 ① 源 <kbd>src.txt</kbd> ② 目标 <kbd>tgt.txt</kbd>；从数据集上：分为训练集和验证集。
     每行一个sample，<kbd>src.txt</kbd> 和 <kbd>tgt.txt</kbd> 相互对应。Each file has a sentence/segment per line, and it is matching translation in the same line in the other file. This is what the "Moses" file format means.
 
-    !!! p 多源怎么办？有偏重怎么办？
+    !!! p "多源怎么办？有偏重怎么办？"
         ```yaml
         # config.yml
         data:
@@ -39,7 +39,7 @@ The project is fully self-contained depending on minimal number of external Lua 
     - 本身一个就是最小token形式存在： 英、法：不需要处理
     - 不以特殊标记分割词的：中：<u>需要分词</u>
 
-  !!! P 如果不先分词传进去，也可以指定分词 `[tokenizer]`  
+  !!! P "如果不先分词传进去，也可以指定分词 `[tokenizer]`"
       而一般用 <u>Sentence Piece</u> 基于语料训练一个 tokenizer，类似于 jieba，<U>会形成固定大小的词表</U>。这会影响后来的 <u>`vocab_size`</u>
 
       ```yaml
@@ -58,7 +58,7 @@ However, an MT model can only learn a specific number of vocabulary tokens due t
 
 因为硬件资源有限，MT model 只能学一定量的词汇。为了让它在碰见新的词汇能继续翻译而不是标记成<kbd>unknown</kbd> or <kbd>UNK</kbd>.
 
-!!! p 最小单元 the small units是什么？
+!!! p "最小单元 the small units是什么？"
 
     > <u>English</u>
     ▁Hav ing ▁considered ▁the ▁report ▁of ▁the ▁Committee ▁on ▁Conferences ▁for ▁ 2 0 0 6 Official ▁Record s ▁of ▁the ▁General ▁Assembly , ▁S ixty - first ▁Session , ▁Supplement ▁No . ▁ 3 2 ▁( A / 6 1 / 3 2 ). ▁and ▁the ▁relevant ▁reports ▁of ▁the ▁Secretary - General , A / 6 1 / 1 2 9 ▁and ▁Add . 1 ▁and ▁A / 6 1 / 3 0 0 .</kbd>
