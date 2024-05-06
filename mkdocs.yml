@@ -125,6 +125,7 @@ nav:
     - "Keyword Extraction Algorithm": NLP/kea.md
     - "Neural Machine Translation": NLP/nmt.md
     - "GPT": NLP/gpt.md
+    - "openNMT": NLP/opennmt.md
   - "SQL":
     - SQL/index.md
     - "八股文": SQL/exam.md
