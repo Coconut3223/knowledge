@@ -6,11 +6,11 @@
 
 > "今天吃啥" & "至今不吃"
 >
-> |size|vocabulary | step size
+> |size|vocabulary | step size|
 > |--|--|--|
-> |6|今/天/吃/啥/至/不 | 4 & 4
-> |5|今天/吃/啥/至今/不 | 3 & 3
-> |5|今天/吃/啥/至今/不吃 |3 & 2
+> |6|今/天/吃/啥/至/不 | 4 & 4|
+> |5|今天/吃/啥/至今/不 | 3 & 3|
+> |5|今天/吃/啥/至今/不吃 |3 & 2|
 
 </div>
 
@@ -174,7 +174,7 @@ For efficiency, we do not consider pairs that cross word boundaries. The algorit
     Almost all existing machine translation models are built on top of character-based vocabularies: characters, subwords or words.
     Rare characters from noisy text or character-rich languages such as Japanese and Chinese however can unnecessarily take up vocabulary slots and limit its compactness.
     Representing text at the level of bytes and using the 256 byte set as vocabulary is a potential solution to this issue. High computational cost has however prevented it from being widely deployed or used in practice.
-    In this paper, we **investigate byte-level subwords, specifically ==byte-level BPE (BBPE)==, which is co**mpacter than character vocabulary and has no out-of-vocabulary tokens, but is more efficient than using pure bytes only is. We claim that **contextualizing BBPE embeddings is necessary, which can be implemented by a convolutional or recurrent layer**. 
+    In this paper, we **investigate byte-level subwords, specifically ==byte-level BPE (BBPE)==, which is co**mpacter than character vocabulary and has no out-of-vocabulary tokens, but is more efficient than using pure bytes only is. We claim that **contextualizing BBPE embeddings is necessary, which can be implemented by a convolutional or recurrent layer**.
     Our experiments show that BBPE has comparable performance to BPE while its size is only 1/8 of that for BPE. In the multilingual setting, BBPE maximizes vocabulary sharing across many languages and achieves better translation quality. Moreover, we show that BBPE enables transferring models between languages with non-overlapping character sets.
 
     - character-level: 稀少的会占用词典大小，会导致OOV，limit compactness
@@ -213,7 +213,6 @@ For efficiency, we do not consider pairs that cross word boundaries. The algorit
     The design of UTF-8 encoding ensures the uniqueness of this recovery process: for a character UTF-8 encoded with multiple bytes, its trailing bytes will not make a valid UTF-8 encoded character. 
 
     [搞搞字节，byte的小知识](https://zhuanlan.zhihu.com/p/449954688)
-
 
 BBPE symbols can be partial characters shared by different characters or the combination of complete and partial
 characters. This arbitrariness may necessitate incorporating
@@ -254,5 +253,5 @@ use a kernel size of 5 and a padding of 2 on both sides for all convolutional la
 Inference and Evaluation
 
 set beam width to 4 for EnDe and 5 for the other and
-use the best checkpoint by **validation loss** to generate the predictions. 
+use the best checkpoint by **validation loss** to generate the predictions.
 We calculate casesensitive tokenized BLEU (Papineni et al. 2002) as the metrics using **sacreBLEU** (Post 2018).

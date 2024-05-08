@@ -122,6 +122,7 @@ nav:
       - AI/DL/index.md
       - "CNN": AI/DL/cnn.md
       - "MLP": AI/DL/mlp.md
+      - "RNN": AI/DL/rnn.md
   - "NLP":
     - NLP/index.md
     - "Embedding": NLP/embedding.md
