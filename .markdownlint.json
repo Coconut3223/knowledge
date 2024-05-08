@@ -2,7 +2,7 @@
   "MD013": false,
   "MD045": false,
   "MD033": {
-    "allowed_elements": ["u", "kbd", "pre", "div", "br", "p", "figure", "b"]
+    "allowed_elements": ["u", "kbd", "pre", "div", "br", "p", "figure", "b","mark"]
   },
   "MD046": false
 }

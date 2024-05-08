@@ -118,6 +118,10 @@ nav:
       - "Logistics Regression": AI/ML/logr.md
       - "KNN": AI/ML/knn.md
       - "Decision Tree": AI/ML/dt.md
+    - "DL":
+      - AI/DL/index.md
+      - "CNN": AI/DL/cnn.md
+      - "MLP": AI/DL/mlp.md
   - "NLP":
     - NLP/index.md
     - "Embedding": NLP/embedding.md
@@ -126,6 +130,9 @@ nav:
     - "Neural Machine Translation": NLP/nmt.md
     - "GPT": NLP/gpt.md
     - "openNMT": NLP/opennmt.md
+    - "HuggingFace": NLP/huggingface.md
+  - "CV":
+    - CV/index.md
   - "SQL":
     - SQL/index.md
     - "八股文": SQL/exam.md
