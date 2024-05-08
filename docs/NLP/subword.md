@@ -176,10 +176,10 @@ For efficiency, we do not consider pairs that cross word boundaries. The algorit
     Representing text at the level of bytes and using the 256 byte set as vocabulary is a potential solution to this issue. High computational cost has however prevented it from being widely deployed or used in practice.
     In this paper, we **investigate byte-level subwords, specifically ==byte-level BPE (BBPE)==, which is co**mpacter than character vocabulary and has no out-of-vocabulary tokens, but is more efficient than using pure bytes only is. We claim that **contextualizing BBPE embeddings is necessary, which can be implemented by a convolutional or recurrent layer**. 
     Our experiments show that BBPE has comparable performance to BPE while its size is only 1/8 of that for BPE. In the multilingual setting, BBPE maximizes vocabulary sharing across many languages and achieves better translation quality. Moreover, we show that BBPE enables transferring models between languages with non-overlapping character sets.
+
     - character-level: 稀少的会占用词典大小，会导致OOV，limit compactness
     - byte-level: 高计算成本
     - byte-level subword：需要用 CNN｜RNN 来 contextualize BBPE embedding。
-
 
 [Neural Machine Translation with Byte-Level Subwords]:https://arxiv.org/abs/1909.03341
 
@@ -236,8 +236,7 @@ Empirically, we find that invalid outputs from trained models are very rare.
 
 And a common error pattern in halftrained models is redundant repeating bytes. In our system,
 we try to recover as many Unicode characters as possible
-from this error pattern efficiently in linear time. 
-
+from this error pattern efficiently in linear time.
 
 The design of UTF-8 encoding ensures the uniqueness of this recovery process: for a character UTF-8 encoded with multiple bytes, its trailing bytes will not make a valid UTF-8 encoded character. Then the best selection in Eq. 1 is unique and so is the final solution.
 
@@ -247,7 +246,7 @@ learn (B)BPE vocabularies jointly on source and target sentences using SentenceP
 
 ![](pics/NMT_1.png)
 
-learning rate schedule 
+learning rate schedule
 set attention and ReLU dropout to 0.1
 use 0.2 residual dropout for Tbase models in X-En
 use a kernel size of 5 and a padding of 2 on both sides for all convolutional layers.
@@ -257,4 +256,3 @@ Inference and Evaluation
 set beam width to 4 for EnDe and 5 for the other and
 use the best checkpoint by **validation loss** to generate the predictions. 
 We calculate casesensitive tokenized BLEU (Papineni et al. 2002) as the metrics using **sacreBLEU** (Post 2018).
-

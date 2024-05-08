@@ -1,5 +1,5 @@
 # Numpy & Scipy
-1
+
 for ==scientific computing==  in Python，provide ==multidimensional array object==
 
 ==Numpy== 实现了 多维同质数组 multidimensional homogenous array & 矩阵。不仅能处理数字还可以存放其它由用户定义的记录。
