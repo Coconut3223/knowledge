@@ -118,11 +118,19 @@ nav:
       - "Logistics Regression": AI/ML/logr.md
       - "KNN": AI/ML/knn.md
       - "Decision Tree": AI/ML/dt.md
+      - "Ensemble Learning": AI/ML/ensemble_learning.md
+      - "Association Analysis": AI/ML/association_analysis.md
     - "DL":
       - AI/DL/index.md
       - "CNN": AI/DL/cnn.md
       - "MLP": AI/DL/mlp.md
       - "RNN": AI/DL/rnn.md
+      - "Generative Model": AI/DL/generative_model.md
+      - "Transfer Learning": AI/DL/transferlearning.md
+      - "Tricks": AI/DL/trciks.md
+    - "Loss": AI/loss.md
+    - "Evaluation": AI/eva.md
+    - "High-dimensional Data": AI/highd.md
   - "NLP":
     - NLP/index.md
     - "Embedding": NLP/embedding.md

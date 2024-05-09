@@ -22,8 +22,6 @@
 <figure markdown="span">![](./pics/RNN_6.jpg){width=70%}<p>memory (m1,m12,...) 并不是直接raw input 进去产生新一轮的 hidden state (h2,h3,...), 而是采用一个<b>权值矩阵 W 参数化</b>记忆单元</p></figure>
 </div>
 
-
-
 ### shortcoming
 
 <div class="grid" markdown>
@@ -57,18 +55,17 @@
 </div>
 <p>All recurrent neural networks have chain repeating modules of neural networks. <br>==standard RNN==: repeating module has a very simple structure, such as only a single tanh layer.<br>==LSTM==: Not a single neural network layer, but four, and interacting in a very special way.</p>
 
-
-
 ## GNU Gated Recurrent Unit-GRU
 
 a variant of LSTM. He retains the characteristics of LSTM to focus and forget unimportant information, and it will not be lost during long-term propagation.
 
 ![](./pics/GRU_1.png)
 
-
 ## Ref
 
 - [如何理解RNN？（理论篇）]
+- [Long short-term memory network-Long short-term memory | LSTM]
+- [Illustrated Guide to LSTM’s and GRU’s: A step by step explanation]
 
 [如何理解RNN？（理论篇）]:https://easyai.tech/blog/rnn-understand/
 [Long short-term memory network-Long short-term memory | LSTM]:https://www.easyai.tech/en/ai-definition/lstm/
