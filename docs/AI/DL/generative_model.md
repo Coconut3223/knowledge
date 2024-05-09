@@ -2,7 +2,7 @@
 
 A ==generative model== is a type of machine learning model that **learns the probability distribution** of a dataset and **generates new samples** that are similar to the original data by modelling the underlying structure and patterns of the training data and can be used for tasks such as **image generation, text generation, and speech synthesis.**
 
-<figure markdown="span">![](./pics/DL_1.png)<p>生成学习</p></figure>
+<figure markdown="span">![](./pics/DL_1.png){width=80%}<p>生成学习</p></figure>
 
 |==Generator==|==Discriminator==|
 |--|--|
@@ -11,7 +11,7 @@ A ==generative model== is a type of machine learning model that **learns the pro
 
 ## categories
 
-<figure markdown="span">![](./pics/GM_1.png)<p>生成学习</p></figure>
+<figure markdown="span">![](./pics/GM_1.png){width=90%}<p>生成学习</p></figure>
 
 the reconstruction loss is the distance of the original data & the reconstructed data.
 Target: the reconstruct the data = the Decoded latent features. So this laser feature comes from the encoding of the original data.
@@ -36,16 +36,16 @@ Target: the reconstruct the data = the Decoded latent features. So this laser fe
 
 > 很常聽到的形容是，`Generator`是負責做假鈔的人，`Discriminator` 是警察檢驗是否為假鈔。
 
-![](./pics/GAN_1.png)
-![](./pics/GAN_2.png)
-![](./pics/GAN_3.png)
+![](./pics/GAN_1.png){width=80%}
+![](./pics/GAN_2.png){width=70%}
+![](./pics/GAN_3.png){width=80%}
 
 - **Model doesn’t converge** G,D parameters may oscillate
 Uneven progress between G, D
 - **Mode collapse (the Helvetica scenario)** G will only generate samples from a single mode。当 generator 在生产 某一种类型 就很厉害到足以骗到 discriminator，他就可能光生产这一类去了所以导致很不平衡。
 - **Samples lack global structure** E.g., Some generated faces will have 3 eyes
 
-<figure markdown="span">![](./pics/GAN_4.png)<p>(a) 光学习一种去了. (b) 缺少整体的结构</p></figure>
+<figure markdown="span">![](./pics/GAN_4.png){width=70%}<p>(a) 光学习一种去了. (b) 缺少整体的结构</p></figure>
 
 #### MiniMax Optimization
 
@@ -95,6 +95,6 @@ When reducing dimensionality, we want to keep the main structure there exists am
 
 ==Variational autoencoders, VAEs, 自动编码器==。是一个神经网络，旨在以无监督的方式学习身份函数，以重建原始输入，同时在此过程中压缩数据，从而发现更有效和压缩的表示。are autoencoders that tackle the problem of the **latent space irregularity**. VAE makes the encoder return **a distribution over the latent space** instead of a single point. VAE loss function includes **a regularisation term** over the returned distribution in order to ensure a better organisation of the latent space.
 
-<figure markdown="span">![](./pics/VAE_1.png)<p>(a) 光学习一种去了. (b) 缺少整体的结构</p></figure>
+<figure markdown="span">![](./pics/VAE_1.png){width=60%}<p>(a) 光学习一种去了. (b) 缺少整体的结构</p></figure>
 
 ### Conditional variational autoencoder (CVAE)

@@ -5,7 +5,8 @@
 ==Curse of Dimensionality 维度灾难==。 会导致分类器出现**过拟合**。这是因为<u>在样本容量固定时，随着特征数量的增加，单位空间中的样本数量会变少。</u>恰当的维数特征数对于机器学习模型非常重要。深度学习通过对样本的特征进行复杂的变换，得到对类别最有效的特征，从而提高机器学习的性能。
 
 <div class="grid" markdown>
-<figure markdown="span">![](./pics/highD_1.png)![](./pics/highD_2.png<figure>
+<figure markdown="span">![](./pics/highD_1.png){width=60%}<figure>
+<figure markdown="span">![](./pics/highD_2.png){width=60%}<figure>
 <p>假设样本集是由圆形和三角形组成的20个样本，假设这些样本均匀地分布在这4个区域，则每个区域的样本个数约为5个。若希望在二维空间中每个区域的样本数量与一维时大致相等，则需要400个样本；若是三维空间，则需要8000个样本</p>
 </div>
 
@@ -104,6 +105,7 @@ $A=11^T=\begin{bmatrix}1&1&\dots&1\\\vdots&\ddots&\dots&\vdots\\1&\dots&\dots&1\
 Variable, Predictor, in the model, plays two roles: **improving the model flexibility and adversely affecting the model stability**. Redundant variables are not helpful in prediction, thus should be removed.
 
 **为什么我们要 Figure out what important variables are and Delete redundant features？**
+
 因为如果我们不处理掉 redundant variables， 那些 noises created by redundant variables maybe dominate the signals, causing trouble to ask for allocating those useful signals.
 比如，通过房屋的面积，卧室的面积，车库的面积，所在城市的消费水平，所在城市的税收水平等特征来预测房价，那么消费水平（或税收水平）就是多余特征。证据表明，消费水平和税收水平存在相关性，我们只需要其中一个特征就够了，因为另一个能从其中一个推演出来。（如果是线性相关，那么我们在用线性模型做回归的时候，会出现严重的多**重共线性问题**，将会导致过拟合。）
 特征选择还可以使模型获得更好的解释性，加快模型的训练速度，一般的，还会获得更好的性能
@@ -152,11 +154,13 @@ Y_{new}-\hat{Y}_{new}&=\underline{\red {\epsilon_{new}}+\beta^{\red{T}}X_{new}}-
 \end{align*}$$
 
 Square of Prediction Error
+
 $$
 \begin{align*}(Y_{new}-\hat{Y}_{new})^2&\approx(\red {\epsilon_{new}}-\underline{n^{-1}\Xi^T\mathbb X\Sigma^{-1}}X_{new})^2\\[1em]&\approx\red {\epsilon_{new}}^2-2\red {\epsilon_{new}}\cdot n^{-1}X_{new}^T\Sigma^{-1}\mathbb X^T\Xi+n^{-2}(\Xi^T\mathbb X\Sigma^{-1}X_{new})^2\end{align*}
 $$
 
 Take expectation:
+
 $$
 \begin{align*}\mathbb E\{(Y-\hat{Y})^2\}&=\mathbb E\{(Y-\hat{\beta}^TX)^2\}\\&\approx\mathbb E\Big(\red {\epsilon}^2-2\red {\epsilon}\cdot n^{-1}X^T\Sigma^{-1}\mathbb X^T\Xi+n^{-2}(\Xi^T\mathbb X\Sigma^{-1}X)^2\Big)\\&\approx\sigma^2-0+\cfrac{p_0}{n}\sigma^2\\&\approx\sigma^2(1+\cfrac{p_0}{n})\end{align*}
 $$
@@ -174,6 +178,7 @@ $\implies$ **When n is large, the perfect model has the smallest prediction erro
 ==the estimator== $\hat{\beta} = (\mathbb X^T\mathbb X)^{-1}\mathbb X^T\mathbb Y=\beta+(\mathbb X^T\mathbb X)^{-1}\mathbb X^T \red {\Xi }\\\quad \begin{cases}\mathbb X\in\R^{n\times p},\mathbb X^T\mathbb  X =\sum\limits_{i=1}^nX_iX_i^T\in\R^{p\times p},\\X_i \text{ are IID }～N(0,\Sigma)\implies\mathbb  X^T\mathbb X=\sum\limits_{i=1}^n(X_i-0)(X_i-0)^T=\red{n\Sigma}\in\R^{p\times p}\\\end{cases}$
 
 Expected Square of Prediction Error
+
 $$\mathbb E\{(Y-\hat{Y})^2\}=\mathbb E\{(Y-\hat{\beta}^TX)^2\}\approx\sigma^2(1+\cfrac{p}{n})>\sigma^2(1+\cfrac{p_0}{n}),p>p_0
 $$
 
@@ -197,6 +202,7 @@ $\implies\hat{Y}_{new}=\hat{\beta}_{1\times p}{X_{new}}_{p\times1}=\tilde{\beta}
 $Bias(\hat{Y}_{new})=\mathbb EY_{new}-\mathbb E\hat{Y}_{new}=\mathbb E\{(\beta-\tilde{\beta})^TX_{new}+\epsilon_{new}\}=(\mathbb E\tilde{\beta}-\beta)^TX_{new}$
 
 Expected Square of Prediction Error
+
 $$
 \begin{align*}\mathbb E\{(Y-\hat{Y})^2\}&=\sigma^2+\mathbb E\{(\beta-\tilde{\beta})^T\Sigma(\beta-\tilde{\beta})\}\\[1em]&\ge\sigma^2+\Vert\beta-\tilde\beta\Vert^2\lambda_{min}(\Sigma)\\[1em]&\ge\sigma^2+(\beta_{p+1}^2+\dots+\beta_{p_0^2})\lambda_{min}(\Sigma)\end{align*}
 $$
@@ -208,7 +214,7 @@ $\implies$ **样本数 n 再大也拯救不了这个error 因为$(\beta_{p+1}^2+
 
 #### Candidate Models for p+1 predictor $1， x_1, ..., x_p$
 
-<figure markdown="span">![](./pics/FS_1.png)<p>un-centralized</p></figure>
+<figure markdown="span">![](./pics/FS_1.png){width=80%}<p>un-centralized</p></figure>
 
 Suppose we have n samples. Consider any sub-model (A)
 $(A):= Y =\beta_0+β_1x'_1 +...+β_qx'_q+ε, \space\{x'_1,\dots,x'_q\}\sub\{x_1,\dots,x_p\}$
@@ -290,6 +296,7 @@ $$\begin{align*}\implies g^T\Sigma g&=\sum\limits_{i=1}^n\sum\limits_{j=1}^nc_ic
 &\le\lambda_1\sum_{i=1}^nc_i^2\\
 &\xlongequal[\Vert g\Vert_2^2=1=c_1^2+\dots+c_n^2]{\text{when }c_2=\dots=c_n=0 }\lambda_1
 \end{align*}$$
+
 $$\implies g=\gamma_1\iff g^T\Sigma g=\lambda_1$$
 
 **Conclusion:**
@@ -352,6 +359,7 @@ $$\vdots\\
 
 !!! p "**Graphical:** $Y=\Gamma^TX$: Multiplication by an orthogonal matrix: **Rotation**!"
     <u>proof of rotation</u>: $\Vert y_1-y_2\Vert_2=\Vert x_1-x_2\Vert_2, $ without scaling $\forall x_1,x_2,$ any two points in space
+
     $$\begin{align*}\Vert y_1-y_2\Vert_2^2&=(y_1-y_2)^T(y_1-y_2)\\&=(x_1-x_2)^T\Gamma\Gamma^T(x_1-x_2)\\&\xlongequal[\Gamma\Gamma^T=I]{\Gamma^T=\Gamma^{-1}}(x_1-x_2)^T(x_1-x_2)=\Vert x_1-x_2\Vert_2^2\end{align*}$$
 
 新坐标系的第一坐标轴、第二坐标轴等分别表示第一主成分、第二主成分等，数据在每一轴上的坐标值的平方表示相应变量的方差；并且，这个坐标系是在所有可能的新的坐标系中，**坐标轴上的方差的和最大的**
@@ -360,7 +368,8 @@ $$\vdots\\
 主成分分析旨在选取正交变换中方差最大的变量，作为第一主成分，旋转变换中**坐标值的平方和最大**的轴, 旋转变换中选取**离样本点的距离平方和最小**的轴
 
 <div class="grid" markdown>
-<figure markdown="span">![](./pics/PCA_1.png)<p>transformation：<u>旋转变换</u></p><figure>
+<figure markdown="span">![](./pics/PCA_1.png){width=45%}<p>transformation：<u>旋转变换</u></p><figure>
+
 <p>原坐标系:很明显有正向线性相关，13象限最多<br>新坐标系:线性无关，1234象限都差不多</p>
 </div>
 
@@ -391,8 +400,8 @@ Both Fisher’s LDA and Bayes rule reduce to:
 | $μ_Y$ | $\overline{Y}$ |
 | $Σ$ | $Σ$ |
 
-!!! danger "不可将线性判别分析与==隐狄利克雷分配LatentDirichlet Allocation, LDA== 相混淆。
-    隐狄利克雷分配用于文本和自然语言处理，与线性判别分析没有关系。"
+!!! danger "不可将线性判别分析与==隐狄利克雷分配LatentDirichlet Allocation, LDA== 相混淆。"
+    隐狄利克雷分配用于文本和自然语言处理，与线性判别分析没有关系。
 
 | 类内 within-class |  类间 between-class
 | --- | --- |
@@ -410,7 +419,7 @@ Force $\begin{cases}S_B=(\mu_X-\mu_Y)(\mu_X-\mu_Y)^T&\text{ between-class}\uparr
 1. the center of the two after transformation linear projection be as **far** away as possible $S_B\uparrow$
 2. the variance of two classes to be as **small** as possible  $S_w \downarrow$
 
-<figure markdown="span">![](./pics/LDA_1.png)<p>LDA:最佳的类别可分性<br>假设：正态分布</p><figure>
+<figure markdown="span">![](./pics/LDA_1.png){width=60%}<p>LDA:最佳的类别可分性<br>假设：正态分布</p></figure>
 
 [機器學習: 降維(Dimension Reduction)- 線性區別分析( Linear Discriminant Analysis)]
 

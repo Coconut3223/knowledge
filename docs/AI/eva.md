@@ -1,6 +1,6 @@
 # 模型评估与选择
 
-![](./pics/RES_fit_6.png)
+![](./pics/RES_fit_6.png){width=60%}
 
 !!! danger "训练误差 $\xrightarrow{近似}$ 测试误差<br> 测试误差 $\xrightarrow{近似}$  泛化误差。"
     依据：训练集 & 测试集 **独立同分布** 地在数据空间中采样形成。
@@ -45,8 +45,8 @@ $$S=D', T=D\setminus D'$$
 
 ### 分类
 
-![](./pics/TP.jpeg)
-![](./pics/confusionM_1.png)
+![](./pics/TP.jpeg){width=35%}
+![](./pics/confusionM_1.png){width=80%}
 
 ==accuracy 准确率==. 分类正确的样本占总样本个数的比例.【正负一样重要】$$\cfrac{TP+TN}{all}$$
 
@@ -103,7 +103,8 @@ $$\cfrac{FP}{TN+FP}$$
 
 $$x:\text{recall}；y:\text{precision}$$
 
-<div class="grid" markdown><figure>![](./pics/PR_2.png)</figure>
+<div class="grid" markdown>
+<figure markdown="span">![](./pics/PR_2.png)</figure>
 <p>通常情况下，<b>P-R曲线下的面积越大，模型性能越好</b>：即图中曲线B完全包住了曲线C，所以曲线B一定优于C。<br> 但像A和B这样发生了交叉，不能断言孰优孰劣，只能在具体的P或R条件下分析。<br>另设别的性能度量：<br> <b>BEP</b>: B=0.72 < A=0.8，A优于B</p>
 </div>
 
@@ -132,7 +133,7 @@ F_\beta=\cfrac{(1+\beta^2)\times \text{precision}\times\text{recall}}{ \beta^2\t
 |0.6|1|1|1|1|0|$\frac{3}{3+1}$|$\frac{3}{3+0}$|
 |0.4|1|1|1|1|1|$\frac{3}{3+2}$|$\frac{3}{3+0}$|
 
-<div class="pic1"><img src="./pics/PR_1.png" alt="PR_1" class=Big></div>
+![](./pics/PR_1.png){width=50%}
 
 ##### ROC & AUC
 
@@ -146,11 +147,11 @@ $$x=FPR=\cfrac{FP}{TN+FP}; y=TPR=\cfrac{TP}{TP+FN}$$
     As $λ=∞\rightarrow−∞, FPR(λ)\: \&\: TPR(λ)\uparrow$
 
 <div class="grid" markdown>
-<figure>![](./pics/ROC_1.png)</figure>
+<figure markdown="span">![](./pics/ROC_1.png){width=80%}</figure>
 <p><mark>5 ROC curves</mark><br><u>Curve I</u> is typical. 一般在 y=x 上面。<br><u>Curve II</u> 随机预测 ☹️ <br><u>Curve III</u> is kind of useful in the sense that one benefits by using it reversely. <br><u>IV</u> perfect classifier 👍 <br>so is <u>V</u>.预测对调后翻转完👍</p>
 </div>
 
-<figure markdown="span">![](./pics/ROC_2.png)<p>AUC, ROC曲线下的面积大小</p></figure>
+<figure markdown="span">![](./pics/ROC_2.png){width=80%}<p>AUC, ROC曲线下的面积大小</p></figure>
 
 ==AUC Area Under ROC Curve==。 量化地反映基于ROC曲线衡量出的模型性能 $AUC\in[0,1]$ 一般在0.5-1之间，↑👍
 
@@ -373,7 +374,7 @@ Variance的对象是**多个模型**，是相同分布的不同数据集训练�
 
 !!! warning "但是容量理论很少应用于实际的深度学习算法"
 
-- 选择==假设空间 hypothesis space==。学习算法可以选择为解决方案的**函数集**。
+- 选择 ==假设空间 hypothesis space==。学习算法可以选择为解决方案的**函数集**。
     > 线性回归函数 ➡️ 所有线性函数
     > 广义线性回归 ➡️ 所有线性函数+多项式函数
 

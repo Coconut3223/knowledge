@@ -49,7 +49,7 @@
 ==Random forest== is a classification algorithm consisting of many decisions trees. It creates an **uncorrelated** forest of trees whose prediction by **committee** is more accurate than that of any individual tree.
 ==bagging== & ==feature randomness==
 
-![](./pics/RF_1.png)
+![](./pics/RF_1.png){width=50%}
 
 ### Boosting
 

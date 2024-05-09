@@ -15,7 +15,7 @@
 - support ≥ minsup threshold;
 - confidence ≥ minconf threshold.
 
-> > ![](./pics/AssociaA_2.png)
+> > ![](./pics/AssociaA_2.png){width=60%}
 > >
 > > Compute the support and confidence of the association rule {Milk, Diaper} → {Beer}.
 >
@@ -30,7 +30,7 @@
 - **Frequent Itemset Generation**: Generate all itemsets whose <u>support ≥ minsup</u>.
 Given $d$ items, there are $2^d − 1$ possible candidate itemsets.
 
-![](./pics/AssociaA_1.png)
+![](./pics/AssociaA_1.png){width=65%}
 
 - **Rule Generation**: Generate <u>high confidence</u> rules from each frequent itemset.
 
@@ -41,14 +41,14 @@ Each frequent itemset of size $n$ leads to $2^n−2$ association rules X → Y. 
 
 - {A} Non-frequenct, $\implies$ {AB}, {AC} 更严苛的要求一定是 Non-frequent.【itemset】【support】
 
-![](./pics/AssociaA_4.png)
+![](./pics/AssociaA_4.png){width=70%}
 
 - If a rule $\{X\} → \{Y−X\}$ does not satisfy the confidence threshold, then any rule $\{X′\} →\{Y−X′\}$ where $\{X′\}\sub\{X\}$. must not satisfy the confidence threshold as well.【rule】【confidence】
 
 ==Frequent Pattern (FP)-growth algorithm==
 Using the data structure **FP-tree** to extract frequent itemsets directly. An FP-tree is a compressed representation of the input. 将相同点连接，逆向找寻
 
-> > ![](./pics/AssociaA_3.png)
+> > ![](./pics/AssociaA_3.png){width=80%}
 >
 > search A: A=7
 > search AB: 找B再看有没有A =5

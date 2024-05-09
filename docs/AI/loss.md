@@ -63,13 +63,13 @@ $C$，折中
 3. identified
 4. 尽可能的 robust
 
-![](./pics/Loss_3.png)
+![](./pics/Loss_3.png){width=80%}
 
 #### 0-1
 
 $$L_i=I(Y_i\neq f(X_i;\theta))$$
 
-<figure markdown="span">![](./pics/Loss_1.png)<p>non-continuous, non-smooth<br></p></figure>
+<figure markdown="span">![](./pics/Loss_1.png){width=40%}<p>non-continuous, non-smooth<br></p></figure>
 
 **extremely complicated ! The optimization problem is extremely hard !**
 
@@ -91,8 +91,8 @@ Regression → Ordinary Least Squares (OLS) according to estimation 分类
     - 因为平方放大了差别 $\text{large}\rightarrow\text{large}^2,\text{small}\rightarrow\text{small}^2$. 和 outlier 相对应的 loss 就会 dominate the empirical risk, 在 regression with outliers 里就会更偏向 approximate the outliers, the fitted curve has been distorted quite significantly.
     - LSE 预测出来的 conditional mean，其中 outlier 点有参与计算，（比起 median 来说 mean 是更容易受到 outlier 影响，更不 robust metric）
     <div class="grid" markdown>
-    ![](./pics/Loss_4.png)
-    ![](./pics/Loss_5.png)
+    ![](./pics/Loss_4.png){width=60%}
+    ![](./pics/Loss_5.png){width=60%}
     </div>
 
 #### Least Absolute Deviation, LAD —— conditional median
@@ -101,21 +101,21 @@ $$\Vert Y_i-f(X_i)\Vert_1=|Y_i-f(X_i;\theta)|$$
 
 **Targets**: **conditional median** $\iff f^*(x)=\text{median}(Y|X=x)=\min\limits_f\mathbb E\{\vert Y-f(X)\vert\: |X=x\}$
 
-![](./pics/Loss_6.jpeg)
+![](./pics/Loss_6.jpeg){width=80%}
 
 - proof $f^*(x)=\text{median}(Y\vert X=x)=\min\limits_f\mathbb{E}\{\Vert Y-f(X)\Vert_1\vert X=x\}$
   Assume:
   - $\forall x, \mathbb{E}[Y|X=x]\lt\infin$(存在)
   - $F_{Y|X=x}(\cdot):=$ the conditional cdf of $Y|X=x, \begin{cases}\text{cdf of} -\infin=0\\\text{cdf of} +\infin=1\\\text{cdf of median} =\frac{1}{2}\end{cases}$
 
-  $$\begin{align*}
-  \mathcal{L}(f)&=\mathbb{E}\{\Vert Y-f(X)\Vert_1\vert X=x\}\\
-  &=\int_{-\infin}^{f(x)}f(x)-y\text{d}F_{Y|X=x}(y)+\int_{f(x)}^{+\infin}y-f(x)\text{d}F_{Y|X=x}(y)\\
-  \cfrac{\partial\mathcal{L}(f)}{\partial f}&=\int_{-\infin}^{f(x)}1\cdot\text{d}F_{Y|X=x}(y)+\int_{f(x)}^{+\infin}-1\cdot\text{d}F_{Y|X=x}(y)\\
-  &=F_{Y|X=x}(y)\Big\vert_{-\infin}^{f(x)}-F_{Y|X=x}(y)\Big\vert^{+\infin}_{f(x)}\\
-  &=F_{Y|X=x}(f(x))-0-1+F_{Y|X=x}(f(x))\xlongequal{SET}0\\
-  \implies & F_{Y|X=x}(f(x))=\cfrac{1}{2}\implies f(x)\text{ is median}
-  \end{align*}$$
+$$\begin{align*}
+\mathcal{L}(f)&=\mathbb{E}\{\Vert Y-f(X)\Vert_1\vert X=x\}\\
+&=\int_{-\infin}^{f(x)}f(x)-y\text{d}F_{Y|X=x}(y)+\int_{f(x)}^{+\infin}y-f(x)\text{d}F_{Y|X=x}(y)\\
+\cfrac{\partial\mathcal{L}(f)}{\partial f}&=\int_{-\infin}^{f(x)}1\cdot\text{d}F_{Y|X=x}(y)+\int_{f(x)}^{+\infin}-1\cdot\text{d}F_{Y|X=x}(y)\\
+&=F_{Y|X=x}(y)\Big\vert_{-\infin}^{f(x)}-F_{Y|X=x}(y)\Big\vert^{+\infin}_{f(x)}\\
+&=F_{Y|X=x}(f(x))-0-1+F_{Y|X=x}(f(x))\xlongequal{SET}0\\
+\implies & F_{Y|X=x}(f(x))=\cfrac{1}{2}\implies f(x)\text{ is median}
+\end{align*}$$
 
 **Properties:**
 
@@ -131,8 +131,8 @@ $$\Vert Y_i-f(X_i)\Vert_1=|Y_i-f(X_i;\theta)|$$
 $$L_i=\rho_τ(a)=(τ-I\{a<0\})*a=\begin{cases}τa&a>0\\(τ-1)a&a<0\end{cases}$$
 
 <div class="grid" markdown>
-![](./pics/Loss_7.png)
-![](./pics/Loss_8.png)
+<figure markdown="span">![](./pics/Loss_7.png){width=80%}</figure>
+<figure markdown="span">![](./pics/Loss_8.png)</figure>
 </div>
 
 **Targets: conditional median** $\iff f^*(x)=τ-\text{th quantile of }(Y|X=x)=\argmin_f\mathbb\{\Vert Y-f(X)\Vert_1｜X=x\}$
@@ -144,14 +144,15 @@ $$L_i=\rho_τ(a)=(τ-I\{a<0\})*a=\begin{cases}τa&a>0\\(τ-1)a&a<0\end{cases}$$
   - $\forall x, \mathbb{E}[Y|X=x]\lt\infin$(存在)
   - $F_{Y|X=x}(\cdot):=$ the conditional cdf of $Y|X=x, \begin{cases}\text{cdf of} -\infin=0\\\text{cdf of} +\infin=1\\\text{cdf of median} =\frac{1}{2}\end{cases}$
 
-  $$\begin{align*}
-  \mathcal{L}(f)&=\mathbb{E}\{\rho_τ\cdot\Vert Y-f(X)\Vert_1\vert X=x\}\\
-  &=\int_{-\infin}^{f(x)}(τ-1)(y-f(x))\text{d}F_{Y|X=x}(y)+\int_{f(x)}^{+\infin}τ(y-f(x))\text{d}F_{Y|X=x}(y)\\
-  \cfrac{\partial\mathcal{L}(f)}{\partial f}&=\int_{-\infin}^{f(x)}(1-τ)\cdot\text{d}F_{Y|X=x}(y)+\int_{f(x)}^{+\infin}-τ\cdot\text{d}F_{Y|X=x}(y)\\
-  &=(1-τ)F_{Y|X=x}(y)\Big\vert_{-\infin}^{f(x)}-τF_{Y|X=x}(y)\Big\vert^{+\infin}_{f(x)}\\
-  &=(1-τ)(F_{Y|X=x}(f(x))-0)-τ(1-F_{Y|X=x}(f(x)))\xlongequal{SET}0\\
-  \implies & F_{Y|X=x}(f(x))=τ \implies f(x)\text{ is τ th quantile of}
-  \end{align*}$$
+$$\begin{align*}
+\mathcal{L}(f)&=\mathbb{E}\{\rho_τ\cdot\Vert Y-f(X)\Vert_1\vert X=x\}\\
+&=\int_{-\infin}^{f(x)}(τ-1)(y-f(x))\text{d}F_{Y|X=x}(y)+\int_{f(x)}^{+\infin}τ(y-f(x))\text{d}F_{Y|X=x}(y)\\
+\cfrac{\partial\mathcal{L}(f)}{\partial f}&=\int_{-\infin}^{f(x)}(1-τ)\cdot\text{d}F_{Y|X=x}(y)+\int_{f(x)}^{+\infin}-τ\cdot\text{d}F_{Y|X=x}(y)\\
+&=(1-τ)F_{Y|X=x}(y)\Big\vert_{-\infin}^{f(x)}-τF_{Y|X=x}(y)\Big\vert^{+\infin}_{f(x)}\\
+&=(1-τ)(F_{Y|X=x}(f(x))-0)-τ(1-F_{Y|X=x}(f(x)))\xlongequal{SET}0\\
+\implies & F_{Y|X=x}(f(x))=τ \implies f(x)\text{ is τ th quantile of}
+\end{align*}$$
+
   $F_{Y|X=x}(f^*(x))=τ,\forall τ\in(0,1)\implies f^*(x)=F_{Y|X=x}^{-1}(τ)$ **will be the conditional** 𝝉–th quantile of 𝒀|𝑿 = 𝒙
 
 #### Hinge Loss
@@ -184,7 +185,7 @@ Prevent the model from doing *too* well on training data, control 复杂度
 
 回归的时候处理的是误差，所以要最小化，而现在考虑的是联合概率，我们希望概率尽可能大，所以要最大化
 
-<figure markdown="span">![](./pics/classi_1.png)<p>多分类<br> Adjust the output of neural network</p></figure>
+<figure markdown="span">![](./pics/classi_1.png){width=40%}<p>多分类<br> Adjust the output of neural network</p></figure>
 
 #### the number of success 错有多少的角度
 
@@ -197,7 +198,7 @@ $$\min_f R(f) =\cfrac{1}{n}\sum\limits_{i=1}^nI(f(X_i≠Y_i))$$
 
 !!! danger "0-1 loss is non-continuous, non-smooth."
     <div class="grid" markdown>
-    <figure markdown="span">![](./pics/Loss_1.png)<p>non-continuous, non-smooth</p></figure>
+    <figure markdown="span">![](./pics/Loss_1.png){width=40%}<p>non-continuous, non-smooth</p></figure>
     <p>but we expect: <b>continuous, smooth</b><br> 💡 <u>Surrogate Loss function 代理</u>。Proper surrogate loss function will lead to a consistent classifier.</p>
     </div>
 
@@ -222,7 +223,7 @@ $\begin{cases}Y_i=+1&\xrightarrow{\text{force}} f(X_i,\theta)>0\uparrow\implies\
 | Logistic loss  | $\log\{1+e^{-(\cdot)}\}$ | $\log\{1+\exp(-y\cdot f(x,\theta))\}$ |
 | Hinge loss<br>(SVM) | $\max\{1-(\cdot),0\}$ | $ \max\{1-y\cdot f(x,\theta),0\}$ |
 
-![](./pics/Loss_2.png)
+![](./pics/Loss_2.png){width=50%}
 
 #### The Likelihood 似然的角度 Cross Entropy
 
@@ -231,10 +232,9 @@ $\begin{cases}Y_i=+1&\xrightarrow{\text{force}} f(X_i,\theta)>0\uparrow\implies\
 $\small{[P(_i=(1,0,...)|X_i=x)]^{I(Y_i=(1,0,...))}\times\dots\times [P(Y_i=(0,...,1)|X_i=x)]^{I(Y_i=(0,...,1))}}\\
 =\prod\limits_{j=1}^{\text{\#category}}[P(Y_i=j|X=x)]^{I(Y_i=j)}\\
 =[\hat{y_{i1}}]^{I(Y_{i1}=\red{1})}\times[\hat{y_{i2}}]^{I(Y_{i2}=\red{1})}\times\dots\times [\hat{y_{ij}}]^{I(Y_{ij}=\red{1})}\times\dots, \red{\begin{cases}\hat{y_i}=(\hat{y_{i1}},...,\hat{y_{ij}}\dots)\\\hat{y_{ij}}=P(Y_i=j|X=x)\\\hat{y_{ij}}\in[0,1],\sum\limits_{j=1}^m\hat{y_{ij}}=1\end{cases}}\\
-=[\hat{y}_{i1}]^{Y_{i1}}\times[\hat{y}_{i2}]^{Y_{i2}}\times\dots\times [\hat{y}_{ij}]^{Y_{ij}}\times\dots,\qquad \red{Y_{ij}\in\{0,1\}:=X_i\text{是不是属于}j类}
-$
+=[\hat{y}_{i1}]^{Y_{i1}}\times[\hat{y}_{i2}]^{Y_{i2}}\times\dots\times [\hat{y}_{ij}]^{Y_{ij}}\times\dots,\qquad \red{Y_{ij}\in\{0,1\}:=X_i\text{是不是属于}j类}$
 
-$$ L(Y_i|X_i)=\prod \limits_{j=1}^{\text{\#category}}[\hat{y}_{ij}]^{Y_{ij}}=[\hat{y}_{i1}]^{Y_{i1}}\times[\hat{y}_{i2}]^{Y_{i2}}\times\dots\times [\hat{y}_{ij}]^{Y_{ij}}\times\dots$$
+$$L(Y_i|X_i)=\prod \limits_{j=1}^{\text{\#category}}[\hat{y}_{ij}]^{Y_{ij}}=[\hat{y}_{i1}]^{Y_{i1}}\times[\hat{y}_{i2}]^{Y_{i2}}\times\dots\times [\hat{y}_{ij}]^{Y_{ij}}\times\dots$$
 
 ==Log Likelihood Function==. $l(Y_i|X_i)=\log(L(\cdot))=\sum\limits_{j=1}^{\text{\#category}}Y_{ij}\times\log[\hat{y_{ij}}]\\\qquad =Y_{i1}\log[\hat{y}_{i1}]+Y_{i2}\log[\hat{y}_{i2}]+\dots+Y_{ij}\log[\hat{y}_{ij}]+\dots$
 
@@ -250,11 +250,11 @@ $\begin{cases}n:=\text{\#samples},m:=\text{\#catrgories}\\Y_{ij}\in\{0,1\}, \hat
 
 可以说交叉熵是直接衡量两个分布，或者说两个model之间的差异。而似然函数则是解释以model的输出为参数的某分布模型对样本集的解释程度。因此，可以说这两者是“同貌不同源”，但是“殊途同归”啦。
 
-- 📑 ref
-[Understanding the Bias-Variance Tradeoff]
-[偏差（Bias）与方差（Variance）]
-[【深度学习】一文读懂机器学习常用损失函数（Loss Function）]
-[Chapter 7 Regression]
+## 📑 ref
+- [Understanding the Bias-Variance Tradeoff]
+- [偏差（Bias）与方差（Variance）]
+- [【深度学习】一文读懂机器学习常用损失函数（Loss Function）]
+- [Chapter 7 Regression]
 
 [偏差（Bias）与方差（Variance）]: https://zhuanlan.zhihu.com/p/38853908
 [Understanding the Bias-Variance Tradeoff]:http://scott.fortmann-roe.com/docs/BiasVariance.html

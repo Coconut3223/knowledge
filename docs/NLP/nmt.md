@@ -6,7 +6,7 @@
 ## NMT
 
 <figure markdown="span">
-  ![](./pics/NMT_1.png)
+  ![](./pics/NMT_1.png){width=80%}
   <p class=notes><b>Figure 1</b>: Schematic view of neural machine translation。<br>The red source words are first mapped to word vectors and then fed into a recurrent neural network (RNN). Upon seeing the ⟨eos⟩ symbol, the final time step initializes a target blue RNN. <br> At each target time step, attention is applied over the source RNN and combined with the current hidden state to produce a prediction of the next word. This prediction is then fed back into the target RNN.</p>
 </figure>
 

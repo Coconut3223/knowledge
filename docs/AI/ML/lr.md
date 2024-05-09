@@ -140,12 +140,12 @@ We can draw these functions and get the confidence band. 就是所有的置信�
 !!! warning "不同于 conformal prediction interval（这个是囊括百分之九十五的数据点）,  confidence band 是说预测的数据 fitted value 有百分之九十五的可能被囊括"
 
 <div class="grid" markdown>
-<figure markdown="span">![](pics/LRs_2.png)<p>uncentralized<br>$\hat{EY}=\hat\beta_0+\hat\beta_1x$</p></figure>
+<figure markdown="span">![](pics/LRs_2.png){width=80%}<p>uncentralized<br>$\hat{EY}=\hat\beta_0+\hat\beta_1x$</p></figure>
 
-<figure markdown="span">![](pics/LRs_3.png)<p>centralized<br>$\hat{EY}=\hat\beta_0+\hat\beta_1x$</p></figure>
+<figure markdown="span">![](pics/LRs_3.png){width=80%}<p>centralized<br>$\hat{EY}=\hat\beta_0+\hat\beta_1x$</p></figure>
 </div>
 
-![](pics/LRs_4.png)
+![](pics/LRs_4.png){width=80%}
 
 ==causal inference 因果推断==.是在一个较大系统内部确定指定现象的实际、独立效果的过程。因果推断和相关性推断的主要区别是前者分析结果变量在其原因变量变化时发生的回应。
 
@@ -298,7 +298,7 @@ The prediction error for $(X_j ,Y_j)$ is  $err^j(\lambda)=(Y_j-X_j\hat\beta_{r
 The CV value is then $CV(\lambda)=n^{-1}\sum\limits_{j=1}^nerr^j(\lambda)$
 $\implies\lambda^* = \min\limits_{\lambda}CV(\lambda)$
 
-<figure markdown="span">![](pics/LRs_6.png){width="80%"}<p>The best λ is the minimum point of CV(λ). </p></figure>
+<figure markdown="span">![](pics/LRs_6.png){width=60%}<p>The best λ is the minimum point of CV(λ). </p></figure>
 
 ### Lasso - L1 penalty, Least Absolute Shrinkage and Selection Operator
 
@@ -426,15 +426,18 @@ crease more bias but the variance is smaller iff more confident
 
 ### LSE & Lasso & ridge
 
-![](pics/LRs_7.png){width="60%"}
+![](pics/LRs_7.png){width=40%}
 
 > > Consider a special case with **1 variable** and represent the problem。 $Y_i=\beta x_i+\epsilon_i,i=1,\dots,n$
 > > And assume that after centralized and scaled $\iff\frac{1}{n}\sum\limits_{i=1}^nx_i = 0,\frac{1}{n}\sum\limits_{i=1}^nx_i^2=\mathbb X^T\mathbb X=1$
 >
 > $\hat\beta_{LSE}=(\mathbb X^T\mathbb X)^{-1}\mathbb X^T\mathbb Y=\mathbb X^T\mathbb Y=\sum\limits_{i=1}^nx_iy_i$
+>
 > $\hat\beta_{ridge} = (\mathbb X^T\mathbb X+\lambda I)\mathbb X^T\mathbb Y=\cfrac{\hat\beta_{LSE}}{1+\lambda}=\cfrac{\sum\limits_{i=1}^nx_iy_i}{1+\lambda}$
+>
 > $\hat\beta_{lasso}=\min\limits_{\beta}\{Y_i-\beta x_i\}^2+\lambda |\beta|\xlongequal[\tilde\lambda=\lambda/2]{rewrite}\min\limits_{\beta}\{Y_i-\beta x_i\}^2+2\tilde\lambda |\beta|,\quad\lambda=2\tilde\lambda>0$
-> ![](pics/LRs_11.png){width="80%"}
+>
+> ![](pics/LRs_11.png){width=70%}
 
 - Proof of Lasso.
 

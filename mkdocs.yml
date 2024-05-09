@@ -127,7 +127,7 @@ nav:
       - "RNN": AI/DL/rnn.md
       - "Generative Model": AI/DL/generative_model.md
       - "Transfer Learning": AI/DL/transferlearning.md
-      - "Tricks": AI/DL/trciks.md
+      - "Tricks": AI/DL/tricks.md
     - "Loss": AI/loss.md
     - "Evaluation": AI/eva.md
     - "High-dimensional Data": AI/highd.md

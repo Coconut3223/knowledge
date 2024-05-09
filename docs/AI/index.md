@@ -7,13 +7,13 @@ AI is intelligence exhibited by machines, rather than humans or other animals
 
 !!! quote "==AI== is a big concept, ==ML== is just one subarea of AI. ==DL== is just a part of ML, which uses DNN mapping function."
 
-![](./pics/AI_1.png)
+![](./pics/AI_1.png){width=80%}
 
 **List six subareas of AI:**
 Knowledge Data science, Reasoning, Statistics, Nature Language Process (NLP), Planning, Computer Vision (CV), Neuroscience, Machine Learning (ML), Robotics and so on.
 **the differences between traditional ML & DL?**
 
-![](./pics/AI_2.png)
+![](./pics/AI_2.png){width=80%}
 
 |diff|Traditional  ML|DL|
 |--|--|--|

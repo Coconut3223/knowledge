@@ -1,6 +1,6 @@
 # 部件
 
-![](./pics/tricks_1.png)
+![](./pics/tricks_1.png){width=60%}
 
 ## activation function
 
@@ -19,7 +19,7 @@ $\sigma$ is ==non-saturated 不饱和的==. $\lim\limits_{x\rightarrow\infin}=\i
 
 !!! p "**ReLU** is a good default choice for most problems."
 
-![](./pics/act_1.png)
+![](./pics/act_1.png){width=90%}
 
 [深度学习中saturation是什么意思？]: https://www.zhihu.com/question/48010350
 
@@ -79,8 +79,9 @@ $\nabla\tilde{\mathcal{J}}(\tilde{w})=\nabla\mathcal{J}(\tilde{w})+C\tilde{w}=H(
 $\rightarrow (H+CI)\tilde{w}=Hw^*\implies \tilde{w}=(H+CI)^{-1}Hw^*$：
   - 当 $C\rightarrow0, \tilde{w}\rightarrow w^*$；
   - 当 $C\uparrow, H\xlongequal{可分解为}Q\Lambda Q^T\implies $
-  $$\begin{align*}
-  \tilde{w}&=(H+CI)^{-1}Hw^*\\&=(Q\Lambda Q^T+CI)^{-1}Q\Lambda Q^Tw^*\\&=[Q(\Lambda+CI)Q^T]^{-1}Q\Lambda Q^Tw^*\\&=Q(\Lambda+CI)^{-1}\Lambda Q^Tw^*\end{align*}$$
+
+$$\begin{align*}
+\tilde{w}&=(H+CI)^{-1}Hw^*\\&=(Q\Lambda Q^T+CI)^{-1}Q\Lambda Q^Tw^*\\&=[Q(\Lambda+CI)Q^T]^{-1}Q\Lambda Q^Tw^*\\&=Q(\Lambda+CI)^{-1}\Lambda Q^Tw^*\end{align*}$$
 
 ## Dropout
 
@@ -233,11 +234,10 @@ xavier权重初始化的作用，使得信号在经过多层神经元后保持�
 > 还是上面的方法，但是这里加入了 random crop，再加一点 mirror image 和 rotation
 
 <div class="grid" markdown>
-![](./pics/DAug_1.png)
-![](./pics/DAug_3.png)
+<figure markdown="span"> ![](./pics/DAug_2.png)</figure>
+<figure markdown="span"> ![](./pics/DAug_3.png)</figure>
+<figure markdown="span"> ![](./pics/DAug_1.png)</figure>
 </div>
-
-![](./pics/DAug_3.png)
 
 [深度学习训练中为什么要将图片随机剪裁（random crop）_随机裁剪__pinnacle_的博客-CSDN博客]: https://blog.csdn.net/u010165147/article/details/78633858
 

@@ -5,8 +5,8 @@ The idea behind transfer learning is that the features learned by a model on one
 
 !!! question "If we have enough training data on a specific task, transfer learning can also be used to improve the performance of our DNN model. ❌"
 
-![](./pics/TrL_2.png)
-![](./pics/TrL_3.png)
+![](./pics/TrL_2.png){width=70%}
+![](./pics/TrL_3.png){width=70%}
 
 - **Pre-training Stage**
   - ==Feature extractor layers, **backbone**== encode useful information of **original data**.
@@ -29,9 +29,9 @@ training data $\implies$ backbone
 
 ## Backbone （骨干网络）
 
-通常指的是在任务中用于 **==提取特征==的主干网络架构**。用于从输入中提取高级特征表示。这些特征表示可以用于后续任务。共同目标是通过层次化的特征提取来提高任务表现。
+通常指的是在任务中用于 **==提取特征== 的主干网络架构**。用于从输入中提取高级特征表示。这些特征表示可以用于后续任务。共同目标是通过层次化的特征提取来提高任务表现。
 
-![](./pics/TrL_1.png)
+![](./pics/TrL_1.png){width=80%}
 
 Strong backbone → Better performance on the new task!
 

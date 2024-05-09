@@ -56,7 +56,7 @@ A -.- H
 <div class="grid" markdown>
 > 'King' - 'Man' + 'Woman' = 'Queen'
 
-![](./pics/embedding_1.png)
+![](./pics/embedding_1.png){width=80%}
 </div>
 
 ## Background
