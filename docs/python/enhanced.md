@@ -181,13 +181,14 @@ See 路径相关的 section
     `os.path.dirname(__file__) == sys.path[0]`
 - 程序会实行<u>脚本里的代码</u>，在<u>cwd</u> 进行查找创造文件。
 
-<div class="grid" markdown>
+<div class="grid" style="grid-template-columns: repeat(3, 1fr) !important;" markdown>
 ``` title="dir"
 + A
     A1.py
     + subA
         a1.py
 ```
+
 
 ```python title="A1.py"
 import os, sys

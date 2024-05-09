@@ -26,3 +26,22 @@ def func():
 ```
 
 :smile:
+
+  <div class="code-block">
+    <pre>
+      <code>
+        const numbers = [1, 2, 3, 4, 5];
+        for (let i = 0; i < numbers.length; i++) {
+          console.log(numbers[i]);
+          <span class="output">// 输出每个数字</span>
+        }
+      </code>
+    </pre>
+    <button class="copy-button">复制</button>
+  </div>
+
+| head1           | head2 |
+|-----------------|-------|
+| span two cols          ||
+| span two rows   |       |
+|_                |       |

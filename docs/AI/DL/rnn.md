@@ -47,13 +47,31 @@
 !!! p "motivation"
     To solve short-term memory of RNN, LSTM can retain "important information" in longer sequence data, ignoring less important information.
 
-![](./pics/LSTM_1.png)
+![](./pics/LSTM_1.png){width=70%}
 
 <div class="grid" markdown>
 <figure markdown="span">![](./pics/RNN_3.png)</figure>
 <figure markdown="span">![](./pics/LSTM_2.png)</figure>
 </div>
 <p>All recurrent neural networks have chain repeating modules of neural networks. <br>==standard RNN==: repeating module has a very simple structure, such as only a single tanh layer.<br>==LSTM==: Not a single neural network layer, but four, and interacting in a very special way.</p>
+
+### pre-knowledge
+
+- `tanh`
+  tanh activation 用於幫助調節流經網絡的值。 tanh 函數將值壓縮為始終在 -1 和 1 之間。
+- `Sigmoid` $\sigma$
+
+### details
+
+
+
+<div class="grid" style="grid-template-columns: repeat(3, 1fr) !important;" markdown>
+<figure markdown="span" style="grid-column-start: 1; grid-column-end: 3;">![](./pics/LSTM_3.webp){width=500px}</figure>
+<p style="grid-column-start: 3; grid-column-end: 4;">圆形：Neuial Network layer，一层神经网络，也就是$w^tx*b$的操作。区别在于使用的激活函数不同</p>
+</div>
+
+
+
 
 ## GNU Gated Recurrent Unit-GRU
 
@@ -66,7 +84,9 @@ a variant of LSTM. He retains the characteristics of LSTM to focus and forget un
 - [如何理解RNN？（理论篇）]
 - [Long short-term memory network-Long short-term memory | LSTM]
 - [Illustrated Guide to LSTM’s and GRU’s: A step by step explanation]
+- [大名鼎鼎的LSTM详解]
 
 [如何理解RNN？（理论篇）]:https://easyai.tech/blog/rnn-understand/
 [Long short-term memory network-Long short-term memory | LSTM]:https://www.easyai.tech/en/ai-definition/lstm/
 [Illustrated Guide to LSTM’s and GRU’s: A step by step explanation]:https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21
+[大名鼎鼎的LSTM详解]: https://zhuanlan.zhihu.com/p/518848475

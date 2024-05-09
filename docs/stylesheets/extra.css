@@ -13,53 +13,27 @@
   border-left-width: 4px;
 }
 
-.box2 {
-  display: flex;
-  justify-content: space-between; /* 调整空间分配，也可以使用其他值如center */
-}
-.pics2 {
-  text-align: center;
-  width: 48%;
-}
-.pics2 img {
-    max-width: 100%;
-    height: auto;
+.md-typeset .code-block {
+  position: relative;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
 }
 
-.text2 {
-  text-align: left;
-  width: 48%;
+.md-typeset .output {
+  background-color: #f8f8f8;
+  padding: 5px;
+  border: 1px solid #ddd;
 }
 
-.notes{
-  text-align: left;
-  font-size: 88%;
-}
-
-.pic1 {
-  text-align: center;
-}
-
-.BIG {
-  max-width: 500px ;
-  height: auto;
-}
-
-.BIg {
-  max-width: 400px ;
-  height: auto;
-}
-.Big {
-  max-width: 300px ;
-  height: auto;
-}
-.big {
-  max-width: 220px ;
-  height: auto;
-}
-.auto {
-  max-width: 100%; 
-  height: auto;
+.md-typeset .copy-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px 10px;
+  background-color: #ddd;
+  border: none;
+  cursor: pointer;
 }
 
 
@@ -214,31 +188,7 @@ details[open]>summary {
     border-width: 1px 1px 1px 1px ;
     border-bottom-left-radius: 0px;
 }
-.box2 {
-  display: flex;
-  justify-content: space-between; /* 调整空间分配，也可以使用其他值如center */
-}
-.pics2 {
-  text-align: center;
-  width: 48%;
-}
-.pics2 img {
-    max-width: 100%;
-    height: auto;
-}
 
-.text2 {
-  text-align: left;
-  width: 48%;
-}
-
-.pic1 {
-  text-align: center;
-}
-.pic1 img{
-  max-width: 100%; 
-  height: auto;
-}
 
 
 /* .md-task-list-item:hover > input:before,
