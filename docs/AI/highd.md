@@ -25,7 +25,7 @@
 
 - ==Expectation Matrix== $\mathbb EZ=\begin{bmatrix}\mathbb EZ_1\\\vdots\\\mathbb EZ_p\end{bmatrix}$
 - ==Covariance Matrix== $\Sigma=Var(Z)\\=\mathbb E\{(Z-\mathbb EZ)(Z-\mathbb EZ)^T\}\\=\begin{bmatrix}Var(Z_1)&Cov(Z_1,Z_2)&\dots&Cov\{Z_1,Z_p\}\\Cov(Z_1,Z_2)&Var(Z_2)&\dots&Cov(Z_2,Z_p)\\\vdots&&\ddots&\vdots\\Cov(Z_p,Z_1)&Cov(Z_p,Z_2)&\dots&Var(Z_p)\end{bmatrix}$
-  - $\Sigma \succeq0$
+    - $\Sigma \succeq0$
     proof: the sample covariance matrix is non-negative definite.
 
 Correlation只是考察线性关系的相关性，并不是代表independent

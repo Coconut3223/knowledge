@@ -9,11 +9,11 @@ The idea behind transfer learning is that the features learned by a model on one
 ![](./pics/TrL_3.png){width=70%}
 
 - **Pre-training Stage**
-  - ==Feature extractor layers, **backbone**== encode useful information of **original data**.
-  - Remove ==original final layers== for the original image recognition purpose.
+    - ==Feature extractor layers, **backbone**== encode useful information of **original data**.
+    - Remove ==original final layers== for the original image recognition purpose.
 - **Fine-tuning Stage**
-  - Add ==task-specific final layers==.
-  - Train this new model with **task-specific data**.
+    - Add ==task-specific final layers==.
+    - Train this new model with **task-specific data**.
 
 **standard steps:**
 
@@ -36,9 +36,9 @@ training data $\implies$ backbone
 Strong backbone → Better performance on the new task!
 
 - **How to get strong backbone**
-  - Bigger pre-training datasets
-  - Better backbone architecture
-  - Better training strategy
+    - Bigger pre-training datasets
+    - Better backbone architecture
+    - Better training strategy
 
 ### for CV
 

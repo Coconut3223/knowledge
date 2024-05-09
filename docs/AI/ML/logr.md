@@ -9,8 +9,8 @@
     ![](./pics/LogR_2.png){width="60%"}
 
 - 📑 ref
-  - [浅析机器学习：线性回归 & 逻辑回归]
-  - [Link Functions and Errors in Logistic Regression - The Analysis Factor]
+    - [浅析机器学习：线性回归 & 逻辑回归]
+    - [Link Functions and Errors in Logistic Regression - The Analysis Factor]
 
 ## Background
 

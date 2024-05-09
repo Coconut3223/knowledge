@@ -105,8 +105,8 @@ $$\Vert Y_i-f(X_i)\Vert_1=|Y_i-f(X_i;\theta)|$$
 
 - proof $f^*(x)=\text{median}(Y\vert X=x)=\min\limits_f\mathbb{E}\{\Vert Y-f(X)\Vert_1\vert X=x\}$
   Assume:
-  - $\forall x, \mathbb{E}[Y|X=x]\lt\infin$(存在)
-  - $F_{Y|X=x}(\cdot):=$ the conditional cdf of $Y|X=x, \begin{cases}\text{cdf of} -\infin=0\\\text{cdf of} +\infin=1\\\text{cdf of median} =\frac{1}{2}\end{cases}$
+    - $\forall x, \mathbb{E}[Y|X=x]\lt\infin$(存在)
+    - $F_{Y|X=x}(\cdot):=$ the conditional cdf of $Y|X=x, \begin{cases}\text{cdf of} -\infin=0\\\text{cdf of} +\infin=1\\\text{cdf of median} =\frac{1}{2}\end{cases}$
 
 $$\begin{align*}
 \mathcal{L}(f)&=\mathbb{E}\{\Vert Y-f(X)\Vert_1\vert X=x\}\\

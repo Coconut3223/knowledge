@@ -53,3 +53,48 @@ Using the data structure **FP-tree** to extract frequent itemsets directly. An F
 > search A: A=7
 > search AB: 找B再看有没有A =5
 > search AE：先找E再看看有没有A=1+1=2
+
+## Da
+
+|  | Association Rule |
+| --- | --- |
+| Antecedent | 前因 |
+| Consequent |  |
+| proximity | 近距离 |
+| Itemset Lattice |  |
+|  |  |
+
+[comp9318 Association Rule Mining](https://zhuanlan.zhihu.com/p/65155693)
+
+## Association Rule 关联规则
+
+**An association rule is an implication of the form 𝐴 ⇒ 𝐵, where 𝐴 is the Antecedent, 𝐵 is the Consequent.**
+
+商品放在一起可以促销，放在两端可以诱惑人们沿途购买
+
+## Support-Confidence Framework
+
+💡 support(itemset) 支持度 AB有关
+confidence(associate rule)置信度 A推B 而不是B推A
+
+`min_sup` : a minimum support threshold $\implies$ whether a frequent itemset $L_k$
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6a574370-5850-40f6-b1e2-e320e74cec72/Untitled.png)
+
+### How to develop
+
+1. 设定一个minimum support threshold，找到 frequent itemset $L_k$
+2. Generate Strong Association Rules from the Frequent Itemsets
+
+- Example
+
+    support_count({I1,I2})$=\#T(I1\cup I2)=4$
+
+    (T100，T200，T400，T800
+
+    support({I1,I2})=$\frac{\text{support\_count}(\{ I1,I2\})}{\# T}=\frac{4}{9}$
+    $\#T=9$
+    Given min_sup$=\frac{2}{9}$, support({I1,I2})>$\frac{2}{9}\implies$ {I1,I2} is a frequent itemset
+    confidence({I1,I2}⇒{I3})$=\frac{\text{support}(\{I1,I2,I3\})}{\text{support}(\{I1,I2\})}=\frac{2/9}{4/9}=\frac{1}{2}$
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0204077f-0706-4e36-84fd-2ce758b2070a/Untitled.png)

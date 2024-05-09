@@ -2,10 +2,10 @@
 
 - ==Deep Non-parametric Regression==。之前都是 function-assumed 出来的结果是closed-formed， 但是现在就是 **Nonparametric regression** 不在乎它是什么 the shape of the functional relationships is not predetermined ，就是用 deep learning 去 approximate 它。
 
-  - 为什么能 **approximate？**
-  Non-linearity is introduced by activation functions.
-  Any **continuous functions** defined on **a compact set** can be approximated **arbitrarily** well by a shallow neural network if **the shallow neural network is arbitrarily wide. 如果浅神经网络是任意宽的，那么在紧集上定义的任何连续函数都可以被浅神经网络任意近似。(有理论证明)**
-  神经网络因为涉及到更深层就是2*3个参数，但是一般就是2+3个参数，所以神经网络会更强，在一些确实复杂的数据分布上。
+    - 为什么能 **approximate？**
+    Non-linearity is introduced by activation functions.
+    Any **continuous functions** defined on **a compact set** can be approximated **arbitrarily** well by a shallow neural network if **the shallow neural network is arbitrarily wide. 如果浅神经网络是任意宽的，那么在紧集上定义的任何连续函数都可以被浅神经网络任意近似。(有理论证明)**
+    神经网络因为涉及到更深层就是2*3个参数，但是一般就是2+3个参数，所以神经网络会更强，在一些确实复杂的数据分布上。
 
 ## architecture
 

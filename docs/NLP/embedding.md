@@ -133,17 +133,17 @@ $$
 
 - :question: 为什么隐藏层的参数矩阵 $W$ 就是 word vector = word embedding？
 从 input 和 target output来看：
-  - **input** $x$ 是一个 binary vector，只有 given word(在词袋的索引是$I$ )是 1， 其余的都是 0。
-    $\implies h=W^Tx$, 只有 $W^T$的一列 = $W$的一行 = $W_I$ 是有用的
-  $\implies h=W_I$ ，传入模型的 就只有第 $I$ 那么一个词，也就 参数矩阵 $W$ 第 $I$ 行 $W_I$那么一个向量。
-  所以非常自然地， ==$\text{word}_I\lrArr W_I\implies \text{words}_{in}\lrArr W_{in}$==
-  - **target output** $\hat{y}$ 同样是一个 binary vector，只有 target word(在词袋的索引是$j^*$) 是 1， 其余都是 0。（和前面类似）
-  $\implies \hat{y}=\text{softmax}(W'^Th)\rightarrow{\text{理想情况}}\begin{cases}\hat{y}_{j^*}=y_{j^*}=1\lrArr W'^T_{j^*}h=1&j= j^* \\\hat{y}_j=y_j=0\lrArr W'^T_jh=0&j\neq j^* \end{cases}$
-  $\implies$ 输出模型的 就只有第 $j^*$ 那么一个词，除去代表输入词 的$h=W_I$, 也就 参数矩阵 $W'$第 $j^*$列 $W'^T_{j^*}$那么一个向量参与到运算。
-  所以非常自然地， ==$\text{word}_{j^*}\lrArr W'^T_{j^*}\implies \text{words}_{out}\lrArr W'^T_{out}$==
-  - **输入和输出同是一个词袋**，所以经过这个训练，同时==有两种不同==的嵌入
-  - :question: 为什么不看 output？ 、
-    因为 output 的值还跟模型能力有关。target output 更能体现理论上的设计。
+    - **input** $x$ 是一个 binary vector，只有 given word(在词袋的索引是$I$ )是 1， 其余的都是 0。
+      $\implies h=W^Tx$, 只有 $W^T$的一列 = $W$的一行 = $W_I$ 是有用的
+    $\implies h=W_I$ ，传入模型的 就只有第 $I$ 那么一个词，也就 参数矩阵 $W$ 第 $I$ 行 $W_I$那么一个向量。
+    所以非常自然地， ==$\text{word}_I\lrArr W_I\implies \text{words}_{in}\lrArr W_{in}$==
+    - **target output** $\hat{y}$ 同样是一个 binary vector，只有 target word(在词袋的索引是$j^*$) 是 1， 其余都是 0。（和前面类似）
+    $\implies \hat{y}=\text{softmax}(W'^Th)\rightarrow{\text{理想情况}}\begin{cases}\hat{y}_{j^*}=y_{j^*}=1\lrArr W'^T_{j^*}h=1&j= j^* \\\hat{y}_j=y_j=0\lrArr W'^T_jh=0&j\neq j^* \end{cases}$
+    $\implies$ 输出模型的 就只有第 $j^*$ 那么一个词，除去代表输入词 的$h=W_I$, 也就 参数矩阵 $W'$第 $j^*$列 $W'^T_{j^*}$那么一个向量参与到运算。
+    所以非常自然地， ==$\text{word}_{j^*}\lrArr W'^T_{j^*}\implies \text{words}_{out}\lrArr W'^T_{out}$==
+        - **输入和输出同是一个词袋**，所以经过这个训练，同时==有两种不同==的嵌入
+        - :question: 为什么不看 output？ 、
+          因为 output 的值还跟模型能力有关。target output 更能体现理论上的设计。
 - :question: 为什么 $W$,$W'$ 不一样
   1. $h=W_I$，输入完全由 $W_I$组成；
 - :question: 为什么要扔掉 `contex matrix`，只要 `matirx`？
@@ -160,4 +160,3 @@ $$
 数据集不应该只有 正确的 ‘A$\rightarrow$B’， ‘B$\rightarrow$C’，应该还有 ‘A$\nrightarrow$D‘,‘A$\nrightarrow$E‘
 
 ![](./pics/embedding_7.png){width=50%}
-

@@ -1,6 +1,5 @@
 # GPT
 
-
 ## utilize tool in GPT
 
 LLM 是问答对话。

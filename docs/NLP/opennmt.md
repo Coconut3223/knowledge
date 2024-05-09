@@ -34,9 +34,9 @@ The project is fully self-contained depending on minimal number of external Lua 
             ...
         ```
 - 内容【see ## Tokenization / Sub-wording】
-  - token 形式，以<u>空格</u>分词
-    - 本身一个就是最小token形式存在： 英、法：不需要处理
-    - 不以特殊标记分割词的：中：<u>需要分词</u>
+    - token 形式，以<u>空格</u>分词
+        - 本身一个就是最小token形式存在： 英、法：不需要处理
+        - 不以特殊标记分割词的：中：<u>需要分词</u>
 
   !!! P "如果不先分词传进去，也可以指定分词 `[tokenizer]`"
       而一般用 <u>Sentence Piece</u> 基于语料训练一个 tokenizer，类似于 jieba，<U>会形成固定大小的词表</U>。这会影响后来的 <u>`vocab_size`</u>
@@ -164,9 +164,9 @@ attention_dropout: [0.1]
 ### Content
 
 - `src_vocab_size=50k` & `tgt_vocab_size=50k` Vocabulary size
-  - default 50k
-  - 如果使用 <u>Sentence Piece</u> 得到的tokenizer来分词，这两个 params = size_of_SentencePiece
-  - 但事先分好词进去，就会直接 `counters` 统计。统计的大小看语料的丰富的程度。
+    - default 50k
+    - 如果使用 <u>Sentence Piece</u> 得到的tokenizer来分词，这两个 params = size_of_SentencePiece
+    - 但事先分好词进去，就会直接 `counters` 统计。统计的大小看语料的丰富的程度。
 
     ```bash
     [2023-12-07 14:23:22,059 INFO] Counters src: 17008
@@ -177,7 +177,7 @@ For larger datasets, consider increasing: train_steps, valid_steps, warmup_steps
 
 - `train_steps`
 for datasets with a few millions of sentences, consider using a value between 100000 and 200000, or more!
-  - <u>`early_stopping: int`</u> can help stop the training when there is no considerable improvement.
+    - <u>`early_stopping: int`</u> can help stop the training when there is no considerable improvement.
 - `valid_steps`
 10000 can be good if the value train_steps is big enough.
 - `warmup_steps`
@@ -205,7 +205,7 @@ tgt_words_min_frequency: 2
 
 - `-config` data...&词典大小和保存位置
 - `-n_sample`
-  - `=-1` on **all** the segment in the training dataset
+    - `=-1` on **all** the segment in the training dataset
 - `-num_threads`: change it to match the number of CPUs to run it faster
 
 > ``` bash
@@ -255,8 +255,8 @@ Translation Options:
 - `-src`: source file
 - `-output`: filename to write result
 - `-gpu`: GPU ID
-  - `=0`: 1 GPU
-  - : CPU
+    - `=0`: 1 GPU
+    - : CPU
 - `-min_length[optional]`:  to avoid empty translations
 - `-verbose[optional]`: if you want to print translations
 

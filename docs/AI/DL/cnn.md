@@ -186,8 +186,8 @@ It computes the dot product over the channels.
 - 为什么要pad？
 为了解决容易丢失边缘或者是角落上的像素信息。pad之后本来边缘的部分就不会只出现一次。 $\impliedby$<u>convolved 之前 pad</u>. Due to padding, information on the borders of images is also preserved similarly to at the centre of images.
 - 在哪里pad？ pad 的范围多大
-  - To 解决边缘容易丢失 $\implies$ <u>on the boundary</u>, image 的四周都要 pad. 范围自定义, **pad with p-pixel border**
-  - To **卷积前后大小不变**，==$p=\cfrac{F-1}{2}\:\text{when s=1}$==
+    - To 解决边缘容易丢失 $\implies$ <u>on the boundary</u>, image 的四周都要 pad. 范围自定义, **pad with p-pixel border**
+    - To **卷积前后大小不变**，==$p=\cfrac{F-1}{2}\:\text{when s=1}$==
     $p=\cfrac{N(s-1)+F-s}{2}$
 
 **保证卷积前后的维度不变，**

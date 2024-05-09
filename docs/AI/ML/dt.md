@@ -78,16 +78,12 @@ Variable distribution | uniform-like |many peaks and valleys
 histogram| Flat | many lows and highs
 information|less predictable Less information | more predictable More information
 
-
-<div class=box2>
-<div class="pic1">
-    <img src="./pics/entropy_2.png", class=big>
+<div class="grid" markdown>
+<figure markdown="span">![](./pics/entropy_2.png)</figure>
+<figure markdown="span">![](./pics/entropy_1.png)</figure>
 </div>
 
-<div class="pic1">
-    <img src="./pics/entropy_1.png", class=big>
-</div>
-</div>
+![](./pics/entropy_1.png)
 
 缺点：偏好选择具有较多属性值的属性 **高熵分裂，大量小部分**
 
@@ -184,7 +180,7 @@ over-fitting due to
 
 若我们把每个属性是为坐标空间的一个坐标轴，则d个属性值描述的样本对应了d维空间的一个具体的数据点，对样本的分类 其实是在这个样本空间中寻找不同类样本之间的分类边界。
 
-<div class="pic1"><img src="pics/DT_1.png", class=BIg></div>
+![](./pics/DT_1.png)
 
 ||单变量 DT| 多变量 DT|
 |--|--|--|

@@ -77,8 +77,8 @@ $w^*:=\min\limits_{w}\red{\mathcal{J}}\implies\begin{cases}\nabla\mathcal{J}(w^*
 <u>含正则化的目标函数</u>: 令 $\tilde{w}:=\min\limits_{w}\red{\tilde{\mathcal{J}}}$
 $\nabla\tilde{\mathcal{J}}(\tilde{w})=\nabla\mathcal{J}(\tilde{w})+C\tilde{w}=H(\tilde{w}-w^*)+C\tilde{w}=0$
 $\rightarrow (H+CI)\tilde{w}=Hw^*\implies \tilde{w}=(H+CI)^{-1}Hw^*$：
-  - 当 $C\rightarrow0, \tilde{w}\rightarrow w^*$；
-  - 当 $C\uparrow, H\xlongequal{可分解为}Q\Lambda Q^T\implies $
+    - 当 $C\rightarrow0, \tilde{w}\rightarrow w^*$；
+    - 当 $C\uparrow, H\xlongequal{可分解为}Q\Lambda Q^T\implies $
 
 $$\begin{align*}
 \tilde{w}&=(H+CI)^{-1}Hw^*\\&=(Q\Lambda Q^T+CI)^{-1}Q\Lambda Q^Tw^*\\&=[Q(\Lambda+CI)Q^T]^{-1}Q\Lambda Q^Tw^*\\&=Q(\Lambda+CI)^{-1}\Lambda Q^Tw^*\end{align*}$$

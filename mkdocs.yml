@@ -110,16 +110,19 @@ nav:
       - "enhanced": python/enhanced.md
       - "numpy": python/numpy.md
       - "八股文": python/exam.md
+      - "pytorch": python/pytorch.md
   - "AI":
     - AI/index.md
     - "ML":
       - "LinearRegreesion": AI/ML/lr.md
       - "NaiveBayes": AI/ML/nb.md
       - "Logistics Regression": AI/ML/logr.md
+      - "SVM": AI/ML/svm.md
       - "KNN": AI/ML/knn.md
       - "Decision Tree": AI/ML/dt.md
       - "Ensemble Learning": AI/ML/ensemble_learning.md
       - "Association Analysis": AI/ML/association_analysis.md
+      - "Clustering": AI/ML/clustering.md
     - "DL":
       - AI/DL/index.md
       - "CNN": AI/DL/cnn.md
@@ -128,6 +131,8 @@ nav:
       - "Generative Model": AI/DL/generative_model.md
       - "Transfer Learning": AI/DL/transferlearning.md
       - "Tricks": AI/DL/tricks.md
+      - "Transformer": AI/DL/transformer.md
+    - "pre-processing": AI/pre.md
     - "Loss": AI/loss.md
     - "Evaluation": AI/eva.md
     - "High-dimensional Data": AI/highd.md
@@ -140,12 +145,26 @@ nav:
     - "GPT": NLP/gpt.md
     - "openNMT": NLP/opennmt.md
     - "HuggingFace": NLP/huggingface.md
+    - "ASR": NLP/asr.md
+    - "Paper": NLP/paper.md
+    - "Synthesizing Training Data": NLP/survey_on_synthesizing_training_data.md
+
   - "CV":
     - CV/index.md
   - "SQL":
     - SQL/index.md
     - "八股文": SQL/exam.md
-
+  - "Utils":
+    - utils/index.md
+    - "Git": utils/git.md
+    - "Linux": utils/linux.md
+    - "Hadoop": utils/hadoop.md
+    - "Map Reduce": utils/mapreduce.md
+    - "VScode": utils/vscode.md
+  - "Math":
+    - math/index.md
+  - "Temp":
+    - Temp/index.md
 
 # not_in_nav: |
 #   automated-migration.md

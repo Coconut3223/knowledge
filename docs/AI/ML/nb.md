@@ -46,12 +46,12 @@ $\alpha\gt0$ is a parameter. Usually set as 1.
 >
 > mammal=5; Non-mammal=10, $\alpha=1$
 > calculate $P(A_i|C)$
-> 
+>
 > |class|GiveB.=Y|LayE.=N|CanF.=N|HaveL.=Y|$P(C)$
 > |--|--|--|--|--|--|
 > Mammal|$\frac{5+1}{5+2}$|$\frac{5+1}{5+2}$|$\frac{4+1}{5+2}$|$\frac{3+1}{5+2}$|$\frac{5+1}{15+2}$
 > Non-|$\frac{1+1}{10+2}$|$\frac{1+1}{10+2}$|$\frac{7+1}{10+2}$|$\frac{7+1}{10+2}$|$\frac{10+1}{15+2}$
 >
 > $P(C=M|A_i)\propto\prod\limits_{i=1}^4P(A_i|C=M)P(C=M)=\frac{6}{17}\times\frac{6}{7}\times\frac{6}{7}\times\frac{5}{7}\times\frac{4}{7}=0.1058$ (bigger)$\implies$ mammal
-> 
+>
 > $P(C=N|A_i)\propto\prod\limits_{i=1}^4P(A_i|C=N)P(C=N)=\frac{11}{17}\times\frac{1}{6}\times\frac{1}{6}\times\frac{2}{3}\times\frac{2}{3}=0.0080$

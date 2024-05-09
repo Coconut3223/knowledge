@@ -7,7 +7,7 @@ categories:
   - Hello
   - World
 ---
-1
+
 # Elegant Python
 
 !!! question "迭代器 & 生成器 区别 哪个更好"
@@ -331,14 +331,14 @@ id(221111111)
 ### convention
 
 - prefernce
-  - PEP8建议 **indent using space 空格缩进 = 4**，这既可提高可读性，又留下了足够的多级缩进空间。
-  - **垂直参考线**，帮助你遵守行长不能超过79字符的约定。
+    - PEP8建议 **indent using space 空格缩进 = 4**，这既可提高可读性，又留下了足够的多级缩进空间。
+    - **垂直参考线**，帮助你遵守行长不能超过79字符的约定。
 - `.py` file
-  - 在开头加上姓名和当前日期，再用一句话阐述程序的功能
-  - 声明编码方式: `# -*- coding:utf-8 -*-`
-  - 可使用空行来组织代码，但不要滥用。
-    - 在类中，可使用一空行来分隔方法；
-    - 在模块中，可使用两个空行来分隔类
+    - 在开头加上姓名和当前日期，再用一句话阐述程序的功能
+    - 声明编码方式: `# -*- coding:utf-8 -*-`
+    - 可使用空行来组织代码，但不要滥用。
+        - 在类中，可使用一空行来分隔方法；
+        - 在模块中，可使用两个空行来分隔类
 - 诸如 `==, >=, <=`等**比较运算符**两边各添加一个空格，例如，`if age < 4` :要比 `if age<4` 好。
 - **文档字符串, docstring**, 的注释，描述了函数是做什么的。文档字符串用三引号括起，Python使用它们来生成有关程序中函数的文档。
 
@@ -1098,7 +1098,7 @@ city, cc, (latitude, longitude) = area  # 嵌套拆包
 
 - `seq[a:b:c]` 对 s 在 $[a, b)$ 之间以 c 为间隔取值。【1d】
 其实是调用 `seq.__getitem__(slice(a,b,c))`
-  - **c = 1**. c>0 从第一个开始正向; c<0 从倒数第一个开始反向。<u>有可能完全不一样！</u>
+    - **c = 1**. c>0 从第一个开始正向; c<0 从倒数第一个开始反向。<u>有可能完全不一样！</u>
 - `seq[m:n, k:l]` 对 **多维** s 取 $[m, n)$ 行 $[k, l)$ 列 交叠的值。【>2d】
 其实是调用 `seq.__getitem__([(m,k)(m,k+1)...])`
 
@@ -1230,15 +1230,15 @@ l *= 2
 
 - `lst.sort()` 就地排序列表，返回 None。
 - `sorted(iterableObject)` 返回新建的列表。
-  - 接受任何形式可迭代的对象为参数，包括不可变序列或生成器。
+    - 接受任何形式可迭代的对象为参数，包括不可变序列或生成器。
 
 📗 都有两个可选的关键词参数
 
 - `reverse=False` 默认升序
 - `key=IdentityFunction` 一个只有一个参数的函数。这个函数会被用在序列上的每一个元素上，产生元素相对应的用于排序的对比关键词。默认恒等函数，以元素自己的值来排序。
-  - `=len` 对比长度
-  - `=str.lower` 忽略大小写的的排序
-  - `=reverse` 从左到右进行比较
+    - `=len` 对比长度
+    - `=str.lower` 忽略大小写的的排序
+    - `=reverse` 从左到右进行比较
 
 ```python hl_lines="2 4 6"
 lst = ['Aa', 'b', 'Cc']
@@ -1314,8 +1314,8 @@ def grade(score):
 `list(range(start, end, step))`
 将`range()`作为`list()`的参数，输出将为一个数字列表
 - 增加
-  - `lst.append(x)` 末尾
-  - `lst.insert(idx, x)` any position
+    - `lst.append(x)` 末尾
+    - `lst.insert(idx, x)` any position
 - 删除
     ||根据____来删除|return|
     |--|--|--|
@@ -1353,9 +1353,9 @@ def grade(score):
 虽好但是没有字段名 ➡️ `namedtuple`
 
 - init
-  - 【单条记录】`tuple(val1, val2, ...)`, `tuple(list1)`
-  返回：`Tuple`
-  - 【多列合并】 `list(zip(col1, col2, ...))`
+    - 【单条记录】`tuple(val1, val2, ...)`, `tuple(list1)`
+    返回：`Tuple`
+    - 【多列合并】 `list(zip(col1, col2, ...))`
 
     !!! warning "`zip`"
         zip 返回来的是 `<zip object at 0x103abc288>`: 元组组成的对象。需要叠层 list。
@@ -1390,13 +1390,13 @@ def grade(score):
 `rec1 = Records(*rec1_data)`
 `rec2 = Records._make(*rec2_data)`
 📕 Args:
-  - typename: 类表名的感觉
-  - field_names: 由数个字符串组成的可迭代对象，或者是由**空格分隔开**的字段名组成的字符串
+    - typename: 类表名的感觉
+    - field_names: 由数个字符串组成的可迭代对象，或者是由**空格分隔开**的字段名组成的字符串
 
 - 📗 属性
-  - `Records._fields` 包含字段名的元组
-  - `rec1._asdict()`把 namedtuple 以 `collections.OrderedDict` 形式返回。友好呈现信息
-  - `rec1._replace(field_name=v)` 修改值。
+    - `Records._fields` 包含字段名的元组
+    - `rec1._asdict()`把 namedtuple 以 `collections.OrderedDict` 形式返回。友好呈现信息
+    - `rec1._replace(field_name=v)` 修改值。
 
 ``` python hl_lines="2 3 6"
 from collections import namedtuple
@@ -1422,8 +1422,8 @@ p._replace(x=100)
 - init
 需要**类型码**，表示底层 C 语言需要存放的数据类型
 
-  - `b` signed char 有符号的字符，只能存放一个字节的整数。$2^7=[-128, 127]$
-  - `d` 双精度浮点数组
+    - `b` signed char 有符号的字符，只能存放一个字节的整数。$2^7=[-128, 127]$
+    - `d` 双精度浮点数组
 - 快速读写文件
 `array.fromfile(fp)` & `array.tofile(fp)`。读写二进制文件时间比对文本文件读写要快，因为不需要转换字符和数字形式；还节省空间。
 - 排序
@@ -1581,8 +1581,8 @@ list ↔️ str
 
 - `str = ''.join(lst)`
 - `lst = str.split(':')`
-  - `lst = str.split(':', 1)`
-  - `lst = str.rsplit(':', 1)`
+    - `lst = str.split(':', 1)`
+    - `lst = str.rsplit(':', 1)`
 - `lst = list(str)`
 
 ```python
@@ -1690,11 +1690,10 @@ a.rsplit(':', 1)
 - loop
 `for k, v in d.items():`
 - 更新。
-
-  - `d[k]=v` 只有赋值时管用。
-  - 更新的时候
-  `d.setdefault(k, default)` 值的格式不统一
-  `from collections import defaultdict` 值的格式统一，都是 list | str | int
+    - `d[k]=v` 只有赋值时管用。
+    - 更新的时候
+    `d.setdefault(k, default)` 值的格式不统一
+    `from collections import defaultdict` 值的格式统一，都是 list | str | int
 
 !!! warning "为什么不用 get 的方法。【针对部分改变 v 值 情况】"
     更新 1️⃣ 彻底改变 v 值(包括新增 k-v 对) 2️⃣ 部分改变 v 值（`d[k]+=1` & `d[v].append()`）
@@ -1822,8 +1821,8 @@ set 里的元素必须是 hashable，但 set 本身是 unhashable。如果set �
 三元组`(row, col, data)`(或称为**ijv format**)的形式来存储矩阵中非零元素的信息。
 
 - 实际
-  - 用来创建矩阵，因为`coo_matrix`**无法**对矩阵的元素进行增删改操作
-  - 转置、矩阵运算等，要转 `csr_matrix`、`csc_matrix`
+    - 用来创建矩阵，因为`coo_matrix`**无法**对矩阵的元素进行增删改操作
+    - 转置、矩阵运算等，要转 `csr_matrix`、`csc_matrix`
 - 实例
 - 转化
 
@@ -1847,10 +1846,10 @@ set 里的元素必须是 hashable，但 set 本身是 unhashable。如果set �
     `heapq[0] is smallest`
 
 - properties
-  - **排序稳定性**：具有相同的优先级的话就会按他们被插入到队列的顺序返回 ——> 条目计数可用来打破平局
-  - **堆** pop 操作总是返回优先级最高
+    - **排序稳定性**：具有相同的优先级的话就会按他们被插入到队列的顺序返回 ——> 条目计数可用来打破平局
+    - **堆** pop 操作总是返回优先级最高
 - ref
-  - [heapq --堆队列算法]
+    - [heapq --堆队列算法]
 
 ##### code
 
@@ -1954,10 +1953,10 @@ list(z2)
 它是访问容器（例如列表、元组等）中的元素的一种方式，可以**逐个访问容器中的元素，而不必将整个容器存储在内存中**。
 
 - properties
-  - 惰性计算, lazy evaluation,
-    惰性计算指的是在需要时才进行计算，而非提前将所有的计算都执行完毕。对于大型数据集合，惰性计算可以节省内存开销并提高程序性能
-  - 可逆性, reversibility
-    可以通过**反向迭代器（reverse iterator）** 来逆序访问容器中的元素。Python标准库中提供了`reversed()`函数用于创建反向迭代器。
+    - 惰性计算, lazy evaluation,
+      惰性计算指的是在需要时才进行计算，而非提前将所有的计算都执行完毕。对于大型数据集合，惰性计算可以节省内存开销并提高程序性能
+    - 可逆性, reversibility
+      可以通过**反向迭代器（reverse iterator）** 来逆序访问容器中的元素。Python标准库中提供了`reversed()`函数用于创建反向迭代器。
 
 ||只有data|一个列表|notes|
 |--|--|--|--|
@@ -2712,8 +2711,8 @@ class Vector():
 ## Re
 
 - `flags=0` 用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等
-  - re.I 忽略大小写
-  - re.X 为了增加可读性，忽略规则表达式中的空白和注释，并允许使用 ’#’ 来引导一个注释。这样可以让你把规则写得更美观些。
+    - re.I 忽略大小写
+    - re.X 为了增加可读性，忽略规则表达式中的空白和注释，并允许使用 ’#’ 来引导一个注释。这样可以让你把规则写得更美观些。
 
 |symbol|meaning|special usage|
 |--|--|--|
@@ -2723,15 +2722,15 @@ class Vector():
 ------
 
 - `re.match(pattern, string, flags=0)`
-  - 从字符串的**起始位置**匹配一个模式
-  - 成功 `return <re.Match object; span=(0, end_idx), match=pattern>`
-    - `<re.Match object>.group()` 返回正则匹配的字符串
-    - `<re.Match object>.start()`, `<re.Match object>.end()`
-    - `<re.Match object>.span()`: (start, end)
-    - 不是起始位置匹配成功 `return None`
+    - 从字符串的**起始位置**匹配一个模式
+    - 成功 `return <re.Match object; span=(0, end_idx), match=pattern>`
+        - `<re.Match object>.group()` 返回正则匹配的字符串
+        - `<re.Match object>.start()`, `<re.Match object>.end()`
+        - `<re.Match object>.span()`: (start, end)
+        - 不是起始位置匹配成功 `return None`
 
 - `re.sub(pattern, repl, string, count=0, flags=0)`
-  - `count=0`: 模式匹配后替换的最大次数，默认 0 表示替换所有的匹配。
+    - `count=0`: 模式匹配后替换的最大次数，默认 0 表示替换所有的匹配。
 
 ## 用户交互
 
@@ -2756,8 +2755,8 @@ img = Image.open(image_path) # PIL.....
 
 - print
   
-  - `end = '\n'`
-  - `sep = ''`
+    - `end = '\n'`
+    - `sep = ''`
 
     ```python
     print("aaaa",end='')

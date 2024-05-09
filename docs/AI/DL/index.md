@@ -38,16 +38,16 @@ Any continuous functions defined on **a compact set** can be approximated **a
 
 - **关于层与层神经元的连接**
   从结构来说，排除 dropout 影响. ==global features  🆚 local features==
-  - fully connected NN (FCNN)
-  “**完全连接**”或有时称为“**紧密连接**”。所有可能的连接层都存在到图层，这意味着输入向量的每个输入都会影响输出向量的每个输出。
-  - convolutional NN (CNNs)
-  并非所有输入节点都会影响所有输出节点。这使卷积层在学习中具有更大的灵活性。此外，每层的权重数量要小得多，这对图像数据等高维输入有很大帮助。
-  - Randomly wired NN
-  随机布线的神经网络 also works
+    - fully connected NN (FCNN)
+    “**完全连接**”或有时称为“**紧密连接**”。所有可能的连接层都存在到图层，这意味着输入向量的每个输入都会影响输出向量的每个输出。
+    - convolutional NN (CNNs)
+    并非所有输入节点都会影响所有输出节点。这使卷积层在学习中具有更大的灵活性。此外，每层的权重数量要小得多，这对图像数据等高维输入有很大帮助。
+    - Randomly wired NN
+    随机布线的神经网络 also works
 
 - 关于深度和广度
-  - Shallow Neural Network <u>(better)</u>
-  - Deep Neural Networks
+    - Shallow Neural Network <u>(better)</u>
+    - Deep Neural Networks
 
     !!! question "For example, we have five nerouns. If you have two layers like 2*3=6 > 5 larger space 到底哪个更better"
 - 大小

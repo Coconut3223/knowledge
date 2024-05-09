@@ -33,10 +33,10 @@ $$S=D', T=D\setminus D'$$
 准确率 Accuracy，错误率 Error rate
 精确率 Precision，召回率 Recall
 - 回归
-  - MAE系列，即由 Mean Absolute Error 衍生得到的指标；
-  - MSE系列，即由 Mean Squared Error 衍生得到的指标；
-    - 均方根误差（Root Mean Square Error，RMSE）
-    - $R^2$
+    - MAE系列，即由 Mean Absolute Error 衍生得到的指标；
+    - MSE系列，即由 Mean Squared Error 衍生得到的指标；
+        - 均方根误差（Root Mean Square Error，RMSE）
+        - $R^2$
 
 在英语中，error 和deviation 的含义是一样的，所以Mean Absolute Error 也可以叫做 Mean Absolute Deviation(MAD)
 

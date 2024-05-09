@@ -4,5 +4,6 @@
   "MD033": {
     "allowed_elements": ["u", "kbd", "pre", "div", "br", "p", "figure", "b","mark"]
   },
-  "MD046": false
+  "MD046": false,  
+  "MD007": {"indent": 4}
 }
