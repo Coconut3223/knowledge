@@ -2,7 +2,7 @@
   "MD013": false,
   "MD045": false,
   "MD033": {
-    "allowed_elements": ["u", "kbd", "pre", "div", "br", "p", "figure", "b","mark", "sup"]
+    "allowed_elements": ["u", "kbd", "pre", "div", "br", "p", "figure", "b","mark", "sup", "hr"]
   },
   "MD046": false,  
   "MD007": {"indent": 4},

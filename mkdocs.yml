@@ -113,6 +113,10 @@ nav:
       - "pytorch": python/pytorch.md
   - "AI":
     - AI/index.md
+    - "pre-processing": AI/pre.md
+    - "Loss": AI/loss.md
+    - "Evaluation": AI/eva.md
+    - "High-dimensional Data": AI/highd.md
     - "ML":
       - "LinearRegreesion": AI/ML/lr.md
       - "NaiveBayes": AI/ML/nb.md
@@ -132,10 +136,7 @@ nav:
       - "Transfer Learning": AI/DL/transferlearning.md
       - "Tricks": AI/DL/tricks.md
       - "Transformer": AI/DL/transformer.md
-    - "pre-processing": AI/pre.md
-    - "Loss": AI/loss.md
-    - "Evaluation": AI/eva.md
-    - "High-dimensional Data": AI/highd.md
+
   - "NLP":
     - NLP/index.md
     - "Embedding": NLP/embedding.md

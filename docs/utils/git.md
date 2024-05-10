@@ -114,10 +114,10 @@ zstyle ':vcs_info:git:*' formats '%b'
 `git init`
 
 ``` bash
-$ mkdir local_init
-$ cd local_init
-$ git init
-$ ls
+mkdir local_init
+cd local_init
+git init
+ls
 ```
 
 此时就会出现一个 .git 的隐藏 directory，这就是 local repository。
@@ -835,14 +835,14 @@ master message 1
 ### 5.5.1 clone 原来的项目
 
 ```bash
-$ git clone --bare git://github.com/username/project.git
+git clone --bare git://github.com/username/project.git
 ```
 
 ### 5.5.2 推送到新的gitlab
 
 ```bash
-$ cd project
-$ git push --mirror git@example.com/username/newproject.git
+cd project
+git push --mirror git@example.com/username/newproject.git
 ```
 
 会提示没有权限, 在gitlab中把项目的权限保护关掉就好了
@@ -850,7 +850,7 @@ $ git push --mirror git@example.com/username/newproject.git
 ### 5.5.3 本地代码更换gitlab地址
 
 ```bash
-$ git remote set-url origin git@example.com/username/newproject.git
+git remote set-url origin git@example.com/username/newproject.git
 ```
 
 ## 5.6 git rebase

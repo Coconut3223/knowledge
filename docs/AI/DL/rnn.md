@@ -53,7 +53,7 @@
 <figure markdown="span">![](./pics/RNN_3.png)</figure>
 <figure markdown="span">![](./pics/LSTM_2.png)</figure>
 </div>
-<p>All recurrent neural networks have chain repeating modules of neural networks. <br>==standard RNN==: repeating module has a very simple structure, such as only a single tanh layer.<br>==LSTM==: Not a single neural network layer, but four, and interacting in a very special way.</p>
+<p>All recurrent neural networks have chain repeating modules of neural networks. <br><mark>standard RNN</mark>: repeating module has a very simple structure, such as only a single tanh layer.<br><mark>LSTM</mark>: Not a single neural network layer, but four, and interacting in a very special way.</p>
 
 ### pre-knowledge
 
@@ -65,7 +65,17 @@
 
 <div class="grid" style="grid-template-columns: repeat(3, 1fr) !important;" markdown>
 <figure markdown="span" style="grid-column-start: 1; grid-column-end: 3;">![](./pics/LSTM_3.webp){width=500px}</figure>
-<p style="grid-column-start: 3; grid-column-end: 4;">圆形：Neuial Network layer，一层神经网络，也就是$w^tx*b$的操作。区别在于使用的激活函数不同</p>
+<p style="grid-column-start: 3; grid-column-end: 4;">圆形：Neuial Network layer，一层神经网络，也就是$w^Tx*b$的操作。区别在于使用的激活函数不同<br>这里存在 sigmoid（$\sigma(w^Tx*b)$） & tanh（$\text{tanh}(w^Tx*b)$） 两种激活函数<br>方块：Matrix operation 矩阵操作，并且是 <mark>pointwise</mark> 逐元素操作<br> verctor concatenation: 矩阵拼接，变成 $(H_1+H_2)*W$ </p>
+</div>
+
+!!! p "hidden state $h_t$ & cell state $c_t$"
+    相比于原始的 RNN 的 hidden state， LSTM 增加了一个细胞状态 cell state。 尽管 LSTM 中的 cell state & hidden output 都包含有关 LSTM 模型的信息，但它们的角色不同<br>
+    ==hidden state== 可以被看作是**当前时刻**的 LSTM 的“理解”或“编码”信息，可以被传递到下一层的 LSTM 或者用于预测任务.<br>
+    ==cell state== 是用于存储**先前的信息**和计算新的信息，一直在上面传递
+
+<div class="grid" style="grid-template-columns: repeat(5, 1fr) !important;" markdown>
+<figure markdown="span" style="grid-column-start: 1; grid-column-end: 4;">![](./pics/LSTM_4.webp){width=500px}<p>at time t</p></figure>
+<p style="grid-column-start: 4; grid-column-end: 6;">Input:<br>-- $C_{t-1}$ cell state at t-1<br>-- $h_{t-1}$ hidden state at t-1<br>-- $x_t$ 输入的向量 at t <br>Output:<br>-- $C_{t}$<br>-- $h_{t}$<br>细胞状态一直在上面的线传递，</p>4
 </div>
 
 ## GNU Gated Recurrent Unit-GRU
@@ -80,8 +90,10 @@ a variant of LSTM. He retains the characteristics of LSTM to focus and forget un
 - [Long short-term memory network-Long short-term memory | LSTM]
 - [Illustrated Guide to LSTM’s and GRU’s: A step by step explanation]
 - [大名鼎鼎的LSTM详解]
+- [图解LSTM实现cell state 和hidden state和output]
 
 [如何理解RNN？（理论篇）]:https://easyai.tech/blog/rnn-understand/
 [Long short-term memory network-Long short-term memory | LSTM]:https://www.easyai.tech/en/ai-definition/lstm/
 [Illustrated Guide to LSTM’s and GRU’s: A step by step explanation]:https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21
 [大名鼎鼎的LSTM详解]: https://zhuanlan.zhihu.com/p/518848475
+[图解LSTM实现cell state 和hidden state和output]:https://blog.csdn.net/u010087338/article/details/129805575
