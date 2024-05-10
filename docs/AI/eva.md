@@ -336,9 +336,9 @@ Variance的对象是**多个模型**，是相同分布的不同数据集训练�
 ### OF vs UF
 
 <div class="grid" markdown>
-<figure>![](./pics/RES_fit_4.png)</figure>
+<figure markdown="span">![](./pics/RES_fit_4.png)</figure>
 <p>假设红色的靶心区域是学习算法完美的正确预测值，蓝色点为训练数据集所训练出的模型对样本的预测值<br>左边一列的蓝色点比较集中——方差较小，右边一列的蓝色点比较分散——方差较大<br>上边一行的蓝色点比较靠近红色靶心——偏差较小，下边一行的蓝色点比较远离靶心——偏差较大</p>
-<figure>![](./pics/RES_fit_5.jpeg)</figure>
+<figure markdown="span">![](./pics/RES_fit_5.jpeg)</figure>
 <p>点到拟合直线距离和的大小作为偏差的大小<br>选出<u>拟合曲线上的点</u>，然后计算这些点的方差，方差越大表示越离散，拟合直线穿过的点越多，方差往往越大，越容易过拟合</p>
 </div>
 

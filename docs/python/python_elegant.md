@@ -1842,7 +1842,7 @@ set 里的元素必须是 hashable，但 set 本身是 unhashable。如果set �
 
 **Heap queue algorithm (a.k.a. priority queue):**
 
-!!! p 最小堆
+!!! p "最小堆"
     `heapq[0] is smallest`
 
 - properties

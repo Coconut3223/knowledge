@@ -1,9 +1,10 @@
 # Subword Segmentation
 
-<div class="grid" markdown>
-==vocabulary size== 字典的大小<br>
-==step size== 去编码一个句子需要的 tokens数量。the number of tokens required to encode the sentence。 挂钩  decoding efficiency
-
+<div class="grid" style="grid-template-columns: repeat(5, 1fr) !important;" markdown>
+<p style="grid-column-start: 1; grid-column-end: 3;">
+<mark>vocabulary size</mark> 字典的大小<br>
+<mark>step size</mark> 去编码一个句子需要的 tokens数量。the number of tokens required to encode the sentence。 挂钩  decoding efficiency</p>
+<table>
 > "今天吃啥" & "至今不吃"
 >
 > |size|vocabulary | step size|
@@ -11,7 +12,7 @@
 > |6|今/天/吃/啥/至/不 | 4 & 4|
 > |5|今天/吃/啥/至今/不 | 3 & 3|
 > |5|今天/吃/啥/至今/不吃 |3 & 2|
-
+</table>
 </div>
 
 only with a small fixed size of vocabulary (**usually 16k to 32k**), the number of required symbols to encode a sentence will not significantly increase, which is an important feature for an efficient decoding.
@@ -243,7 +244,7 @@ The design of UTF-8 encoding ensures the uniqueness of this recovery process: fo
 
 learn (B)BPE vocabularies jointly on source and target sentences using SentencePiece
 
-![](pics/NMT_1.png)
+![](pics/NMT_1.png){width=80%}
 
 learning rate schedule
 set attention and ReLU dropout to 0.1

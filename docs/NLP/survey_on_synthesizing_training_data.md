@@ -8,7 +8,7 @@ fine-tune lightweight student model for running system
 ## Limitations
 
 1. 对一些像 NER 的 tasks（ICST, NER），不能生成 token-level label (slot tags) [<sup>1</sup>](#reference)
-   - before：use a separate model to do work alignment. __Res:__ noise ↑
+   - before：use a separate model to do work alignment. Res: noise ↑
 2. scoped，不能 control 它的 output
 
 3. LLM 都是在真实的大型数据集上进行训练。由 LLM 合成的 generated data 受到 origin dataset 的影响,進一步 worse performance of the fine-tune model. [<sup>2</sup>](#reference)
@@ -147,7 +147,7 @@ For a given classification task
     Elements: positive sentiment (label)
     Movie review (text type): "This is a great movie"
 
-![](./pics/diversity_accu_1.PNG)
+![](./pics/diversity_accu_1.PNG){width=80%}
 
 ``` python
 openai.Completion.create(
@@ -179,7 +179,7 @@ openai.Completion.create(
 
     !!! question
         - 中文？会有在那50000
-        ![](./pics/diversity_accu_3.PNG)
+        ![](./pics/diversity_accu_3.PNG){width=80%}
         - only 100 tokens for logit biasing
 
 - how gpt generate tokens
@@ -197,8 +197,10 @@ openai.Completion.create(
 
 温度 采样受到统计热力学的启发，其中高温意味着更有可能遇到低能态。在概率模型中，logits 扮演着能量的角色，我们可以通过将 logits 除以温度来实现温度采样，然后将其输入到 softmax 中并获得采样概率
 
-![](./pics/temperature_sampling_1.PNG)
-![](./pics/temperature_sampling_2.PNG)
+
+![](./pics/temperature_sampling_1.PNG){width=80%}
+
+![](./pics/temperature_sampling_2.PNG){width=80%}
 
 !!! quote ""  
     0.3, 0.7, 0.9, and 1.3[<sup>3</sup>](#reference)
@@ -239,8 +241,8 @@ openai.Completion.create(
     the accuracy of the alignment between the generated texts and the specified labels
 
 - 【diversity】average mean pairwise distances[<sup>3</sup>](#reference)
-  - Remote-Clique metric cox2021directed, which is the average mean pairwise distances. S
-  - we embedded generated data with BERT devlin2019bert, then calculated the distances
+    - Remote-Clique metric cox2021directed, which is the average mean pairwise distances. S
+    - we embedded generated data with BERT devlin2019bert, then calculated the distances
 
 - 【utility】similarity between dataset [<sup>3</sup>](#reference)
  We also measured the similarity of the generated dataset to the oracle dataset with the average mean pairwise distances between the two. For similarity, we also used BERT to embed the generated texts.

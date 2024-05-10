@@ -7,7 +7,7 @@ Clustering is the process of dividing the entire data into clusters based on the
 1. all the data points **in a cluster** should be **similar** to each other.
 2. the data points **from different clusters** should be as **different** as possible.
 
-![](./pics/cluster_2.png)
+![](./pics/cluster_2.png){width=60%}
 
 **application:**
 根据付款历史的时间序列对现有客户进行分组/聚类，使类似的客户处于同一聚类中。
@@ -45,7 +45,7 @@ $d(X_i,X_j),\quad X\in\R^{p},i,j=1,\dots,n$
 |全链接 complete-linkage|$\max\limits_{x\in C_1, z\in C_2}\text{dis}(x,z)$|不易收到噪声和孤立点影响<br>趋向分裂为更大尺寸的类<br>偏向球形类|
 |组平均 average-linkage|$\cfrac{1}{C_1C_2}\sum\limits_{x\in C_1}\sum\limits_{ z\in C_2}\text{dis}(x,z)$|^|
 
-![](./pics/dis_1.jpg)
+![](./pics/dis_1.jpg){width=60%}
 
 !!! danger "可不可以在监督性学习使用聚类？"
     ✅。可以创建聚类，在不同集群上构建单独的机器学习模型
@@ -70,7 +70,7 @@ $d(X_i,X_j),\quad X\in\R^{p},i,j=1,\dots,n$
 2. Merge the two closest clusters ! Update the ==proximity matrix== which defines the distances between each point
 3. **Until**: only one single cluster remains.
 
-![](./pics/HeCluster_1.png)
+![](./pics/HeCluster_1.png){width=60%}
 
 > > Consider the following hypothetical distances matrix with group order (1); (2); (3); (4); (5), $D = (d_{ij}) = \begin{bmatrix}0\\9&0\\3&7&0\\6&5&9&0\\11&10&2&8&0\end{bmatrix}$
 
@@ -78,13 +78,13 @@ $d(X_i,X_j),\quad X\in\R^{p},i,j=1,\dots,n$
 
 ==centroid-based==, ==distance-based==, ==a blind guess k clusters==
 
-![](./pics/cluster_1.png)
+![](./pics/cluster_1.png){width=60%}
 
 <div class="grid" markdown>
-<figure markdown="span">![](./pics/KMeans_6.png)</figure>
-<figure markdown="span">![](./pics/KMeans_7.png)</figure>
-<figure markdown="span">![](./pics/KMeans_8.png)</figure>
-<figure markdown="span">![](./pics/KMeans_9.png)</figure>
+<figure markdown="span">![](./pics/KMeans_6.png){width=80%}</figure>
+<figure markdown="span">![](./pics/KMeans_7.png){width=80%}</figure>
+<figure markdown="span">![](./pics/KMeans_8.png){width=80%}</figure>
+<figure markdown="span">![](./pics/KMeans_9.png){width=80%}</figure>
 </div>
 
 !!! p "能否保证找到最优解？"
@@ -101,7 +101,7 @@ minimize the sum of distances **between the points and their respective cluster 
 because the local minimizer will be found for K-Means, some initials may converge at the same point, but some may converge in different local minimizers
 3. May get bad results when points are distributed on manifold yet ambient distance is used.
 
-![](./pics/KMeans_4.png)
+![](./pics/KMeans_4.png){width=60%}
 
 #### Evaluating the choice of K
 
@@ -109,7 +109,7 @@ because the local minimizer will be found for K-Means, some initials may converg
 $$WCSS = \sum_{i=1}^k\sum_{x_i\in C_i}\text{dist}(\text{Centoid}_i, x_i)^2$$
 Then the ==Elbow Method== is then used to choose the best K value based on WCSS
 
-![](./pics/KMeans_5.png)
+![](./pics/KMeans_5.png){width=70%}
 
 #### Mathematical
 
@@ -129,7 +129,7 @@ Each row of Xn,p (i.e., each observation) can be viewed as a noisy version of 
 
 #### Steps
 
-![](./pics/KMeans_1.png)
+![](./pics/KMeans_1.png){width=80%}
 
 1. Pre-specifies the number of clusters K
 2. Select k points as the initial centroids
@@ -140,7 +140,7 @@ Each row of Xn,p (i.e., each observation) can be viewed as a noisy version of 
 Scan through the list of n items, assigning each item to the cluster **whose centroid (mean)** is closest. Each time the n items are reassigned we will **recalculate the cluster mean or centroid for the clusters.**
 4. Repeat 2 until convergence.
 
-![](./pics/KMeans_3.png)
+![](./pics/KMeans_3.png){width=50%}
 
 **Stopping Criteria:**
 
@@ -148,7 +148,7 @@ Scan through the list of n items, assigning each item to the cluster **whose cen
 2. Points remain in the same cluster（完成任务，分好类才是我的核心任务
 3. The maximum number of iterations is reached（没办法，已经尽人事了
 
-![](./pics/KMeans_2.png)
+![](./pics/KMeans_2.png){width=80%}
 
 #### Programming
 
@@ -223,9 +223,11 @@ plt.legend()
 plt.show()
 ```
 
-[K-Means Clustering in Python: A Practical Guide – Real Python]
-[sklearn.cluster.KMeans]
-[The Ultimate Guide to K-Means Clustering: Definition, Methods and Applications]
+## ref
+
+- [K-Means Clustering in Python: A Practical Guide – Real Python]
+- [sklearn.cluster.KMeans]
+- [The Ultimate Guide to K-Means Clustering: Definition, Methods and Applications]
 
 [sklearn.cluster.KMeans]: https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
 

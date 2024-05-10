@@ -122,20 +122,20 @@ $ ls
 
 此时就会出现一个 .git 的隐藏 directory，这就是 local repository。
 以后所有的 git 操作历史提交记录信息全都在此, 只要这个文件夹还存在, 就可以记住我们所有的 git 操作。
-![](./pics/local_git_init_1.png)
+![](./pics/local_git_init_1.png){width=80%}
 
 在 local init 新建的 repository 是没有任何的提交文件，所以也没有 default 的 branch 文件。
 
 - heads  directory 里没有文件，哪怕 HEAD 里指向 main 或者master。
 - objects directory 里没有文件，因为没有版本。
 - 所以用 `git branch -m branch1` 也没有用，因为head里依旧没有文件。
-![](./pics/local_git_init_2.png)
-![](./pics/local_git_init_3.png)
-![](./pics/local_git_init_4.png)
+![](./pics/local_git_init_2.png){width=80%}
+![](./pics/local_git_init_3.png){width=80%}
+![](./pics/local_git_init_4.png){width=60%}
 
 #### GUI init
 
-![](./pics/gui_create_1.png)
+![](./pics/gui_create_1.png){width=70%}
 
 除了 local init 里的东西，还会自动 initial commit
 
@@ -145,7 +145,7 @@ $ ls
 - objects directory 有文件，包括 initial commit 这个版本文件
 - 所以用 `git branch -m branch1` 就有用，而且可以选择branch。
 
-![](./pics/gui_create_2.png)
+![](./pics/gui_create_2.png){width=80%}
 
 ### git config 配置
 
@@ -235,7 +235,8 @@ $ git config -e --global
     - 如果 error， 可以看看 `git ls-files` 在不在暂存区里
   
 - 给版本文件打标签
-![](./pics/tag-1.png)
+
+![](./pics/tag-1.png){width=60%}
 
 ##### 一些操作
 
@@ -317,9 +318,10 @@ $ git config -e --global
 2. 选择要合并的另外一个 branch
 `git merge <another_branch>
 
-![](./pics/merge_1.png)
-![](./pics/merge_2.png)
-
+<div class="grid" markdown>
+<figure markdown="span">![](./pics/merge_1.png)</figure>
+<figure markdown="span">![](./pics/merge_2.png)</figure>
+</div>
 #### 合并冲突
 
 合并代码出现冲突提示。 这个时候不可以进行任何分支切换和commit操作，需要按照提示将冲突解决。
@@ -331,9 +333,9 @@ CONFLICT (content): Merge conflict in README.md
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
-![](./pics/merge_2.png)
-![](./pics/merge_3.png)
-![](./pics/merge_4.png)
+![](./pics/merge_2.png){width=60%}
+![](./pics/merge_3.png){width=80%}
+![](./pics/merge_4.png){width=80%}
 
 1. 查看冲突文件内容
 

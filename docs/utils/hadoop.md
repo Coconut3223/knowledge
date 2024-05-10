@@ -1,6 +1,6 @@
 # (Apache 基金会的) Hadoop
 
-==Hadoop==是一个 **实现了mapreduce算法** 的开源的分布式并行编程框架。open-source implementation of frameworks for reliable, scalable, distributed computing and data storage.
+==Hadoop== 是一个 **实现了mapreduce算法** 的开源的分布式并行编程框架。open-source implementation of frameworks for reliable, scalable, distributed computing and data storage.
 
 **Goals/Requirements:**
 
@@ -48,8 +48,8 @@ Table storage for semi-structured data
 
 ==Mahout==。Machine learning
 
-![](./pics/Hd_1.png)
-![](./pics/Hd_2.png)
+![](./pics/Hd_1.png){width=70%}
+![](./pics/Hd_2.png){width=80%}
 
 ### Hadoop Distributed File System
 
@@ -90,10 +90,10 @@ Central control node runs ==NameNode== to keep track of HDFS directories & fil
 - No need for RAID on normal nodes (Raid is a very expensive storage system supporting parallel IO operations.)
 - **Data Coherency** Write-once-read-many (WORM) access model Client can only append (not override) to existing files
 
-![](./pics/hdfs_1.png)
-![](./pics/hdfs_2.png)
-![](./pics/hdfs_3.png)
-![](./pics/hdfs_4.png)
+![](./pics/hdfs_1.png){width=80%}
+![](./pics/hdfs_2.png){width=80%}
+![](./pics/hdfs_3.png){width=80%}
+![](./pics/hdfs_4.png){width=80%}
 ![](./pics/hdfs_5.png)
 
 #### Architecture
@@ -320,5 +320,5 @@ Need to develop a real HA (high availability) solution
 - Merges FSImage and Transaction Log into a new FSImage in temporary directory
 - Uploads new FSImage to the NameNode§ Transaction Log on NameNode is purged
 
-![](./pics/hdfs_7.png)
-![](./pics/hdfs_8.png)
+![](./pics/hdfs_7.png){width=80%}
+![](./pics/hdfs_8.png){width=80%}

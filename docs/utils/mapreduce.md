@@ -68,9 +68,9 @@ without impacting the quality of service
 
 ## Workflow
 
-![](./pics/MapR_1.png)
-![](./pics/MapR_2.png)
-![](./pics/MapR_3.png)
+![](./pics/MapR_1.png){width=80%}
+![](./pics/MapR_2.png){width=80%}
+![](./pics/MapR_3.png){width=80%}
 
 **key-points：**
 
@@ -141,7 +141,7 @@ Reduce(String key, Iterator values){
 
 ### Wordcount
 
-![](./pics/MapR_4.png)
+![](./pics/MapR_4.png){width=90%}
 
 **Input:**  
 
@@ -202,14 +202,14 @@ reduce(map_result)
 
 ### K-Means with MapReduce
 
-![](./pics/MapR_5.png)
+![](./pics/MapR_5.png){width=80%}
 
 - Each Mapper loads a set of data samples, and assign each sample to a nearest centroid
 - Each Mapper needs to keep a copy of centroids
 
 ### Find the most pleasant date
 
-![](./pics/MapR_6.png)
+![](./pics/MapR_6.png){width=80%}
 
 ```python
 def Map():

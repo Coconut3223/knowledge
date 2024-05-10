@@ -2,8 +2,9 @@
   "MD013": false,
   "MD045": false,
   "MD033": {
-    "allowed_elements": ["u", "kbd", "pre", "div", "br", "p", "figure", "b","mark"]
+    "allowed_elements": ["u", "kbd", "pre", "div", "br", "p", "figure", "b","mark", "sup"]
   },
   "MD046": false,  
-  "MD007": {"indent": 4}
+  "MD007": {"indent": 4},
+  "MD050": {"style": "asterisk"}
 }

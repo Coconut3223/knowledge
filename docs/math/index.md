@@ -98,12 +98,14 @@ $$\begin{align*}
 
 ### 拉格朗日乘子法, Lagrange Multiplier
 
-!!! p "For 求 $f(x_1,\dots,x_n)$ 在 $k$ 个约束条件 $h_i(x) =\le 0, i=1,\dots, k$下的极值。
-    将约束条件函数与原函数联立，从而求出使原函数取得极值的各个变量的解。"
+!!! p "For 求 $f(x_1,\dots,x_n)$ 在 $k$ 个约束条件 $h_i(x) =\le 0, i=1,\dots, k$下的极值"
+    将约束条件函数与原函数联立，从而求出使原函数取得极值的各个变量的解。
 
 $$\text{k 个等式约束: } \min f(x_1,\dots,x_n) \text{ s.t. }h_j(x_1,\dots,x_n)=0, j=1, \dots,k\\
 \Leftrightarrow \min_x\max_\alpha \mathcal{L}(x,\alpha):=\min_x\max_\alpha f(x)+\sum_{j=0}^k\alpha_jh_j(x)$$
+
 To solve:
+
 $$\cfrac{\partial \mathcal{L}}{\partial x}=\cfrac{\partial \mathcal{L}}{\partial \alpha_1}=\dots =\cfrac{\partial \mathcal{L}}{\partial \alpha_k}\xlongequal{SET}0$$
 
 !!! danger "p 个等式条件 $h_j(x_1,\dots, x_n)=0, j=1,\dots,p$ <br> q个不等式条件 $g_k(x_1, \dots, x_n)\red{\le}0, k=1,\dots,q$"
@@ -113,7 +115,9 @@ h_j(x_1,\dots, x_n)=0, j=1,\dots,p\\g_k(x_1,\dots,x_n)\red{\le}0, k=1, \dots,q
 \end{cases}\\
 \Leftrightarrow  \mathcal{L}(x,\lambda,\mu):=f(x)+\sum_{j=0}^p\lambda_jh_j(x)+\sum_{k=1}^q\mu_kg_k(x)\\
 \implies \min_{x}\max_{\lambda,\mu} \mathcal{L}(x,\lambda,\mu)$$
+
 To solve:
+
 $$\cfrac{\partial \mathcal{L}}{\partial x_i}=\cfrac{\partial \mathcal{L}}{\partial \lambda_j}=\cfrac{\partial \mathcal{L}}{\partial \mu_k}\xlongequal{SET}0$$
 
 **证明：$\min\limits_x\max\limits_{\lambda,\mu}$**
@@ -133,9 +137,10 @@ $p^* \& q^*$ 存在 $\implies p^*\ge q^*\begin{cases}p^*=q^*&\text{强对偶}\\p
 证明：$p^*\ge q^*$,
 
 Let $\mathcal{L}(x, \lambda)= f(x)+\lambda h(x)$
-$\lambda_p^*=\max\limits_\lambda \mathcal{L}(x,\lambda)\implies \mathcal{L}(x,\lambda_p^*) \ge\forall x, \mathcal{L}(x, \lambda) $
+$\lambda_p^*=\max\limits_\lambda \mathcal{L}(x,\lambda)\implies \mathcal{L}(x,\lambda_p^*) \ge\forall x, \mathcal{L}(x, \lambda)$
 
-$x_q^*=\min\limits_x \mathcal{L}(x,\lambda)\implies \mathcal{L}(x_q^*,\lambda) \le \forall \lambda, \mathcal{L}(x, \lambda) $
+$x_q^*=\min\limits_x \mathcal{L}(x,\lambda)\implies \mathcal{L}(x_q^*,\lambda) \le \forall \lambda, \mathcal{L}(x, \lambda)$
+
 $$\mathcal{L}(x,\lambda_p^*)\ge\mathcal{L}(x, \lambda)\ge \mathcal{L}(x_q^*,\lambda)\\\implies p^*= \mathcal{L}(x_p^*,\lambda_p^*)\ge \mathcal{L}(x_q^*,\lambda_q^*)=q^*$$
 
 #### KKT
@@ -197,6 +202,7 @@ $$\min_{w^T}\mathcal{L}(w^T)=\frac{1}{2}\epsilon^2=\frac{1}{2}\sum_{i=1}^n(y_i-\
 
 ##### 最大似然估计
 假设 <u>$\epsilon～N(0,\sigma^2)$，服从高斯分布</u>。$\begin{cases}y～N(w^Tx,\sigma^2)\\P(y=y^*)=\cfrac{1}{\sqrt{2\pi}\sigma}\exp(-\cfrac{(y^*-w^Tx)^2}{2\sigma^2})\end{cases}$
+
 $$\max_{w^T}\prod_{i=1}^nP(y_i)=\max_{w^T}\sum_{i=1}^n\log P(y_i)\\\begin{align*}
 \max_{w^T}\mathcal{L}(w^T)&=\sum_{i=1}^n\log \Big[\cfrac{1}{\sqrt{2\pi}\sigma}\exp(-\cfrac{(y_i-w^Tx_i)^2}{2\sigma^2})\Big]\\
 &=\sum_{i=1}^n \Big[-\log(\sqrt{2\pi}\sigma)-\cfrac{(y_i-w^Tx_i)^2}{2\sigma^2}\Big]\\

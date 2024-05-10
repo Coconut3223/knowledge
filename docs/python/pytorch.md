@@ -16,14 +16,14 @@
     <kbd>conda create -n env_name python=? </kbd>
    - 查架构
 
-        ``` python title="查看架构"
-        import platfrorm
-        print(platform.uname()[4])
-        #>>> arm64
-        ```
+    ``` python title="查看架构"
+    import platfrorm
+    print(platform.uname()[4])
+    #>>> arm64
+    ```
 
-![](./pics/torch_download_1.png)
-![](./pics/torch_download_2.png)
+![](./pics/torch_download_1.png){width=80%}
+![](./pics/torch_download_2.png){width=80%}
 
 1. check
 
@@ -204,8 +204,8 @@ Batchsize: 批大小，主要是决定一个Epoch有多少个Iteration
 
 class DataLoader(Generic[T_co]):
     """
-    “抽样式”地少量 batch 加载数据，集 “数据集 dataset”， “抽样 sampler”，“迭代器 iterator” 于一体。
-    可以 单或者多进程 来加载
+    “抽样式”地少量 batch 加载数据，集 “数据集 dataset”， “抽样 sampler”，
+    “迭代器 iterator” 于一体。可以 单或者多进程 来加载
 
     Args:
         - dataset: torch.DataSet
@@ -217,7 +217,8 @@ class DataLoader(Generic[T_co]):
             default = None
             根据 dataset 的性质来决定
             和 shuffle 互斥
-        - batch_sampler: Union[Sampler[Sequence], Iterable[Sequence], None] =  与sampler类似，返回 batch 的 indice
+        - batch_sampler: Union[Sampler[Sequence], Iterable[Sequence], None] 
+            =  与sampler类似，返回 batch 的 indice
             default = None
             和 batch_size, shuffle, sampler, drop_last 互斥
         - num_workers: int = 有多少个子进程
@@ -229,20 +230,24 @@ class DataLoader(Generic[T_co]):
         
     Warning:
         - iterable-style datasets are incompatible with custom samplers first
-        - 设置了 batch_sampler，那么batch_size,shuffle,sampler,drop_last 就不能再制定了
+        - 设置了 batch_sampler，那么batch_size,shuffle,sampler,drop_last 
+        就不能再制定了
     """
     ...
 
-    def __init__(self, dataset: Dataset[T_co], batch_size: Optional[int] = 1,
-                 shuffle: Optional[bool] = None, sampler: Union[Sampler, Iterable, None] = None,
-                 batch_sampler: Union[Sampler[Sequence], Iterable[Sequence], None] = None,
-                 num_workers: int = 0, collate_fn: Optional[_collate_fn_t] = None,
-                 pin_memory: bool = False, drop_last: bool = False,
-                 timeout: float = 0, worker_init_fn: Optional[_worker_init_fn_t] = None,
-                 multiprocessing_context=None, generator=None,
-                 *, prefetch_factor: Optional[int] = None,
-                 persistent_workers: bool = False,
-                 pin_memory_device: str = ""):
+    def __init__(
+        self, dataset: Dataset[T_co], batch_size: Optional[int] = 1,
+        shuffle: Optional[bool] = None, 
+        sampler: Union[Sampler, Iterable, None] = None,
+        batch_sampler: Union[Sampler[Sequence],Iterable[Sequence], None] = None,
+        num_workers: int = 0, collate_fn: Optional[_collate_fn_t] = None,
+        pin_memory: bool = False, drop_last: bool = False,
+        timeout: float = 0, 
+        worker_init_fn: Optional[_worker_init_fn_t] = None,
+        multiprocessing_context=None, generator=None,
+        *, prefetch_factor: Optional[int] = None,
+        persistent_workers: bool = False,
+        pin_memory_device: str = ""):
         ...
 
     def __len__(self) -> int:
@@ -254,8 +259,10 @@ class DataLoader(Generic[T_co]):
         """
         if self._dataset_kind == _DatasetKind.Iterable:
 
-            length = self._IterableDataset_len_called = len(self.dataset)  # type: ignore[assignment, arg-type]
-            if self.batch_size is not None:  # IterableDataset doesn't allow custom sampler or batch_sampler
+            length = self._IterableDataset_len_called = len(self.dataset)  
+            # type: ignore[assignment, arg-type]
+            if self.batch_size is not None:  
+                # IterableDataset doesn't allow custom sampler or batch_sampler
                 from math import ceil
                 if self.drop_last:
                     length = length // self.batch_size
@@ -267,15 +274,13 @@ class DataLoader(Generic[T_co]):
         ...
 ```
 
-[]
+## nn
 
-# nn
+### 一些基本的东西
 
-## 一些基本的东西
+### `Containers`  负责 nn 框架的构建
 
-## `Containers`  负责 nn 框架的构建
-
-### `Module` 所有 NN 的 base class
+#### `Module` 所有 NN 的 base class
 
 可以包括其他的 module. Modules can also contain other Modules, allowing to nest them in a tree structure.
 
@@ -299,7 +304,6 @@ class DataLoader(Generic[T_co]):
     ```
 
 ``` python
-
 class Module:
     """
     所有 nn 模型的 base class 都要继承它
@@ -317,7 +321,7 @@ class Module:
         ... 
 ```
 
-### `Sequential` 类`transforms.Compose`的用法，模型进一步封装
+#### `Sequential` 类`transforms.Compose`的用法，模型进一步封装
 
 !!! p "`torch.nn.Sequential`和 `torch.nn.ModuleList` 的区别"
     - `torch.nn.ModuleList` 就是真的一个储存模型的list
@@ -463,7 +467,7 @@ class Sequential(Module):
         return self
 ```
 
-## nn.xxx & nn.functional.xxx
+### nn.xxx & nn.functional.xxx
 
 ```python
 from torch import nn
@@ -473,7 +477,7 @@ layer_nn = nn.conv2d(...)
 layer_F = F.conv2d(...)
 ```
 
-### Liner
+#### Liner
 
 ``` python
 class Linear(Module):
@@ -501,7 +505,7 @@ class Linear(Module):
     ...
 ```
 
-### Conv
+#### Conv
 
 $$
 \mathcal{U}(-\sqrt{k}, \sqrt{k})
@@ -512,16 +516,12 @@ $$
 -----
 $$
 \text{out}(N_i, C_{\text{out}_j}) = \text{bias}(C_{\text{out}_j}) +
-        \sum_{k = 0}^{C_{\text{in}} - 1} \text{weight}(C_{\text{out}_j}, k) \star \text{input}(N_i, k)
-        \\\begin{cases} N&\text{batch size}\\ C&\text{channel}\\H&\text{height}\\W&\text{width}\\\end{cases}
-
-          .. math::
-              H_{out} = \left\lfloor\frac{H_{in}  + 2 \times \text{padding}[0] - \text{dilation}[0]
-                        \times (\text{kernel\_size}[0] - 1) - 1}{\text{stride}[0]} + 1\right\rfloor
-
-          .. math::
-              W_{out} = \left\lfloor\frac{W_{in}  + 2 \times \text{padding}[1] - \text{dilation}[1]
-                        \times (\text{kernel\_size}[1] - 1) - 1}{\text{stride}[1]} + 1\right\rfloor
+\sum_{k = 0}^{C_{\text{in}} - 1} \text{weight}(C_{\text{out}_j}, k) \star \text{input}(N_i, k)
+\\\begin{cases} N&\text{batch size}\\ C&\text{channel}\\H&\text{height}\\W&\text{width}\\\end{cases}\\
+H_{out} = \left\lfloor\frac{H_{in}  + 2 \times \text{padding}[0] - \text{dilation}[0]
+        \times (\text{kernel\_size}[0] - 1) - 1}{\text{stride}[0]} + 1\right\rfloor\\
+W_{out} = \left\lfloor\frac{W_{in}  + 2 \times \text{padding}[1] - \text{dilation}[1]
+        \times (\text{kernel\_size}[1] - 1) - 1}{\text{stride}[1]} + 1\right\rfloor
 $$
 
 !!! danger "input size"
@@ -529,7 +529,6 @@ $$
     functional ==只可以 [B, C, H, W]==
 
 ``` python hl_lines="3"
-
 class Conv2d(_ConvNd):
     """
     nn.Conv2d
@@ -625,7 +624,7 @@ conv2d = _add_docstr(
 ...
 ```
 
-### Pool
+#### Pool
 
 ```python hl_lines="1"
 class MaxPool2d(_MaxPoolNd):
@@ -668,11 +667,11 @@ class MaxPool2d(_MaxPoolNd):
                             return_indices=self.return_indices)
 ```
 
-### activation
+#### activation
 
 !!! danger "non-inpalce <br> shape：[B, *] 除了必须batchsize，后面 size 都随便"
 
-#### softmax
+##### softmax
 
 $$
 \text{Softmax}(x_{i}) = \frac{\exp(x_i)}{\sum_j \exp(x_j)}
@@ -702,12 +701,12 @@ class Softmax(Module):
     ...
 ```
 
-#### ReLU, rectified linear unit
+##### ReLU, rectified linear unit
 
 $$
 \text{ReLU}(x) = (x)^+ = \max(0, x)
 $$
-![](https://pytorch.org/docs/stable/_images/ReLU.png)
+![](https://pytorch.org/docs/stable/_images/ReLU.png){width=60%}
 
 ```python
 class ReLU(Module):
@@ -730,12 +729,12 @@ class ReLU(Module):
     ...
 ```
 
-#### Sigmoid
+##### Sigmoid
 
 $$
 \text{Sigmoid}(x) = \sigma(x) = \frac{1}{1 + \exp(-x)}
 $$
-![](https://pytorch.org/docs/stable/_images/Sigmoid.png)
+![](https://pytorch.org/docs/stable/_images/Sigmoid.png){width=60%}
 
 ``` python
 class Sigmoid(Module):
@@ -754,9 +753,9 @@ class Sigmoid(Module):
     ...
 ```
 
-### Normalization
+#### Normalization
 
-### Droupout
+#### Droupout
 
 !!! question "如果特征图中的相邻像素具有很强的相关性 (则 i.i.d. dropout 不会使激活正则化，否则只会导致有效学习率下降。"
 
@@ -808,7 +807,7 @@ class Dropout2d(_DropoutNd):
     ...
 ```
 
-### `flatten`
+#### `flatten`
 
 ```python hl_lines="14 17"
 class Flatten(Module):
@@ -876,7 +875,7 @@ for i in range(epoch):
 """ mini-batch """ 
 ```
 
-### `torch.optim`
+#### `torch.optim`
 
 构建一个优化器对象，该对象将保持当前状态，并将根据计算的梯度更新参数。
 
@@ -900,7 +899,7 @@ for i in range(epoch):
     is based on the formula from
     `On the importance of initialization and momentum in deep learning`__.
 
-#### Adam
+##### Adam
 
 ``` python
 class Adam(Optimizer):
@@ -921,7 +920,7 @@ class Adam(Optimizer):
     ...
 ```
 
-#### SGD 随机梯度下降
+##### SGD 随机梯度下降
 
 SGD, Stochastic Gradient Descent(optionally with momentum)
 
@@ -944,7 +943,7 @@ class SGD(Optimizer):
     ...
 ```
 
-#### Adagrad, 自适应随机梯度下降
+##### Adagrad, 自适应随机梯度下降
 
 ```python
 class Adagrad(Optimizer):
@@ -966,9 +965,9 @@ class Adagrad(Optimizer):
     ...
 ```
 
-### `torch.nn.`Loss
+#### `torch.nn.`Loss
 
-#### L1Loss, MAE
+##### L1Loss, MAE
 
 $$
 \text{MAE} = \ell(f)= \begin{cases}\mathbb{E}\vert\hat{y_i}-y_i\vert\in\R&\text{reduction=mean} \\ \Vert\hat{y}-y\Vert_1\in\R&\text{reduction=sum}\\\vert\hat{y}-y\vert\in\R^n&\text{reduction=none}
@@ -994,7 +993,7 @@ class L1Loss(_Loss):
     ...
 ```
 
-#### MSE
+##### MSE
 
 $$
 \text{MSE} = \ell(f)= \begin{cases}\mathbb{E}(\hat{y_i}-y_i)^2\in\R&\text{reduction=mean} \\ \Vert\hat{y}-y\Vert_2\in\R&\text{reduction=sum}\\(\hat{y}-y)^2\in\R^n&\text{reduction=none}
@@ -1020,7 +1019,7 @@ class MSELoss(_Loss):
     ...
 ```
 
-#### CELoss
+##### CELoss
 
 !!! danger "`torch.nn.CrossEntropyLoss()`"
     = `torch.nn.LogSoftmax` + `torch.nn.NLLLoss`
@@ -1087,7 +1086,7 @@ class CrossEntropyLoss(_WeightedLoss):
     ...
 ```
 
-# Save & Load
+## Save & Load
 
 !!! danger "`AttributeError: Can't get attribute 'MyModel' on <module '__main__' from 'xxx.py'>`"
     自定义的模型 必须先import进来，否则就会加载不了
@@ -1161,9 +1160,9 @@ mymode.load_state_dict('./models/mymodel_state.pth')
 #  (sigmoid): Sigmoid()) 
 ```
 
-# representation
+## representation
 
-## `utils.tensorboard`
+### `utils.tensorboard`
 
 !!! danger "目前还是要先下载 tensorflow"
     `TensorFlow installation not found - running with reduced feature set.`
@@ -1264,11 +1263,11 @@ mymode.load_state_dict('./models/mymodel_state.pth')
 !!! danger "`No dashboards are active for the current data set.`"
     [关于解决Tensorboard出现No dashboards are active for the current data set.问题]
 
-# CV
+## CV
 
 - torchvion.
 
-## transforms
+### transforms
 
 !!! danger "一定要关注 compose 的输入和输出，要相互衔接匹配"
 
@@ -1433,7 +1432,7 @@ class Resize(torch.nn.Module):
             ...
 ```
 
-## models
+### models
 
 !!! danger  "现在提供的是 可以自由地将==预训练的 weights== 加载到模型上。（`pretrained=True`被舍用）"
     如果需要预训练的，推荐使用指定版本，因为还提供了每种权重对应的的图像预处理的操作。
@@ -1468,7 +1467,7 @@ class Resize(torch.nn.Module):
     img_transformed = preprocess(img) # 预处理图像
     ```
 
-### vgg16
+#### vgg16
 
 [Very Deep Convolutional Networks for Large-Scale Image Recognition]
 

@@ -97,7 +97,8 @@ bigint|8|
     # 3. 子查询
     select * from t1 where exists (select 1 from t2 where t1.id = t2.id)
     ```
-![](./pics/select_1.PNG)
+
+![](./pics/select_1.PNG){width=40%}
 
 - [SELECT 1 FROM TABLE的作用]
 - [select 1 in SQL]
@@ -470,8 +471,8 @@ from(
 
 - 去重
 
-  !!! p "谨慎使用 DISTINCT & UNION"
-      查询调优的另一个好建议是仅在必要时使用DISTINCT和UNION运算符，因为与它们的查询会导致服务器开销，并通常会增加响应时间。考虑用UNION ALL取代UNION，用GROUP BY取代DISTINCT，以提高流程的效率
+!!! p "谨慎使用 DISTINCT & UNION"
+    查询调优的另一个好建议是仅在必要时使用DISTINCT和UNION运算符，因为与它们的查询会导致服务器开销，并通常会增加响应时间。考虑用UNION ALL取代UNION，用GROUP BY取代DISTINCT，以提高流程的效率
 
     ``` sql
     # 1. 
@@ -600,21 +601,21 @@ order by university;
 
 - 划分
 
-  ``` sql
-  select cols,
-    (
-        case
-            WHEN SCORE = 'A' THEN '优'
-            WHEN SCORE = 'B' THEN '良'
-            WHEN SCORE = 'C' THEN '中' 
-            ELSE '不及格' 
-        end
-    ) as new_col;
-  ```
+    ``` sql
+    select cols,
+        (
+            case
+                WHEN SCORE = 'A' THEN '优'
+                WHEN SCORE = 'B' THEN '良'
+                WHEN SCORE = 'C' THEN '中' 
+                ELSE '不及格' 
+            end
+        ) as new_col;
+    ```
 
     > 现在运营想要将用户划分为25岁以下和25岁及以上两个年龄段，分别查看这两个年龄段用户数量.
     > 本题注意：age为null 也记为 25岁以下
-
+    >
     ``` sql
     select (case 
             when age>=25 then '25岁及以上'

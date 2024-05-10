@@ -164,6 +164,7 @@ Take expectation:
 $$
 \begin{align*}\mathbb E\{(Y-\hat{Y})^2\}&=\mathbb E\{(Y-\hat{\beta}^TX)^2\}\\&\approx\mathbb E\Big(\red {\epsilon}^2-2\red {\epsilon}\cdot n^{-1}X^T\Sigma^{-1}\mathbb X^T\Xi+n^{-2}(\Xi^T\mathbb X\Sigma^{-1}X)^2\Big)\\&\approx\sigma^2-0+\cfrac{p_0}{n}\sigma^2\\&\approx\sigma^2(1+\cfrac{p_0}{n})\end{align*}
 $$
+
 $\implies$ **When n is large, the perfect model has the smallest prediction error**
 
 #### Working Model with More Redundant Variables

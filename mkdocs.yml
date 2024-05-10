@@ -148,7 +148,6 @@ nav:
     - "ASR": NLP/asr.md
     - "Paper": NLP/paper.md
     - "Synthesizing Training Data": NLP/survey_on_synthesizing_training_data.md
-
   - "CV":
     - CV/index.md
   - "SQL":

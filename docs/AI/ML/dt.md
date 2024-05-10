@@ -78,12 +78,11 @@ Variable distribution | uniform-like |many peaks and valleys
 histogram| Flat | many lows and highs
 information|less predictable Less information | more predictable More information
 
-<div class="grid" markdown>
-<figure markdown="span">![](./pics/entropy_2.png)</figure>
-<figure markdown="span">![](./pics/entropy_1.png)</figure>
-</div>
 
-![](./pics/entropy_1.png)
+<div class="grid" style="grid-template-columns: repeat(3, 1fr) !important;" markdown>
+<figure markdown="span" style="grid-column-start: 1; grid-column-end: 3;">![](./pics/entropy_2.png){width=60%}</figure>
+<figure markdown="span" style="grid-column-start: 3; grid-column-end: 4;">![](./pics/entropy_1.png)</figure>
+</div>
 
 缺点：偏好选择具有较多属性值的属性 **高熵分裂，大量小部分**
 
@@ -91,6 +90,7 @@ information|less predictable Less information | more predictable More informatio
 根据定义可知，熵越大，类分布越均匀；熵越小，类分布约倾斜。假设原结点属于各个类的概率相同(真实分布)，熵=1，则分出来的后续结点在各个类上均匀分布，各个后续结点的熵=1，加权后熵 🟰。假设原结点属于各个类的概率不一样，分出来的后续结点不均匀地分布在各个类上，则此时的分类比原有的分类更不均匀，所以熵 ⬇️
 
 ##### C4.5
+
 为了惩罚**高熵分裂的属性**，引入 **分裂信息 split information** 的项 $-\sum\limits_{j=1}^kp(j)\log_2p(j)$ 作为分母，阻碍选择属性值均匀分布的属性。$p(j)$:当前结点中划分属性第j个属性值所占有样本的比例。
 
 $$\begin{align*}
@@ -109,6 +109,7 @@ $$\text{Gini}(t)=1-\sum_{j=1}^kp(j)^2$$
 $\frac{b}{2a}=\frac{1}{2}$ 开口向下，此时是最高点。
 
 #### 误分类率
+
 $$\text{Error}(t)=1-\max_ip(i|t)$$
 - $\max=1-\frac{1}{c} \text{ 均匀分布，}\min=0 \text{仅属于一个类}$
 
@@ -180,7 +181,7 @@ over-fitting due to
 
 若我们把每个属性是为坐标空间的一个坐标轴，则d个属性值描述的样本对应了d维空间的一个具体的数据点，对样本的分类 其实是在这个样本空间中寻找不同类样本之间的分类边界。
 
-![](./pics/DT_1.png)
+![](./pics/DT_1.png){width=80%}
 
 ||单变量 DT| 多变量 DT|
 |--|--|--|

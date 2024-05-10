@@ -79,8 +79,6 @@ confidence(associate rule)置信度 A推B 而不是B推A
 
 `min_sup` : a minimum support threshold $\implies$ whether a frequent itemset $L_k$
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6a574370-5850-40f6-b1e2-e320e74cec72/Untitled.png)
-
 ### How to develop
 
 1. 设定一个minimum support threshold，找到 frequent itemset $L_k$
@@ -97,4 +95,3 @@ confidence(associate rule)置信度 A推B 而不是B推A
     Given min_sup$=\frac{2}{9}$, support({I1,I2})>$\frac{2}{9}\implies$ {I1,I2} is a frequent itemset
     confidence({I1,I2}⇒{I3})$=\frac{\text{support}(\{I1,I2,I3\})}{\text{support}(\{I1,I2\})}=\frac{2/9}{4/9}=\frac{1}{2}$
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0204077f-0706-4e36-84fd-2ce758b2070a/Untitled.png)

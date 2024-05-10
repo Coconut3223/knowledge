@@ -16,7 +16,6 @@ SVM maps training examples to points in space so as to maximise the width of the
     E --N--> D --计算内积困难--> C
     Z --> F --N--> G
     F --Y--> B
-
     ```
 
 ## 理论
@@ -27,7 +26,7 @@ SVM maps training examples to points in space so as to maximise the width of the
 B_{-1}:& w^Tx_{-1}+b=-1\\B_1:&w^Tx_{1}+b=1
 \end{cases}$
 
-![](./pics/SVM_4.png)
+![](./pics/SVM_4.png){width=60%}
 
 **SVM 对噪声敏感的原因**
 SVM 的目的：求出与支持向量有最大化距离的直线，以每个样本为圆心，该距离为半径作圆，可以近似为圆内的点与该样本属于相同分类。如果出现了噪声，那么这个噪声所带来的错误分类将最大化。
@@ -49,10 +48,12 @@ B_{1}:&w^Tx_{1}+b=-1\\B_2:&w^Tx_2+b=1\end{align*}\implies
 w^T(x_2-x_1)=2=w^T\overrightarrow{x_2x_1}\\
 w^T\overrightarrow{x_2x_1}=\Vert w^T\Vert*\Vert\overrightarrow{x_2x_1}\Vert*\cos<w^T, \overrightarrow{x_2x_1}>=\Vert w^T\Vert * \Vert\gamma\Vert=2\\
 \implies \Vert\gamma\Vert=\cfrac{2}{\Vert w\Vert} $$
+
 $$\text{Question:} \max \gamma = \max_{w^T,b}\cfrac{2}{\Vert w^T\Vert}, \text{s.t.}\begin{cases} w^Tx_i+b\gt1&y_i=+1\\w^Tx_i+b\le-1&y_i=-1
 \end{cases}\\
 \Leftrightarrow \min_{w^T,b}\cfrac{1}{2}\Vert w^T\Vert, \text{ s.t. }\space y_i(w^Tx_i+b)\ge 1,  \forall i
 $$
+
 $(x_i,y_i)$ is a sample, which y is its actual type, $w^Tx+b$ is its prediction.
 
 为了<u>在求导的时候方便约调系数 + 使用 KKT 条件</u>，$\min_{w^T,b}\cfrac{1}{2}{w^T}^{\red{2}}, \text{ s.t. }\space \red{-}(y_i(w^Tx_i+b)-1)\red{\le} 0,  \forall i$
@@ -65,35 +66,46 @@ $(x_i,y_i)$ is a sample, which y is its actual type, $w^Tx+b$ is its prediction.
     To solve, $\cfrac{\partial\mathcal{L}}{\partial x}=\cfrac{\partial\mathcal{L}}{\partial \lambda}=\cfrac{\partial\mathcal{L}}{\partial \mu}\xlongequal{SET}0$
     To achive optimal value, $\begin{cases} \frac{\partial\mathcal{L}}{\partial x}=0\\h(x)=0\\\mu g(x)=0
     \end{cases}$
+
 $$\mathcal{L}(w^T,b, \alpha):= \cfrac{1}{2} {w^T}^2-\sum_{i=1}^n\alpha_i(y_i(w^Tx_i+b)-1)\\\space\\\min_{w^T,b}\max_{\alpha}\mathcal{L}(w^T,b, \alpha)$$
+
 根据拉格朗日的对偶性，
+
 $$\max_{\alpha}\min_{w^T, b}\mathcal{L}(w^T,b, \alpha)$$
 求 $\cfrac{\partial\mathcal{L}}{\partial w^T}=\cfrac{\partial\mathcal{L}}{\partial b}\xlongequal{SET}0$
 
 $$\begin{align*}\cfrac{\partial\mathcal{L}}{\partial w^T}&=w^T-\sum_{i=0}^n\alpha_iy_ix_i&=0\\
 \cfrac{\partial\mathcal{L}}{\partial b}&=-\sum_{i=0}^n\alpha_iy_i&=0
 \end{align*}$$
+
 得到 ${w^T}^*=\sum\limits_{i=0}^n\alpha_iy_ix_i$ 回代 $\mathcal{L}(w^T,b, \alpha)$, 消掉 $w^T, b$
+
 $$\begin{align*}
 \mathcal{L}(w^T,b, \alpha)&=\frac{1}{2} {w^T}^2-\sum_{i=1}^n\alpha_i(y_i(w^Tx_i+b)-1)\\
 &=\frac{1}{2}\Big(\sum_{i=0}^n\alpha_iy_ix_i\Big)^2
 -\sum_{i=1}^n\alpha_iy_i\cdot\big(\sum\limits_{j=0}^n\alpha_jy_jx_j\big)\cdot x_i+\sum_{i=1}^n\alpha_i\\
 &=-\frac{1}{2}\Big(\sum_{i=0}^n\alpha_iy_ix_i\Big)^2+\sum_{i=1}^n\alpha_i\\
 &=-\frac{1}{2}\sum_{i=0}^n\sum_{j=0}^n\alpha_i\alpha_jy_iy_jx_i^Tx_j+\sum_{i=1}^n\alpha_i\end{align*}$$
+
 $$\max_{\alpha}-\frac{1}{2}\Big(\sum_{i=0}^n\alpha_iy_ix_i\Big)^2+\sum_{i=1}^n\alpha_i$$
+
 求 $\cfrac{\partial\mathcal{L}}{\partial \alpha}\xlongequal{SET}0$
 
 $$\cfrac{\partial\mathcal{L}}{\partial \alpha_i}=-(\sum_{i=0}^n\alpha_iy_ix_i)\cdot y_ix_i+1=0$$
+
 解得
+
 $$\begin{align*}
 {w^T}^*&=\sum_{i=0}^n\alpha_iy_ix_i\\
 b^*&=\frac{1}{2}\Big[\max_{i:y=1}{w^T}^*x_i+\min_{i:y=-1}{w^T}^*x_i\Big]\\
 f(x)&=\Big(\sum_{i=0}^n\alpha_iy_ix_i\Big)\cdot x+b\\
 &=\sum_{i=0}^n\alpha_iy_i<x_i, x> + b
 \end{align*}$$
+
 而以上的过程需要满足 **KKT 条件** $\begin{cases}
 a_i\ge0&\text{可行性}\\y_i(w^Tx+b)-1\ge0&\text{可行性}\\\alpha_i\cdot(y_i(w^Tx+b)-1)=0  &\text{互补松弛性}  
 \end{cases}$
+
 $\implies \forall (x_i,y_i), \begin{cases}
 \alpha_i=0 &\text{样本对函数无影响}\\
 \alpha_i\neq 0, y_i(w^Tx+b)=1&\text{支持向量，样本位于决策边界上}
@@ -148,6 +160,7 @@ $\implies$ 训练完成后，大部分的训练样本都不需要保留，<u>最
 ---
 > > Consider the classification problem with data $\{(x_i,y_i)\}_{i=1}^m$ , where for each i $x_i\in\R, y_i\in\{±1\}$. Recall the hinge loss $φ_h(x) = \max\{0, 1−x\}$. Consider the SVM on $R^1$.
 > > In particular, we set $λ = 1, m = 2, (x_1,y_1)=(1,−1), (x_2,y_2)=(-2,1)$ Find $(c^*, b^*)$
+> >
 > > $$\begin{align*}(c^*,b^*)&=\min_{c,b\in\R}\Epsilon_\lambda(c,b)\\\Epsilon_\lambda(c,b)&=\frac{1}{m}\sum_{i=1}^m\phi_h(y_i(cx_i+b))+\lambda_c^2
 \end{align*}$$
 >
@@ -184,9 +197,9 @@ f(x)\xrightarrow{\text{\red{高维映射}}}f(\phi(x))=w^T\phi(x)+b=\sum\limits_{
 \sum\limits_{i=1}^n\alpha_iy_i=0\\\alpha_i\ge0
 \end{cases}$
 
-![](./pics/SVM_1.png)
-![](./pics/SVM_2.png)
-![](./pics/SVM_3.png)
+![](./pics/SVM_1.png){width=60%}
+![](./pics/SVM_2.png){width=60%}
+![](./pics/SVM_3.png){width=60%}
 
 !!! p "$\red{<\phi(x_i)^T\phi(x_j)>}$ 是 $x_i, x_j$ 映射到高维空间之后的内积。由于维度很高计算困难，所以提出 ==核函数== $\kappa(x_i,x_j)$"
 
