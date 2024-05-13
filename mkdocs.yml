@@ -132,11 +132,10 @@ nav:
       - "CNN": AI/DL/cnn.md
       - "MLP": AI/DL/mlp.md
       - "RNN": AI/DL/rnn.md
+      - "Transformer": AI/DL/transformer.md
       - "Generative Model": AI/DL/generative_model.md
       - "Transfer Learning": AI/DL/transferlearning.md
       - "Tricks": AI/DL/tricks.md
-      - "Transformer": AI/DL/transformer.md
-
   - "NLP":
     - NLP/index.md
     - "Embedding": NLP/embedding.md
@@ -161,6 +160,7 @@ nav:
     - "Hadoop": utils/hadoop.md
     - "Map Reduce": utils/mapreduce.md
     - "VScode": utils/vscode.md
+    - "HTML CSS": utils/html_css.md
   - "Math":
     - math/index.md
   - "Temp":

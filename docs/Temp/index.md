@@ -271,10 +271,3 @@ def asr_from_json(data_wav_path: str, asr_gt_path: str):
 
     write_json(test_dict, DATASET_DIR + asr_gt_path) 
 ```
-
-```
-<div class="grid" style="grid-template-columns: repeat(3, 1fr) !important;" markdown>
-<figure markdown="span" style="grid-column-start: 1; grid-column-end: 3;">![](./pics/LSTM_3.webp){width=500px}</figure>
-<p style="grid-column-start: 3; grid-column-end: 4;">圆形：Neuial Network layer，一层神经网络，也就是$w^tx*b$的操作。区别在于使用的激活函数不同</p>
-</div>
-```
