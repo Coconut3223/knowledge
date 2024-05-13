@@ -197,10 +197,9 @@ openai.Completion.create(
 
 温度 采样受到统计热力学的启发，其中高温意味着更有可能遇到低能态。在概率模型中，logits 扮演着能量的角色，我们可以通过将 logits 除以温度来实现温度采样，然后将其输入到 softmax 中并获得采样概率
 
+![](./pics/temperature_sampling_1.png){width=80%}
 
-![](./pics/temperature_sampling_1.PNG){width=80%}
-
-![](./pics/temperature_sampling_2.PNG){width=80%}
+![](./pics/temperature_sampling_2.png){width=80%}
 
 !!! quote ""  
     0.3, 0.7, 0.9, and 1.3[<sup>3</sup>](#reference)
@@ -212,8 +211,8 @@ openai.Completion.create(
     [The Curious Case of Neural Text Degeneration]
     We generally recommend altering this or top_p but not both.
 
-![](./diversity_accu_4.PNG)
-![](./diversity_accu_5.PNG)
+![](./pics/diversity_accu_4.PNG)
+![](./pics/diversity_accu_5.PNG)
 
 ## metrics
 
@@ -227,7 +226,7 @@ openai.Completion.create(
     - diversity
 
 - 【fidelity】
-  ![](./fidelity_1.PNG)
+  ![](./pics/fidelity_1.PNG)
 - 【utility】**Feature importance score**[<sup>4</sup>](#reference)
     檢查順序
 - 【utility】**QScore？？？？？？？？？？？？？？？？**:
@@ -246,20 +245,20 @@ openai.Completion.create(
 
 - 【utility】similarity between dataset [<sup>3</sup>](#reference)
  We also measured the similarity of the generated dataset to the oracle dataset with the average mean pairwise distances between the two. For similarity, we also used BERT to embed the generated texts.
-![](./diversity_accu_2.PNG)
+![](./pics/diversity_accu_2.PNG)
 
 - 【diversity】**vocalbulary size** for lexical diversity of datasets[<sup>2</sup>](#reference)
-![](./attrprompt_3.PNG)
+![](./pics/attrprompt_3.PNG)
 
 - 【diversity】**cosine similarity** for the diversity from the semantic perspective[<sup>2</sup>](#reference)
     - the cosine similarity is calculated based on the embedding of Sentence-BERT Reimers and Gurevych
     - cosine similarity ↓  diversity ↑
-![](./attrprompt_4.PNG)
+![](./pics/attrprompt_4.PNG)
 
 - 开销
 
     !!! quote ""  
-        attributed prompt只需要simple prompt 5%的开销（主要用于query chatgpt）就可以达到和后者一样的效果。
+        attributed prompt 只需要 simple prompt 5%的开销（主要用于 query chatgpt）就可以达到和后者一样的效果。
 
 ## Reference
 

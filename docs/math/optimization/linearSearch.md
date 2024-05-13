@@ -1,6 +1,6 @@
 # Linear Search
 
-![](./pics/GD_1.png)
+![](./pics/SGD_1.png)
 
 ## Background
 
@@ -354,7 +354,7 @@ $$\theta_{t+1}=\theta_t-\cfrac{\iota}{\sqrt{\hat{v}_t}+\epsilon}\hat{m}_t$$
 
 But the convergence analysis contains some **mistakes** in the original paper. ADAM can be **non-convergent**!
 
-![](./pics/SGD_9.png)
+![](./pics/SGD_9.jpeg)
 
 ---
 

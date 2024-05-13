@@ -1152,7 +1152,7 @@ group by uid
 order by exam_cnt asc, question_cnt desc;
 ```
 
-[SELECT 1 FROM TABLE的作用]: (https://blog.51cto.com/knifeedge/5786611)
+[SELECT 1 FROM TABLE的作用]: https://blog.51cto.com/knifeedge/5786611
 [select 1 in SQL]: https://www.jianshu.com/p/0c5dbee8838b
 [int(1)和int(11)的区别]: https://www.modb.pro/db/336129
 [日期函数]: https://www.nowcoder.com/knowledge/intro-index?kcid=20

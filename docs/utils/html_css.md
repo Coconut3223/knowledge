@@ -14,7 +14,7 @@
 **展示：**
 
 <div class="grid" style="grid-template-columns: repeat(3, 1fr) !important;" markdown>
-<figure markdown="span" style="grid-column-start: 1; grid-column-end: 3;">![](./pics/LSTM_3.webp)</figure>
+<figure markdown="span" style="grid-column-start: 1; grid-column-end: 3;">![]()</figure>
 <p style="grid-column-start: 3; grid-column-end: 4;">展示效果：左图右字，分了3格，左图占2， 右字占1</p>
 </div>
 

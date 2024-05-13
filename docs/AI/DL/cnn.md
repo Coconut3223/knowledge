@@ -163,7 +163,7 @@ It computes the dot product over the channels.
 
 所以我们常说CNN对于那种长序列 long sequence input 不太友好，因为对于两个间隔比较远的 pixels 来说，要是想获得他们之间的关系特征，就需要堆叠很多个卷积层，才能获得他们的关系特征。
 
-![](./pics/CNN_25.png){width=60%}
+![](./pics/CNN_25.jpeg){width=60%}
 
 #### about Stride s：移动的方格
 

@@ -23,7 +23,7 @@
     - `id_rsa.pub`: public key， 公开信息
 
 - 具有保密的数字签名
-![](know1.jpg)
+(know1.jpg)
 
 ## Docker
 

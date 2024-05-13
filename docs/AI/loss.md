@@ -137,7 +137,7 @@ $$L_i=\rho_τ(a)=(τ-I\{a<0\})*a=\begin{cases}τa&a>0\\(τ-1)a&a<0\end{cases}$$
 
 **Targets: conditional median** $\iff f^*(x)=τ-\text{th quantile of }(Y|X=x)=\argmin_f\mathbb\{\Vert Y-f(X)\Vert_1｜X=x\}$
 
-![](./pics/Loss_9.jpeg)
+![](./pics/Loss_9.png)
 
 - proof:
   Assume:

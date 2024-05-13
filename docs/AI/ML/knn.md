@@ -26,7 +26,7 @@
 |Minkowski|$d_{Lp}(a, b)=\sqrt{\sum\limits_{i=1}^n(a_i-b_i)^2}$||
 | inf-dis| $\max\|a_i-b_i\|$||
 
-![](./pics/dis_2.jpg){width="60%"}
+![](./pics/dis_2.png){width="60%"}
 
 ==Hamming Distance==
 
