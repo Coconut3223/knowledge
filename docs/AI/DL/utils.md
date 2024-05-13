@@ -14,9 +14,14 @@ Estimating neural network memory consumption
 <p><b>Test time</b><br>Memory to store outputs of intermediate layers (forward pass)<br>Memory to store parameters</p>
 </div>
 
+![](./pics/Memonry_2.webp)
+![](./pics/Memonry_1.webp)
+
 ### Model size
 
 > CNN
+>
+> !!! danger "per sample"
 > ![](./pics/model_size_1.webp){width=80%}
 >
 > !!! p "一个 filter 的深度(通道数)要和 input 的深度(通道数)一样"
@@ -35,6 +40,12 @@ Estimating neural network memory consumption
 > after Maxpool： 14W \* 14H \* 32D = 6272
 > after Fnn1: 128
 > after Fnn2: 10 = output
+
+### optimization
+
+
+
+
 
 **GPU momory size:**
 
