@@ -76,3 +76,62 @@ For acoustic feature, 80 dimensional log-mel filterbanks are extracted with a st
 character error rate (CER) 纯 Mandarin
 word error rate (WER) 纯 English
 mix error rate (MER) 各自语言用各自统计
+
+## [New Datasets and Controllable Iterative Data Augmentation Method for Code-switching ASR Error Correction]
+
+[New Datasets and Controllable Iterative Data Augmentation Method for Code-switching ASR Error Correction]: https://aclanthology.org/2023.findings-emnlp.543.pdf
+
+!!! quote Abstract
+    With the wide use of automatic speech recognition(ASR) systems, researchers pay more attention to the ASR error correction task to improve the quality of recognition results. In particular, ASR in bilingual or multilingual settings, namely code-switching ASR, has greater challenges and research value. In this paper, we first present code-switching ASR correction datasets obtained from solid ASR systems and automatic annotators. **The datasets contain Chinese-English code-switching dialogues of bilingual speakers in Singapore, Malaysia, and Hong Kong.** **Based on this task, we propose a controllable iterative (CI) data augmentation method for improving the performance of mainstream ASR error correction systems.** With a small amount of training data, our proposed method has the ability to iteratively produce abundant pseudo parallel data from the monolingual corpus for Chinese-English code-switching ASR correction. **Results of experiments show that our method achieves the best performance compared with the rulebased, back-translation-based data augmentation methods and large language model ChatGPT**
+
+With a similar scale of augmented data, our proposed controllable iterative method achieves the best performance in both MaxMatch (M2) scorer (Dahlmeier and Ng, 2012) and MER metrics on SEAME-C and ASCEND-C datasets.
+
+Besides, we find that this task is challenging, and LLM method is far from achieving satisfactory results at now
+
+Our contributions are summarized as follows:
+
+1. We propose two datasets **SEAME-C & ASCEND-C** for the challenging Chinese-English code-switching ASR error correction task.
+2. To address the problem of lacking sufficient training data, we propose the controllable iterative data augmentation method that can iteratively generate abundant code-switching ASR error correction instances from the monolingual corpus with small-scale labeled training data.
+3. Extensive experiments show the superiority of our proposed controllable iterative method. Moreover, combining the pseudo data produced by the rule-based and controllable iterative methods can further improve the performance of error correction models.
+
+data augmentation method in text error correction.
+
+<figure markdown="span">![alt text](./pics/CIDA_1.png)<p>对话的内容形式，基本一个句子10个 tokens 以上</p><figure>
+
+- 跟随原数据集的划分
+- remove bad cases（太短，单语）
+
+[SEAME: a Mandarin-English  Code-switching Speech Corpus in South-East Asia]: https://www.researchgate.net/publication/221481268_Mandarin-English_code-switching_speech_corpus_in_South-East_Asia_SEAME
+
+## [SEAME: a Mandarin-English Code-switching Speech Corpus in South-East Asia]
+
+Mandarin-English  code-switching
+
+!!! quote Abstract
+    In **Singapore and  Malaysia**, people often  speak a  mixture of Mandarin and English within a single sentence. We call such sentences ==intra-sentential code-switch sentences==. **In this paper, we  report  on  the  development of  a Mandarin-English  code-switching spontaneous speech corpus: SEAME. The corpus is developed as part of a multilingual speech recognition project and  will  be  used  to  examine  how  Mandarin-English  code-switch  speech  occurs  in the  spoken  language in  South-East Asia.**  Additionally,  it  can  provide  insights  into  the development  of  ==large  vocabulary  continuous  speech recognition (LVCSR)== for code-switching speech. The corpus collected consists of intra-sentential code-switching utterances that  are  recorded  under  **both  interview  and  conversational settings**.  This  paper  describes  the  corpus  design  and  the analysis of collected corpus.
+
+language boundary detection (LBD), language identification (LID)
+
+As  the corpus  is  developed  for  spontaneous  code-switching  speech research,  our  recordings  consist  of  interviews  and conversations  without  scripts.
+
+UTF-8 code
+
+there are two speakers in each interview setup, an interviewer who asks  questions  and  an  interviewee  who  answers.
+Only  the interviewee‟s speech is recorded using a close talk microphone.
+
+> 既要多样性回答，又要引导回答者 双语回复：hobbies, movies, books, university life, working life,  special topics  and  others
+> 你 叁加 什麽 CCA (Which co-curricular activity do you participate in?)
+> 谈谈 你 喜欢 的fruits (talk about your favorite fruits)
+
+mainly informal and non-speech  sounds  often  occur,  
+
+Target speech: this category dictates that the utterance is intra-sentential  code-switching  speech,  and  it  contains  both Mandarin and English segments within one utterance.
+
+Abbreviation and proper noun: eg. „CCA‟, is the abbreviation for co-curricular activity and „Choa Chu Kang‟, is the name of a road Singapore.
+
+From  the SEAME corpus, we find that on average, the number of turns of language switch for each code-switching utterance is 2.8 for Malaysian  and  3.1  for  Singaporean  speakers.
+
+> This  example  has  3 language turn
+> 你们 那些 guys，每次 唱 的 时候，sing so much louder.
+> It is straightforward to count the  number of English word in each turn,  but it is not as easy to  do so for Chinese text. For consistency, we first segment a Chinese phrase/segment into lexical words with a forward maximal-length matching algorithm as shown in Example
+> In general, people tend to switch to English just for one word. This accounts for 50% and 70% of the total sentences from Singapore and Malaysia respectively. This observation of speaking style in code-switching utterance coincides with what are reported in  Hong Kong and Taiwan
