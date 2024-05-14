@@ -33,3 +33,6 @@
 
 ![](./pics/ppt_7.png)
 
+!!! warning "选定ppt主题字体可在默认字体上更换，这样更快。"
+
+[PPT（PowerPoint）更改默认等线字体](https://blog.csdn.net/qq_42539194/article/details/111317271)

@@ -136,6 +136,7 @@ nav:
       - "Generative Model": AI/DL/generative_model.md
       - "Transfer Learning": AI/DL/transferlearning.md
       - "Tricks": AI/DL/tricks.md
+      - "Utils": AI/DL/utils.md
   - "NLP":
     - NLP/index.md
     - "Embedding": NLP/embedding.md
@@ -161,6 +162,7 @@ nav:
     - "Map Reduce": utils/mapreduce.md
     - "VScode": utils/vscode.md
     - "HTML CSS": utils/html_css.md
+    - "PPT": utis/PPT.md
   - "Math":
     - math/index.md
   - "Temp":
