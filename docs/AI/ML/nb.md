@@ -42,8 +42,9 @@ $$P(A_i|C) = \cfrac{N_{i,C}+\alpha}{N_C+\alpha\times(\#A_i)}$$
 $\#A_i:=$ the total number of classes that Ai possibly belong to
 $\alpha\gt0$ is a parameter. Usually set as 1.
 
+
 > > New sample: Name=human; GiveBirth=yes; LayEggs=no; CanFly=no; HaveLegs=yes; Class=?
->
+> ![](./pics/nb_1.png)
 > mammal=5; Non-mammal=10, $\alpha=1$
 > calculate $P(A_i|C)$
 >

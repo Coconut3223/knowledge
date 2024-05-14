@@ -43,9 +43,13 @@ Estimating neural network memory consumption
 
 ### optimization
 
+In practice, we want to do mini-batch SGD:
+● More stable gradient estimates
+● Faster training on modern hardware
+Size of batch is limited by model architecture, model size, and hardware memory. May need to reduce batch size for training larger models.
+This may affect convergence if gradients are too noisy.
 
-
-
+![alt text](./pics/memory_3.png)
 
 **GPU momory size:**
 
@@ -53,11 +57,23 @@ Estimating neural network memory consumption
 - Tesla K40: 12GB
 - Tesla K20: 5GB
 
+**Estimating computational complexity:**
+
+==FLOPS | flop/s, Floating point operations per second== 衡量运算时计算性能，在使用浮点数科学运算时很有用。
+
+在 deep NN 里的计算都被 FC & conv layers 里的**加乘 multiply-adds** 主宰，所以我们在估算计算复杂度的时候，可以直接 estimate the number of FLOPs (multiply-adds) in the forward pass。而忽略掉 非线性的操作、dropout、normalization layers...
+
+![](./pics/memory_4.png)
+
+> ![](./pics/memory_5.png)
+> 
 
 **Refernce:**
 
 - [Memory usage and computational considerations]
-- 
+- [CNN 模型所需的计算力flops是什么？怎么计算？]
 
 
 [Memory usage and computational considerations]:https://imatge-upc.github.io/telecombcn-2016-dlcv/slides/D2L1-memory.pdf
+[CNN 模型所需的计算力flops是什么？怎么计算？]:https://zhuanlan.zhihu.com/p/137719986
+
