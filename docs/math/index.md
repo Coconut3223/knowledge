@@ -3,6 +3,7 @@
 ## logrithm
 
 在数据处理中，经常会把原始数据取对数之后再处理，无论是在画图，还是在 da 里。
+讓我們在處理**指數級增長的事物時具有更大的靈活性(對數幫助我們處理“非線性”數據。)**。與普遍看法相反，指數增長並不總是像一棵樹長到天空一樣——**它僅僅意味著數據以相當恆定的速度複合（或衰減）**
 
 **为什么能这样做：**<br>
 log 是单调增函数，不会改变数据的相对关系。
@@ -40,8 +41,20 @@ log 是单调增函数，不会改变数据的相对关系。
 
 !!! question "数据集有负数，可不可以通过加一个底数，使得整体数据为正再log 处理"
 
+!!! danger “关于趋势的错觉：增加量 & 增长速率”
+    增加量 $=Y-X$, 增加速率 $=\cfrac{Y-X}{X}$
+    增加量大不代表增加速率大，而是要进行计算。通过 raw data 我们能感觉“量”的变化，通过 log data 我们能感到“速率的变化”。<br>
+    $\begin{cases}x:=\log_{10}X\\y:=\log_{10}Y\end{cases}\implies \cfrac{Y-X}{X}=\cfrac{10^y-10^x}{10^x}=y-x-1$
+    log data 中 y 轴变化越多，增长率越大，所以 log data ：<br>
+    <mark>刻度线斜率⬆️🟰增长率⬆️<br>刻度线斜率➖🟰增长率➖<br>刻度线斜率⬇️🟰增长率⬇️</mark>
 
-[告诉你为什么数据要取对数](https://zhuanlan.zhihu.com/p/106232513)
+![](./pics/log_3.png)
+前 50 天病例从 0 增长远低于 10w（看起来依旧在0的附近），后 50 天病例从不到 30w 飙到了 50w。从量的变化来说，越后面增加的量越大。
+但是从感染率的变化来说，前50天的感染率迅速飙升，后30天的感染率已维持稳定，证明已经逐步稳住趋势或者感染人数已经接近饱和，已经涨不了多少。
+
+- [告诉你为什么数据要取对数](https://zhuanlan.zhihu.com/p/106232513)
+- [What’s A Logarithm?](https://readmedium.com/whats-a-logarithm-cca50d031241)
+- [Logarithms — What, Why and How](https://towardsdatascience.com/logarithms-what-why-and-how-ff9d050d3fd7)
 
 
 协方差　衡量一个变量与另一个变量（在数值和方向上）一致变化程度的方式。
