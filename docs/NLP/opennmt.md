@@ -319,6 +319,10 @@ Then, applying mixed fine-tuning (Chu et al., 2017) on this new baseline using i
 
 You can also convert M2M-100 model to the CTranslate2 format for better efficiency as explained here.
 
+### tensorboard
+
+[Running TensorBoard](https://forum.opennmt.net/t/running-tensorboard/4242)
+
 ## Ref
 
  [神经机器翻译（NMT）的一些重要资源分享](https://zhuanlan.zhihu.com/p/29338282)
@@ -329,3 +333,9 @@ You can also convert M2M-100 model to the CTranslate2 format for better efficien
 [](https://leonis.cc/sui-sui-nian/2022-12-16-opennmt-tutorial-quickstart.html)
 
 [Open-Source Toolkit for Neural Machine Translation]:https://aclanthology.org/P17-4012.pdf
+
+## Temp
+
+[How is Accuracy calculated ?](https://github.com/OpenNMT/OpenNMT-py/issues/1944)
+
+[Discrepency between training and tranlsation](https://forum.opennmt.net/t/discrepency-between-training-and-tranlsation/4765)

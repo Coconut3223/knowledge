@@ -96,8 +96,9 @@ RNN 比较擅长解决 想要的信息 & 相关的信息 距离较近。
     dim(c) = dim(h)<br> shape of cell state = shape of hidden state
     > 以 遗忘门 举例：
     > $f_t^{d1\times d2}:=\sigma(W_f^{d1\times(d1+d3)}[h_{t-1}, x_t]^{(d1+d3)\times d2}+b_f)$
-    > $c_{t-1}^{d1\times d2}\underline{pointwise multiplfy}f_t^{d1\times d2}$
-    ![](./pics/LSTM_5.webp)
+    > $c_{t-1}^{d1\times d2}\underline{\text{pointwise multiplfy}}f_t^{d1\times d2}$
+    >
+    ![](./pics/LSTM_5.webp){width=50%}
 
 ==forget gate==  决定：用当前的判断 $f$：要记得多少过去的信息 $c_{t-1}$ <br>
 ==input gate== 决定：用当前的判断 $i$：要加入多少当前的信息 $\tilde{c}_{t}$ <br>
@@ -109,7 +110,7 @@ RNN 比较擅长解决 想要的信息 & 相关的信息 距离较近。
 
 $$f_t=\sigma(W_f[h_{t-1}, x_t]+b_f)$$
 
-![](./pics/LSTM_6.gif)
+![](./pics/LSTM_6.gif){width=80%}
 
 ### input gate 输入门
 
@@ -117,13 +118,13 @@ $$f_t=\sigma(W_f[h_{t-1}, x_t]+b_f)$$
 
 $$i_t = \sigma(W_i[h_{t-1}, x_t]+b_i)\\\tilde{c}_t=\text{tanh}(W_c[h_{t-1}, x_t]+b_c)$$
 
-![](./pics/LSTM_7.gif)
+![](./pics/LSTM_7.gif){width=80%}
 
 然后进行 cell state 的 update：昨日的信息 $ f_t * c_{t-1}$ 有需要遗忘的，今天的信息 $i_t * \tilde{c}_t $ 也同样有需要遗忘的
 
 $$c_t=f_t*c_{t-1}+i_t* \tilde{c}_t$$
 
-![](./pics/LSTM_8.gif)
+![](./pics/LSTM_8.gif){width=80%}
 
 ### output gate 输出门
 
@@ -131,9 +132,9 @@ cell state $c_t$ 已更新，要过一遍 tanh 传递给下一轮的 hidden stat
 
 $$o_t=\sigma(W_o[h_{t-1}, x_t]+b_o)\\h_t=o_t*\text{tanh}(c_t)$$
 
-![](./pics/LSTM_9.gif)
+![](./pics/LSTM_9.gif){width=80%}
 
-![](./pics/LSTM_10.png)
+![](./pics/LSTM_10.png){width=80%}
 
 t 时刻的 hidden state $h_t$ 既作为 hidden state 继续向前流动，又作为 t时刻的输出，来进行解码和完成任务。
 
@@ -148,7 +149,7 @@ GRU 将 LSTM 的 forget gate & input gate 整合到一个单独的 update gate�
 !!! p "更少的 tensor operation 更快的训练速度。"
     !!! danger "但性能上谁更好，不确定，还是要真正 train 之后才知道。"
 
-![](./pics/GRU_2.webp)
+![](./pics/GRU_2.webp){width=60%}
 
 ![](./pics/GRU_3.png)
 

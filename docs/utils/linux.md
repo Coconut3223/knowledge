@@ -470,11 +470,27 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 ![image-20221027221354137](https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027221354.png)
 
-### df命令
+### 资源相关
 
-查看磁盘占用
+显示根目录下每个文件和目录的磁盘使用空间 `du` (disk usage)
 
-![image-20221027221413787](https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027221413.png)
+<div class="grid" markdown>
+<figure markdown="span">![](./pics/linux_du1.png)<p>`df [-k]` 默认以千字节为单位显示磁盘空间信息</p></figure>
+<figure markdown="span">![](./pics/linux_du2.png)<p>`df -h` 以KB、MB、GB的单位来显示，可读性高</p></figure>
+<figure markdown="span">![](./pics/linux_du3.png)<p>`df -h -d 1` 在 `-h` 的条件上再加一个“depth=1”只看一层</p></figure>
+<figure markdown="span">![](./pics/linux_du4.png)<p>`du -h -d 1 | sort -h` 再排序一下<br><b>【！！！】</b></p></figure>
+</div>
+
+显示**磁盘分区**上可以使用的磁盘空间 `df`
+
+<figure markdown="span">![](./pics/linux_df1.png)<p>`df [-k]` 默认以千字节为单位显示磁盘空间信息</p></figure>
+<figure markdown="span">![](./pics/linux_df2.png)<p>`df -h` 以KB、MB、GB的单位来显示，可读性高【！！！】</p></figure>
+
+系统中空闲的、已用的**物理内存及swap内存,及被内核使用的buffer** `free`, 它是对 /proc/meminfo 收集到的信息的一个概述
+
+<figure markdown="span">![](./pics/linux_free.png)</figure>
+
+[Linux中 du （详解）、 df （详解）和 free（详解）以及它们的区别](https://blog.csdn.net/qq_19167629/article/details/80915834)
 
 ### iostat命令
 

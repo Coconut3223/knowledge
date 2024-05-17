@@ -61,14 +61,15 @@ This may affect convergence if gradients are too noisy.
 ![](./pics/memory_4.png)
 
 > ![](./pics/memory_5.png)
-> 
 
 **Refernce:**
 
 - [Memory usage and computational considerations]
 - [CNN 模型所需的计算力flops是什么？怎么计算？]
 
-
 [Memory usage and computational considerations]:https://imatge-upc.github.io/telecombcn-2016-dlcv/slides/D2L1-memory.pdf
 [CNN 模型所需的计算力flops是什么？怎么计算？]:https://zhuanlan.zhihu.com/p/137719986
 
+## tensorboard
+
+[pytorch：本地使用tensorboard可视化](https://blog.csdn.net/Caesar6666/article/details/127245418)

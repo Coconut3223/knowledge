@@ -1,4 +1,6 @@
-# PPT
+# microsoft
+
+## PPT
 
 根据不同的场景选择，要考虑互动方式、制作难度、是否需要炫酷的动画效果。
 •直接在分析工具里讲解（Tableau）
@@ -36,3 +38,15 @@
 !!! warning "选定ppt主题字体可在默认字体上更换，这样更快。"
 
 [PPT（PowerPoint）更改默认等线字体](https://blog.csdn.net/qq_42539194/article/details/111317271)
+
+## Excel
+
+``` python
+let
+    fileContent = File.Contents("C:\Users\zxouyang\Downloads\yue_test.json"),
+    json = Json.Document(fileContent),
+    table = Table.FromList(json, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+    expandedTable = Table.ExpandRecordColumn(table, "Column1", {"src", "tgt"})
+in
+    expandedTable
+```
