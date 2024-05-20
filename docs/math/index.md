@@ -303,3 +303,48 @@ If X is greater than FY, our classifier says that OK, we are going to classify s
 Right.
 Because the density, the likelihood that it comes from cost X is greater than class Y.
 Right. And we are going to cut our decision our best through just now says that OK, in this case we are going to classify the sample into class X.
+
+## Entropy 熵
+
+==Entropy 熵==。是一種對物理系統之無秩序或亂度的量度。
+
+!!! p "信息量 & 熵 就是互补的关系，信息量就是负熵。"
+    熵 可以用来衡量接收到的信息，获得信息后，<br>
+    系统越无序越随机，熵增；系统越有序越确定，熵减。
+
+| ?                        | High Entropy     | Low Entropy                     |
+|--------------------------|------------------|---------------------------------|
+| Distribution of variable | uniform like     | may have many peaks and valleys |
+| histogram                | Flat             | may have many lows and highs    |
+| Values sampled from it   | less predictable | more predictable                |
+| information(about label) | Less             | More                            |
+
+> We flip two different coins independently for 16 times, which have the following results:<br>
+> Sequence 1 : 0 0 0 1 0 1 0 1 0 0 0 1 0 0 0 0 [0:1=12:4]<br>
+> Sequence 2 : 0 1 1 0 0 1 0 1 0 1 0 1 0 1 1 0 [0:1=8:8]<br>
+> Compute the information content (entropy) of the outcome of tossing these two coins, respectively.<br>
+> I(conin_toss_1)= $-0.75\log_2(0.75)-0.25\log_2(0.25)=0.811$ bits <br>
+> I(conin_toss_2)= $-0.5\log_2(0.5)-0.5\log_2(0.5)=1$ bits <br>
+
+### 起源
+
+信息论中熵的概念首次被香农提出，目的是寻找一种高效/无损地编码信息的方法：以编码后数据的平均长度来衡量高效性，平均长度越小越高效；同时还需满足“无损”的条件，即编码后不能有原始信息的丢失。这样，香农提出了熵的定义：**无损编码事件信息的最小平均编码长度**
+
+==霍夫曼碼 Huffman Code==。对高可能性事件用短编码，对低可能性事件用长编码。
+
+<div class="grid" style="grid-template-columns: repeat(3, 1fr) !important;"markdown>
+<figure markdown="span" style="grid-column-start: 1; grid-column-end: 3;">![](./pics/entropy_1.webp)</figure>
+<p style="grid-column-start: 3; grid-column-end: 4;">alpha 要发一串信息给 beta， 发送的信息是一个随机量，概率并不均等。通过编码的平均长度验证哪个编码比较有效率。</p>
+</div>
+
+<div class="grid" style="grid-template-columns: repeat(3, 1fr) !important;"markdown>
+<figure markdown="span" style="grid-column-start: 1; grid-column-end: 3;">![](./pics/entropy_2.webp)</figure>
+<p style="grid-column-start: 3; grid-column-end: 4;">单纯直接二进制编码需要平均 24/40 的编码长度，霍尔曼编码只需要平均 15/40 的编码长度</p>
+</div>
+
+<div class="grid" style="grid-template-columns: repeat(3, 1fr) !important;"markdown>
+<figure markdown="span" style="grid-column-start: 1; grid-column-end: 3;">![](./pics/entropy_3.webp)<p>霍夫曼編碼長度 & Entropy 之間的關係</p></figure>
+<p style="grid-column-start: 3; grid-column-end: 4;">采用 2 为基，$E=-P(x)\log_2^P(x)$<br>$E(A)=-\cfrac{1}{4}\log_2\cfrac{1}{4}=\cfrac{1}{4}\log_24=2/8$</p>
+</div>
+
+[Entropy (熵)是甚麼？在資訊領域的用途是？](https://medium.com/%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7-%E5%80%92%E5%BA%95%E6%9C%89%E5%A4%9A%E6%99%BA%E6%85%A7/entropy-%E7%86%B5-%E6%98%AF%E7%94%9A%E9%BA%BC-%E5%9C%A8%E8%B3%87%E8%A8%8A%E9%A0%98%E5%9F%9F%E7%9A%84%E7%94%A8%E9%80%94%E6%98%AF-1551e55110fa)

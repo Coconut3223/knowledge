@@ -15,11 +15,11 @@ Knowledge Data science, Reasoning, Statistics, Nature Language Process (NLP), Pl
 
 ![](./pics/AI_2.png){width=80%}
 
-|diff|Traditional  ML|DL|
-|--|--|--|
-|feature|feature engineering|feature learning|
-|domain-specific knowledge|more|less|
-|model capacity |low |high |
+|            diff           |    Traditional ML   |        DL        |
+|:-------------------------:|:-------------------:|:----------------:|
+|          feature          | feature engineering | feature learning |
+| domain-specific knowledge |         more        |       less       |
+|       model capacity      |         low         |       high       |
 
 ## Terminology
 
@@ -186,13 +186,13 @@ Best-first search is neither complete nor optimal ✅
 
 ![](./pics/BestFS_1.png){width=40%}
 
-|step|open|closed|notes|
-|--|--|--|--|
-|1 | [S70] | [ ] | S=0+70|
-|2 | [A80, B85] | [S70] | A=45+35 < B=55+30|
-|3 | [B85, C100] | [A80, S70] | B85 < B_A=45+30+30<br>B85 < C= 45+25+30 |
-|4 | [G100, C100] |  [B85, A85, S70] |G=55+45 =C100|
-|5 |[]|[G100, C100, B85, A85, S70] |Goal reached. Stop.|
+| step | open         | closed                      | notes                                                 |
+|------|--------------|-----------------------------|-------------------------------------------------------|
+| 1    | [S70]        | [ ]                         | S=0+70                                                |
+| 2    | [A80, B85]   | [S70]                       | A=45+35 < B=55+30                                  |
+| 3    | [B85, C100]  | [A80, S70]                  | B85 < B_A=45+30+30<br>B85 < C= 45+25+30 |
+| 4    | [G100, C100] | [B85, A85, S70]             | G=55+45 =C100                                         |
+| 5    | []           | [G100, C100, B85, A85, S70] | Goal reached. Stop.                                   |
 
 Solution path : S-B-G
 
@@ -285,25 +285,6 @@ interpretation.
 > |--|--|--|
 > |State1|5|6|
 > |State2|3|4|
-
-## dt
-
-|?|High Entropy|Low Entropy|
-|--|--|--|
-|Distribution of variable| uniform like  | may have many peaks and valleys|
-|histogram |Flat|may have many lows and highs|
-|Values sampled from it|  less predictable|more predictable|
-|information(about label) | Less| More|
-
-> We flip two different coins independently for 16 times, which have the following results:
->
-> Sequence 1 : 0 0 0 1 0 1 0 1 0 0 0 1 0 0 0 0 [0:1=12:4]
->
-> Sequence 2 : 0 1 1 0 0 1 0 1 0 1 0 1 0 1 1 0 [0:1=8:8]
-> Compute the information content (entropy) of the outcome of tossing these two coins, respectively.
->
-> I(conin_toss_1)= -0.75log2(0.75)-0.25log2(0.25)=0.811 bits
-> I(conin_toss_2)= -0.5log2(0.5)-0.5log2(0.5)=1 bits
 
 ## kmeans
 
