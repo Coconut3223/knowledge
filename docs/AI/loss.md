@@ -172,49 +172,48 @@ $$L_i=-\log\Big(\cfrac{\exp(s_{y_i})}{\sum\limits_j\exp(s_j)}\Big)$$
 
 Prevent the model from doing *too* well on training data, control 复杂度
 
-## according to problem
+according to problem
 
-### classification
+## Classification
 
-- data: $(X_i,Y_i),i=1,\dots,n,X_i\in\R^p,Y_i$ is categorical
+- data: $(X_i,Y_i),i=1,\dots,n,X_i\in\R^p, X\in\R^{n\times p}, Y_i$ is categorical
 - Classifier: $\mathcal{F}=\{f:f(\cdot)\in \text{dom}(Y)\}$
-- input: $X_i\in\R^{p}\iff X\in\R^{n\times p}$
-- output: $\hat{y_i}\in \text{dom}(Y)$
 
-因为Y是属于label型，并没有 numerical meaning，我们只在乎**whether sample is assigned into the correct label or not**
+Y 是类别属性 without numerical meaning，我们只在乎 **whether sample is assigned into the correct label or not**。
 
 回归的时候处理的是误差，所以要最小化，而现在考虑的是联合概率，我们希望概率尽可能大，所以要最大化
 
 <figure markdown="span">![](./pics/classi_1.png){width=40%}<p>多分类<br> Adjust the output of neural network</p></figure>
 
-#### the number of success 错有多少的角度
+**the number of success 错有多少的角度** 。我们先想到的是：Indictor & 0-1 loss
 
-因为是类别，所以没有numerical意义，只有属于和不属于。所以我们先想到的是：Indictor & 0-1 loss
+### From 0-1 loss
 
-##### From 0-1 loss
+==Empirical Risk with 0-1 Loss==. with $Y_i\in\{-1,1\}$
 
-==Empirical Risk with 0-1 Loss==.
-$$\min_f R(f) =\cfrac{1}{n}\sum\limits_{i=1}^nI(f(X_i≠Y_i))$$
+$$\min_f R(f) =\cfrac{1}{n}\sum\limits_{i=1}^nI(f(X_i≠Y_i))\Leftrightarrow\max_f R(f)=\cfrac{{1}}{n}\sum\limits_{i=1}^nf(X_i, \theta)\times Y_i$$
 
 !!! danger "0-1 loss is non-continuous, non-smooth."
     <div class="grid" markdown>
     <figure markdown="span">![](./pics/Loss_1.png){width=40%}<p>non-continuous, non-smooth</p></figure>
-    <p>but we expect: <b>continuous, smooth</b><br> 💡 <u>Surrogate Loss function 代理</u>。Proper surrogate loss function will lead to a consistent classifier.</p>
+    <p>but we expect: <b>continuous, smooth</b><br> 💡 <u>Surrogate Loss function 代理损失函数</u>。Proper surrogate loss function will lead to a consistent classifier. </p>
     </div>
 
-##### Surrogate Loss function
-
-==Surroogate Loss Function==。$L_i=\phi(f(X_i,\theta)\times Y_i) $.
-$\phi$ is continuous and decreasing.
-
-==Empirical Risk with Surroogate Loss Function==。
-$$\min_f R(f) =\cfrac{1}{n}\sum\limits_{i=1}^n\phi(f(X_i,\theta)\times Y_i)$$
+==Surrogate Loss function 代理损失函数==. $L_i=\phi(L_i) $, $\phi$ is continuous and <u>decreasing</u>.
 
 **properties of** $\phi(\cdot):$
 
 1. continuous: 能通过梯度求解优化
 2. decreasing: $f(Χ_i,\theta)Y_i\uparrow\iff \phi(f(X_i,\theta)\times Y_i)\downarrow $
 $\begin{cases}Y_i=+1&\xrightarrow{\text{force}} f(X_i,\theta)>0\uparrow\implies\hat{Y_i}=+1 \\Y_i=-1&\xrightarrow{\text{force}} f(X_i,\theta)<0\downarrow \implies \hat{Y_i}=-1\end{cases}$
+
+<div class="grid" markdown>
+==Empirical Risk with 0-1 Loss==
+
+==Empirical Risk with Surrogate Loss Function==
+<p>$\max_f R(f)=\cfrac{{1}}{n}\sum\limits_{i=1}^nf(X_i, \theta)\times Y_i$</p>
+<p>$\min_f R(f) =\cfrac{1}{n}\sum\limits_{i=1}^n\phi(f(X_i,\theta)\times Y_i)$</p>
+</div>
 
 |  | $\phi(\cdot)$ | Loss Function |
 | --- | --- | --- |
@@ -225,11 +224,11 @@ $\begin{cases}Y_i=+1&\xrightarrow{\text{force}} f(X_i,\theta)>0\uparrow\implies\
 
 ![](./pics/Loss_2.png){width=50%}
 
-#### The Likelihood 似然的角度 Cross Entropy
+### The Likelihood 似然的角度
 
 ==The Likelihood Function==
 
-$\small{[P(_i=(1,0,...)|X_i=x)]^{I(Y_i=(1,0,...))}\times\dots\times [P(Y_i=(0,...,1)|X_i=x)]^{I(Y_i=(0,...,1))}}\\
+$\small{[P(Y_i=(1,0,...)|X_i=x)]^{I(Y_i=(1,0,...))}\times\dots\times [P(Y_i=(0,...,1)|X_i=x)]^{I(Y_i=(0,...,1))}}\\
 =\prod\limits_{j=1}^{\text{\#category}}[P(Y_i=j|X=x)]^{I(Y_i=j)}\\
 =[\hat{y_{i1}}]^{I(Y_{i1}=\red{1})}\times[\hat{y_{i2}}]^{I(Y_{i2}=\red{1})}\times\dots\times [\hat{y_{ij}}]^{I(Y_{ij}=\red{1})}\times\dots, \red{\begin{cases}\hat{y_i}=(\hat{y_{i1}},...,\hat{y_{ij}}\dots)\\\hat{y_{ij}}=P(Y_i=j|X=x)\\\hat{y_{ij}}\in[0,1],\sum\limits_{j=1}^m\hat{y_{ij}}=1\end{cases}}\\
 =[\hat{y}_{i1}]^{Y_{i1}}\times[\hat{y}_{i2}]^{Y_{i2}}\times\dots\times [\hat{y}_{ij}]^{Y_{ij}}\times\dots,\qquad \red{Y_{ij}\in\{0,1\}:=X_i\text{是不是属于}j类}$
@@ -238,7 +237,7 @@ $$L(Y_i|X_i)=\prod \limits_{j=1}^{\text{\#category}}[\hat{y}_{ij}]^{Y_{ij}}=[\ha
 
 ==Log Likelihood Function==. $l(Y_i|X_i)=\log(L(\cdot))=\sum\limits_{j=1}^{\text{\#category}}Y_{ij}\times\log[\hat{y_{ij}}]\\\qquad =Y_{i1}\log[\hat{y}_{i1}]+Y_{i2}\log[\hat{y}_{i2}]+\dots+Y_{ij}\log[\hat{y}_{ij}]+\dots$
 
-##### Cross Entropy
+### Cross Entropy
 
 ==Cross Entropy Loss==. $\text{CELoss}_i =-\sum\limits_{j=1}^{\text{\#category}}Y_{ij}\times \log \hat{y}_{ij}$
 

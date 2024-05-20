@@ -56,7 +56,6 @@ log 是单调增函数，不会改变数据的相对关系。
 - [What’s A Logarithm?](https://readmedium.com/whats-a-logarithm-cca50d031241)
 - [Logarithms — What, Why and How](https://towardsdatascience.com/logarithms-what-why-and-how-ff9d050d3fd7)
 
-
 协方差　衡量一个变量与另一个变量（在数值和方向上）一致变化程度的方式。
 
 ## 笛卡尔积
