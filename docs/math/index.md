@@ -330,12 +330,24 @@ Right. And we are going to cut our decision our best through just now says that 
 
 信息论中熵的概念首次被香农提出，目的是寻找一种高效/无损地编码信息的方法：以编码后数据的平均长度来衡量高效性，平均长度越小越高效；同时还需满足“无损”的条件，即编码后不能有原始信息的丢失。这样，香农提出了熵的定义：**无损编码事件信息的最小平均编码长度**
 
-==霍夫曼碼 Huffman Code==。对高可能性事件用短编码，对低可能性事件用长编码。
+对于 N 种信息，使用 0-1 的二值 bit，需要 $\log_2N$ bits 表示。在这样的情况下，每一个事件表示都不能缺少一位，否则就会引起歧义，同时也不需要多余的 bits 来进行编码。所以每个表示的位数都是恒定 $\text{AVL}=\log_2N(P_1+\dots+P_N)=\log_2N$(恒定的)
+
+但其实可以选择在无损的情况下，把高可能事件使用短编码(减少位数)，对低可能事件使用长编码（增加位数）。这就是 ==霍夫曼碼 Huffman Code==。
 
 <div class="grid" style="grid-template-columns: repeat(3, 1fr) !important;"markdown>
 <figure markdown="span" style="grid-column-start: 1; grid-column-end: 3;">![](./pics/entropy_1.webp)</figure>
-<p style="grid-column-start: 3; grid-column-end: 4;">alpha 要发一串信息给 beta， 发送的信息是一个随机量，概率并不均等。通过编码的平均长度验证哪个编码比较有效率。</p>
+<p style="grid-column-start: 3; grid-column-end: 4;">alpha 要发一串信息给 beta， 发送的信息是一个随机量，概率并不均等。通过编码的平均长度验证哪个编码比较有效率。<br><b>在霍尔曼编码中，每一个事件的表示位数并不是恒定，在一些高可能事件 AE 里仅采用两位甚至一位进行表示，在 BD 里采用更多的位数进行表示</b></p>
 </div>
+
+!!! p "缩短位数的同时相应的对某些事件的表示进行增加位数，否则会引起歧义"
+    如果在霍尔曼编码的时候，只缩减 AE 的编码，BD 维持原形
+
+    |A|B|C|D|E
+    |--|--|--|--|--|
+    |10(0)|001|010|011|0(00)|
+
+    就会产生歧义：010 = 010 C ｜ 0_10 E_A 
+    所以其实就是通过减少一些表示的位数来缩减平均编码长度，又通过增加一些表示的位数来消除歧义。<br> 平均编码长度又跟概率挂钩，所以选择高概率缩减，低概率增加消除歧义。
 
 <div class="grid" style="grid-template-columns: repeat(3, 1fr) !important;"markdown>
 <figure markdown="span" style="grid-column-start: 1; grid-column-end: 3;">![](./pics/entropy_2.webp)</figure>
@@ -346,5 +358,24 @@ Right. And we are going to cut our decision our best through just now says that 
 <figure markdown="span" style="grid-column-start: 1; grid-column-end: 3;">![](./pics/entropy_3.webp)<p>霍夫曼編碼長度 & Entropy 之間的關係</p></figure>
 <p style="grid-column-start: 3; grid-column-end: 4;">采用 2 为基，$E=-P(x)\log_2^P(x)$<br>$E(A)=-\cfrac{1}{4}\log_2\cfrac{1}{4}=\cfrac{1}{4}\log_24=2/8$</p>
 </div>
+
+**那么怎么确认无损编码的最小平均大小，也就是熵？**
+
+**用每种报文类型的最小编码大小来计算平均编码大小。**
+
+再说一次：一般用 bits 来对 N 种信息表示，需要 $\log_2N$ bits。<br>
+换言之，如果一种信息在 N 次出现一次，所需的**最小大小**是 $\log_2N$。
+
+!!! p "为什么这里是最小的大小是 $\log_2N$，不是说有些表示要延长位数吗？"
+    还是以ABCDE的事情为例子：
+    **最小单位是1次。** BD 出现的概率是 $\cfrac{1}{16}$,也就是 16 次里出现一次，这里的 N 是 16，而不是5种信息的5。所需最小大小是 $\log_2(16)=4\neq\log_25$
+
+$$\log_2N=-\log_2(\cfrac{1}{N})=-\log_2(P)\\\text{AVL=Entropy}=-\sum_iP(i)\log_2P(i)$$
+
+### 熵的类比 & 意义
+
+关于熵，有很多类比：无序、不确定性、惊喜、不可预测性、信息量等等。
+
+如果熵很高，就意味着我们没有很多高概率事件进行缩减编码，每个信息的编码都很大（信息量大），当事件的可能性都相差不大，那么随机性就会很大；如果熵很低，意味着我们有很多高概率事件来缩减编码，我们更容易收到短的编码就是（信息量少），某一事件可能性越大，事情就充满确定性。
 
 [Entropy (熵)是甚麼？在資訊領域的用途是？](https://medium.com/%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7-%E5%80%92%E5%BA%95%E6%9C%89%E5%A4%9A%E6%99%BA%E6%85%A7/entropy-%E7%86%B5-%E6%98%AF%E7%94%9A%E9%BA%BC-%E5%9C%A8%E8%B3%87%E8%A8%8A%E9%A0%98%E5%9F%9F%E7%9A%84%E7%94%A8%E9%80%94%E6%98%AF-1551e55110fa)
