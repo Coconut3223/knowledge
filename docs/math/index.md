@@ -372,10 +372,69 @@ Right. And we are going to cut our decision our best through just now says that 
 
 $$\log_2N=-\log_2(\cfrac{1}{N})=-\log_2(P)\\\text{AVL=Entropy}=-\sum_iP(i)\log_2P(i)$$
 
+!!! summary "熵告诉我们遵循特定概率分布的事件的理论最小平均编码大小。"
+
 ### 熵的类比 & 意义
 
 关于熵，有很多类比：无序、不确定性、惊喜、不可预测性、信息量等等。
 
 如果熵很高，就意味着我们没有很多高概率事件进行缩减编码，每个信息的编码都很大（信息量大），当事件的可能性都相差不大，那么随机性就会很大；如果熵很低，意味着我们有很多高概率事件来缩减编码，我们更容易收到短的编码就是（信息量少），某一事件可能性越大，事情就充满确定性。
 
-[Entropy (熵)是甚麼？在資訊領域的用途是？](https://medium.com/%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7-%E5%80%92%E5%BA%95%E6%9C%89%E5%A4%9A%E6%99%BA%E6%85%A7/entropy-%E7%86%B5-%E6%98%AF%E7%94%9A%E9%BA%BC-%E5%9C%A8%E8%B3%87%E8%A8%8A%E9%A0%98%E5%9F%9F%E7%9A%84%E7%94%A8%E9%80%94%E6%98%AF-1551e55110fa)
+### Estimate Entropy ~ Cross-Entropy
+
+$$\text{Entropy}=-\sum_iP(i)\log_2P(i)=\mathbb{E}_{x\sim P}(-\log_2P(x))$$
+
+如果知道事情的概率分布，就可以计算它的熵。但是如果不知道，就无法计算熵，所以需要估计概率分布。$Q:=\hat{P}$
+
+<div class="grid" markdown>
+Groud truth<br> $\text{E}=\mathbb{E}_{x\sim P}(-\log_2P(x))$
+
+Estimated <br> $\hat{\text{E}}=\mathbb{E}_{x\sim Q}(-\log_2Q(x))$
+</div>
+
+但是估计的 Q 同时影响事件的概率 & 事件的编码大小，导致 预测的期望最小编码的结果 & 真正的熵相差很大，也有可能阴差阳错之下相距很小。因此单纯 预测熵 & 真实熵 的比较并不重要，重要的是 **预测的编码方案** 和 **理论的最小编码方案** 是否接近。
+
+!!! p "实际应用的编码大小 & 理论最小编码大小"
+    重视的编码方案，其实就是说 重视的：是否知道哪些是高可能事件，哪些是低可能事件。也就是从 单一事件的最小需要 $-\log_2P(x)$ 又落脚概率上，牵扯上分布。所以说为什么是衡量两个分布的距离。
+
+!!! danger "实际应用的编码大小：基于预测的 Q 制定编码方案，实际用的时候是真实地根据 P 来用。"
+    在两种期望值计算中**使用了相同的真实分布**。比较的是理论上的最小编码和实际使用的编码。<br>
+    对于期望值，我们应该使用真实概率 P，因为它说明了事件的分布情况。对于编码大小，我们应该使用 Q，因为 Q 是用来对信息进行编码的。<br>
+    简而言之，我们正在交叉检查编码大小，这就是交叉熵中 "交叉 "的含义。
+
+<div class="grid" markdown>
+gt: Entropy<br> $\text{E}=\mathbb{E}_{x\sim P}(-\log_2P(x))$
+
+CrossEntropy <br> $\hat{\text{E}}=\mathbb{E}_{x\sim P}(-\log_2Q(x))$
+</div>
+
+==CrossEntropy 交叉熵==。$H(P,Q)=\mathbb{E}_{x\sim P}\log Q(x)$
+
+- $H(P,Q)\gt H(P)，H(P,Q)\xlongequal{P=Q}H(P)$ 交叉熵大于等于熵, 只有当 $P=Q$ 等号成立
+- $H(P,Q)\neq H(Q,P)$
+
+### Cross-Entropy as a Loss Function
+
+<div class="grid" style="grid-template-columns: repeat(3, 1fr) !important;" markdown>
+<figure markdown="span" style="grid-column-start: 1; grid-column-end: 2;">![](./pics/entropy_5.png)![](./pics/entropy_4.png)</figure>
+
+<div class="admonition danger" style="grid-column-start: 2; grid-column-end: 4;">
+<p class="admonition-title">"可以将一种热编码视为每幅图像的概率分布"</p>
+<p>当 $P_1=[1,0,0,0,0]$, 是狗的概率 =100%, $ H(P_1)= 0$.<br> 模型 $Q1：Q1_1=[.4,.3,.05,.05,.2]$ 是狗的概率 =40%<br> $H(P_1,Q1_1)=\mathbb{E}_{x\sim P_1}-\log_2Q1_1=-\sum_iP_1(i)\log_2Q1_1(i)=-1\log0.4+0*\dots=-log0.4$ <br>模型 $Q2：Q2_1=[.98,.01,0,0,.01]$ 是狗的概率 =98%<br> $H(P_1,Q2_1)=\mathbb{E}_{x\sim P_1}-\log_2Q2_1=-\sum_iP_1(i)\log_2Q2_1(i)=-1\log0.98+0*\dots=-log0.98$ <br> $H(P_1, Q1_1)>>H(P_1Q2_1)>H(P_1)=0$</p>
+</div>
+</div>
+交叉熵将模型的预测与标签（即真实的概率分布）进行比较。随着预测越来越准确，交叉熵会下降。如果预测是完美的，交叉熵就会变为零。因此，交叉熵可以作为训练分类模型的损失函数。
+
+!!! danger "在机器学习中，我们使用基 e 而不是基 2 "
+    改变对数基数不会造成任何问题，因为它只改变了大小。 $\log_2x=\cfrac{\log_ex}{\log_e2}$
+    好处：便于计算导数；
+
+!!! p "以 e 为底对数的信息单位是 ==纳特 nat==，而以 2 为底对数的信息单位称为 ==比特 bit=="
+    1 纳特的信息量来自以 1/e 的概率发生的事件。<br>
+    3 比特地信息量来自以 $\cfrac{1}{2^3}=\cfrac{1}{8}$ 的概率发生的事件。<br>
+    以 e 为底的对数不如以 2 为底的对数直观。1 比特的信息量来自以 1/2 概率发生的事件。如果我们能用 1 比特编码一条信息，那么一条这样的信息就能减少 50%的不确定性。同样的类比在以 e 为底的情况下不易实现，这也是为什么人们经常使用以 2 为底的对数来解释信息熵概念的原因。不过，机器学习应用使用基 e 对数是为了执行方便。
+
+- [Entropy (熵)是甚麼？在資訊領域的用途是？](https://medium.com/%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7-%E5%80%92%E5%BA%95%E6%9C%89%E5%A4%9A%E6%99%BA%E6%85%A7/entropy-%E7%86%B5-%E6%98%AF%E7%94%9A%E9%BA%BC-%E5%9C%A8%E8%B3%87%E8%A8%8A%E9%A0%98%E5%9F%9F%E7%9A%84%E7%94%A8%E9%80%94%E6%98%AF-1551e55110fa)
+- [一文搞懂熵(Entropy),交叉熵(Cross-Entropy)](https://zhuanlan.zhihu.com/p/149186719)
+- [Entropy Demystified](https://naokishibuya.medium.com/demystifying-entropy-f2c3221e2550)
+- [Cross-Entropy Demystified](https://naokishibuya.medium.com/demystifying-cross-entropy-e80e3ad54a8)

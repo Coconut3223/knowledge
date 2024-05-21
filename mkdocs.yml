@@ -162,7 +162,7 @@ nav:
     - "Map Reduce": utils/mapreduce.md
     - "VScode": utils/vscode.md
     - "HTML CSS": utils/html_css.md
-    - "PPT": utis/PPT.md
+    - "PPT": utils/PPT.md
   - "Math":
     - math/index.md
   - "Temp":
