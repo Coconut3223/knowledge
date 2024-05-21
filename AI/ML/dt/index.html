@@ -1,0 +1,2803 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../knn/">
+      
+      
+        <link rel="next" href="../ensemble_learning/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.24">
+    
+    
+      
+        <title>Decision Tree - Coconut3223</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/markdown-it-admonition.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Decision Tree - Coconut3223" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="./assets/images/social/AI/ML/dt.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="None" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Decision Tree - Coconut3223" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="./assets/images/social/AI/ML/dt.png" >
+      
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Coconut3223" class="md-header__button md-logo" aria-label="Coconut3223" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Coconut3223
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Decision Tree
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../python/" class="md-tabs__link">
+          
+  
+    
+  
+  python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  AI
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../NLP/" class="md-tabs__link">
+          
+  
+    
+  
+  NLP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CV/" class="md-tabs__link">
+          
+  
+    
+  
+  CV
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../SQL/" class="md-tabs__link">
+          
+  
+    
+  
+  SQL
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../utils/" class="md-tabs__link">
+          
+  
+    
+  
+  Utils
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../math/" class="md-tabs__link">
+          
+  
+    
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Temp/" class="md-tabs__link">
+          
+  
+    
+  
+  Temp
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Coconut3223" class="md-nav__button md-logo" aria-label="Coconut3223" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Coconut3223
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../python/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    python
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/python_elegant/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    elegant
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/enhanced/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    enhanced
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    numpy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/exam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    八股文
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/pytorch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pytorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    AI
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            AI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pre/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pre-processing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../loss/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Loss
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eva/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Evaluation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../highd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    High-dimensional Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    ML
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            ML
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LinearRegreesion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NaiveBayes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logistics Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../svm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../knn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KNN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Decision Tree
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Decision Tree
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何度量：最佳划分
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="如何度量：最佳划分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#impurity" class="md-nav__link">
+    <span class="md-ellipsis">
+      impurity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="impurity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entropy-id3-c45" class="md-nav__link">
+    <span class="md-ellipsis">
+      熵 Entropy = ID3 ➡️ C4.5
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="熵 Entropy = ID3 ➡️ C4.5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c45" class="md-nav__link">
+    <span class="md-ellipsis">
+      C4.5
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gini" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gini 基尼系数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      误分类率
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      performance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      过拟合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-pruning" class="md-nav__link">
+    <span class="md-ellipsis">
+      预剪枝, pre-pruning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-pruning" class="md-nav__link">
+    <span class="md-ellipsis">
+      后剪枝, post-pruning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multivariate-decision-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      多变量决策树 multivariate decision tree
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ensemble_learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ensemble Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../association_analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Association Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clustering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clustering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../DL/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    DL
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            DL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DL/cnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CNN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DL/mlp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MLP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DL/rnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RNN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DL/transformer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DL/generative_model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generative Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DL/transferlearning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transfer Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DL/tricks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tricks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DL/utils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Utils
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../NLP/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    NLP
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            NLP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/embedding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Embedding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/subword/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Subword
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/kea/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keyword Extraction Algorithm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/nmt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Neural Machine Translation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/gpt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/opennmt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    openNMT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/huggingface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HuggingFace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/asr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ASR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/paper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/survey_on_synthesizing_training_data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Synthesizing Training Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../CV/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    CV
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            CV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../SQL/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    SQL
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SQL/exam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    八股文
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../utils/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Utils
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Utils
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/hadoop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hadoop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/mapreduce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Map Reduce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/vscode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VScode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/html_css/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTML CSS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/PPT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../math/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Math
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Temp/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Temp
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Temp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何度量：最佳划分
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="如何度量：最佳划分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#impurity" class="md-nav__link">
+    <span class="md-ellipsis">
+      impurity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="impurity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entropy-id3-c45" class="md-nav__link">
+    <span class="md-ellipsis">
+      熵 Entropy = ID3 ➡️ C4.5
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="熵 Entropy = ID3 ➡️ C4.5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c45" class="md-nav__link">
+    <span class="md-ellipsis">
+      C4.5
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gini" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gini 基尼系数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      误分类率
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      performance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      过拟合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-pruning" class="md-nav__link">
+    <span class="md-ellipsis">
+      预剪枝, pre-pruning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-pruning" class="md-nav__link">
+    <span class="md-ellipsis">
+      后剪枝, post-pruning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multivariate-decision-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      多变量决策树 multivariate decision tree
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">决策树<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p><mark>A decision tree</mark> allows a classification of an object by testing its values for certain properties.</p>
+<p>策略：自顶而下，分而治之，递归</p>
+<div class="admonition danger">
+<p class="admonition-title">决策树没有 学习率</p>
+</div>
+<div class="admonition p">
+<p>已知训练集 <span class="arithmatex">\(D=\{(x_1,y_1),\dots,(x_n,y_n)\}\)</span> 属性集 <span class="arithmatex">\(A=\{a_1,\dots,a_d\}\)</span>, 属性值集 <span class="arithmatex">\(a_i^v=\{a_i^1,\dots,a_i^v\}\)</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">def</span> <span class="nf">TreeGenerate</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>    <span class="n">生成结点</span> <span class="n">node</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="k">if</span> <span class="n">ALL</span> <span class="n">node</span><span class="o">.</span><span class="n">D</span> <span class="n">属于</span> <span class="n">一个类别</span> <span class="n">C</span><span class="p">:</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>        <span class="n">node</span> <span class="o">=</span> <span class="n">C</span> <span class="n">类叶结点</span>  <span class="c1"># 分类成功</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>        <span class="k">return</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">A</span> <span class="o">==</span> <span class="n">NULL</span> <span class="ow">or</span> <span class="n">node</span><span class="o">.</span><span class="n">D</span> <span class="n">的样本的属性值都一样</span><span class="p">:</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>        <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">D</span> <span class="n">中多数类</span> <span class="n">叶结点</span>  <span class="c1"># 不能再分</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>        <span class="k">return</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="n">从</span> <span class="n">node</span><span class="o">.</span><span class="n">A</span> <span class="n">中选择最优划分属性</span> <span class="n">a_best</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">a_best</span><span class="p">:</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>        <span class="n">在</span> <span class="n">node</span> <span class="n">底下生成分支</span> <span class="n">node_by_v</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>        <span class="k">if</span> <span class="n">node_by_v</span> <span class="o">==</span> <span class="n">NULL</span><span class="p">:</span>  <span class="c1"># 训练集里没有，但为了泛化性能</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>            <span class="n">node_by_v</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">D</span> <span class="n">中多数类</span> <span class="n">叶结点</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>            <span class="k">return</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>        <span class="n">TreeGenerate</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">A</span>\<span class="p">{</span><span class="n">a_best</span><span class="p">})</span>
+</code></pre></div></td></tr></table></div>
+1. 叶子结点是样本所属的类别
+2. 递归结束：标记叶结点 <mark>- 如何判定：叶子结点</mark>
+   1. 结点包含分类全属一类： <strong>分类成功，赋类值</strong>
+   2. 结点的属性集A为空，结点包含的所有样本在该结点的所有属性值取值相同：<strong>无法划分，赋该结点多数类的类值</strong>，当前结点的后验分布。
+   3. 结点的样本集D为空：<strong>不能划分，赋该父结点多数类的类值</strong>，把父结点的样本分布当作当前结点的先验分布</p>
+</div>
+<p>优点：</p>
+<ul>
+<li>非参数方法，不要求任何先验假设，不假定类和属性服从一定概率分布</li>
+<li>对噪声数据鲁棒性强</li>
+<li>能表示为多条 if-then 的决策规则，可解释性强</li>
+<li>分类速度快，最坏情况下是 O(depth)</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>叶结点实例数目太小</li>
+<li>对离散值较好，但连续值的模拟表达不够</li>
+<li>决策树有重复多次的子树，因为纯靠单个属性来分，在属性空间的不同部分多次使用同一个属性来划分</li>
+</ul>
+<div class="admonition p">
+<p class="admonition-title">如何处理：缺失值，连续变量</p>
+<p><a class="glightbox" href="../pics/DT_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/DT_2.png" width="80%" /></a></p>
+</div>
+<h2 id="_2">如何度量：最佳划分<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><mark>impurity, 不纯度</mark>，分支结点所包含样本的归属的度量指标。impurity ⬇️，类分布越倾斜。
+<mark>Information Gain</mark>. <strong>不纯度的降低程度</strong>：确定划分效果的度量标准：最大化增益<span class="arithmatex">\(\Delta\)</span>
+<span class="arithmatex">\(<span class="arithmatex">\(\max_{I}\Delta_{I}=I(\text{parent})-\sum_{i=1}^k\cfrac{N(j)}{N}I(j)\\
+\Leftrightarrow \min_I\sum_{i=1}^k\cfrac{N(j)}{N}I(j)\)</span>\)</span>
+<span class="arithmatex">\(k\)</span>: 该属性不同取值的种类数
+<span class="arithmatex">\(I(\text{parent})\)</span>: 父结点的不纯度, <span class="arithmatex">\(N\)</span> 父结点的样本数
+<span class="arithmatex">\(I(j)\)</span>: 第 j 个子结点的不纯度, <span class="arithmatex">\(N(j)\)</span> 第 j 个子结点的样本数</p>
+<h3 id="impurity">impurity<a class="headerlink" href="#impurity" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Impurity</th>
+<th></th>
+<th>DT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>熵 Entropy</td>
+<td><span class="arithmatex">\(p(i)\log_2p(i)\)</span></td>
+<td>ID3</td>
+</tr>
+<tr>
+<td>^</td>
+<td>引入分裂信息</td>
+<td>C4.5</td>
+</tr>
+<tr>
+<td>Gini</td>
+<td><span class="arithmatex">\(p(j)^2\)</span></td>
+<td>CART</td>
+</tr>
+<tr>
+<td>误分类率</td>
+<td><span class="arithmatex">\(\max_ip(i\|t)\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">不同的准则可能导致不同的答案</p>
+</div>
+<h4 id="entropy-id3-c45">熵 Entropy = ID3 ➡️  C4.5<a class="headerlink" href="#entropy-id3-c45" title="Permanent link">&para;</a></h4>
+<p><span class="arithmatex">\(<span class="arithmatex">\(\text{Ent}(t)=-\sum_{i=1}^cp(i)\log_2p(i)\)</span>\)</span>
+- <span class="arithmatex">\(0\log_20=0\)</span>
+- <span class="arithmatex">\(\max=0.5 \text{ 均匀分布，}\min=0 \text{仅属于一个类}\)</span></p>
+<p>attri|“High Entropy”|“Low Entropy”
+|--|--|--|
+Variable distribution | uniform-like |many peaks and valleys
+histogram| Flat | many lows and highs
+information|less predictable Less information | more predictable More information</p>
+<div class="grid" style="grid-template-columns: repeat(3, 1fr) !important;">
+<figure style="grid-column-start: 1; grid-column-end: 3;"><a class="glightbox" href="../pics/entropy_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/entropy_2.png" width="60%" /></a></figure>
+<figure style="grid-column-start: 3; grid-column-end: 4;"><a class="glightbox" href="../pics/entropy_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/entropy_1.png" /></a></figure>
+</div>
+<p>缺点：偏好选择具有较多属性值的属性 <strong>高熵分裂，大量小部分</strong></p>
+<p>💡证明<strong>将结点划分为更小的后续结点，结点熵一定会减少或者维持不变</strong>。
+根据定义可知，熵越大，类分布越均匀；熵越小，类分布约倾斜。假设原结点属于各个类的概率相同(真实分布)，熵=1，则分出来的后续结点在各个类上均匀分布，各个后续结点的熵=1，加权后熵 🟰。假设原结点属于各个类的概率不一样，分出来的后续结点不均匀地分布在各个类上，则此时的分类比原有的分类更不均匀，所以熵 ⬇️</p>
+<h5 id="c45">C4.5<a class="headerlink" href="#c45" title="Permanent link">&para;</a></h5>
+<p>为了惩罚<strong>高熵分裂的属性</strong>，引入 <strong>分裂信息 split information</strong> 的项 <span class="arithmatex">\(-\sum\limits_{j=1}^kp(j)\log_2p(j)\)</span> 作为分母，阻碍选择属性值均匀分布的属性。<span class="arithmatex">\(p(j)\)</span>:当前结点中划分属性第j个属性值所占有样本的比例。</p>
+<div class="arithmatex">\[\begin{align*}
+\text{GainRatio}(t)&amp;=\cfrac{\Delta_I}{-\sum\limits_{j=1}^kp(j)\log_2^p(j)}\\
+&amp;=\cfrac{\sum\limits_{i=1}^cp_p(i)\log_2p_p(i)-\sum\limits_{j=1}^c\cfrac{N(j)}{N}\cdot\sum\limits_{i=1}^cp_j(i)\log_2p_j(i)}{-\sum\limits_{j=1}^kp_p(j)\log_2p_p(j)}\end{align*}\]</div>
+<ul>
+<li><u>Q:</u> 当划分属性在当前结点中几乎相同的属性值时，会导致增益无定义或者非常大(分母非常小甚至为0)。偏好选择具有较少属性值的属性。
+    A：启发式方法。先计算每个属性的信息增益及平均值，然后仅对信息增益高于平均值的属性应用增益率度量。</li>
+</ul>
+<h4 id="gini">Gini 基尼系数<a class="headerlink" href="#gini" title="Permanent link">&para;</a></h4>
+<div class="arithmatex">\[\text{Gini}(t)=1-\sum_{j=1}^kp(j)^2\]</div>
+<p><strong>proof: 平均分配 1/2 worst</strong>
+假设有两类 <span class="arithmatex">\(\text{Gini}(t)=1-x^2-(1-x)^2=2x-2x^2\)</span>
+<span class="arithmatex">\(\frac{b}{2a}=\frac{1}{2}\)</span> 开口向下，此时是最高点。</p>
+<h4 id="_3">误分类率<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p><span class="arithmatex">\(<span class="arithmatex">\(\text{Error}(t)=1-\max_ip(i|t)\)</span>\)</span>
+- <span class="arithmatex">\(\max=1-\frac{1}{c} \text{ 均匀分布，}\min=0 \text{仅属于一个类}\)</span></p>
+<blockquote>
+<blockquote>
+<p>node: +:5; -:1</p>
+</blockquote>
+<p><span class="arithmatex">\(\text{Gini}(t)=1-\frac{1}{6}^2-\frac{5}{6}^2=0.278\)</span>
+<span class="arithmatex">\(\text{Ent}(t)=-\frac{1}{6}\log_2\frac{1}{6}-\frac{5}{6}\log_2\frac{5}{6}=1.650\)</span>
+<span class="arithmatex">\(\text{Error}(t)=1-\frac{5}{6}=0.167\)</span></p>
+<blockquote>
+<p>node: +:3, -:3</p>
+</blockquote>
+<p><span class="arithmatex">\(\text{Gini}(t)=1-\frac{1}{2}^2-\frac{1}{2}^2=0.5\)</span>
+<span class="arithmatex">\(\text{Ent}(t)=-\frac{1}{2}\log_2\frac{1}{2}-\frac{1}{2}\log_2\frac{1}{2}=1\)</span>
+<span class="arithmatex">\(\text{Error}(t)=1-\frac{1}{2}=0.5\)</span></p>
+<blockquote>
+<p>Exercise. Consider the following data set for a binary class problem.
+(a). Calculate the <strong>entropy</strong> gain when splitting on A and B. Which attribute would the decision tree induction algorithm choose?
+(b). Calculate the gain in the <strong>Gini</strong> index when splitting on A and B. Which attribute would the decision tree induction algorithm choose?
+A F T T F T F F F T F
+B T T T T T F F F T T
+L + + + − + − − − − −
+I 1 2 3 4 5 6 7 8 9 10</p>
+</blockquote>
+<p>A T:7(+:4;-:3) F:3(+:0;-:3)
+B T:4(+:3;-:1) F:6(+:1;-:5)
+Entropy
+<span class="arithmatex">\(\text{Ent}(A)=\frac{7}{10}(-\frac{4}{7}\log_2\frac{4}{7}-\frac{3}{7}\log_2\frac{3}{7})+\frac{3}{10}\times0=0.6897\)</span> (smaller <span class="arithmatex">\(\implies A\)</span>)
+<span class="arithmatex">\(\text{Ent}(B)=\frac{2}{5}(-\frac{3}{4}\log_2\frac{3}{4}-\frac{1}{4}\log_2\frac{1}{4})+\frac{3}{5}(-\frac{1}{6}\log_2\frac{1}{6}-\frac{5}{6}\log_2\frac{5}{6})=0.7145\)</span>
+Gini
+<span class="arithmatex">\(\text{Gini}(A)=\frac{7}{10}(1-\frac{4}{7}^2-\frac{3}{7}^2)+\frac{3}{10}\times0=\frac{12}{35}\)</span>
+<span class="arithmatex">\(\text{Gini}(B)=\frac{2}{5}(1-\frac{3}{4}^2-\frac{1}{4}^2)+\frac{3}{5}(1-\frac{1}{6}^2-\frac{5}{6}^2)=\frac{19}{60}\)</span> (smaller <span class="arithmatex">\(\implies B\)</span>)</p>
+</blockquote>
+<h3 id="performance">performance<a class="headerlink" href="#performance" title="Permanent link">&para;</a></h3>
+<p><strong>Not too small</strong>: need to handle important but possibly subtle distinctions in  data
+<strong>Not too big</strong>: Computational efficiency (avoid redundant, spurious attributes),Avoid over-fitting training examples
+<mark>Occam’s Razor</mark>: find the simplest hypothesis (smallest tree) that fits the  observations.  <strong>The best decision tree</strong> is the smallest one that correctly classifies all given examples.</p>
+<h4 id="_4">过拟合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>over-fitting due to</p>
+<ul>
+<li>presence of noise</li>
+<li>lack of representative samples</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th></th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>剪枝</td>
+<td>pre-pruning</td>
+<td>在算法完美划分训练数据前就停止树的生长（基于性能，比较软性</td>
+</tr>
+<tr>
+<td>^</td>
+<td>post-pruning</td>
+<td>允许树过度拟合训练数据，然后对树进行后修剪。更成功</td>
+</tr>
+<tr>
+<td>把复杂度加入考量</td>
+<td>使用一个明确的标准来衡量决策树的复杂度（决策树的深度，比较硬性</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>后剪枝通常比预剪枝保留更多的<u>分支数</u>。</li>
+<li>后剪枝的<u>欠拟合风险</u>更小，<u>泛化性能</u>通常优于预剪枝。</li>
+<li>后剪枝是在生成完全决策树之后进行，并且要自底向上地对树中所有非叶结点进行逐一考察，<u>训练时间</u>远大于预剪枝。</li>
+</ul>
+<h4 id="pre-pruning">预剪枝, pre-pruning<a class="headerlink" href="#pre-pruning" title="Permanent link">&para;</a></h4>
+<ul>
+<li>结点实例数目小于预定义的阈值</li>
+<li>实例类分布与属性值相互独立 <span class="arithmatex">\(\leftarrow\Chi^2\)</span>检验</li>
+<li>当前结点的扩展不能减小不纯度</li>
+</ul>
+<h4 id="post-pruning">后剪枝, post-pruning<a class="headerlink" href="#post-pruning" title="Permanent link">&para;</a></h4>
+<ul>
+<li>自上而下修剪</li>
+<li>若剪枝改善泛化误差，则改结点代替子树</li>
+<li>子树的叶实例的主要类确定节点的类标签</li>
+<li>在后剪枝使用 MDL，最小描述长度</li>
+</ul>
+<h2 id="multivariate-decision-tree">多变量决策树 multivariate decision tree<a class="headerlink" href="#multivariate-decision-tree" title="Permanent link">&para;</a></h2>
+<p>若我们把每个属性是为坐标空间的一个坐标轴，则d个属性值描述的样本对应了d维空间的一个具体的数据点，对样本的分类 其实是在这个样本空间中寻找不同类样本之间的分类边界。</p>
+<p><a class="glightbox" href="../pics/DT_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/DT_1.png" width="80%" /></a></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>单变量 DT</th>
+<th>多变量 DT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分类边界</td>
+<td>轴平行<br> 分类边界由若干个【与坐标轴平行的分段】组成</td>
+<td>斜的，曲线</td>
+</tr>
+<tr>
+<td>分类指标：</td>
+<td>单个属性</td>
+<td>属性的线性组合</td>
+</tr>
+<tr>
+<td>^</td>
+<td>为每个非叶结点找一个最优划分属性</td>
+<td><span class="arithmatex">\(\sum\limits_{i=1}^dw_ia_i\)</span></td>
+</tr>
+<tr>
+<td>表现</td>
+<td>在真实分类边界较为复杂的情况下，需要大量的属性测试和很深的决策树才能获得较好的近似</td>
+<td>模型简单，但较难解释</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023 <a href="https://github.com/james-willett"  target="_blank" rel="noopener">Coconut</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/james-willett" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/TheJamesWillett" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/willettjames/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.081f42fc.min.js"></script>
+      
+        <script src="../../../javascripts/code_copy.js"></script>
+      
+        <script src="../../../javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

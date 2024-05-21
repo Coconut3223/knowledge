@@ -1,0 +1,2664 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../mlp/">
+      
+      
+        <link rel="next" href="../transformer/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.24">
+    
+    
+      
+        <title>RNN - Coconut3223</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/markdown-it-admonition.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="RNN - Coconut3223" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="./assets/images/social/AI/DL/rnn.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="None" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="RNN - Coconut3223" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="./assets/images/social/AI/DL/rnn.png" >
+      
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#recurrent-neural-networks" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Coconut3223" class="md-header__button md-logo" aria-label="Coconut3223" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Coconut3223
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RNN
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../python/" class="md-tabs__link">
+          
+  
+    
+  
+  python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  AI
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../NLP/" class="md-tabs__link">
+          
+  
+    
+  
+  NLP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CV/" class="md-tabs__link">
+          
+  
+    
+  
+  CV
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../SQL/" class="md-tabs__link">
+          
+  
+    
+  
+  SQL
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../utils/" class="md-tabs__link">
+          
+  
+    
+  
+  Utils
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../math/" class="md-tabs__link">
+          
+  
+    
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Temp/" class="md-tabs__link">
+          
+  
+    
+  
+  Temp
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Coconut3223" class="md-nav__button md-logo" aria-label="Coconut3223" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Coconut3223
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../python/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    python
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/python_elegant/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    elegant
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/enhanced/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    enhanced
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    numpy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/exam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    八股文
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/pytorch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pytorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    AI
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            AI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pre/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pre-processing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../loss/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Loss
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eva/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Evaluation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../highd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    High-dimensional Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    ML
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            ML
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/lr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LinearRegreesion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/nb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NaiveBayes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/logr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logistics Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/svm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/knn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KNN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/dt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decision Tree
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/ensemble_learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ensemble Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/association_analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Association Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/clustering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clustering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    DL
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            DL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CNN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mlp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MLP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    RNN
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    RNN
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#standard-rnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      standard RNN
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="standard RNN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shortcoming" class="md-nav__link">
+    <span class="md-ellipsis">
+      shortcoming
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lstm-long-short-term-memory-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      LSTM Long Short-Term Memory Network
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LSTM Long Short-Term Memory Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forget-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      forget gate 遗忘门
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      input gate 输入门
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      output gate 输出门
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnu-gated-recurrent-unit-gru" class="md-nav__link">
+    <span class="md-ellipsis">
+      GNU Gated Recurrent Unit-GRU
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GNU Gated Recurrent Unit-GRU">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reset-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reset Gate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Gate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ref" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ref
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transformer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../generative_model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generative Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transferlearning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transfer Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tricks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tricks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Utils
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../NLP/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    NLP
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            NLP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/embedding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Embedding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/subword/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Subword
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/kea/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keyword Extraction Algorithm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/nmt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Neural Machine Translation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/gpt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/opennmt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    openNMT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/huggingface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HuggingFace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/asr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ASR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/paper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/survey_on_synthesizing_training_data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Synthesizing Training Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../CV/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    CV
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            CV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../SQL/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    SQL
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SQL/exam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    八股文
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../utils/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Utils
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Utils
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/hadoop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hadoop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/mapreduce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Map Reduce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/vscode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VScode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/html_css/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTML CSS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/PPT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../math/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Math
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Temp/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Temp
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Temp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#standard-rnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      standard RNN
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="standard RNN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shortcoming" class="md-nav__link">
+    <span class="md-ellipsis">
+      shortcoming
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lstm-long-short-term-memory-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      LSTM Long Short-Term Memory Network
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LSTM Long Short-Term Memory Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forget-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      forget gate 遗忘门
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      input gate 输入门
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      output gate 输出门
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnu-gated-recurrent-unit-gru" class="md-nav__link">
+    <span class="md-ellipsis">
+      GNU Gated Recurrent Unit-GRU
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GNU Gated Recurrent Unit-GRU">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reset-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reset Gate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Gate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ref" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ref
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="recurrent-neural-networks">Recurrent Neural Networks<a class="headerlink" href="#recurrent-neural-networks" title="Permanent link">&para;</a></h1>
+<h2 id="standard-rnn">standard RNN<a class="headerlink" href="#standard-rnn" title="Permanent link">&para;</a></h2>
+<p><kbd>Variable-length Sequene</kbd> <kbd>Sequential-Dependent</kbd> <kbd>Time-Dependent</kbd></p>
+<p><mark>recurrent</mark>: <strong>revisit or reuse past states as inputs</strong> to predict the next or future states.</p>
+<p><mark>Memory</mark> 拥有前一个阶段的输出作为未来输出的灵感的一部分。</p>
+<div class="admonition p">
+<p class="admonition-title">The biggest difference between RNN and traditional neural networks is that each time the previous output is taken to the next hidden layer and trained together.</p>
+</div>
+<div class="grid">
+<figure><a class="glightbox" href="../pics/RNN_6.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/RNN_6.gif" /></a></figure>
+<figure><a class="glightbox" href="../pics/RNN_1.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/RNN_1.gif" /></a></figure>
+</div>
+<p>最后只要 o5 进行解码</p>
+<div class="grid">
+<figure><a class="glightbox" href="../pics/RNN_3.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/RNN_3.jpg" width="70%" /></a><p>x1 进去产生 h1，h1 同时存到 m1, 此时 o1 完全是 h1 的解码<br> 为了统一，也可以自定义一个 m0 同样和 x1 进去产生 h1</p></figure>
+<figure><a class="glightbox" href="../pics/RNN_4.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/RNN_4.webp" width="70%" /></a><p>x2 &amp; m1 进去产生 h2, h2 同时被存到 m12， 此时 o2 完全是 h2 的解码</p></figure>
+<figure><a class="glightbox" href="../pics/RNN_5.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/RNN_5.jpg" width="70%" /></a><p>x3 &amp; m12 进去产生 h3, h3 同时被存到 m123， 此时 o3 完全是 h3 的解码 </p></figure>
+<figure><a class="glightbox" href="../pics/RNN_6.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/RNN_6.jpg" width="70%" /></a><p>memory (m1,m12,...) 并不是直接raw input 进去产生新一轮的 hidden state (h2,h3,...), 而是采用一个<b>权值矩阵 W 参数化</b>记忆单元</p></figure>
+</div>
+<div class="arithmatex">\[s_t=\text{tanh}(Ux_t+Ws_{t-1})\]</div>
+<h3 id="shortcoming">shortcoming<a class="headerlink" href="#shortcoming" title="Permanent link">&para;</a></h3>
+<p>RNN 比较擅长解决 想要的信息 &amp; 相关的信息 距离较近。</p>
+<div class="grid">
+<figure><a class="glightbox" href="../pics/RNN_8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/RNN_8.png" /></a><p>Good</p></figure>
+<figure><a class="glightbox" href="../pics/RNN_9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/RNN_9.png" /></a><p>Bad</p></figure>
+</div>
+<div class="grid">
+<figure><a class="glightbox" href="../pics/RNN_7.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/RNN_7.jpg" /></a></figure>
+<p>short-term memory has a large impact (such as the orange region), but long-term memory effects are small (such as black and green regions), which is the <b>short-term memory problem</b> of RNN.</p>
+</div>
+<p>如果序列足夠長，它們將很難將資訊從較早的時間步驟傳遞到較晚的時間步驟。因此，如果您嘗試處理一段文字來進行預測，RNN 可能會從一開始就遺漏重要資訊。
+1. RNN has short-term memory problems and cannot handle very long input sequences
+2. Training RNN requires significant cost</p>
+<p><a class="glightbox" href="../pics/RNN_2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/RNN_2.jpg" /></a></p>
+<ul>
+<li><u>unfold</u></li>
+<li><strong>数据是按照顺序进入</strong>，我们在处理序列化的数据时，往往会在用<strong>滑动窗口</strong>的办法来调整不同的结构。</li>
+<li>m0 的设置：这个初始值可以作为一个参数进行反向传播，也可以将其简单的设置为零，表示前面没有任何信息。</li>
+</ul>
+<div class="admonition p">
+<p class="admonition-title">在同一层的隐藏单元中进行传播的 权值矩阵W &amp; 输入到隐层的权值矩阵U &amp; 隐层到输出的权值矩阵V，为什么是相同的?</p>
+<p>就像是 CNN 用参数共享的卷积核来提取相同的特征，在RNN中，使用参数共享的 U,V 来<strong>确保相同的输入产生的输出是一样</strong>。参数共享的矩阵W <strong>确保了对于相同的上文，产生相同的下文</strong>。</p>
+<blockquote>
+<p>一段文本中，可能会出现大量的“小狗”。无论小狗出现在哪个位置（x?），参数共享使得神经网络在输入“小狗”的时候，在不考虑上下文的 memory，<span class="arithmatex">\(x\xrightarrow{完全编码}h\)</span> 的结果是一样。类似地，在不考虑当前输入 x，<span class="arithmatex">\(m\xrightarrow{完全编码}h\)</span> 的结果是一样。</p>
+</blockquote>
+</div>
+<h2 id="lstm-long-short-term-memory-network">LSTM Long Short-Term Memory Network<a class="headerlink" href="#lstm-long-short-term-memory-network" title="Permanent link">&para;</a></h2>
+<div class="admonition p">
+<p class="admonition-title">motivation</p>
+<p>To solve short-term memory of RNN, LSTM can retain "important information" in longer sequence data, ignoring less important information.
+LSTMs were designed to combat vanishing gradients through a gating mechanism.</p>
+</div>
+<p><a class="glightbox" href="../pics/LSTM_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/LSTM_1.png" width="70%" /></a></p>
+<div class="grid">
+<figure><a class="glightbox" href="../pics/RNN_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/RNN_3.png" /></a></figure>
+<figure><a class="glightbox" href="../pics/LSTM_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/LSTM_2.png" /></a></figure>
+</div>
+<p>All recurrent neural networks have chain repeating modules of neural networks. <br><mark>standard RNN</mark>: repeating module has a very simple structure, such as only a single tanh layer.<br><mark>LSTM</mark>: Not a single neural network layer, but four, and interacting in a very special way.</p>
+
+<p><strong>pre-knowledge：</strong></p>
+<ul>
+<li><code>tanh</code>
+  tanh activation 用於幫助調節流經網絡的值。 tanh 函數將值壓縮為始終在 -1 和 1 之間。</li>
+<li><code>Sigmoid</code> <span class="arithmatex">\(\sigma\)</span></li>
+</ul>
+<div class="grid" style="grid-template-columns: repeat(3, 1fr) !important;">
+<figure style="grid-column-start: 1; grid-column-end: 3;"><a class="glightbox" href="../pics/LSTM_3.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/LSTM_3.webp" width="500px" /></a></figure>
+<p style="grid-column-start: 3; grid-column-end: 4;">圆形：Neuial Network layer，一层神经网络，也就是$w^Tx*b$的操作。区别在于使用的激活函数不同<br>这里存在 sigmoid（$\sigma(w^Tx*b)$） &amp; tanh（$\text{tanh}(w^Tx*b)$） 两种激活函数<br>方块：Matrix operation 矩阵操作，并且是 <mark>pointwise</mark> 逐元素操作<br> verctor concatenation: 矩阵拼接，变成 $(H_1+H_2)*W$ </p>
+</div>
+<div class="admonition p">
+<p class="admonition-title">hidden state <span class="arithmatex">\(h_t\)</span> &amp; cell state <span class="arithmatex">\(c_t\)</span></p>
+<p>相比于原始的 RNN 的 hidden state， LSTM 增加了一个细胞状态 cell state。 尽管 LSTM 中的 cell state &amp; hidden output 都包含有关 LSTM 模型的信息，但它们的角色不同<br>
+<mark>hidden state</mark> 可以被看作是<strong>当前时刻</strong>的 LSTM 的“理解”或“编码”信息，可以被传递到下一层的 LSTM 或者用于预测任务.<br>
+<mark>cell state</mark> 是用于存储<strong>先前的信息</strong>和计算新的信息，一直在上面传递, internal memory</p>
+</div>
+<div class="admonition p">
+<p class="admonition-title">为什么 LSTM 能携带 long-term memory？又是如何只记住重点的 memory？</p>
+<p>能携带 long-term memory 因为多了一个 cell state 細胞狀態有點像傳送帶。 它直接沿著整個鏈條執行，只有一些輕微的線性相互作用。 資訊很容易不變地沿著它流動，携带整个文本的信息
+如何记住重点，则是与 <mark>门 gate</mark> 息息相关。
+- 如何 忘记不重要的 &amp; 记住重要的。
+    <span class="arithmatex">\(f_t=\sigma(\cdot)\in[0,1]\)</span>, 任何值✖️0 都是0，任何值✖️1都是它本身，所以当信息被乘以0，那么就会被忘记，如果乘以1，就会记住。<span class="arithmatex">\(f_t\)</span> 的数值其实就是遗忘程度。</p>
+</div>
+<div class="grid" style="grid-template-columns: repeat(5, 1fr) !important;">
+<figure style="grid-column-start: 1; grid-column-end: 4;"><a class="glightbox" href="../pics/LSTM_4.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/LSTM_4.webp" width="80%" /></a><p>at time t</p></figure>
+<p style="grid-column-start: 4; grid-column-end: 6;">Input:<br>-- $C_{t-1}$ cell state at t-1<br>-- $h_{t-1}$ hidden state at t-1<br>-- $x_t$ 输入的向量 at t <br>Output:<br>-- $C_{t}$<br>-- $h_{t}$<br>细胞状态 $c_{t-1}$ 一直在上面的线传递，$h_t &amp; x_{t}$ 会对 $c$ 进行修改，输出 $c_t$ <br>$c_t$ 会参与 $h_t$ 的计算。<br> 其中的计算过程透过 <mark>门 gate</mark> 来实现。</p>
+<p>4</p>
+</div>
+<div class="admonition p">
+<p class="admonition-title">size of vector</p>
+<p>dim(c) = dim(h)<br> shape of cell state = shape of hidden state</p>
+<blockquote>
+<p>以 遗忘门 举例：
+<span class="arithmatex">\(f_t^{d1\times d2}:=\sigma(W_f^{d1\times(d1+d3)}[h_{t-1}, x_t]^{(d1+d3)\times d2}+b_f)\)</span>
+<span class="arithmatex">\(c_{t-1}^{d1\times d2}\underline{\text{pointwise multiplfy}}f_t^{d1\times d2}\)</span></p>
+<p><a class="glightbox" href="../pics/LSTM_5.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/LSTM_5.webp" width="50%" /></a></p>
+</blockquote>
+</div>
+<p><mark>forget gate</mark>  决定：用当前的判断 <span class="arithmatex">\(f\)</span>：要记得多少过去的信息 <span class="arithmatex">\(c_{t-1}\)</span> <br>
+<mark>input gate</mark> 决定：用当前的判断 <span class="arithmatex">\(i\)</span>：要加入多少当前的信息 <span class="arithmatex">\(\tilde{c}_{t}\)</span> <br>
+<mark>output gate</mark> 决定：用迄今为止的判断 <span class="arithmatex">\(o\)</span>：要向外面或者未来暴露多少信息 <span class="arithmatex">\(c_t\)</span> 。defines how much of the internal state you want to expose to the external network (higher layers and the next time step).<br></p>
+<h3 id="forget-gate">forget gate 遗忘门<a class="headerlink" href="#forget-gate" title="Permanent link">&para;</a></h3>
+<p>当前的信息 <span class="arithmatex">\([h_{t-1}, x_t]\)</span>  决定 过去的信息 <span class="arithmatex">\(c_{t-1}\)</span> 要忘记多少</p>
+<div class="arithmatex">\[f_t=\sigma(W_f[h_{t-1}, x_t]+b_f)\]</div>
+<p><a class="glightbox" href="../pics/LSTM_6.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/LSTM_6.gif" width="80%" /></a></p>
+<h3 id="input-gate">input gate 输入门<a class="headerlink" href="#input-gate" title="Permanent link">&para;</a></h3>
+<p>将当前的信息 <span class="arithmatex">\([h_{t-1}, x_t]\)</span> 更新到过去的信息 <span class="arithmatex">\(c\)</span> 里：不仅要处理要流入的值，还要决定哪些值是重要的，所以 <span class="arithmatex">\([h_{t-1}, x_t]\)</span> 同时经过 Sigmoid &amp; tanh。The sigmoid output will decide which information is important to keep from the tanh output.</p>
+<div class="arithmatex">\[i_t = \sigma(W_i[h_{t-1}, x_t]+b_i)\\\tilde{c}_t=\text{tanh}(W_c[h_{t-1}, x_t]+b_c)\]</div>
+<p><a class="glightbox" href="../pics/LSTM_7.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/LSTM_7.gif" width="80%" /></a></p>
+<p>然后进行 cell state 的 update：昨日的信息 $ f_t * c_{t-1}$ 有需要遗忘的，今天的信息 $i_t * \tilde{c}_t $ 也同样有需要遗忘的</p>
+<div class="arithmatex">\[c_t=f_t*c_{t-1}+i_t* \tilde{c}_t\]</div>
+<p><a class="glightbox" href="../pics/LSTM_8.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/LSTM_8.gif" width="80%" /></a></p>
+<h3 id="output-gate">output gate 输出门<a class="headerlink" href="#output-gate" title="Permanent link">&para;</a></h3>
+<p>cell state <span class="arithmatex">\(c_t\)</span> 已更新，要过一遍 tanh 传递给下一轮的 hidden state &amp; output for prediction，同时 当前信息 <span class="arithmatex">\([h_{t-1}, x_t]\)</span> 要过 sigmoid 决定新的 <span class="arithmatex">\(c_t\)</span> 里有哪些是需要遗忘的。</p>
+<div class="arithmatex">\[o_t=\sigma(W_o[h_{t-1}, x_t]+b_o)\\h_t=o_t*\text{tanh}(c_t)\]</div>
+<p><a class="glightbox" href="../pics/LSTM_9.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/LSTM_9.gif" width="80%" /></a></p>
+<p><a class="glightbox" href="../pics/LSTM_10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/LSTM_10.png" width="80%" /></a></p>
+<p>t 时刻的 hidden state <span class="arithmatex">\(h_t\)</span> 既作为 hidden state 继续向前流动，又作为 t时刻的输出，来进行解码和完成任务。</p>
+<h2 id="gnu-gated-recurrent-unit-gru">GNU Gated Recurrent Unit-GRU<a class="headerlink" href="#gnu-gated-recurrent-unit-gru" title="Permanent link">&para;</a></h2>
+<p>a variant of LSTM. He retains the characteristics of LSTM to focus and forget unimportant information, and it will not be lost during long-term propagation.</p>
+<p>GRU 将 LSTM 的 forget gate &amp; input gate 整合到一个单独的 update gate， 还把 cell state 和 hidden state 合并成一个 hidden state，还有其他的一些小 changes。</p>
+<figure><a class="glightbox" href="../pics/GRU_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/GRU_1.png" /></a><p></p> GRU 只用 hidden state &amp; input，而且 only 2 gates: reset gate &amp; update gate</p></figure>
+<div class="admonition p">
+<p class="admonition-title">更少的 tensor operation 更快的训练速度。</p>
+<div class="admonition danger">
+<p class="admonition-title">但性能上谁更好，不确定，还是要真正 train 之后才知道。</p>
+</div>
+</div>
+<p><a class="glightbox" href="../pics/GRU_2.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/GRU_2.webp" width="60%" /></a></p>
+<p><a class="glightbox" href="../pics/GRU_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/GRU_3.png" /></a></p>
+<p><mark>reset gate</mark> determines how to combine the new input with the previous memory<br>
+<mark>update gate</mark> defines how much of the previous memory to keep around.</p>
+<p>简单来说，把 reset 的参数都变成 1， update 的参数 都变成0，就是 standard RNN。</p>
+<h3 id="reset-gate">Reset Gate<a class="headerlink" href="#reset-gate" title="Permanent link">&para;</a></h3>
+<p>决定忘记哪些过去信息</p>
+<h3 id="update-gate">Update Gate<a class="headerlink" href="#update-gate" title="Permanent link">&para;</a></h3>
+<p>把 LSTM 的 forget gate &amp; input gate 融了进来。<br>
+what information to throw away and what new information to add.</p>
+<h2 id="ref">Ref<a class="headerlink" href="#ref" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://easyai.tech/blog/rnn-understand/">如何理解RNN？（理论篇）</a></li>
+<li><a href="https://www.easyai.tech/en/ai-definition/lstm/">Long short-term memory network-Long short-term memory | LSTM</a></li>
+<li><a href="https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21">Illustrated Guide to LSTM’s and GRU’s: A step by step explanation</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/518848475">大名鼎鼎的LSTM详解</a></li>
+<li><a href="https://blog.csdn.net/u010087338/article/details/129805575">图解LSTM实现cell state 和hidden state和output</a></li>
+<li><a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">Understanding LSTM Networks</a></li>
+<li><a href="https://dennybritz.com/posts/wildml/recurrent-neural-networks-tutorial-part-4/">Recurrent Neural Network Tutorial, Part 4 – Implementing a GRU and LSTM RNN with Python and Theano</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023 <a href="https://github.com/james-willett"  target="_blank" rel="noopener">Coconut</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/james-willett" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/TheJamesWillett" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/willettjames/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.081f42fc.min.js"></script>
+      
+        <script src="../../../javascripts/code_copy.js"></script>
+      
+        <script src="../../../javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

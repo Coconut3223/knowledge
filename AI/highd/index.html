@@ -1,0 +1,3181 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../eva/">
+      
+      
+        <link rel="next" href="../ML/lr/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.24">
+    
+    
+      
+        <title>High-dimensional Data - Coconut3223</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/markdown-it-admonition.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="High-dimensional Data - Coconut3223" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="./assets/images/social/AI/highd.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="None" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="High-dimensional Data - Coconut3223" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="./assets/images/social/AI/highd.png" >
+      
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#high-dimentional-da" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Coconut3223" class="md-header__button md-logo" aria-label="Coconut3223" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Coconut3223
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              High-dimensional Data
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../python/" class="md-tabs__link">
+          
+  
+    
+  
+  python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+    
+  
+  AI
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../NLP/" class="md-tabs__link">
+          
+  
+    
+  
+  NLP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../CV/" class="md-tabs__link">
+          
+  
+    
+  
+  CV
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../SQL/" class="md-tabs__link">
+          
+  
+    
+  
+  SQL
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../utils/" class="md-tabs__link">
+          
+  
+    
+  
+  Utils
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../math/" class="md-tabs__link">
+          
+  
+    
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Temp/" class="md-tabs__link">
+          
+  
+    
+  
+  Temp
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Coconut3223" class="md-nav__button md-logo" aria-label="Coconut3223" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Coconut3223
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../python/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    python
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/python_elegant/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    elegant
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/enhanced/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    enhanced
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    numpy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/exam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    八股文
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/pytorch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pytorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    AI
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            AI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pre/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pre-processing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../loss/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Loss
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eva/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Evaluation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    High-dimensional Data
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    High-dimensional Data
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#some-special-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      some special notation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Special Matrix
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variable-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variable Selection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variable Selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filter-screening" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter, Screening, 过滤法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Filter, Screening, 过滤法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#perfect-models-with-general-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Perfect Models with General Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-model-with-more-redundant-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working Model with More Redundant Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-model-with-less-important-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working Model with Less Important Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#candidate-models-for-p1-predictor-1-x_1-x_p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Candidate Models for p+1 predictor \(1， x_1, ..., x_p\)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-selection-for-lr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Selection for LR
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dimensionality-reduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dimensionality Reduction，数据降维
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dimensionality Reduction，数据降维">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#principal-component-analysis-pca" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principal Component Analysis, PCA, 主成分分析
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Principal Component Analysis, PCA, 主成分分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-maximize-the-variance" class="md-nav__link">
+    <span class="md-ellipsis">
+      KEY: Maximize the variance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pca-transformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      PCA Transformation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PCA Transformation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#practical-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Use
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphical-rotate-the-data-without-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graphical: Rotate the data without scaling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linear-discriminant-analysis-lda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Discriminant Analysis, LDA, 线性判别分析
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linear Discriminant Analysis, LDA, 线性判别分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fishers-lda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fisher’s LDA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bayes-lda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bayes’ LDA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quadratic-discriminant-analysis-qda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quadratic Discriminant Analysis, QDA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    ML
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            ML
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ML/lr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LinearRegreesion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ML/nb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NaiveBayes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ML/logr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logistics Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ML/svm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ML/knn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KNN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ML/dt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decision Tree
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ML/ensemble_learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ensemble Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ML/association_analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Association Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ML/clustering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clustering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../DL/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    DL
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            DL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DL/cnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CNN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DL/mlp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MLP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DL/rnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RNN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DL/transformer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DL/generative_model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generative Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DL/transferlearning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transfer Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DL/tricks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tricks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DL/utils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Utils
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../NLP/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    NLP
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            NLP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NLP/embedding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Embedding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NLP/subword/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Subword
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NLP/kea/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keyword Extraction Algorithm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NLP/nmt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Neural Machine Translation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NLP/gpt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NLP/opennmt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    openNMT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NLP/huggingface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HuggingFace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NLP/asr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ASR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NLP/paper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NLP/survey_on_synthesizing_training_data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Synthesizing Training Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../CV/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    CV
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            CV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../SQL/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    SQL
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SQL/exam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    八股文
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../utils/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Utils
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Utils
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/hadoop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hadoop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/mapreduce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Map Reduce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/vscode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VScode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/html_css/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTML CSS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/PPT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../math/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Math
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Temp/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Temp
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Temp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#some-special-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      some special notation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Special Matrix
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variable-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variable Selection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variable Selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filter-screening" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter, Screening, 过滤法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Filter, Screening, 过滤法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#perfect-models-with-general-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Perfect Models with General Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-model-with-more-redundant-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working Model with More Redundant Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-model-with-less-important-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working Model with Less Important Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#candidate-models-for-p1-predictor-1-x_1-x_p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Candidate Models for p+1 predictor \(1， x_1, ..., x_p\)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-selection-for-lr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Selection for LR
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dimensionality-reduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dimensionality Reduction，数据降维
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dimensionality Reduction，数据降维">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#principal-component-analysis-pca" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principal Component Analysis, PCA, 主成分分析
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Principal Component Analysis, PCA, 主成分分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-maximize-the-variance" class="md-nav__link">
+    <span class="md-ellipsis">
+      KEY: Maximize the variance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pca-transformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      PCA Transformation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PCA Transformation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#practical-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Use
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphical-rotate-the-data-without-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graphical: Rotate the data without scaling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linear-discriminant-analysis-lda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Discriminant Analysis, LDA, 线性判别分析
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linear Discriminant Analysis, LDA, 线性判别分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fishers-lda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fisher’s LDA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bayes-lda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bayes’ LDA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quadratic-discriminant-analysis-qda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quadratic Discriminant Analysis, QDA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="high-dimentional-da">high dimentional DA<a class="headerlink" href="#high-dimentional-da" title="Permanent link">&para;</a></h1>
+<p><mark>Data mining</mark> is the process of discovering new patterns from LARGE DATA sets using methods of artificial intelligence, machine learning, statistics and database systems.</p>
+<p><mark>Curse of Dimensionality 维度灾难</mark>。 会导致分类器出现<strong>过拟合</strong>。这是因为<u>在样本容量固定时，随着特征数量的增加，单位空间中的样本数量会变少。</u>恰当的维数特征数对于机器学习模型非常重要。深度学习通过对样本的特征进行复杂的变换，得到对类别最有效的特征，从而提高机器学习的性能。</p>
+<div class="grid">
+<figure><a class="glightbox" href="../pics/highD_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/highD_1.png" width="60%" /></a><figure>
+<figure><a class="glightbox" href="../pics/highD_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/highD_2.png" width="60%" /></a><figure>
+<p>假设样本集是由圆形和三角形组成的20个样本，假设这些样本均匀地分布在这4个区域，则每个区域的样本个数约为5个。若希望在二维空间中每个区域的样本数量与一维时大致相等，则需要400个样本；若是三维空间，则需要8000个样本</p>
+</figure>
+</figure>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">很少 <strong>observation n，</strong> 很多 <strong>features p</strong> 情况下的高维.<br> p is very large, but n is relatively small.</p>
+<p>就拿医学来说，病人总是少数的，但是相关的因素总是特别多的。譬如那个基因检测。我们总得解决这种高维问题。</p>
+<blockquote>
+<p>有569个observations，30个 features。对于求features 的 covariance matrix <span class="arithmatex">\(Σ\in S\)</span>来说，有<span class="arithmatex">\(\cfrac{30*29}{2}\approx 430\)</span>个 parameters 要去 estimate。如果 take average 几乎是一个parameter 一个observation，这已经算是 high dimensional problem，除非数据very clean.</p>
+</blockquote>
+</div>
+<table>
+<thead>
+<tr>
+<th>数据降维 dimensionally reduction</th>
+<th>特征选择 Variable Selection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多个特征合成为一个特征</td>
+<td>在多个特征中选择某个特征</td>
+</tr>
+<tr>
+<td>获取无法解释的特征与变量之间的关系</td>
+<td>可解释性强</td>
+</tr>
+</tbody>
+</table>
+<h2 id="some-special-notation">some special notation<a class="headerlink" href="#some-special-notation" title="Permanent link">&para;</a></h2>
+<p><mark>Random Vector</mark> <span class="arithmatex">\(Z=\begin{bmatrix}Z_1\\\vdots\\Z_p\end{bmatrix}\in\R^p\)</span></p>
+<ul>
+<li><mark>Expectation Matrix</mark> <span class="arithmatex">\(\mathbb EZ=\begin{bmatrix}\mathbb EZ_1\\\vdots\\\mathbb EZ_p\end{bmatrix}\)</span></li>
+<li><mark>Covariance Matrix</mark> <span class="arithmatex">\(\Sigma=Var(Z)\\=\mathbb E\{(Z-\mathbb EZ)(Z-\mathbb EZ)^T\}\\=\begin{bmatrix}Var(Z_1)&amp;Cov(Z_1,Z_2)&amp;\dots&amp;Cov\{Z_1,Z_p\}\\Cov(Z_1,Z_2)&amp;Var(Z_2)&amp;\dots&amp;Cov(Z_2,Z_p)\\\vdots&amp;&amp;\ddots&amp;\vdots\\Cov(Z_p,Z_1)&amp;Cov(Z_p,Z_2)&amp;\dots&amp;Var(Z_p)\end{bmatrix}\)</span><ul>
+<li><span class="arithmatex">\(\Sigma \succeq0\)</span>
+proof: the sample covariance matrix is non-negative definite.</li>
+</ul>
+</li>
+</ul>
+<p>Correlation只是考察线性关系的相关性，并不是代表independent</p>
+<ul>
+<li><span class="arithmatex">\(\mathbb E(X+Y)=\mathbb EX+\mathbb EY\)</span></li>
+<li>
+<p><span class="arithmatex">\(W:=A_{p\times p}Z_{p\times 1}+c\in\R^p\)</span>, <strong>constant</strong> matrix A, <strong>constant</strong> vector c</p>
+<p><span class="arithmatex">\(\mathbb E(AZ+c)=c+A\mathbb EZ\)</span></p>
+<p><span class="arithmatex">\(Var(AZ+c)=Var(AZ)=AVar(Z)A^T\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\mathbb E(AXB+c)=A\mathbb EXB+c\)</span></p>
+</li>
+<li>
+<p>Positive-definite matrices )</p>
+<p>Eigenvalue decomposition <span class="arithmatex">\(A=\Gamma\Lambda\Gamma^T=\sum\limits_{i=1}^p\lambda_i\gamma_i\gamma_i^T\)</span></p>
+</li>
+</ul>
+<p><mark>Multivariate Normal Distribution</mark> <span class="arithmatex">\(Z～N(b,\Sigma)\)</span>
+Suppose <span class="arithmatex">\(Z=\begin{bmatrix}ξ_1\\\vdots\\ξ_p\end{bmatrix}\in\R^p\)</span> is a random vector, <span class="arithmatex">\(\mathbb EZ=b\in\R^p,Var(Z)=\Sigma\in S^p\)</span>
+<span class="arithmatex">\(\forall l\in\R^p,l^TZ\in\R\)</span> ～ Normal distribution. <span class="arithmatex">\(\implies Z\)</span> follows Multivariate Normal Distribution.
+<span class="arithmatex">\(\iff Z～N(b,\Sigma),b=\begin{bmatrix}b_1\\\vdots\\b_p\end{bmatrix},\Sigma=\begin{bmatrix}\sigma_{11}&amp;\dots&amp;\sigma_{1p}\\\vdots&amp;\ddots&amp;\vdots\\\sigma_{p1}&amp;\dots&amp;\sigma_{pp}\\\end{bmatrix}\\
+\iff  f_Z(ξ_1,\dots,ξ_p)=\cfrac{1}{(2\pi)^{k/2}|\Sigma|^{1/2}}\exp\Big(-\cfrac{1}{2}(Ζ-b)^T)\Sigma^{-1}(Z-b) \Big)\)</span></p>
+<p><strong>properties:</strong></p>
+<ol>
+<li><span class="arithmatex">\(\forall\text{ constant }l\in\R^p,c\in\R,\space l^TZ+c～N(l^Tb+c,l^T\Sigma l)\)</span></li>
+<li>
+<p>Partial correlation and conditional independence
+<span class="arithmatex">\((Ζ_1^T,Ζ_2^T)^T～N\Big(\begin{bmatrix}b_1^T&amp;b_2^T\end{bmatrix}^T,\begin{bmatrix}\Sigma_{11}&amp;\Sigma_{12}\\\Sigma_{21}&amp;\Sigma_{22}\end{bmatrix}\Big)\)</span>
+<span class="arithmatex">\(\\\quad \iff \begin{bmatrix}ξ_{11}\\\vdots\\ξ_{1p}\\ξ_{21}\\\vdots\\ξ_{2p}\end{bmatrix}～N\Big(\begin{bmatrix}b_1\\b_2\end{bmatrix},\begin{bmatrix}\Sigma_{11}&amp;\Sigma_{12}\\\Sigma_{21}&amp;\Sigma_{22}\end{bmatrix}\Big)\\\quad\iff \begin{cases}Z_i～Ν(b_i,\Sigma_{ii})\\Z_1|Z_2～N\Big(b_1+\Sigma_{12}\Sigma_{22}^{-1}(X_2-b_2),\Sigma_{11}-\Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}\Big)\end{cases}\)</span></p>
+</li>
+<li>
+<p>proof:</p>
+</li>
+<li>
+<p>在 normal multivariate distribution 里 Covariance = 0  等同于 independent
+<span class="arithmatex">\(cov(Z_1,Z_2)=\sigma_{ij}=0\iff Z_1,Z_2 \text{ are independent}\)</span></p>
+</li>
+<li>proof</li>
+<li><span class="arithmatex">\(ξ_k～N(b_k,\sigma_{kk}),\begin{cases}ξ_i+ξ_j～N(b_i+b_j,\sigma_{ii}+2\sigma_{ij}+\sigma_{j})\in\R\\ξ_i-ξ_j～N(b_i-b_j)～Ν(\sigma_{ii}-2\sigma_{ij}+\sigma_{jj})\in\R\end{cases}\)</span></li>
+</ol>
+<p><mark>I.I.D. observations</mark>. <span class="arithmatex">\(\text{Suppose } X_1,X_2,\dots,X_m\in\R^p \text{ are i.d.d.}\)</span></p>
+<ol>
+<li><span class="arithmatex">\(\mathbb EX=\overline X=\cfrac{1}{n}\sum\limits_{i=1}^nX_i\)</span></li>
+<li><mark>Sample covariance matrix</mark> <span class="arithmatex">\(S=\begin{cases}\cfrac{1}{n}\sum\limits_{i=1}^n(X_i-\overline X)(X_i-\overline X)^T\\\cfrac{1}{n-1}\sum\limits_{i=1}^n(X_i-\overline X)(X_i-\overline X)^T\end{cases}\in S^{p}\)</span>
+关于这个 n-1 是因为均值已知，无偏估计</li>
+<li><mark>Central Limit Theorem CLT</mark>. Suppose <span class="arithmatex">\(X_1,X_2,\dots,X_m\in\R^p \text{ are i.d.d.},\mathbb EX=\mu\in\R^p,Cov(X)=\Sigma\\\qquad\lim\limits_{n\rightarrow\infin}\cfrac{1}{n}\sum\limits_{i=1}^n(X_i-\mu)\rightarrow N(0,\Sigma)\)</span></li>
+<li><mark>Law of Large numbers</mark>. Suppose <span class="arithmatex">\(X_1,X_2,\dots,X_m\in\R^p \text{ are i.d.d.},EX_i=\mu,Cov(X_i)=\Sigma\\\qquad\begin{cases}\lim\limits_{n\rightarrow\infin}\cfrac{1}{n}\sum\limits_{i=1}^nX_i\rightarrow E(X_i)=\mu\\\lim\limits_{n\rightarrow\infin}\cfrac{1}{n}\sum\limits_{i=1}^n(X_i-\mu)(X_i-\mu)^T\rightarrow\Sigma\end{cases}\)</span></li>
+</ol>
+<blockquote>
+<blockquote>
+<p>(AMA565_L0_T2) Suppose <span class="arithmatex">\(e ～ N(0,σ^2I)\)</span>, what is the distribution of <span class="arithmatex">\(\hat{β} = (X^TX)^{−1}X^T(Xβ + e)\)</span>? (Assume that the inverse and matrix multiplication are well defined)</p>
+</blockquote>
+</blockquote>
+<hr />
+<blockquote>
+<blockquote>
+<p>(AMA565_L0_T3) Suppose <span class="arithmatex">\(X ～ N (μ, Σ)\)</span>, and let the eigenvalue decomposition of <span class="arithmatex">\(Σ = (σ_{ij})_{1≤i,j≤p}\)</span> be given as <span class="arithmatex">\(Σ = ΓΛΓ′\)</span> where Γ is an orthogonal matrix and <span class="arithmatex">\(Λ = \text{diag}\{λ_1, . . . , λ_p\}\)</span> is the matrix of the eigenvalues.
+1). What is the distribution of <span class="arithmatex">\(Γ′X\)</span>?&gt; &gt; 2). Let <span class="arithmatex">\(Σ^{− 1/2} = ΓΛ^{− 1/2} Γ′.\)</span> What is the distribution of <span class="arithmatex">\(Σ^{− 1/2} X\)</span>?
+3). Suppose p = 2 and denote <span class="arithmatex">\(X = (X_1, X_2)′\)</span>. In addition, <span class="arithmatex">\(σ_{11}=σ_{22} = 1, σ_{12}=ρ\)</span>. What is the distribution of <span class="arithmatex">\((Y_1,Y_2), Y_1=\cfrac{(X_1+X_2)}{\sqrt{2+2ρ}}, Y_2 = \cfrac{(X_1 − X_2)}{\sqrt{2 − 2ρ}} ?\)</span></p>
+</blockquote>
+</blockquote>
+<h2 id="special-matrix">Special Matrix<a class="headerlink" href="#special-matrix" title="Permanent link">&para;</a></h2>
+<p><span class="arithmatex">\(A=11^T=\begin{bmatrix}1&amp;1&amp;\dots&amp;1\\\vdots&amp;\ddots&amp;\dots&amp;\vdots\\1&amp;\dots&amp;\dots&amp;1\end{bmatrix}\in\R^p=p\cdot \begin{bmatrix}\cfrac{1}{\sqrt p}\\\vdots\\\cfrac{1}{\sqrt{p}}\end{bmatrix}*\begin{bmatrix}\cfrac{1}{\sqrt p}&amp;\dots&amp;\cfrac{1}{\sqrt{p}}\end{bmatrix}+0...\)</span></p>
+<p><mark>AR(1) model</mark> <span class="arithmatex">\(A=\begin{bmatrix}1&amp;\rho&amp;\rho^2&amp;\dots&amp;\rho^{n-1}\\\rho&amp;1&amp;\rho&amp;\dots&amp;\rho^{n-2}\\\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\\rho^{n-1}&amp;\rho^{n-2}&amp;\dots&amp;\dots&amp;1\end{bmatrix} \xrightarrow{e.g,}\begin{bmatrix}1&amp;0.9&amp;0.9^2&amp;0.9^3\\0.9&amp;1&amp;0.9&amp;0.9^2\\0.9^2&amp;0.9&amp;1&amp;0.9\\0.9^3&amp;0.9^2&amp;0.9&amp;1\end{bmatrix}\)</span></p>
+<h2 id="variable-selection">Variable Selection<a class="headerlink" href="#variable-selection" title="Permanent link">&para;</a></h2>
+<p>📑 ref</p>
+<ul>
+<li><a href="https://baijiahao.baidu.com/s?id=1604074325918456186&amp;wfr=spider&amp;for=pc">如何进行特征选择（理论篇）机器学习你会遇到的“坑”</a></li>
+<li><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0220842">Are screening methods useful in feature selection? An empirical study</a></li>
+</ul>
+<p>特征
+|useful, important features|irreverent features|redundant feature|
+|--|--|--|
+|我们希望能：extract 他们，他们能主导整个 signals|无关特征。有他没他都一样|冗余特征。Delete|</p>
+<p><mark>redundant variable</mark>. that preditor with 0 coefficient  <span class="arithmatex">\(\beta_k=0\implies\)</span>  unimportant and meaningless</p>
+<p>Variable, Predictor, in the model, plays two roles: <strong>improving the model flexibility and adversely affecting the model stability</strong>. Redundant variables are not helpful in prediction, thus should be removed.</p>
+<p><strong>为什么我们要 Figure out what important variables are and Delete redundant features？</strong></p>
+<p>因为如果我们不处理掉 redundant variables， 那些 noises created by redundant variables maybe dominate the signals, causing trouble to ask for allocating those useful signals.
+比如，通过房屋的面积，卧室的面积，车库的面积，所在城市的消费水平，所在城市的税收水平等特征来预测房价，那么消费水平（或税收水平）就是多余特征。证据表明，消费水平和税收水平存在相关性，我们只需要其中一个特征就够了，因为另一个能从其中一个推演出来。（如果是线性相关，那么我们在用线性模型做回归的时候，会出现严重的多<strong>重共线性问题</strong>，将会导致过拟合。）
+特征选择还可以使模型获得更好的解释性，加快模型的训练速度，一般的，还会获得更好的性能</p>
+<p><strong>常见的方法包括过滤法（Filter, Screening、包裹法（Warpper），嵌入法（Embedding）。</strong></p>
+<h3 id="filter-screening">Filter, Screening, 过滤法<a class="headerlink" href="#filter-screening" title="Permanent link">&para;</a></h3>
+<p>选择一些 important features, which is a <strong>subset</strong> of all features, 但我们不是简单的选择，而是设置一个 threshold 尽量 save all signals。但 No free lunch, it just a trade.</p>
+<p><strong>SAME Assumptions:</strong></p>
+<p><span class="arithmatex">\(\begin{cases}\text{centered X: } \mathbb EX=0,Cov(X)=\Sigma, \text{centered Y: } \mathbb EY=0\implies \beta_0=0\\(X_i,Y_i)\text{ are IDD}\\(X_i,Y_i,\epsilon_i)\text{ are independent}\\\red {\Xi}:=\text{error between estimator and truth}\in\R^n=\begin{bmatrix}\epsilon_1&amp;\dots&amp;\epsilon_n\end{bmatrix}^T\\\mathbb E\Xi=0,Var(\Xi)=\sigma^2I\in\R^{n\times n}\end{cases}\)</span></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Perfect Models</th>
+<th>More Redundant Variables</th>
+<th>Less Important Variables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p</td>
+<td><span class="arithmatex">\(p=p_0\)</span></td>
+<td><span class="arithmatex">\(p&gt;p_0\)</span></td>
+<td><span class="arithmatex">\(p&lt;p_0\)</span></td>
+</tr>
+<tr>
+<td></td>
+<td>Correct</td>
+<td>Correct</td>
+<td>Wrong</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\epsilon_i\)</span></td>
+<td><span class="arithmatex">\(N(0,\sigma^2)\)</span></td>
+<td><span class="arithmatex">\(N(0,\sigma^2)\)</span></td>
+<td><span class="arithmatex">\(\red {\tilde\epsilon_i ,E(\tilde\epsilon_i)\neq0}\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(Bias(\hat{Y}_{new})\)</span></td>
+<td>❌</td>
+<td>❌</td>
+<td>⭕ <span class="arithmatex">\(E\tilde{\beta}-\beta)^TX_{new}\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(E\{(Y-\hat{Y})^2\}\)</span></td>
+<td><span class="arithmatex">\(\approx\sigma^2(1+\cfrac{p_0}{n})\)</span></td>
+<td><span class="arithmatex">\(\approx\sigma^2(1+\cfrac{p}{n})\)</span></td>
+<td><span class="arithmatex">\(\approx\sigma^2+(\beta_{p+1}^2+\dots+\beta_{p_o^2})\lambda_{min}(\Sigma)\)</span></td>
+</tr>
+</tbody>
+</table>
+<h4 id="perfect-models-with-general-variables">Perfect Models with General Variables<a class="headerlink" href="#perfect-models-with-general-variables" title="Permanent link">&para;</a></h4>
+<p><mark>Perfect model (<span class="arithmatex">\(p=p_0\)</span>) variables</mark>. <span class="arithmatex">\(Y_i=\beta_1x_{i,1}+\dots+\beta_{p_0}x_{i,p_0}+\red{\epsilon_i}\)</span>
+<span class="arithmatex">\(\iff Y_i=\beta^TX_i+\epsilon_i, \begin{cases}Y_i\in\R,\\\beta=\begin{bmatrix}\beta_1&amp;\dots&amp;\beta_{p_0}\end{bmatrix}^T\in\R^{p_0}\\X_i=\begin{bmatrix}x_{i,1}&amp;\dots&amp;x_{i,p_0}\end{bmatrix}^T\in\R^{p_0}\\[1em]Cov(X)=\Sigma\in\R^{p_0\times p_0}\\\red{\epsilon_i\text{ are IID}～N(0,\sigma^2)}\end{cases}\)</span>
+<span class="arithmatex">\(\implies Y=X\beta+\Xi,\begin{cases}Y\in\R^n\\ X\in\R^{n\times p_0 }=\begin{bmatrix}X_1^T&amp;\dots&amp;X_n^T\end{bmatrix}^T\\\beta\in\R^{p_0}\end{cases}\)</span></p>
+<p><mark>the estimator</mark>. $ \hat{\beta} = (\mathbb X^T\mathbb X)^{-1}\mathbb X^T\mathbb Y=\beta+(\mathbb X^T\mathbb X)^{-1}\mathbb X^T \red {\Xi }$
+<span class="arithmatex">\(\\\quad \begin{cases}\mathbb X:= \text{training dataset with n traing samples } X_i\\\mathbb X^T\mathbb  X =\sum\limits_{i=1}^nX_iX_i^T,\\X_i \text{ are IID }～N(0,\Sigma)\implies\mathbb  X^T\mathbb X=\sum\limits_{i=1}^n(X_i-0)(X_i-0)^T=\red{n\Sigma}\\\end{cases}\)</span></p>
+<p><span class="arithmatex">\(\hat{\beta}=\beta+(n^{-1}\mathbb X^T\mathbb X)^{-1}n^{-1}\mathbb X^T\Xi\approx \beta+\Sigma^{-1}n^{-1}\mathbb X^T\Xi\implies\\[1em]\hat{\beta}-\beta=(n^{-1}\mathbb X^T\mathbb X)^{-1}n^{-1}\mathbb X^T\Xi\approx\Sigma^{-1}n^{-1}\mathbb X^T\Xi\)</span></p>
+<div class="admonition p">
+<p class="admonition-title">前者 <span class="arithmatex">\((n^{-1}\mathbb X^T\mathbb X)\)</span> 是样本算出来的，后者  <span class="arithmatex">\(\Sigma\)</span>  是分布的方差，前者 converge into 后者，减少了 randomness，所以是 approximately</p>
+</div>
+<p><strong>For a new random observation</strong> <span class="arithmatex">\(X_{new}\)</span>
+<span class="arithmatex">\(<span class="arithmatex">\(\begin{align*}Y_{new}&amp;=\beta^TX_{new}+\epsilon_{new}\\\hat{Y}_{new} &amp;=\hat{\beta}^TX_{new}
+\end{align*}\)</span>\)</span></p>
+<p><span class="arithmatex">\((X_{new},Y_{new},\epsilon_{new})\)</span> is independent of <span class="arithmatex">\((X_i,Y_i,\epsilon_i)\)</span></p>
+<div class="arithmatex">\[\begin{align*}
+Y_{new}-\hat{Y}_{new}&amp;=\underline{\red {\epsilon_{new}}+\beta^{\red{T}}X_{new}}-\underline{\hat{\beta}^{\red T}X_{new}}\\
+&amp;=\red {\epsilon_{new}}+(\beta-\hat{\beta})^{\red T}X_{new}\\
+&amp;\approx\red {\epsilon_{new}}-\underline{n^{-1}\Xi^T\mathbb X\Sigma^{-1}}X_{new}
+\end{align*}\]</div>
+<p>Square of Prediction Error</p>
+<div class="arithmatex">\[
+\begin{align*}(Y_{new}-\hat{Y}_{new})^2&amp;\approx(\red {\epsilon_{new}}-\underline{n^{-1}\Xi^T\mathbb X\Sigma^{-1}}X_{new})^2\\[1em]&amp;\approx\red {\epsilon_{new}}^2-2\red {\epsilon_{new}}\cdot n^{-1}X_{new}^T\Sigma^{-1}\mathbb X^T\Xi+n^{-2}(\Xi^T\mathbb X\Sigma^{-1}X_{new})^2\end{align*}
+\]</div>
+<p>Take expectation:</p>
+<div class="arithmatex">\[
+\begin{align*}\mathbb E\{(Y-\hat{Y})^2\}&amp;=\mathbb E\{(Y-\hat{\beta}^TX)^2\}\\&amp;\approx\mathbb E\Big(\red {\epsilon}^2-2\red {\epsilon}\cdot n^{-1}X^T\Sigma^{-1}\mathbb X^T\Xi+n^{-2}(\Xi^T\mathbb X\Sigma^{-1}X)^2\Big)\\&amp;\approx\sigma^2-0+\cfrac{p_0}{n}\sigma^2\\&amp;\approx\sigma^2(1+\cfrac{p_0}{n})\end{align*}
+\]</div>
+<p><span class="arithmatex">\(\implies\)</span> <strong>When n is large, the perfect model has the smallest prediction error</strong></p>
+<h4 id="working-model-with-more-redundant-variables">Working Model with More Redundant Variables<a class="headerlink" href="#working-model-with-more-redundant-variables" title="Permanent link">&para;</a></h4>
+<p>如果我们不选择重要特征，我们尝试为折有事物添加估计系数，那么误差将汇总权将汇总，即每次我们估计某些东西时，您都会创一个错误。</p>
+<p><mark>Wroking model with more redundant variables (<span class="arithmatex">\(p\)</span> variables, <span class="arithmatex">\(\red{p&gt;p_0}\)</span>)</mark></p>
+<p><span class="arithmatex">\(Y_i=\beta_1x_{i,1}+\dots+\beta_{p_0}x_{i,p_0}+0\times x_{i,p_0}+\dots+0\times x_{i,p}+\red{\epsilon_i},\)</span>
+ <span class="arithmatex">\(\iff Y_i=\beta^TX_i+\epsilon_i,i=1,\dots,n, \\\qquad\begin{cases}Y_i\in\R,\\\beta=\begin{bmatrix}\beta_1&amp;\dots&amp;\beta_{p_0}&amp;0&amp;\dots&amp;0\end{bmatrix}^T\in\R^p,X_i=\begin{bmatrix}x_{i,1}&amp;\dots&amp;x_{i,p_0}&amp;x_{i,p_0}&amp;\dots&amp;x_{i,p}\end{bmatrix}^T\in\R^p\\Cov(X)=\Sigma\in\R^{p\times p}\\\red{\epsilon_i\text{ are IID}～N(0,\sigma^2)}\end{cases}\)</span></p>
+<p><mark>the estimator</mark> <span class="arithmatex">\(\hat{\beta} = (\mathbb X^T\mathbb X)^{-1}\mathbb X^T\mathbb Y=\beta+(\mathbb X^T\mathbb X)^{-1}\mathbb X^T \red {\Xi }\\\quad \begin{cases}\mathbb X\in\R^{n\times p},\mathbb X^T\mathbb  X =\sum\limits_{i=1}^nX_iX_i^T\in\R^{p\times p},\\X_i \text{ are IID }～N(0,\Sigma)\implies\mathbb  X^T\mathbb X=\sum\limits_{i=1}^n(X_i-0)(X_i-0)^T=\red{n\Sigma}\in\R^{p\times p}\\\end{cases}\)</span></p>
+<p>Expected Square of Prediction Error</p>
+<div class="arithmatex">\[\mathbb E\{(Y-\hat{Y})^2\}=\mathbb E\{(Y-\hat{\beta}^TX)^2\}\approx\sigma^2(1+\cfrac{p}{n})&gt;\sigma^2(1+\cfrac{p_0}{n}),p&gt;p_0
+\]</div>
+<p>proof of</p>
+<p><span class="arithmatex">\(\implies\)</span>  <strong>the more redundant variables, the worse the prediction is.</strong>
+<span class="arithmatex">\(\implies\)</span>  <strong>if n is very large, it is ok to put all features in model as well since <span class="arithmatex">\(\cfrac{p_0}{n}\)</span>  would vanish</strong></p>
+<h4 id="working-model-with-less-important-variables">Working Model with Less Important Variables<a class="headerlink" href="#working-model-with-less-important-variables" title="Permanent link">&para;</a></h4>
+<p><mark>Wroking model with less important variables (<span class="arithmatex">\(p\)</span> variables, <span class="arithmatex">\(\red{p&lt;p_0, \beta_{p_0}\neq0}\)</span></mark>
+<span class="arithmatex">\(Y_i=\beta_1x_{i,1}+\dots+\beta_p\times x_{i,p}+\red{\tilde{\epsilon_i}}\)</span>
+<span class="arithmatex">\(\iff Y_i=\beta^TX_i+\red{\tilde{\epsilon_i}},i=1,\dots,n, \\\qquad\begin{cases}Y_i\in\R,\\\beta=\begin{bmatrix}\beta_1&amp;\dots&amp;\beta_{p}\end{bmatrix}^T\in\R^p,X_i=\begin{bmatrix}x_{i,1}&amp;\dots&amp;x_{i,p}\end{bmatrix}^T\in\R^p\\Cov(X)=\Sigma\in\R^{p\times p}\\\red{!!E(\tilde{\epsilon})\neq 0\impliedby\text{wrong model without enough variables}}\\\lambda_{\min}(\Sigma)&gt;0\end{cases}\)</span></p>
+<p><mark>the estimator</mark> <span class="arithmatex">\(\hat{\beta}=\begin{bmatrix}\hat{\beta_1}&amp;\dots&amp;\hat{\beta_p}\end{bmatrix}^T\in\R^p,\red{p&lt;p_0}\\\xrightarrow{变形}\red{\tilde{\beta}}=\begin{bmatrix}\hat{\beta}\\0\end{bmatrix}=\begin{bmatrix}\hat{\beta_1}&amp;\dots&amp;\hat{\beta_p}&amp;0&amp;\dots&amp;0\end{bmatrix}^T\in\R^{p_0}\)</span></p>
+<p><span class="arithmatex">\(\implies\hat{Y}_{new}=\hat{\beta}_{1\times p}{X_{new}}_{p\times1}=\tilde{\beta}^T_{1\times p_0}{X_{new}}_{p_0\times1}\\\qquad\qquad=\hat\beta_1x_1+\dots+\hat{\beta_p}x_p+0\times x_p+\dots+0\times x_{p_0}\)</span></p>
+<p><strong>There is a bias in the prediction for a given X.</strong></p>
+<p><span class="arithmatex">\(Bias(\hat{Y}_{new})=\mathbb EY_{new}-\mathbb E\hat{Y}_{new}=\mathbb E\{(\beta-\tilde{\beta})^TX_{new}+\epsilon_{new}\}=(\mathbb E\tilde{\beta}-\beta)^TX_{new}\)</span></p>
+<p>Expected Square of Prediction Error</p>
+<div class="arithmatex">\[
+\begin{align*}\mathbb E\{(Y-\hat{Y})^2\}&amp;=\sigma^2+\mathbb E\{(\beta-\tilde{\beta})^T\Sigma(\beta-\tilde{\beta})\}\\[1em]&amp;\ge\sigma^2+\Vert\beta-\tilde\beta\Vert^2\lambda_{min}(\Sigma)\\[1em]&amp;\ge\sigma^2+(\beta_{p+1}^2+\dots+\beta_{p_0^2})\lambda_{min}(\Sigma)\end{align*}
+\]</div>
+<ul>
+<li>proof of</li>
+</ul>
+<p><span class="arithmatex">\(\implies\)</span>  If the working model does not include all the important variables (those with <span class="arithmatex">\(β_{k}≠ 0,k=1,\dots,p_0\)</span>), the prediction error (lower bound) is also bigger than the model with exactly the important variables.
+<span class="arithmatex">\(\implies\)</span> <strong>样本数 n 再大也拯救不了这个error 因为<span class="arithmatex">\((\beta_{p+1}^2+\dots+\beta_{p_0^2})\lambda_{min}(\Sigma)\)</span> is constant，而且这只是下界 lower bound</strong></p>
+<h4 id="candidate-models-for-p1-predictor-1-x_1-x_p">Candidate Models for p+1 predictor <span class="arithmatex">\(1， x_1, ..., x_p\)</span><a class="headerlink" href="#candidate-models-for-p1-predictor-1-x_1-x_p" title="Permanent link">&para;</a></h4>
+<p><figure markdown="span"><a class="glightbox" href="../pics/FS_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/FS_1.png" width="80%" /></a><p>un-centralized</p></figure></p>
+<p>Suppose we have n samples. Consider any sub-model (A)
+<span class="arithmatex">\((A):= Y =\beta_0+β_1x'_1 +...+β_qx'_q+ε, \space\{x'_1,\dots,x'_q\}\sub\{x_1,\dots,x_p\}\)</span></p>
+<p><mark>RRS of A</mark>. <span class="arithmatex">\(RSS(A)=\sum\limits_{i=1}^n\{Y_i-\hat{Y}_{A,i}\}^2\)</span>.
+<span class="arithmatex">\(\hat{Y}_{A,i}:=\)</span> the fitted value(estimation) of <span class="arithmatex">\(Y_i\)</span> generated by model (A</p>
+<div class="admonition warning">
+<p class="admonition-title">Fitted error (RSS) 可以去衡量how good model are， 但是 cannot be used as one criterion for the selection.</p>
+</div>
+<ol>
+<li>For any two models A and B, if A is a sub-model of B, then <span class="arithmatex">\(RSS(A) ≥ RSS(B).\)</span> 只要 A是 B 的子集，那么 RSS(A) 一定≥ RSS(B)。</li>
+<li>而且这个RSS是在 training set 1-n 上进行，如果是 overfitting 的话，error再小，但是在鲁棒性还是很垃圾的。所以我们不能用在训练集上的RSS去 compare</li>
+</ol>
+<h3 id="model-selection-for-lr">Model Selection for LR<a class="headerlink" href="#model-selection-for-lr" title="Permanent link">&para;</a></h3>
+<p>For example, an empirical method like Cross-Validation, Bootstrap methods or sample penalties such as AIC, BIC, Mallow's CP.</p>
+<p><a href="https://stats.stackexchange.com/questions/578982/model-selection-aic-bic-and-cross-validation-gives-different-conclusion">Model Selection: AIC/BIC and Cross-Validation gives different conclusion</a></p>
+<p><mark>Cross validation</mark>. 因为要比较一些模型，如果每个模型都拿一些进行训练然后测验证集的准确率。当训练集的 n 非常大的时候，就很容易 time-consuming。</p>
+<p><mark>K-fold</mark>. 和交叉验证比，是 computation more efficient， 但更model is less stable</p>
+<p><mark>AIC</mark></p>
+<p>/BIC</p>
+<p>the computational efficiency of AIC/BIC or when the sample size is relatively small for cross-validation
+AIC and BIC explicitly penalize the number of parameters, cross-validation not, so again, it's not surprising that they suggest a model with fewer parameters (though nothing prohibits cross-validation from picking a model with fewer parameters).</p>
+<h2 id="dimensionality-reduction">Dimensionality Reduction，数据降维<a class="headerlink" href="#dimensionality-reduction" title="Permanent link">&para;</a></h2>
+<p>数据降维其实还有另一个好处：数据可视化。因为超过三维的数据就无法可视化了。数据降维最常用的方法是主成分分析。</p>
+<div class="admonition danger">
+<p class="admonition-title">我们想找到重要信号的位置。其次，我们找到重要信号或强信号，或者这些弱信号现在是零，就扔掉，我们希望为这些强信号提供适当的估计。</p>
+<p>我们肯定没有 enough information，因为同时存在着 noise。决定我们是否能完成目标就是：whether the important signals in data are stronger than noises。我们现在假定这个 important signals are <strong>stronger</strong> than noises. 接下来就要想如何将important information 剥离 noise？</p>
+</div>
+<h3 id="principal-component-analysis-pca">Principal Component Analysis, PCA, 主成分分析<a class="headerlink" href="#principal-component-analysis-pca" title="Permanent link">&para;</a></h3>
+<p>The basic idea is to transform the p random variables into <u>linear combinations</u> called <mark>Principal Components</mark>. Extracting linear combinations from multivariate data, a subset of PCs <u>captures most of the variability </u> in the data.</p>
+<p>正交变换把由线性相关变量表示的观测数据转换为少数几个由线性无关变量表示的数据，<strong>线性无关</strong>的变量称为==主成分==</p>
+<h4 id="key-maximize-the-variance">KEY: Maximize the variance<a class="headerlink" href="#key-maximize-the-variance" title="Permanent link">&para;</a></h4>
+<div class="admonition p">
+<p class="admonition-title">Maximize the variance</p>
+<p>Identify key components which can <u>maximize the information</u> with a reasonable dimension.
+Find <strong>unit-vector g</strong> to transform X into Y with the target that <u>maximizes the variance of Y</u>.</p>
+</div>
+<p>Suppose <span class="arithmatex">\(X=\begin{bmatrix}X_1\\\vdots\\X_p\end{bmatrix}\in\R^p\)</span> is a random vector with <mark>Covariance Matrix</mark> <span class="arithmatex">\(Var\{X\}=\Sigma=\begin{bmatrix}\sigma_{1}^2&amp;\dots&amp;\sigma_{1p}\\\vdots&amp;\ddots&amp;\vdots\\\sigma_{p1}&amp;\dots&amp;\sigma_{p}^2\\\end{bmatrix}\)</span></p>
+<p>Look for <u>the linear transformations</u>:</p>
+<div class="arithmatex">\[
+\begin{align*}\begin{cases}Y_1=g_{11}X_1+\dots+g_{1p}X_p\\Y_2=g_{21}X_1+\dots+g_{2p}X_p\\\vdots\\Y_p=g_{p1}X_1+\dots+g_{pp}X_p\end{cases}\iff\begin{bmatrix}Y_1\\\vdots\\Y_p\end{bmatrix}&amp;=\begin{bmatrix}g_{11}&amp;\dots&amp;g_{1p}\\\vdots\\g_{p1}&amp;\dots&amp;g_{pp}\end{bmatrix}\begin{bmatrix}X_1\\\vdots\\X_p\end{bmatrix}\\&amp;=\begin{bmatrix}g_1^T&amp;\dots&amp;g_p^T\\\end{bmatrix}\begin{bmatrix}X_1\\\vdots\\X_p\end{bmatrix}\end{align*}\\\vec{g_i}=\begin{bmatrix}g_{i1}\\\vdots\\g_{ip}\end{bmatrix},\Vert \vec{g_i}\Vert_2=1,\forall i=1,...p
+\]</div>
+<p><mark>property of  r.vector</mark> <span class="arithmatex">\(Y=g^TX, g\in\text{constant}\\\implies Var(Y)=g^TVar(X)g=g^T\Sigma g\)</span></p>
+<p><strong>Target:</strong></p>
+<div class="arithmatex">\[g=\max\limits_{\Vert g\Vert_2=1} Var(Y)=\max\limits_{\Vert g\Vert_2=1} g^T\Sigma g\tag{1}\]</div>
+<p><mark>eign about postive definite A</mark>.<span class="arithmatex">\(\Sigma=\sum\limits_{i=1}^{p}\lambda_i\gamma_i^T\gamma_i=\Gamma^T\Lambda\Gamma\)</span>  specially suppose <span class="arithmatex">\(\lambda_1&gt;\dots&gt;\lambda_p&gt;0\)</span> in <u>anascending order</u></p>
+<ol>
+<li><span class="arithmatex">\(g_1:=\max\limits_{\Vert g\Vert_2=1} g^T\Sigma g\implies g_1=\gamma_1 \text{ of }\Sigma\)</span>
+<span class="arithmatex">\(\implies g_1\)</span> is the <strong>direction</strong> <strong>where the variance is maximized.</strong> <u>（not PC</u>
+<span class="arithmatex">\(\implies g_1^Tx\)</span> is the <strong>1st PC</strong></li>
+<li><span class="arithmatex">\(g_2:=\max\limits_{\Vert g\Vert_2=1,\:g_2^Tg_1=0} g^T\Sigma g\implies g_2=\gamma_2 \text{ of }\Sigma\)</span>
+<span class="arithmatex">\(\implies g_2\)</span> is the one that maximizes the variance among all directions <strong>orthogonal</strong> to <span class="arithmatex">\(g_1\)</span></li>
+<li>proof: <strong>i th-PC = i th eigen vector</strong>
+Let <span class="arithmatex">\(\lambda_i:=\)</span> the i-th largest eigen-value of <span class="arithmatex">\(\Sigma\)</span>, <span class="arithmatex">\(\gamma_i:=\)</span> the eigen-vector corresponding to <span class="arithmatex">\(\lambda_i\)</span>. Therefore, <span class="arithmatex">\(\{\gamma_1,\gamma_n\}\)</span> are one set of the basis of <span class="arithmatex">\(\R^p\)</span> <u>特征向量是特征空间的一组 basic vectors。</u>
+<span class="arithmatex">\(\implies\forall g\in\R^p,\exist c_1, c_2,\dots, c_p\text{ s.t. } g=c_1\gamma_1+c_2\gamma_2+c_n\gamma_n\)</span></li>
+</ol>
+<div class="arithmatex">\[\begin{align*}\implies g^T\Sigma g&amp;=\sum\limits_{i=1}^n\sum\limits_{j=1}^nc_ic_j\gamma_i^T\Sigma\gamma_j\\
+&amp;\xlongequal{\Sigma\gamma_i=\lambda_i\gamma_i}\sum\limits_{i=1}^n\sum\limits_{j=1}^pc_ic_j\gamma_i^T\gamma_j\lambda_j\\
+&amp;\xlongequal[\lambda_i^T\lambda_i=1]{\lambda_i^T\lambda_j=0,\forall i\neq j} \sum_{i=1}^nc_i^2\lambda_i\\
+&amp;\le\lambda_1\sum_{i=1}^nc_i^2\\
+&amp;\xlongequal[\Vert g\Vert_2^2=1=c_1^2+\dots+c_n^2]{\text{when }c_2=\dots=c_n=0 }\lambda_1
+\end{align*}\]</div>
+<div class="arithmatex">\[\implies g=\gamma_1\iff g^T\Sigma g=\lambda_1\]</div>
+<p><strong>Conclusion:</strong></p>
+<ol>
+<li>the best direction is <strong>the direction of eigenvectors</strong></li>
+<li>the <strong>variance</strong> of the direction is <strong>Eigen value</strong>
+<span class="arithmatex">\(Var(Y_i)=g_i^T\Sigma g_i=g_i^T\lambda_i g_i = \lambda_i\\tr(\Sigma)=tr(\Gamma\Lambda\Gamma^T)=tr(\Lambda\Gamma\Gamma^T)=tr(\Lambda)=\sum\limits_{i=1}^p\lambda_i\)</span></li>
+<li>What is the relationship between <span class="arithmatex">\(Y_i \&amp; Y_j, i\neq j\)</span>
+<strong>orthogonal and are the Eigen-vector of Sigma</strong></li>
+<li>What if X is following a multivariate normal distribution?
+<mark>Multivariate Normal Distribution</mark> <span class="arithmatex">\(Z～N(b,\Sigma),\forall l\in\R^p,l^TZ\in\R～\)</span> Normal distri... <span class="arithmatex">\(\implies Z\)</span> ～ Multivariate Normal Distri...
+If X is following a multivariate normal distribution, <span class="arithmatex">\(g_i^TX～N\)</span></li>
+</ol>
+<p><strong>Advantages:</strong></p>
+<ol>
+<li>Identify <strong>key components</strong> which can <strong>maximize the information</strong> with a reasonable dimension. 发现数据中的基本结构，即数据中变量之间的关系,能近似地表达</li>
+<li><strong>Reduce the dimension</strong> of other forms of analysis.</li>
+<li>Linearity is assumed.</li>
+</ol>
+<p><strong>Limits:</strong></p>
+<ol>
+<li>It can be <strong>more difficult to interpret</strong> than using a subset of the original variables.</li>
+<li>It uses only covariances/correlations but not higher-order moments. This can be extended to <mark>independent component analysis ICA</mark></li>
+</ol>
+<h4 id="pca-transformation">PCA Transformation<a class="headerlink" href="#pca-transformation" title="Permanent link">&para;</a></h4>
+<p><span class="arithmatex">\(Y_i = g_i^TX\implies Y=\Gamma^TX\)</span></p>
+<p>the 1 PC $Y_1=g_1^TX, g_1:= $ the eigen-vector with the 1 largest eigen-value <span class="arithmatex">\(\lambda_1\)</span>
+the 2 PC <span class="arithmatex">\(Y_2=g_2^TX, g_2:=\)</span> the eigen-vector with the 2 largest Eigen-value <span class="arithmatex">\(\lambda_2\)</span>
+<span class="arithmatex">\(<span class="arithmatex">\(\vdots\\
+\begin{bmatrix}Y_1\\\vdots\\Y_p\end{bmatrix}=\begin{bmatrix}g_1^T\\\vdots\\g_p^T\end{bmatrix}_{p\times p}\begin{bmatrix}X_1\\\vdots\\X_p\end{bmatrix}\iff \Gamma=\begin{bmatrix}g_1&amp;\dots&amp;g_p\end{bmatrix}\in\R^{p\times p}\)</span>\)</span></p>
+<h5 id="practical-use">Practical Use<a class="headerlink" href="#practical-use" title="Permanent link">&para;</a></h5>
+<ol>
+<li><u><strong>Standardize 规范化</strong></u> the data, 使得数据每一变量的均值为0，方差为1</li>
+<li><u><strong>SVD 正交分解</strong></u> of the sample <strong>covariance M/correlation M</strong></li>
+<li><strong>Sort</strong> the eigenvalues in descending order and choose the K largest eigenvectors (plots, the proportion of variances interpreted etc.)</li>
+<li><u><strong>Linear Transform 变换</strong></u> X into Y(Dimension Reduction!)</li>
+</ol>
+<p>原来由线性相关变量表示的数据，通过正交变换变成由若干个线性无关的新变量表示的数据。新变量是可能的正交变换中变量的方差的和（信息保存）最大的，<strong>方差表示在新变量上信息的大小</strong>。将新变量依次称为第一主成分、第二主成分等。</p>
+<div class="admonition p">
+<p class="admonition-title"><strong>how large dimensions we keep：</strong></p>
+<p>这里所说的<strong>信息是指原有变量的方差</strong>。
+可以设置一个 certain level, maybe 85%，90%，然后我们看 <u>the cumulative proportion of k PCs</u>, 因为这就是说 这k 个 PCs 能够在多大程度上描述这些点的差异间隔。而在剩下的PCs里，这些点大多是重叠，并不具有很高的差异信息价值。只要这个 cumulative达到了这个 certain level 我们就采用前 k 个 PCs</p>
+</div>
+<div class="admonition p">
+<p class="admonition-title">covariance M vs correlation M? —— <kbd>Scale</kbd></p>
+<p><mark>covariance M</mark>. <span class="arithmatex">\(Cov(x,y)=\cfrac{1}{n}\sum\limits_{i=1}^n(x-\overline{x})(y-\overline{y})\)</span>
+<mark>correlation M</mark>. <span class="arithmatex">\(\rho_{xy}=\cfrac{Cov(x,y)}{\sqrt{Var(x)}\sqrt{Var(y)}}\)</span>
+<a href="https://www.simplilearn.com/covariance-vs-correlation-article">Covariance Vs Correlation: Here are the Difference You Should Know ,Simplilearn</a>
+当我们要去除<strong>特征值量纲的区别</strong> 我们使用 correlation，<kbd>scale=true</kbd>
+如果不去，就是covariance，<kbd>scale=false</kbd>（默认</p>
+<blockquote>
+<blockquote>
+<p>Suppose <span class="arithmatex">\(x_1\)</span> is a length measured either in cm. or mm., <span class="arithmatex">\(x_2\)</span> is a weight measurement in gm. The covariance M with <span class="arithmatex">\(y_1\)</span> in cm. is <span class="arithmatex">\(\begin{bmatrix}80&amp;44\\44&amp;80\end{bmatrix}\)</span> the Covariance M with <span class="arithmatex">\(y_1\)</span> in mm. is <span class="arithmatex">\(\begin{bmatrix}8000&amp;440\\440&amp;80\end{bmatrix}\)</span></p>
+</blockquote>
+</blockquote>
+</div>
+<h4 id="graphical-rotate-the-data-without-scaling">Graphical: Rotate the data without scaling<a class="headerlink" href="#graphical-rotate-the-data-without-scaling" title="Permanent link">&para;</a></h4>
+<p>数据集合中的样本由实数空间（正交坐标系）中的点表示，空间的一个坐标轴表示一个变量，规范化处理后得到的数据<strong>分布在原点附近</strong>。对原坐标系中的数据进行主成分分析等价于进行<strong>坐标系旋转变换，将数据投影到新坐标系的坐标轴上。</strong></p>
+<div class="admonition p">
+<p class="admonition-title"><strong>Graphical:</strong> <span class="arithmatex">\(Y=\Gamma^TX\)</span>: Multiplication by an orthogonal matrix: <strong>Rotation</strong>!</p>
+<p><u>proof of rotation</u>: $\Vert y_1-y_2\Vert_2=\Vert x_1-x_2\Vert_2, $ without scaling <span class="arithmatex">\(\forall x_1,x_2,\)</span> any two points in space</p>
+<div class="arithmatex">\[\begin{align*}\Vert y_1-y_2\Vert_2^2&amp;=(y_1-y_2)^T(y_1-y_2)\\&amp;=(x_1-x_2)^T\Gamma\Gamma^T(x_1-x_2)\\&amp;\xlongequal[\Gamma\Gamma^T=I]{\Gamma^T=\Gamma^{-1}}(x_1-x_2)^T(x_1-x_2)=\Vert x_1-x_2\Vert_2^2\end{align*}\]</div>
+</div>
+<p>新坐标系的第一坐标轴、第二坐标轴等分别表示第一主成分、第二主成分等，数据在每一轴上的坐标值的平方表示相应变量的方差；并且，这个坐标系是在所有可能的新的坐标系中，<strong>坐标轴上的方差的和最大的</strong></p>
+<p><strong>方差和最大:</strong>
+主成分分析旨在选取正交变换中方差最大的变量，作为第一主成分，旋转变换中<strong>坐标值的平方和最大</strong>的轴, 旋转变换中选取<strong>离样本点的距离平方和最小</strong>的轴</p>
+<div class="grid">
+<figure><a class="glightbox" href="../pics/PCA_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/PCA_1.png" width="45%" /></a><p>transformation：<u>旋转变换</u></p><figure>
+
+<p>原坐标系:很明显有正向线性相关，13象限最多<br>新坐标系:线性无关，1234象限都差不多</p>
+</figure>
+</div>
+<p>如果主成分分析只取第一主成分，即新坐标系的y1轴，那么等价于将数据投影在椭圆长轴上，用这个主轴表示数据，将二维空间的数据压缩到一维空间中。</p>
+<table>
+<thead>
+<tr>
+<th>1st PC</th>
+<th>2nd PC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>方差最大</td>
+<td>与第一坐标轴正交，且方差次之</td>
+</tr>
+<tr>
+<td>第一坐标轴 <span class="arithmatex">\(y_1\)</span></td>
+<td>第二坐标轴 <span class="arithmatex">\(y_2\)</span></td>
+</tr>
+<tr>
+<td>椭圆的长轴</td>
+<td>椭圆的短轴</td>
+</tr>
+</tbody>
+</table>
+<h3 id="linear-discriminant-analysis-lda">Linear Discriminant Analysis, LDA, 线性判别分析<a class="headerlink" href="#linear-discriminant-analysis-lda" title="Permanent link">&para;</a></h3>
+<p>LDA的目标是<strong>提取一个新的坐标系，将原始数据集投影到一个低维空间中。</strong>
+和PCA的主要区别在于，LDA不会专注于数据的方差，而是优化低维空间，<strong>以获得最佳的类别可分性</strong>。意思是，新的坐标系在为分类模型查找<strong>决策边界</strong>时更有用，<u>非常适合用于构建分类流水线</u>。</p>
+<p><strong>优点：</strong>基于类别可分性的分类
+- 有助于避免机器学习流水线的过拟合，也叫防止维度诅咒。
+- LDA也会降低计算成本。</p>
+<div class="admonition danger">
+<p class="admonition-title">Fisher’s LDA and Bayes’ LDA are essentially different! They are equivalent under the <u>Gaussian assumption with a common Σ for the two-class case</u></p>
+</div>
+<p>Both Fisher’s LDA and Bayes rule reduce to:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>empirical estimators</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(μ_X\)</span></td>
+<td><span class="arithmatex">\(\overline{X}\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(μ_Y\)</span></td>
+<td><span class="arithmatex">\(\overline{Y}\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(Σ\)</span></td>
+<td><span class="arithmatex">\(Σ\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition danger">
+<p class="admonition-title">不可将线性判别分析与==隐狄利克雷分配LatentDirichlet Allocation, LDA== 相混淆。</p>
+<p>隐狄利克雷分配用于文本和自然语言处理，与线性判别分析没有关系。</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>类内 within-class</th>
+<th>类间 between-class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S_w</td>
+<td>S_b</td>
+</tr>
+</tbody>
+</table>
+<h4 id="fishers-lda">Fisher’s LDA<a class="headerlink" href="#fishers-lda" title="Permanent link">&para;</a></h4>
+<p>LDA的目标是提取一个新的坐标系，将原始数据集投影到一个低维空间中，以获得最佳的类别可分性。</p>
+<p><strong>Target：</strong> 获得最佳的类别可分性
+Find the line <span class="arithmatex">\(P_Z = w^TZ\)</span> that best separates the two classes.
+<span class="arithmatex">\(<span class="arithmatex">\(w =\max\limits_w \cfrac{w^TS_Bw}{w^TS_Ww}\)</span>\)</span>
+Force <span class="arithmatex">\(\begin{cases}S_B=(\mu_X-\mu_Y)(\mu_X-\mu_Y)^T&amp;\text{ between-class}\uparrow\\S_W=\Sigma&amp;\text{ within-class}\downarrow\end{cases}\)</span></p>
+<ol>
+<li>the center of the two after transformation linear projection be as <strong>far</strong> away as possible <span class="arithmatex">\(S_B\uparrow\)</span></li>
+<li>the variance of two classes to be as <strong>small</strong> as possible  <span class="arithmatex">\(S_w \downarrow\)</span></li>
+</ol>
+<figure><a class="glightbox" href="../pics/LDA_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/LDA_1.png" width="60%" /></a><p>LDA:最佳的类别可分性<br>假设：正态分布</p></figure>
+<p><a href="https://chih-sheng-huang821.medium.com/機器學習-降維-dimension-reduction-線性區別分析-linear-discriminant-analysis-d4c40c4cf937">機器學習: 降維(Dimension Reduction)- 線性區別分析( Linear Discriminant Analysis)</a></p>
+<h4 id="bayes-lda">Bayes’ LDA<a class="headerlink" href="#bayes-lda" title="Permanent link">&para;</a></h4>
+<div class="admonition p">
+<p class="admonition-title">贝叶斯的优点：不需要知道具体的分布</p>
+</div>
+<p><span class="arithmatex">\(f_X (·):=\)</span> pdf  for Class-X, $f_Y (·) := $ pdf  for Class-Y</p>
+<p><mark>Bayes rule</mark>. <span class="arithmatex">\(δ(Z) = I\{π_1f_X(Z) &gt; π_2f_Y(Z)\}\)</span>.
+<span class="arithmatex">\(\begin{cases}\pi_i \text{ prior possibility },\pi_1+\pi_2=1 \\f_i(Z)\text{ likelihoood function}\end{cases}\)</span></p>
+<p>For simplicity let’s assume that <span class="arithmatex">\(π_1 = π_2 = 1/2.\)</span> without any assumption.</p>
+<p><span class="arithmatex">\(δ(Z) =I \{[Z−(μ_X+\mu_Y)/2]^T Σ^{−1}(μ_X−\mu_Y)&gt;0\}\\\hat{δ}(Z) =I \{[Z−(\overline{X}+\overline{Y} )/2]^T \hat{Σ}^{−1}(\overline{X} − \overline{Y})&gt;0\}\)</span>
+Z will be assigned as $ \begin{cases}X&amp;δ(Z) =1\Y&amp;δ(Z) =0\end{cases}$</p>
+<h3 id="quadratic-discriminant-analysis-qda">Quadratic Discriminant Analysis, QDA<a class="headerlink" href="#quadratic-discriminant-analysis-qda" title="Permanent link">&para;</a></h3>
+<p>Assume: <span class="arithmatex">\(Y_1∼N(μ_1,Σ_1), Y_2∼N(μ_2,Σ_2)\)</span> The two classes have <strong>different</strong> covariance matrices!</p>
+<p><span class="arithmatex">\(\delta(x) = (x−μ)^TΩ(x−μ)+δ^T(x− μ)+η\\\begin{cases}μ=(μ_1+ μ_2)/2\space\text{ (mean)}\\\Omega=\Sigma_2^{-1}-\Sigma^{-1}\space\text{ the difference of the two precision matrices}\\\delta=(\Sigma_1^{-1}+\Sigma_2^{-1})(\mu_1-\mu_2)\\η=2\log(\pi_1/\pi_2)+\frac{1}{4}(\mu_1-\mu_2)^T\Omega(\mu_1-\mu_2)+\log|\Sigma_2|-\log|\Sigma_1|\end{cases}\)</span></p>
+<p>因为是关于x的二次函数，所以是 quadratic 二次</p>
+<p><a href="https://towardsdatascience.com/linear-discriminant-analysis-explained-f88be6c1e00b"></a></p>
+<blockquote>
+<blockquote>
+<p>(T1 in Chap1.1 in AMA565) Suppose the covariance M of a p-dimensional random vector X is <span class="arithmatex">\(Σ = \text{diag}\{1, 2, . . . , p\}.\)</span> What are the Principal Components of X?
+(T2 in Chap1.1 in AMA565) <em>Suppose the covariance matrix of a p-dimensional random vector X is <span class="arithmatex">\(Σ = {11}^T\)</span>. What are the Principal Components of X?
+(T3 in Chap1.1 in AMA565) </em>Suppose <span class="arithmatex">\(X ∼ N(μ_1,Σ),Y ∼ N(μ_2,Σ).\:f_1(x):=\text{ pdf of }X, f_2(x):= \text{ pdf of }Y\)</span>, and let π_i be the prior probability that X is coming from class i, i = 1, 2. Show that <span class="arithmatex">\(π_1f_1(x)/[π_2f_2(x)] &gt; 1\iff (Σ^{−1}(μ_1 − μ_2))T (x − (μ_1 + (μ_2)/2)) &gt; c\)</span> Derive c.*</p>
+</blockquote>
+</blockquote>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023 <a href="https://github.com/james-willett"  target="_blank" rel="noopener">Coconut</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/james-willett" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/TheJamesWillett" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/willettjames/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.081f42fc.min.js"></script>
+      
+        <script src="../../javascripts/code_copy.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

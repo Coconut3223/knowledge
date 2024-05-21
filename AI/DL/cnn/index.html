@@ -1,0 +1,3391 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../mlp/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.24">
+    
+    
+      
+        <title>CNN - Coconut3223</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/markdown-it-admonition.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="CNN - Coconut3223" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="./assets/images/social/AI/DL/cnn.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="None" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="CNN - Coconut3223" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="./assets/images/social/AI/DL/cnn.png" >
+      
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cnn" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Coconut3223" class="md-header__button md-logo" aria-label="Coconut3223" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Coconut3223
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CNN
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../python/" class="md-tabs__link">
+          
+  
+    
+  
+  python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  AI
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../NLP/" class="md-tabs__link">
+          
+  
+    
+  
+  NLP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CV/" class="md-tabs__link">
+          
+  
+    
+  
+  CV
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../SQL/" class="md-tabs__link">
+          
+  
+    
+  
+  SQL
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../utils/" class="md-tabs__link">
+          
+  
+    
+  
+  Utils
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../math/" class="md-tabs__link">
+          
+  
+    
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Temp/" class="md-tabs__link">
+          
+  
+    
+  
+  Temp
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Coconut3223" class="md-nav__button md-logo" aria-label="Coconut3223" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Coconut3223
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../python/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    python
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/python_elegant/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    elegant
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/enhanced/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    enhanced
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    numpy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/exam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    八股文
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/pytorch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pytorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    AI
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            AI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pre/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pre-processing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../loss/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Loss
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eva/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Evaluation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../highd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    High-dimensional Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    ML
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            ML
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/lr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LinearRegreesion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/nb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NaiveBayes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/logr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logistics Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/svm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/knn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KNN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/dt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decision Tree
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/ensemble_learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ensemble Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/association_analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Association Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/clustering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clustering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    DL
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            DL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    CNN
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    CNN
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keywords" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keywords
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Keywords">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shared-weights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shared Weights，共享权重
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-receptive-fields-sparse-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Local Receptive Fields &amp; Sparse Connectivity, 局部感知域 &amp; 稀疏连接
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatial-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spatial Information
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input Layer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convolution-layers-conv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Convolution Layers, Conv
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filters-kernels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filters, Kernels
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Filters, Kernels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#about-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      about Size
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#about-stride-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      about Stride s：移动的方格
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#about-padding" class="md-nav__link">
+    <span class="md-ellipsis">
+      about Padding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#about-meaning" class="md-nav__link">
+    <span class="md-ellipsis">
+      about Meaning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Batch Normalization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activation-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activation function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pooling-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pooling Layer, 池化层
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flatten-layer-tensor-reshape" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flatten Layer — Tensor Reshape
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fully-connected-layer-fc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fully- Connected Layer, FC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#softmax" class="md-nav__link">
+    <span class="md-ellipsis">
+      softmax
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#famous-cnn-architectures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Famous CNN Architectures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Famous CNN Architectures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deeper-or-wider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deeper or Wider?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lenet-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      LeNet-5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alexnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      AlexNet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vgg-net" class="md-nav__link">
+    <span class="md-ellipsis">
+      VGG Net
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#residual-net-resnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Residual Net, ResNet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dense-net" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dense Net
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#googlenet" class="md-nav__link">
+    <span class="md-ellipsis">
+      GoogleNet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#light-weight-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Light-weight networks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Exercise
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters-initialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters Initialization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bach-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bach Normalization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#edge-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Edge Detection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code" class="md-nav__link">
+    <span class="md-ellipsis">
+      code
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mlp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MLP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RNN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transformer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../generative_model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generative Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transferlearning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transfer Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tricks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tricks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Utils
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../NLP/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    NLP
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            NLP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/embedding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Embedding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/subword/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Subword
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/kea/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keyword Extraction Algorithm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/nmt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Neural Machine Translation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/gpt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/opennmt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    openNMT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/huggingface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HuggingFace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/asr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ASR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/paper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/survey_on_synthesizing_training_data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Synthesizing Training Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../CV/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    CV
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            CV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../SQL/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    SQL
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SQL/exam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    八股文
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../utils/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Utils
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Utils
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/hadoop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hadoop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/mapreduce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Map Reduce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/vscode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VScode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/html_css/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTML CSS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/PPT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../math/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Math
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Temp/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Temp
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Temp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keywords" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keywords
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Keywords">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shared-weights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shared Weights，共享权重
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-receptive-fields-sparse-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Local Receptive Fields &amp; Sparse Connectivity, 局部感知域 &amp; 稀疏连接
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatial-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spatial Information
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input Layer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convolution-layers-conv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Convolution Layers, Conv
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filters-kernels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filters, Kernels
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Filters, Kernels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#about-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      about Size
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#about-stride-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      about Stride s：移动的方格
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#about-padding" class="md-nav__link">
+    <span class="md-ellipsis">
+      about Padding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#about-meaning" class="md-nav__link">
+    <span class="md-ellipsis">
+      about Meaning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Batch Normalization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activation-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activation function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pooling-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pooling Layer, 池化层
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flatten-layer-tensor-reshape" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flatten Layer — Tensor Reshape
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fully-connected-layer-fc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fully- Connected Layer, FC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#softmax" class="md-nav__link">
+    <span class="md-ellipsis">
+      softmax
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#famous-cnn-architectures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Famous CNN Architectures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Famous CNN Architectures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deeper-or-wider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deeper or Wider?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lenet-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      LeNet-5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alexnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      AlexNet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vgg-net" class="md-nav__link">
+    <span class="md-ellipsis">
+      VGG Net
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#residual-net-resnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Residual Net, ResNet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dense-net" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dense Net
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#googlenet" class="md-nav__link">
+    <span class="md-ellipsis">
+      GoogleNet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#light-weight-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Light-weight networks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Exercise
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters-initialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters Initialization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bach-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bach Normalization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#edge-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Edge Detection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code" class="md-nav__link">
+    <span class="md-ellipsis">
+      code
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="cnn">CNN<a class="headerlink" href="#cnn" title="Permanent link">&para;</a></h1>
+<div class="admonition danger">
+<p class="admonition-title">To maintain spatial struture.</p>
+</div>
+<div class="admonition p">
+<p class="admonition-title">summary</p>
+<p><mark>Conv</mark>
+- Accept a volume of size <span class="arithmatex">\(W_1\times H_1\times D_1\)</span>
+- Requires 4 hyperparameters
+  - Number of filters <span class="arithmatex">\(K\)</span>
+  - Filter' size <span class="arithmatex">\(F\)</span>
+  - Stride <span class="arithmatex">\(S\)</span>
+  - Zero padding <span class="arithmatex">\(P\)</span>
+- Number of weights <span class="arithmatex">\((F\times F\times D_1)\times K + K\text{(shared bias)}\)</span>
+- Produce a volume of size <span class="arithmatex">\((\frac{W_1-F+2P}{S}+1)\times(\frac{H_1-F+2P}{S}+1)\times K\)</span>
+- In the output volume, the <span class="arithmatex">\(d^{th}\)</span> of <span class="arithmatex">\(W_2\times H_2\)</span> is the result of performing a valid convolution of the <span class="arithmatex">\(d^{th}\)</span> filter over the input volume with a stride <span class="arithmatex">\(S\)</span>, and the offser by <span class="arithmatex">\(d^{th}\)</span> bias.</p>
+<hr />
+<p><mark>Pool</mark>
+- Accept a volume of size <span class="arithmatex">\(W_2\times H_2\times K\)</span>
+- Requires 2 hyperparameters
+  - pooling kernel' size <span class="arithmatex">\(F\)</span>
+  - Stride <span class="arithmatex">\(S\)</span>
+- Number of weights <span class="arithmatex">\(0\)</span>
+- Produce a volume of size <span class="arithmatex">\((\frac{W_2-F}{S}+1)\times(\frac{H_2-F}{S}+1)\)</span>
+- It is not common to use zero padding for pooling layer.</p>
+</div>
+<div class="admonition p">
+<p class="admonition-title">common setting</p>
+<p><span class="arithmatex">\(K\)</span> 2 的幂
+F3S1P1, F5S1P2, F5S2P(whatever fits),F1S1P0</p>
+</div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p><strong>In：</strong> Vision Task，就是<strong>针对图像这一特殊结构</strong>，包括图片分类, Object Detection 目标检测，边缘检测, Object Segmentation 目标提取，图片风格迁移， Image Captioning 看图说话, Retrieval 恢复图片…</p>
+<p>关于处理的图片对象，有单纯基于 <strong>黑白照片灰度图像(width✖️height)</strong> 的卷积，也有基于 <strong>彩色照片立体RGB(wideth✖️height✖️depth\channel)</strong> 的卷积</p>
+<div class="admonition p">
+<p><u>CNN is a sequence of Convolution Layers, interspersed with activation functions</u>.
+<div class="grid" markdown>
+<p>CNN is proposed to reduce the number of parameters, preserve the image layout information, and make the network deeper </p>
+<figure markdown="span"><a class="glightbox" href="../pics/CNN_22.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_22.png" width="80%" /></a></figure>
+</div></p>
+</div>
+<div class="admonition p">
+<p class="admonition-title">和全连接相比较，全连接的参数数量较多（两层之间的神经元需要两两相连），卷积神经网络的参数较少，主要是由于权值共享和稀疏连接。</p>
+</div>
+<p><a class="glightbox" href="../pics/CNN_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_1.png" width="80%" /></a>
+<a class="glightbox" href="../pics/CNN_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_2.png" width="80%" /></a>
+<a class="glightbox" href="../pics/CNN_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_3.png" width="80%" /></a>
+<a class="glightbox" href="../pics/CNN_4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_4.png" width="80%" /></a></p>
+<ol>
+<li>The input of image data into the convolution neural network is processed with the help of pixel values of the image in the convolution layer.</li>
+<li><mark>Filters</mark> are generated that perform convolutions over the entire image and train the network to identify and learn features from images, which are converted to matrices.</li>
+<li><mark>Batch</mark> normalization of input vectors is performed at each layer, so as to ensure all input vectors are <strong>normalized</strong> and hence regularization in the network is attained.</li>
+<li>The convolutions are performed until better accuracy has been attained and maximum feature extraction is done.</li>
+<li>Convolutions result in the <strong>sub-sampling</strong> of images and the dimensions of input get changed according to <mark>padding</mark> and <mark>stride</mark> chosen.</li>
+<li>Each convolution follows the <mark>activation layer(ReLU)</mark> and <mark>pooling layer</mark>, which brings in <strong>non-linearity</strong> and helps in <strong>sub-sampling</strong> respectively.</li>
+<li>After the final convolution, the input matrix is converted to feature vectors. This feature vector is the <mark>flattened layer</mark>.</li>
+<li>Feature vector serves as input to the next layer(fully connected layer), where all features are collectively transferred into this network. <mark>Dropout</mark> of random nodes occurs during training to reduce overfitting in this layer.</li>
+<li>Finally, the raw values which are predicted output by the network are converted to probabilistic values with the use of <mark>softmax function</mark>.</li>
+</ol>
+<h2 id="keywords">Keywords<a class="headerlink" href="#keywords" title="Permanent link">&para;</a></h2>
+<p><mark>共享权重</mark>, <mark>局部感知域 &amp; 稀疏连接</mark>,<mark>Spatial Information</mark></p>
+<h3 id="shared-weights">Shared Weights，共享权重<a class="headerlink" href="#shared-weights" title="Permanent link">&para;</a></h3>
+<p>同一个filter在输入矩阵中进行扫描</p>
+<p>一个隐藏层中的所有<strong>神经元都检测在图像的不同位置处的同一个特征。权重共享，则检测特征相同。</strong> 因此也将从输入层到隐藏层的这种映射称为<u>特征映射，filters, kernels</u>。该特征映射的权重称为<strong>共享权重</strong>，其偏置称为共享偏置。</p>
+<h3 id="local-receptive-fields-sparse-connectivity">Local Receptive Fields &amp; Sparse Connectivity, 局部感知域 &amp; 稀疏连接<a class="headerlink" href="#local-receptive-fields-sparse-connectivity" title="Permanent link">&para;</a></h3>
+<p>For convolution with kernel size <span class="arithmatex">\(K\)</span>, each element in the output depends on a <span class="arithmatex">\(K\times K\)</span> receptive field in the input.
+Each successive convolution contains multiple regions from the previous one.
+输出矩阵中的每一个数值只由输入数据的一部分计算得来。与常规神经网络一样，输入层的神经元需要和隐藏层的神经元连接。但这里<strong>不是将每一个输入神经元都与每一个隐藏神经元连接</strong>，而是仅仅在一个图像的<strong>局部区域创建连接</strong></p>
+<p><a class="glightbox" href="../pics/CNN_5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_5.png" width="60%" /></a>
+<a class="glightbox" href="../pics/CNN_6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_6.png" width="60%" /></a></p>
+<h3 id="spatial-information">Spatial Information<a class="headerlink" href="#spatial-information" title="Permanent link">&para;</a></h3>
+<p>输入层：<strong>二维矩阵排列</strong>的<strong>神经元</strong>。</p>
+<h2 id="structure">Structure<a class="headerlink" href="#structure" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="../pics/CNN_21.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_21.png" width="80%" /></a></p>
+<h3 id="input-layer">Input Layer<a class="headerlink" href="#input-layer" title="Permanent link">&para;</a></h3>
+<p><strong>二维矩阵排列</strong>的<strong>神经元</strong>。</p>
+<h3 id="convolution-layers-conv">Convolution Layers, Conv<a class="headerlink" href="#convolution-layers-conv" title="Permanent link">&para;</a></h3>
+<div class="admonition p">
+<p class="admonition-title">Convolve the filter with the image <span class="arithmatex">\(\Rightarrow\)</span> <u>slide over the image spatially, computing dot products</u></p>
+</div>
+<p>完成图像和filter 的卷积就是</p>
+<ol>
+<li>用一个小小的 <span class="arithmatex">\(F\times F\times D\)</span> shared filter 在<span class="arithmatex">\(N\times N\times D\)</span> 图像上 slide spatially, 空间意义上地滑动。</li>
+<li>
+<p>滑动的时候，每一次框定的<strong>小小对应尺寸</strong> <span class="arithmatex">\(F\times F\times D\)</span> 块 chunk of the image, Local Receptive Fields，和 <span class="arithmatex">\(F\times F\times D\)</span> shared filter 做 dot product <mark>element-wise multiplication</mark>，.</p>
+<div class="admonition danger">
+<p>D个 channel，都要分别和输入的D个channel 做卷积，得到D个特征图，然后<strong>通道融合, sum all the (weights x inputs) of D channels</strong></p>
+</div>
+<ol>
+<li>将所有滑动的到的结果按空间顺序重新拼成: <span class="arithmatex">\((N-F+1)\times(N-F+1)\times \red{1}\)</span> tensor</li>
+<li>再加上 <span class="arithmatex">\((N-F+1)\times(N-F+1)\times \red{1}\)</span> shared bias 偏置</li>
+</ol>
+</li>
+</ol>
+<p>以上是做一个filter的过程。<span class="arithmatex">\(w^Tx+b\)</span>。
+因为 input image 和 filter 的乘法是 <mark>element-wise multiplication</mark>，就和向量点积一样，所以可以想象为多维的 chunk 和 filter 和 bias 展平成向量，<span class="arithmatex">\(\R^{F\times F\times D}\xrightarrow{\text{Flatten}}\R^{F^2D\times 1}\xrightarrow{\text{dot product}}\R\)</span></p>
+<p><span class="arithmatex">\(K\)</span> 个 filters 就有 <span class="arithmatex">\(K\)</span> 个 tensor，最后 <strong>stack 堆叠</strong> these up to get a new “image tensor”<mark>activation map</mark> of size as the input of the next layer. 立体卷积的输出结果的维度，长和宽和之前灰度图像的计算一样，而<strong>结果的通道数则由过滤器的个数决定</strong>
+<span class="arithmatex">\(<span class="arithmatex">\((N-F+1)\times(N-F+1)\times \red{K}\)</span>\)</span></p>
+<div class="grid">
+<figure><a class="glightbox" href="../pics/CNN_7.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_7.jpeg" width="90%" /></a><p>平面的，e.g.：<strong>黑白照片灰度图像</strong></p></figure>
+<figure><a class="glightbox" href="../pics/CNN_8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_8.png" /></a><p>立体的，e.g：<strong>彩色照片立体RGB图像</strong></p></figure>
+</div>
+<ul>
+<li>立体的，e.g：<strong>彩色照片立体RGB图像</strong>
+过滤器是一个立方体，在输入数据上扫描，每一个通道的权重分别与输入图片的每一个通道扫描到的值相乘再加和得到输出矩阵上的一个输出值</li>
+</ul>
+<figure><a class="glightbox" href="../pics/CNN_9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_9.png" width="90%" /></a><p>立体的，e.g：<strong>彩色照片立体RGB图像</strong></p></figure>
+<figure><a class="glightbox" href="../pics/CNN_10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_10.png" width="90%" /></a><p>立体的，e.g：<strong>彩色照片立体RGB图像</strong></p></figure>
+<h3 id="filters-kernels">Filters, Kernels<a class="headerlink" href="#filters-kernels" title="Permanent link">&para;</a></h3>
+<div class="admonition p">
+<p class="admonition-title">Input Image x  Feature Detector = <mark>Feature Map</mark></p>
+</div>
+<h4 id="about-size">about Size<a class="headerlink" href="#about-size" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>always <strong>extend the full depth o</strong>f the input volume， 一个 filter 的深度(通道数)要和 input 的深度(通道数)一样，但是输出仍只有一个通道数。
+    <span class="arithmatex">\(<span class="arithmatex">\(18=\cfrac{32-5}{1}+1, 30=\cfrac{32-3}{1}+1\)</span>\)</span></p>
+<pre class="mermaid"><code>graph LR
+A[Input&lt;br&gt;32✖️32✖️&lt;FONT COLOR="#ff0000"&gt;3&lt;/FONT&gt;]
+B{Filter&lt;br&gt;5✖️5✖️&lt;FONT COLOR="#ff0000"&gt;3&lt;/FONT&gt;}
+C{Filter&lt;br&gt;3✖️3✖️&lt;FONT COLOR="#ff0000"&gt;3&lt;/FONT&gt;}
+A --&gt; B
+A --&gt; C
+D{Stride&lt;br&gt;1}
+B --- D
+C --- D
+E[Output&lt;br&gt;18✖️18✖️&lt;FONT COLOR="#ff0000"&gt;1&lt;/FONT&gt;]
+F[Output&lt;br&gt;30✖️30✖️&lt;FONT COLOR="#ff0000"&gt;1&lt;/FONT&gt;]
+D --&gt; E
+D --&gt; F</code></pre>
+<p><a class="glightbox" href="../pics/CNN_11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_11.png" width="60%" /></a></p>
+</li>
+<li>
+<p>dim of <strong>filter 一般为奇数，若为偶数，则会产生不对称填充</strong></p>
+</li>
+<li><strong>1✖️1 Convolution</strong> is meaningful!
+It computes the dot product over the channels.</li>
+</ol>
+<figure><a class="glightbox" href="../pics/CNN_13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_13.png" width="60%" /></a><p>1✖️1 Convolution</p></figure>
+<p><strong>advantages：</strong></p>
+<ul>
+<li>
+<p>Shrinking too volumes spatially</p>
+<div class="admonition danger">
+<p class="admonition-title">Shrinking too fast is not good,</p>
+</div>
+</li>
+</ul>
+<p>比如说CNN，CNN是用卷积核和感受野做运算，每一个新产生特征数，也就是 output 的一个小小的数字，囊括的也只是一个小小的感受野的信息。对一个kernel 来说，虽然 output 是由所有的感受野 of input 卷积之后堆叠而成的一个 [L, W]矩阵，也就是这一个 kernel 和所有的感受野做运算的结果堆叠而成。但是 <strong>简单局部特征堆叠不等于全局特征。</strong> 这也是CNN稀疏链接的特点。</p>
+<p>所以我们常说CNN对于那种长序列 long sequence input 不太友好，因为对于两个间隔比较远的 pixels 来说，要是想获得他们之间的关系特征，就需要堆叠很多个卷积层，才能获得他们的关系特征。</p>
+<p><a class="glightbox" href="../pics/CNN_25.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_25.jpeg" width="60%" /></a></p>
+<h4 id="about-stride-s">about Stride s：移动的方格<a class="headerlink" href="#about-stride-s" title="Permanent link">&para;</a></h4>
+<ol>
+<li>s = 1 （default）</li>
+<li><strong>do not want to capture all the data</strong> or information available so we skip some.</li>
+<li>
+<p>设置的 stride 要被刚好设置的filter卷积到$$\red{\text{Output Size }(\cfrac{N-F}{s}+1)\times(\cfrac{N-F}{s}+1) }, \quad\cfrac{N-F}{\text{stride}}\in Z $$</p>
+<p><a class="glightbox" href="../pics/CNN_12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_12.png" width="40%" /></a></p>
+</li>
+</ol>
+<p><strong>drawbacks：</strong></p>
+<ul>
+<li>lose data over borders 容易丢失边缘或者是角落上的像素信息，譬如所当 stride=1 的时候，边边就出现一遍，中间的部分会在滑动的时候overlap 到，出现次数就会重复，这也体现了一种设定：图像中间总是比较重要，承载更多信息</li>
+</ul>
+<p><strong>advantages：</strong></p>
+<ol>
+<li>输出的图片会缩小</li>
+</ol>
+<h4 id="about-padding">about Padding<a class="headerlink" href="#about-padding" title="Permanent link">&para;</a></h4>
+<ul>
+<li>为什么要pad？
+为了解决容易丢失边缘或者是角落上的像素信息。pad之后本来边缘的部分就不会只出现一次。 <span class="arithmatex">\(\impliedby\)</span><u>convolved 之前 pad</u>. Due to padding, information on the borders of images is also preserved similarly to at the centre of images.</li>
+<li>在哪里pad？ pad 的范围多大<ul>
+<li>To 解决边缘容易丢失 <span class="arithmatex">\(\implies\)</span> <u>on the boundary</u>, image 的四周都要 pad. 范围自定义, <strong>pad with p-pixel border</strong></li>
+<li>To <strong>卷积前后大小不变</strong>，<mark><span class="arithmatex">\(p=\cfrac{F-1}{2}\:\text{when s=1}\)</span></mark>
+<span class="arithmatex">\(p=\cfrac{N(s-1)+F-s}{2}\)</span></li>
+</ul>
+</li>
+</ul>
+<p><strong>保证卷积前后的维度不变，</strong></p>
+<ul>
+<li>
+<p>proof of  formula of p <strong>此处stride=1（default）</strong></p>
+<p><span class="arithmatex">\(N= N+2p-F+1\implies p=\cfrac{F-1}{2}\)</span>
+- pad 什么？
+<u>pad 0</u> on the boundary，因为做的是 dot product，不会影响结果</p>
+</li>
+</ul>
+<div class="arithmatex">\[\begin{align*}
+\text{Output Size without padding}&amp;=(\cfrac{N-F}{s}+1)\times(\cfrac{N-F}{s}+1)\\  
+\text{Output Size with padding}&amp;=(\cfrac{N+2p-F}{s}+1)\times(\cfrac{N+2p-F}{s}+1)
+\end{align*}\]</div>
+<p><a class="glightbox" href="../pics/CNN_16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_16.png" width="60%" /></a></p>
+<h4 id="about-meaning">about Meaning<a class="headerlink" href="#about-meaning" title="Permanent link">&para;</a></h4>
+<ol>
+<li>同一张特征图，同一个通道，上的所有元素 (神经元) 都是对图像的不同位置的同一个特征的检测，通道中某一处 (特征图上某一个神经元) 数值的大小就是当前位置对当前特征强弱的反应。</li>
+<li>一个 filter 就是一个特征，每个 filter 体现的特质都不一样。
+为了使得模型将注意力集中于图片的某些位置，<strong>而在深度学习中，更好的方法是将过滤器里面的值设置成参数，让模型通过反向传播去学习到过滤器中的权重值</strong>，代替人为的设定。</li>
+</ol>
+<div class="grid">
+<figure><a class="glightbox" href="../pics/CNN_14.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_14.png" /></a><p>yellow</p></figure>
+<figure><a class="glightbox" href="../pics/CNN_15.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_15.png" /></a><p>roll</p></figure>
+</div>
+<ol>
+<li><u>立体的 filter</u>，每一个通道的权重分别对应输入图片的每一个通道。<strong>可以通过设置过滤器不同通道的权值来关注于原始图片不同通道的内容</strong></li>
+</ol>
+<h3 id="batch-normalization">Batch Normalization<a class="headerlink" href="#batch-normalization" title="Permanent link">&para;</a></h3>
+<p>Batch normalization is generally done in between convolution and activation(ReLU) layers. It normalizes the inputs at each layer, reduces internal co-variate shift(change in the distribution of network activations) and is a method to regularize a convolutional network.</p>
+<p>Batch normalizing allows higher learning rates that can reduce training time and gives better performance. It allows learning at each layer by itself without being more dependent on other layers. Dropout which is also a regularizing technique, is less effective to regularize convolution layers.</p>
+<h3 id="activation-function">Activation function<a class="headerlink" href="#activation-function" title="Permanent link">&para;</a></h3>
+<p>卷积操作只是加权求和的线性操作，若神经网络只用卷积层，那么无论有多少层，输出都是输入的线性组合，网络的表达能力有限，无法学习到非线性函数。因此 CNN 引入激励函数，激活函数是个非线性函数，常作用于卷积层和全连接层输出的每个神经元（分量/元素），给神经元引入了非线性因素，使网络的表达能力更强，几乎可逼近任意函数，这样神经网络就可应用到众多的非线性模型中。</p>
+<h3 id="pooling-layer">Pooling Layer, 池化层<a class="headerlink" href="#pooling-layer" title="Permanent link">&para;</a></h3>
+<p>a <mark>down-sampling</mark> strategy
+1. Construct better translationally invariant features. 局部平移不变性，当输入有一定的平移时，经池化后输出不会发生改变。使得其特征提取不会因为目标位置的变化而受到较大的影响
+2. Learn more compact features. 将某个元素邻域的<strong>总体统计</strong>特征作为网络在该位置的输出 we are taking <strong>a summarized value</strong> over all the values present !!! controls overfitting
+3. 缩减模型的大小，简化卷积层的输出
+4. 提高计算速度以及提高模型的鲁棒性等。
+5. <strong>没有需要学习的参数，只需要定义过滤器的大小以及步长即可</strong></p>
+<div class="admonition p">
+<p class="admonition-title">The Dimension After Pooling</p>
+<p>Given a <span class="arithmatex">\(M\times N\times D\)</span> tensor, if we apply the pooling operator with size <span class="arithmatex">\(K\times K\)</span> and Stride <span class="arithmatex">\(p\)</span> , what are the dimensions of the output?
+- depth has no change
+- 在width和height那里就像卷积一样 <span class="arithmatex">\(\text{without padding}=(\frac{N-F}{s}+1)\times(\frac{N-F}{s}+1)\)</span>
+- <span class="arithmatex">\(\implies (\cfrac{M-K}{p}+1)\times (\cfrac{N-K}{p}+1)\times D\)</span></p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Pooling stategies</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Max Pooling</strong></td>
+<td>（较常用）is robust to small perturbations.直观理解是能够提取出输入图片中比较显著的特征</td>
+</tr>
+<tr>
+<td><strong>Average Pooling</strong></td>
+<td>idk</td>
+</tr>
+</tbody>
+</table>
+<figure><a class="glightbox" href="../pics/CNN_17.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_17.png" width="60%" /></a><p>yellow</p></figure>
+<h3 id="flatten-layer-tensor-reshape">Flatten Layer — Tensor Reshape<a class="headerlink" href="#flatten-layer-tensor-reshape" title="Permanent link">&para;</a></h3>
+<div class="grid">
+<figure><a class="glightbox" href="../pics/CNN_18.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_18.png" width="60%" /></a></figure>
+<p>the output feature map(matrix) will be converted into vector<br> 将前面卷积层或池化层输出的所有二维特征图一起映射成1个一维的特征向量</p>
+</div>
+<h3 id="fully-connected-layer-fc">Fully- Connected Layer, FC<a class="headerlink" href="#fully-connected-layer-fc" title="Permanent link">&para;</a></h3>
+<p>光卷积是不能完成分类任务的，所以就是要后面连 FC层，起到“分类器”的作用
+<strong>中间可能有多个FC层，</strong>最后模型输出一个<strong>维度等于类别数（输出的神经元个数）</strong>的<strong>向量</strong></p>
+<div class="grid">
+<figure><a class="glightbox" href="../pics/CNN_19.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_19.png" width="60%" /></a></figure>
+<figure><a class="glightbox" href="../pics/CNN_20.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_20.png" width="60%" /></a></figure>
+</div>
+<h3 id="softmax">softmax<a class="headerlink" href="#softmax" title="Permanent link">&para;</a></h3>
+<p>softmax归一化，表示每一类的概率，然后<strong>将得分最高的类别判为输入的类别</strong>
+The softmax function is used to map the non-normalized output of a network to a probability distribution.
+软最大函数用于将网络的非规范化输出映射到概率分布。</p>
+<h2 id="famous-cnn-architectures">Famous CNN Architectures<a class="headerlink" href="#famous-cnn-architectures" title="Permanent link">&para;</a></h2>
+<h3 id="deeper-or-wider">Deeper or Wider?<a class="headerlink" href="#deeper-or-wider" title="Permanent link">&para;</a></h3>
+<p><strong>Deep CNN</strong>：Deeply stacked  Convolution Neural Network</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>LeNet-5</th>
+<th>AlexNet</th>
+<th>VGG Net</th>
+<th>ResNet</th>
+<th>GoogLeNet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Key</td>
+<td>特征稀疏链接</td>
+<td>Relu activation</td>
+<td>smaller filters</td>
+<td>^</td>
+<td></td>
+</tr>
+<tr>
+<td>Activation</td>
+<td>Sigmoid</td>
+<td>ReLU</td>
+<td>^</td>
+<td>^</td>
+<td></td>
+</tr>
+<tr>
+<td>Advantages</td>
+<td>basic architecture</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>奠定基础</td>
+<td>GPU</td>
+<td>^</td>
+<td>^</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Drawbacks</td>
+<td>算力不够</td>
+<td>^</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>设计用途</td>
+<td>手写数字识别</td>
+<td>ImageNet classification with deep convolutional neural networks – NIPS 2012</td>
+<td>Very Deep Convolutional Networks for Large-Scale Image Recognition – ICLR 2015</td>
+<td>Deep Residual Learning for Image Recognition – CVPR 2016</td>
+<td>Going deeper with convolutions – CVPR 2015</td>
+</tr>
+<tr>
+<td>deep CNN</td>
+<td></td>
+<td>☑️</td>
+<td>☑️</td>
+<td>☑️</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition p">
+<p class="admonition-title">The Skip-connection was first proposed in ResNet</p>
+</div>
+<h3 id="lenet-5"><strong>LeNet-5</strong><a class="headerlink" href="#lenet-5" title="Permanent link">&para;</a></h3>
+<p><strong>7 Layers</strong> (input layer not counted)</p>
+<p><strong>3 Convolution Layers</strong> (C1; C3; C5)</p>
+<p><strong>2 Pooling Layers</strong> (S2; S4) — Mean</p>
+<p><strong>2 Fully Connected Layers</strong> (F6; Output)</p>
+<p><strong>Sigmoid Activation!</strong></p>
+<p>Details：</p>
+<ol>
+<li>subsampling 中会在结果上多加一个偏置项</li>
+<li>S2-C3 sparse connected 生成的16@feature map分别按相邻3个，相邻4个，非相邻4个和全部6个特征图进行feature mapping【因为算力不足，限制了连接数，减少计算开销；这样不同特征图的组合可以使新生成的feature map 学到不同的特征模式 】</li>
+<li>MLP作为分类器</li>
+<li>这里的 faltten 是用CNN</li>
+</ol>
+<h3 id="alexnet">AlexNet<a class="headerlink" href="#alexnet" title="Permanent link">&para;</a></h3>
+<p>ReLU, max pooling, stride
+Data augmentation
+Optimizer parameters</p>
+<h3 id="vgg-net">VGG Net<a class="headerlink" href="#vgg-net" title="Permanent link">&para;</a></h3>
+<p><strong>152 layers for ImageNet.</strong></p>
+<p>💡 <strong>Key Idea of VGG</strong>: Replace the large convolution filter by stacking some <strong>smaller convolution filters.</strong></p>
+<ol>
+<li><strong>More concise and generalizable.</strong></li>
+<li>
+<p><strong>Smaller filters can achieve better performance than larger filters. smaller filters 堆积可以比 larger更高</strong></p>
+</li>
+<li>
+<p><strong>Demonstrate that increase depth can boost performance. 深度可提高表现</strong></p>
+</li>
+</ol>
+<p>5x5 conv = two 3x3 conv
+7x7 conv = three 3x3 conv</p>
+<h3 id="residual-net-resnet">Residual Net, <strong>ResNet</strong><a class="headerlink" href="#residual-net-resnet" title="Permanent link">&para;</a></h3>
+<p>keep origin information</p>
+<p>Skip-connection
+Batch-normalization
+Bottleneck block</p>
+<h3 id="dense-net"><strong>Dense Net</strong><a class="headerlink" href="#dense-net" title="Permanent link">&para;</a></h3>
+<h3 id="googlenet"><strong>GoogleNet</strong><a class="headerlink" href="#googlenet" title="Permanent link">&para;</a></h3>
+<p>There are some parallel polar level.
+Okay? Blocks in in a certain layer that means You will send. You will
+send I input. Okay, into different convolutions. Okay. And let's go
+through different architectures. And then we merged guys okay, into a
+final okay output. Okay, So this is a key idea. Okay, significant
+difference. Okay, of Google, net with different, other, different neural
+networks. Okay. But yeah you can try this. Okay. But we will not Talk
+about the details of this neural networks, Okay</p>
+<h3 id="light-weight-networks">Light-weight networks<a class="headerlink" href="#light-weight-networks" title="Permanent link">&para;</a></h3>
+<div class="admonition p">
+<p class="admonition-title">Performance on computation limits</p>
+</div>
+<p><a class="glightbox" href="../pics/CNN_23.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_23.png" width="60%" /></a>
+<a class="glightbox" href="../pics/CNN_24.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/CNN_24.png" width="60%" /></a></p>
+<div class="admonition danger">
+<p class="admonition-title">a depthwise convolution involves applying a separate 3x3 filter to each input channel.</p>
+<blockquote>
+<blockquote>
+<p>For a depthwise 3x3 convolution, the number of  input channels and output channels are both 32, how many parameters does this convolution layer have ？</p>
+</blockquote>
+<p><span class="arithmatex">\(3*3*32\)</span></p>
+</blockquote>
+</div>
+<p><strong>Group convolution:</strong></p>
+<h2 id="practical-exercise">Practical Exercise<a class="headerlink" href="#practical-exercise" title="Permanent link">&para;</a></h2>
+<h2 id="parameters-initialization">Parameters Initialization<a class="headerlink" href="#parameters-initialization" title="Permanent link">&para;</a></h2>
+<p>快速 shrikage to point</p>
+<h2 id="bach-normalization">Bach Normalization<a class="headerlink" href="#bach-normalization" title="Permanent link">&para;</a></h2>
+<h2 id="application">Application<a class="headerlink" href="#application" title="Permanent link">&para;</a></h2>
+<h2 id="edge-detection">Edge Detection<a class="headerlink" href="#edge-detection" title="Permanent link">&para;</a></h2>
+<p>如上图所示：输入是一个6<em>6的矩阵，输入是一个左白右灰的图片（白色部分对应的矩阵值大于0，灰色部分的值为0），中间有一道竖线分割；中间的垂直过滤器是一个3</em>3的矩阵，由白灰黑三个部分组成，矩阵三列的值分别大于0，等于0和小于0；输出的结果矩阵中，中间的两列大于0，即输出的图片中间部分为白色，也就是说经过卷积之后，成功的检测出了原始图片中间存在的垂直竖线。</p>
+<h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
+<blockquote>
+<blockquote>
+<p>(in L5 in AMA564), input <span class="arithmatex">\(\in\R^{5\times5}\)</span>,kernel <span class="arithmatex">\(\in\R^{3\times3}\)</span>,bias=-500, activation function is ReLU</p>
+</blockquote>
+</blockquote>
+<h2 id="code">code<a class="headerlink" href="#code" title="Permanent link">&para;</a></h2>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023 <a href="https://github.com/james-willett"  target="_blank" rel="noopener">Coconut</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/james-willett" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/TheJamesWillett" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/willettjames/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.081f42fc.min.js"></script>
+      
+        <script src="../../../javascripts/code_copy.js"></script>
+      
+        <script src="../../../javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

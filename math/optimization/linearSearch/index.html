@@ -1,0 +1,3452 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.24">
+    
+    
+      
+        <title>Linear Search - Coconut3223</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/markdown-it-admonition.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Linear Search - Coconut3223" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="./assets/images/social/math/optimization/linearSearch.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="None" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Linear Search - Coconut3223" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="./assets/images/social/math/optimization/linearSearch.png" >
+      
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#linear-search" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Coconut3223" class="md-header__button md-logo" aria-label="Coconut3223" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Coconut3223
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Linear Search
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../python/" class="md-tabs__link">
+          
+  
+    
+  
+  python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../AI/" class="md-tabs__link">
+          
+  
+    
+  
+  AI
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../NLP/" class="md-tabs__link">
+          
+  
+    
+  
+  NLP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CV/" class="md-tabs__link">
+          
+  
+    
+  
+  CV
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../SQL/" class="md-tabs__link">
+          
+  
+    
+  
+  SQL
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../utils/" class="md-tabs__link">
+          
+  
+    
+  
+  Utils
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Temp/" class="md-tabs__link">
+          
+  
+    
+  
+  Temp
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Coconut3223" class="md-nav__button md-logo" aria-label="Coconut3223" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Coconut3223
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../python/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    python
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/python_elegant/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    elegant
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/enhanced/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    enhanced
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    numpy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/exam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    八股文
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/pytorch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pytorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../AI/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    AI
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            AI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/pre/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pre-processing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/loss/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Loss
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/eva/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Evaluation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/highd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    High-dimensional Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ML
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            ML
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/ML/lr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LinearRegreesion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/ML/nb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NaiveBayes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/ML/logr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logistics Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/ML/svm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/ML/knn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KNN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/ML/dt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decision Tree
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/ML/ensemble_learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ensemble Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/ML/association_analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Association Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/ML/clustering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clustering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../AI/DL/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    DL
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            DL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/DL/cnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CNN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/DL/mlp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MLP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/DL/rnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RNN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/DL/transformer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/DL/generative_model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generative Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/DL/transferlearning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transfer Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/DL/tricks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tricks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/DL/utils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Utils
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../NLP/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    NLP
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            NLP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/embedding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Embedding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/subword/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Subword
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/kea/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keyword Extraction Algorithm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/nmt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Neural Machine Translation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/gpt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/opennmt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    openNMT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/huggingface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HuggingFace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/asr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ASR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/paper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/survey_on_synthesizing_training_data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Synthesizing Training Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../CV/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    CV
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            CV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../SQL/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    SQL
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SQL/exam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    八股文
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../utils/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Utils
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Utils
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/hadoop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hadoop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/mapreduce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Map Reduce
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/vscode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VScode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/html_css/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTML CSS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../utils/PPT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Math
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Temp/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Temp
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Temp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#background" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Background">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      pre-info
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-setting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem Setting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#content" class="md-nav__link">
+    <span class="md-ellipsis">
+      Content
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Content">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      direction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="direction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gradient-descent-gd-steepest-descent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gradient Descent, GD, Steepest descent 最速下降法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gradient Descent, GD, Steepest descent 最速下降法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      存在性证明：负梯度方向就是下降最快方向
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steepest-descent-with-exact-line-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steepest descent with exact line search
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convergence-of-steepest-descent-with-constant-stepsize" class="md-nav__link">
+    <span class="md-ellipsis">
+      Convergence of Steepest descent with constant stepsize
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expensive-computation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expensive computation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      抽样估计思路的比较
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stochastic-gradient-descent-sgd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stochastic Gradient Descent, SGD, 随机梯度下降
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mini-batch-sgd" class="md-nav__link">
+    <span class="md-ellipsis">
+      mini-batch SGD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sgd-with-momentum" class="md-nav__link">
+    <span class="md-ellipsis">
+      SGD with Momentum
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sgd-with-nesterov-momentum" class="md-nav__link">
+    <span class="md-ellipsis">
+      SGD with Nesterov momentum
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adagrad-adaptive-learning-rates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adagrad: Adaptive Learning Rates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rmsprop" class="md-nav__link">
+    <span class="md-ellipsis">
+      RMSProp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adam-adaptive-moment-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      ADAM, Adaptive Moment Estimation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convergence-of-adam" class="md-nav__link">
+    <span class="md-ellipsis">
+      convergence of ADAM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="convergence of ADAM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#newtons-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Newton’s method 牛顿迭代法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Newton’s method 牛顿迭代法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      方法本身
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      收敛
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      失效
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#descent-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      在 Descent Direction 上的应用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      缺点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conjugate-gradient-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conjugate gradient method 共轭梯度法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conjugate gradient method 共轭梯度法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conjugate-gradient-method-conceptual-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conjugate gradient method: Conceptual version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conjugate-gradient-method-formal-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conjugate gradient method: Formal version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conjugate-gradient-method-actual-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conjugate gradient method: Actual version
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#truncated-newtons-method-hessian-free-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Truncated Newton’s method (Hessian-Free Optimization)修正牛顿法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Truncated Newton’s method (Hessian-Free Optimization)修正牛顿法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#computational-concerns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computational concerns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      拟牛顿类算法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="拟牛顿类算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-idea-secant-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic idea: Secant equations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#descent-direction_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      在 descent direction 上的应用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quasi-newton-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quasi-Newton method
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quasi-Newton method">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quasi-newton-based-on-b_k" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quasi-Newton based on \(B_k\)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfgs" class="md-nav__link">
+    <span class="md-ellipsis">
+      BFGS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BFGS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quasi-newton-based-on-h_k" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quasi-Newton based on \(H_k\)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stepsize-alpha_k" class="md-nav__link">
+    <span class="md-ellipsis">
+      StepSize \(\alpha_k\)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="StepSize \(\alpha_k\)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exact-inexact" class="md-nav__link">
+    <span class="md-ellipsis">
+      分类: exact &amp; inexact
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inexact-line-search-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      inexact line search strategy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="inexact line search strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#termination-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Termination conditions 线搜索准则
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Termination conditions 线搜索准则">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sufficient-decrease-condition-armijo-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sufficient Decrease condition (Armijo condition) 充分下降条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wolfe-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wolfe conditions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#goldstein-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Goldstein conditions 条件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="linear-search">Linear Search<a class="headerlink" href="#linear-search" title="Permanent link">&para;</a></h1>
+<p><a class="glightbox" href="../pics/SGD_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/SGD_1.png" /></a></p>
+<h2 id="background">Background<a class="headerlink" href="#background" title="Permanent link">&para;</a></h2>
+<h3 id="pre-info">pre-info<a class="headerlink" href="#pre-info" title="Permanent link">&para;</a></h3>
+<p><mark>Structure Risk</mark>. <span class="arithmatex">\(\min\limits_{\theta\in\R^s}f(\theta):=\cfrac{1}{n}\sum\limits_{i=1}^nL_i(Y_i;f(X_i;\theta))\)</span>
+<mark>Gradient in multiple dimensions</mark>. <span class="arithmatex">\(\nabla f(x):=\begin{bmatrix}
+\frac{\partial f}{\partial x_1}(x)\\
+\vdots\\
+\frac{\partial f}{\partial x_p}(x)\\
+\end{bmatrix}=[Df(x)]^T \in \R^{p\times1}\)</span></p>
+<p><mark>L-smooth function</mark>. <span class="arithmatex">\(\begin{cases}f(\theta)\text{ is continuously differentiable }\\\nabla f(\theta)\text{ is Lipschitz continuous }\iff\Vert\nabla f(x)-\nabla f(y)\Vert≤L\Vert x-y\Vert,\text{ for some }L&gt;0\end{cases}\\\qquad\implies f\text{ is  L-smooth }\)</span>
+<strong>Lemma 3.1</strong> Given a L-smooth function <span class="arithmatex">\(f,\forall x,y\in\text{dom}(f),f(y)\le f(x)+\nabla f(x)^T(y-x)+\cfrac{L}{2}\Vert y-x\Vert^2\)</span></p>
+<hr />
+<h3 id="problem-setting">Problem Setting<a class="headerlink" href="#problem-setting" title="Permanent link">&para;</a></h3>
+<p>Assume: <span class="arithmatex">\(f(\theta)\)</span> is L-smooth
+<span class="arithmatex">\(<span class="arithmatex">\(\min\limits_{\theta\in\R^s}f(\theta):=\cfrac{1}{n}\sum\limits_{i=1}^nL_i(Y_i;f(X_i;\theta))\)</span>\)</span></p>
+<div class="admonition p">
+<p class="admonition-title">given a point <span class="arithmatex">\(x^k\)</span><br>1. find a descent direction <span class="arithmatex">\(d^k\)</span> <br>2. find a stepsize <span class="arithmatex">\(\alpha^k\)</span><br> <span class="arithmatex">\(<span class="arithmatex">\(x^{k+1}=x^{k}+\alpha^kd^k\)</span>\)</span></p>
+<p>假设在某点，寻找方向 direction 和步长 stepsize 使得最小，如果确定则只需要解决一维最优化问题就可以找到下一个搜索点.
+首先选择方向 <span class="arithmatex">\(d^k\)</span> 通过解决一维最优化问题找到步长 <span class="arithmatex">\(\alpha^k\)</span></p>
+</div>
+<hr />
+<h2 id="content">Content<a class="headerlink" href="#content" title="Permanent link">&para;</a></h2>
+<p>given a point <span class="arithmatex">\(x^k\)</span>:</p>
+<ol>
+<li>find a descent direction <span class="arithmatex">\(d^k\)</span></li>
+<li>find a stepsize <span class="arithmatex">\(\alpha^k\)</span></li>
+<li><span class="arithmatex">\(x^{k+1}=x^{k}+\alpha^kd^k\)</span></li>
+</ol>
+<p><mark>Descent Direction <span class="arithmatex">\(d^k\)</span></mark>, <span class="arithmatex">\(f\in C^1(\R^n),x\in \R^n\)</span> A <span class="arithmatex">\(d\in\R^n\)</span> is said to be a <strong>descent direction</strong> of <span class="arithmatex">\(f\)</span> at <span class="arithmatex">\(x\impliedby\red{[\nabla f(x)]^Td &lt; 0}\)</span>.</p>
+<ul>
+<li>More generally, if <span class="arithmatex">\(D\succeq0\)</span>, then <span class="arithmatex">\(d = -D\nabla f(x)\)</span> is a descent direction.
+<span class="arithmatex">\(\iff\)</span> 任一方向 <span class="arithmatex">\(d\)</span> 只要能分解成一个正定矩阵 <span class="arithmatex">\(D\)</span> 和负梯度 <span class="arithmatex">\(-\nabla f(x)\)</span> 的乘积，那么这个方向一定是下降方向
+Proof：<span class="arithmatex">\([\nabla f(x)]^T\cdot\big(-D\nabla f(x)\big)=-\big(\nabla f(x)^TD\nabla f(x)\big)\\\qquad\qquad
+    \because \nabla f(x)\not=0,\therefore &lt;0\)</span></li>
+</ul>
+<div class="admonition p">
+<p class="admonition-title">是不是下降方向就看：<span class="arithmatex">\([\nabla f(x)]^Td &lt; 0\)</span></p>
+<blockquote>
+<p>At an x that is <strong>not stationary</strong>,</p>
+<blockquote>
+<p>d = <span class="arithmatex">\(-\nabla f(x)\)</span> is a descent direction？</p>
+</blockquote>
+<p>yes. <span class="arithmatex">\([\nabla f(x)]^T\cdot-\nabla f(x)=-\Vert\nabla f(x)\Vert_2^2&lt;0\)</span></p>
+<blockquote>
+<p>is the Newton direction <span class="arithmatex">\(-[\nabla^2f(x)]^{-1}\nabla f(x)\)</span>  a <strong>descent direction?</strong></p>
+</blockquote>
+<p>A: Not necessary. <span class="arithmatex">\(\because d=[\nabla^2f(x)]^{-1}\nabla f(x),\therefore D=[\nabla^2f(x)]^{-1} ? \text{positive definite}\begin{cases}\in &amp;\text{yes}\\\notin&amp;\text{no}\end{cases}\)</span></p>
+</blockquote>
+</div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><span class="arithmatex">\(d^k=-D^k\nabla f(x^k),D\succeq0\)</span></th>
+<th>descent direction</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>牛顿法</td>
+<td><span class="arithmatex">\(-[\nabla^2f(x^k)]^{-1}\nabla f(x^k)\)</span></td>
+<td>一阶导=0 <span class="arithmatex">\(d^k= -[\nabla^2f(x^k)]^{-1}\cdot\nabla f(x^k)\text{ (not necessary) }\\\text{only }[\nabla^2f(x^k)]\succeq0\)</span></td>
+<td>仅仅依赖函数值和梯度的信息(即一阶信息)</td>
+</tr>
+<tr>
+<td>最速下降法</td>
+<td><span class="arithmatex">\(-\nabla f(x^k)\)</span></td>
+<td>负梯度方向 <span class="arithmatex">\(d^k=-1I\cdot \nabla f(x^k),\checkmark\)</span></td>
+<td></td>
+</tr>
+<tr>
+<td>拟牛顿法</td>
+<td><span class="arithmatex">\(-B^k\nabla f(x^k)\)</span></td>
+<td><span class="arithmatex">\(d^k= -B^k\cdot\nabla f(x^k)\text{ (not necessary) }\\\text{only }B^k\succeq0\)</span></td>
+<td></td>
+</tr>
+<tr>
+<td>共轭梯度法</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="direction">direction<a class="headerlink" href="#direction" title="Permanent link">&para;</a></h3>
+<h4 id="gradient-descent-gd-steepest-descent">Gradient Descent, GD, Steepest descent 最速下降法<a class="headerlink" href="#gradient-descent-gd-steepest-descent" title="Permanent link">&para;</a></h4>
+<p><mark>梯度</mark>,某一点处的梯度方向是函数值增长最快的方向</p>
+<div class="arithmatex">\[\text{Start from some }\theta^0\in\R^s,\\\text{ GD updates as}\theta^{k+1}=\theta^k-\alpha_k\nabla f(\theta^k),\\\text{ until }\Vert\nabla f(\theta^{k+1})\Vert\le\epsilon,\text{ for some }\epsilon&gt;0\]</div>
+<div class="admonition p">
+<p class="admonition-title">Steepest descent with exact line search：</p>
+<p>希望得到一个<strong>在该点下降最快的方向</strong>，来使得我们的迭代过程尽可能的高效。
+<strong>梯度的反方向就是函数值下降最快的方向</strong>。</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">1. In practice: Always use analytic gradient, but check implementation with numerical gradient. This is called a gradient check.</p>
+</div>
+<h5 id="_1">存在性证明：负梯度方向就是下降最快方向<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h5>
+<p><mark>Taylor展开</mark>. <span class="arithmatex">\(f\in C^1(\R), \exist \xi\in\{x+td:t\in(0,1)\}, f(x+d)=f(x)+[\nabla f(x)]^Td+[\nabla f(\xi)-\nabla f(x)]^Td\)</span>.
+其中本来二阶导的地方： <span class="arithmatex">\(\frac{1}{2}d^T\nabla^2 f(\xi)=[\nabla f(\xi)-\nabla f(x)]^T;\xi\text{ depends on }d\)</span>
+如果 <span class="arithmatex">\(\nabla f(x)≠0 \iff x\text{ is not a stationary}\)</span>, then，我们取 <span class="arithmatex">\(\red{d=-\alpha\nabla f(x) \text{ for some }\alpha&gt;0}\)</span>
+then，<span class="arithmatex">\(f(x+d)=f(x)+[\nabla f(x)]^Td+[\nabla f(\xi)-\nabla f(x)]^Td\)</span> 变成
+<span class="arithmatex">\(<span class="arithmatex">\(f(x-\alpha\nabla f(x))=f(x)-\alpha\Vert\nabla f(x)\Vert_2^2-\alpha([\nabla f(\xi)-\nabla f(x)]^T\cdot\nabla f(x))\)</span>\)</span>
+其中第2项：<span class="arithmatex">\(\nabla f(x)\cdot \alpha\nabla f(x)=\alpha\Vert\nabla f(x)\Vert_2^2；\xi \text{ depends on }\alpha\)</span>
+其中第3项：<span class="arithmatex">\(\alpha([\nabla f(\xi)-\nabla f(x)]^T\cdot\nabla f(x))=0\)</span>
+<span class="arithmatex">\(<span class="arithmatex">\(\implies f(x-\alpha\nabla f(x))=f(x)-\alpha\Vert\nabla f(x)\Vert_2^2\)</span>\)</span>
+<span class="arithmatex">\(<span class="arithmatex">\(\therefore \text{ for sufficiently small }\alpha&gt;0, f(x-\alpha\nabla f(x))&lt;f(x)\space\text{(是下降方向)}\)</span>\)</span>
+$\implies\red{-\nabla f(x)} $ is called <strong>the steepest descent direction</strong></p>
+<ul>
+<li>为什么 <span class="arithmatex">\(\alpha d:=-\alpha \nabla f(x) \text{ for some }\alpha&gt;0,\)</span>(此处的d范围更缩小一点，指方向
+    在没有给定d之前：<span class="arithmatex">\(f(x+d)=f(x)+\alpha\nabla f(x)^Td\)</span>
+    ∵ Given $ f\&amp; x \implies f(x)\&amp;\nabla f(x)^T\in$ 常量
+    <span class="arithmatex">\(\min\limits_\alpha f(x+d)=f(x)+\alpha\nabla f(x)^Td\)</span> 是关于<span class="arithmatex">\(\alpha\)</span>的函数，要随着<span class="arithmatex">\(\alpha\)</span>增加而减小，且减少得尽可能快，
+    <span class="arithmatex">\(<span class="arithmatex">\(\therefore d^k=\min_{d^k} \cfrac{\partial f}{\partial \alpha} = \max_{d^k} -\cfrac{\partial f}{\partial \alpha}\)</span>\)</span>
+    Recall： <mark>Cauchy不等式</mark>. <span class="arithmatex">\(-\frac{\partial f}{\partial \alpha}=-\nabla f(x)^Td=(-\nabla f(x),d)=\Vert-\nabla f(x)\Vert\cdot\Vert d\Vert\cdot\cos\theta_k\)</span>.  <span class="arithmatex">\(\theta_k\)</span>就是搜索方向d和负梯度方向的角度，当<span class="arithmatex">\(\theta_k=0°\)</span> 时，最大，所以就是最速.
+    <span class="arithmatex">\(<span class="arithmatex">\(\implies \red{d=- \nabla f(x)}\)</span>\)</span></li>
+</ul>
+<h5 id="steepest-descent-with-exact-line-search">Steepest descent with exact line search<a class="headerlink" href="#steepest-descent-with-exact-line-search" title="Permanent link">&para;</a></h5>
+<p><span class="arithmatex">\(\text{Start at }x^0\in R^n. \text{ For each }k=0,1,…\)</span></p>
+<ol>
+<li><span class="arithmatex">\(\text{Set }d^k=-\nabla f(x^k)\qquad\text{(the search direction)}\)</span></li>
+<li><span class="arithmatex">\(\text{pick } \alpha_k\in\argmin\{f(x^k+\alpha d^k):\alpha&gt;0\}\qquad\text{(step size | learning rate)}\)</span></li>
+</ol>
+<p>其中 <span class="arithmatex">\(\alpha_k\)</span> is chosen according to the exact line search criterion 通过<strong>精确线搜索</strong>确定步长（隐含地假定，对于精确线搜索，存在一个最小化器<span class="arithmatex">\(\alpha_k\)</span>。）</p>
+<h5 id="convergence-of-steepest-descent-with-constant-stepsize">Convergence of Steepest descent with constant stepsize<a class="headerlink" href="#convergence-of-steepest-descent-with-constant-stepsize" title="Permanent link">&para;</a></h5>
+<p><span class="arithmatex">\(\begin{cases}f\in C^2(\R^n)\\\inf f &gt;-\infin\\\exist L&gt;0, L\ge\Vert\nabla^2f(x)\Vert_2\\x^{k+1}=x^k-\cfrac{\gamma}{L}\nabla f(x^k)&amp;(1)\end{cases}\implies\forall x, \text{fix any }\gamma\in(0,2)\)</span> any accumulation point of <span class="arithmatex">\(\{x^k\}\)</span> is a stationary point of <span class="arithmatex">\(f\)</span>
+<span class="arithmatex">\((1)\)</span>: the formula as which sequence generated
+也就是说，只要 stepsize <span class="arithmatex">\(α \in(0, \cfrac{2}{L}),\)</span> 我们就能达到收敛的目标。</p>
+<ul>
+<li>proof:</li>
+</ul>
+<p><mark>Lemmma</mark>
+<span class="arithmatex">\(f\text{ is L-smooth }\\
+\implies \forall x,y\in \text{dom}(f), f(y)\le f(x)+\nabla f(x)^T(y-x)+\cfrac{L}{2}\Vert y-x\Vert^2\\
+\implies f(y)-f(x)\le\nabla f(x)^T(y-x)+\cfrac{L}{2}\Vert y-x\Vert^2\)</span>
+由上面的引理，我们可以对 stepsize 进行讨论, 目标是：<span class="arithmatex">\(f(\theta^{k+1})-f(\theta^k)&lt;0\)</span>
+$$\begin{align<em>}f(\theta^{k+1})-f(\theta^k)&amp;=f(\theta^k-\alpha_k\nabla f(\theta^k))-f(\theta^k)\&amp;\le\nabla f(\theta^k)^T(-\alpha_k\nabla f(\theta^k))+\cfrac{L}{2}\Vert\alpha_k\nabla f(\theta^k)\Vert^2\&amp;\le(\cfrac{L}{2}\alpha_k-1)\cdot\alpha_k\Vert \nabla f(\theta^k)\Vert^2\quad \colorbox{aqua}{\text{res-1}}\end{align</em>}\\implies \cfrac{L\alpha_k}{2}-1&lt;0\implies\alpha_k&lt;\cfrac{2}{L}\rightarrow\cfrac{\gamma}{L}
+$$</p>
+<p>但是 <strong>what is the optimal step size in the constant step-size strategy？</strong></p>
+<p><span class="arithmatex">\(\colorbox{aqua}{\text{res-1}} \quad \Delta= f(\theta^{k+1})-f(\theta^k)\le(\cfrac{L}{2}\alpha_k-1)\cdot\alpha_k\Vert \nabla f(\theta^k)\Vert^2\\\qquad\Delta_{\alpha_k}:= \cfrac{L\alpha_k^2}{2}-\alpha_k&lt;0,\therefore  \alpha_k^*=\argmin\limits_{\alpha_k }\cfrac{L\alpha_k^2}{2}-\alpha_k \\\qquad\quad \cfrac{\partial\Delta_{\alpha_k}}{\partial\alpha_k}=L\alpha_k-1\xlongequal{SET}0\implies \alpha_k^*=\cfrac{1}{L}\)</span></p>
+<p><strong>Convergence of GD with optimal constant step-size</strong> <span class="arithmatex">\(\alpha=\frac{1}{L}\)</span></p>
+<p><span class="arithmatex">\(\begin{cases}f\text{ is L-smooth }\\\inf f&gt;-\infin\\\{\theta^k\}_{k=0}^T:=\text{ the sequence by GD with }\alpha=\cfrac{1}{L}\end{cases}\\\qquad\implies \forall\theta^0, \min\limits_{1\le k\le T}\Vert\nabla f(\theta^k)\Vert^2\le\cfrac{2L(f(\theta^0)-\inf f)}{T}\)</span></p>
+<p>也就是说，如果我们取这个 optimal step size，对任何的初始参数(分子 constant )，只要 run 足够多次(分母 T large enough), 这个梯度 <span class="arithmatex">\(\nabla f(x)\)</span> 总能收敛到接近0，也就是 <span class="arithmatex">\(f(x)\)</span> 达到我们的 local minimizer。</p>
+<p>步长保守 the constant stepsize，下降缓慢 potentially</p>
+<h5 id="expensive-computation">Expensive computation<a class="headerlink" href="#expensive-computation" title="Permanent link">&para;</a></h5>
+<div class="admonition danger">
+<p class="admonition-title">在很高维的情况下，计算很复杂很好耗时间。 用全部样本<strong>to estimate the exact gradient of a random variable。</strong></p>
+<p><mark>while computing gradient in GD</mark>。算每一个样本点的梯度，如果有 n 个样本，就要算 n 个梯度，<strong>使用了所有训练数据的误差,</strong> 然后再算她们的平均值来充当参数。 This computation is expensive if n is huge !!!
+<span class="arithmatex">\(<span class="arithmatex">\(\nabla f(\theta^k)=\cfrac{1}{n}\sum\limits_{i=1}^n\nabla_\theta l(\theta^k;X_i,Y)\)</span>\)</span></p>
+</div>
+<p>所以现在不是真的去算出来，而是算用估计的法子。
+Instead of computing the exact gradient, we consider <span class="arithmatex">\(g(\theta,\xi)\)</span>, which is <strong>a estimation</strong> satisfying <span class="arithmatex">\(\mathop{E}\limits_\xi[g(\theta,\xi)]=\nabla f(\theta)\)</span></p>
+<div class="arithmatex">\[\mathop{E}\limits_ξ[g(\theta,ξ)]\xlongequal{\text{estimate}}\nabla f(\theta)\]</div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Assume ξ :</th>
+<th><span class="arithmatex">\(g(\theta,ξ)\)</span></th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Noisy gradients</td>
+<td>a random noise satisfying E[ξ]=0</td>
+<td><span class="arithmatex">\(\nabla f(\theta)+ξ\)</span></td>
+<td></td>
+</tr>
+<tr>
+<td>Stochastic gradients</td>
+<td 1_="1," 2_="2," class="..," n="n">an index uniformly sampling from</td>
+<td><span class="arithmatex">\(\nabla_\theta l(\theta;X_ξ,Y_ξ)\)</span></td>
+<td>基于 Batchsize 的分类和进化</td>
+</tr>
+</tbody>
+</table>
+<p><strong>assumption of</strong> <span class="arithmatex">\(g(\theta,\xi)\)</span>
+<span class="arithmatex">\(\begin{cases}f \text{ is convex }\\\mathbb E_\xi[g(\theta,\xi)]=\nabla f(\theta)&amp;\text{(mean)}\\\text{given B, }\forall\theta,\mathbb E_\xi[\Vert g(\theta,\xi)\Vert^2]\le B^2&amp;\text{(variance)}\end{cases}\)</span></p>
+<p>因为用随机变量来 estimate，所以期望本来就是我们想要的 <span class="arithmatex">\(=\nabla f(\theta)\)</span>, 方差这里需要被 bounded by B <span class="arithmatex">\(\iff \sup \mathbb E_\xi[\Vert g(\theta,\xi)\Vert^2]\le B^2\)</span></p>
+<p><span class="arithmatex">\(\mathbb E_\xi\Vert g(\theta^k,\xi)\Vert\)</span></p>
+<h4 id="_2">抽样估计思路的比较<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Gradient Descent, GD</th>
+<th>Stochastic Gradient Descent, SGD</th>
+<th>Batch Gradient Descent, BGD</th>
+<th>mini-batch SGD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Batch_Size</td>
+<td>None, All train data 得到梯度</td>
+<td>1, stochastic</td>
+<td>-</td>
+<td>subset, Batch Size</td>
+</tr>
+<tr>
+<td>T(n)</td>
+<td>但数据量大时，计算非常耗时，同时神经网络常是非凸的，网络最终可能收敛到初始点附近的局部最优点</td>
+<td>^</td>
+<td>^</td>
+<td>^</td>
+</tr>
+<tr>
+<td>梯度准确性</td>
+<td>Accurate but slow (迭代次数少，迭代一次慢</td>
+<td>Fast but fluctuant (迭代一次快，迭代次数多，迭代这么多次的whole process 还是会比GD快</td>
+<td>^</td>
+<td>梯度准确了，学习率要加大。</td>
+</tr>
+<tr>
+<td>^</td>
+<td>^</td>
+<td>^</td>
+<td>^</td>
+<td>利用噪声梯度，一定程度上缓解了GD算法直接掉进初始点附近的局部最优值</td>
+</tr>
+</tbody>
+</table>
+<p><a class="glightbox" href="../pics/SGD_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/SGD_2.png" /></a>
+<a class="glightbox" href="../pics/SGD_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/SGD_3.png" /></a></p>
+<div class="admonition danger">
+<p class="admonition-title">SGD 在训练 DNN 时并不容易找到全局最小值点。</p>
+<p>SGD是基于随机采样的，每次迭代仅使用一个样本或一小批样本来估计梯度，因此它在参数空间中搜索最小值的路径是不确定的。
+对于复杂的损失函数和高维的参数空间，DNNs通常存在许多局部最小值和鞍点。局部最小值是损失函数的局部极小值，而鞍点是在某个维度上是局部极小值，而在另一个维度上是局部极大值。这些局部最小值和鞍点可能导致SGD陷入局部最小值或收敛到不理想的解。
+为了克服这个问题，研究人员发展了一些改进的优化算法，如随机梯度下降的变种（如动量梯度下降、Adam等）和自适应学习率方法。这些算法通过引入动量、自适应调整学习率等技术来更有效地搜索参数空间，并有助于避免陷入局部最小值</p>
+</div>
+<h4 id="stochastic-gradient-descent-sgd">Stochastic Gradient Descent, SGD, 随机梯度下降<a class="headerlink" href="#stochastic-gradient-descent-sgd" title="Permanent link">&para;</a></h4>
+<p>Instead of computing the exact gradient, we consider <span class="arithmatex">\(g(\theta,\xi)\)</span>, which is <strong>a stochastic estimation</strong> satisfying <span class="arithmatex">\(\mathop{E}\limits_\xi[g(\theta,\xi)]=\nabla f(\theta)\)</span></p>
+<p>SGD就是一次跑<strong>一個樣本</strong>或是小批次(mini-batch)樣本然後算出一次梯度或是小批次梯度的平均後就更新一次，那這個樣本或是小批次的樣本是隨機抽取的，所以才會稱為==隨機梯度下降法==。</p>
+<p><mark>Stochastic Gradient</mark>. <span class="arithmatex">\(\xi\)</span> is an index uniformly <u>sampling from </u> {1, 2, ..., n} 被随机选中的数据索引
+ $ g(\theta,\xi)=\nabla_\theta l(\theta;X_\xi,Y_\xi)\rightarrow \mathbb E_\xi g(\theta,\xi)=\nabla f(\theta)$</p>
+<p><mark>Stochastic Gradient Descent, SGD</mark>
+<span class="arithmatex">\(<span class="arithmatex">\(\text{Start from some }\theta^0\in\R^s,\\\text{ SGD updates as }\theta^{k+1}=\theta^k-\alpha_kg(\theta^k,ξ_k)=\theta^k-\alpha_k\cdot\nabla f_{\theta_k}(x_{\xi_k})\\\xrightarrow{\text{approximate}}\theta^k-\alpha_k\nabla f(\theta_k)\)</span>\)</span>
+<span class="arithmatex">\(g(\theta^k,\xi_k):=\)</span> the stochastic gradient computed at <span class="arithmatex">\(\theta^k\)</span>
+<span class="arithmatex">\(\xi_k :=\)</span> the selected index at k round</p>
+<ol>
+<li>Sampling strategy to compute 𝑔(𝜃<span class="arithmatex">\(, 𝜉\)</span>).</li>
+<li>
+<p>Choose step size 𝛼$ &gt; 0 <strong>.</strong></p>
+<div class="admonition danger">
+<p class="admonition-title">We need to choose decreasing step size. 如果是constant 就不能 find ultimate value</p>
+</div>
+<ul>
+<li>
+<p>if <span class="arithmatex">\(\alpha_j\equiv \alpha&gt;0\)</span> ❌ (除非B递减
+    <span class="arithmatex">\(\xRightarrow{ \alpha_j\equiv \alpha&gt;0}\mathbb E[f(\overline{\theta}^T)-f^*]\le\cfrac{\Vert\theta^0-\theta^*\Vert^2+B^2(T+1)\alpha^2}{2(T+1)}\)</span>
+    <span class="arithmatex">\(\xrightarrow{T-&gt;\infin}\hat{\theta}^T\text{ will be in a ball with radius }\frac{B^2\alpha^2}{2}\)</span>
+    <a class="glightbox" href="../pics/SGD_4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/SGD_4.png" /></a></p>
+</li>
+<li>
+<p>if <span class="arithmatex">\(\alpha_j\downarrow\)</span> e.g. <span class="arithmatex">\(\alpha_t=\frac{1}{t+1}(\text{decreasing})\)</span>  ⭕
+    <span class="arithmatex">\(\xRightarrow{\alpha_t=\frac{1}{t+1}}\begin{cases}\sum\limits_{t=0}^\infin\alpha_t=\sum\limits_{t=1}^\infin\cfrac{1}{t}=\infin\\\sum\limits_{t=0}^\infin\alpha_t^2=\sum\limits_{t=1}^\infin\cfrac{1}{t^2}=\cfrac{\pi^2}{6}&lt;\infin\end{cases}\)</span>
+    <span class="arithmatex">\(\implies\lim\limits_{T\rightarrow\infin}\mathbb E[f(\overline{\theta}^T)-f^*]=0\)</span></p>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>Convergence of SGD with step-size</strong> <span class="arithmatex">\(\alpha&gt;0\)</span></p>
+<p><span class="arithmatex">\(\begin{cases}f \text{ is convex }\iff f(\lambda u + (1-\lambda )v)\le\lambda f(u) + (1-\lambda )f(v).\\E_ξ[g(\theta,ξ)]=\nabla f(\theta)\\E_ξ[\Vert g(\theta,ξ)\Vert^2]\le B^2,\forall \theta, \text{given B}\\\{\theta^k\}:=\text{ the sequence by SGD with }\alpha&gt;0\end{cases}\)</span>
+<span class="arithmatex">\(\implies E[f(\overline{\theta}^T)-f^*]\le\cfrac{\Vert\theta^0-\theta^*\Vert^2+B^2\sum\limits_{j=0}^T\alpha_j^2}{2\sum\limits_{j=0}^T\alpha_j},\begin{cases}\:\lambda_k=\sum\limits_{j=0}^k\alpha_j\\\overline{\theta}^k=\lambda_k^{-1}\sum\limits_{j=0}^k\alpha_j\theta^j\end{cases}\)</span></p>
+<p><span class="arithmatex">\(\xRightarrow{ \alpha_j=\alpha&gt;0}E[f(\overline{\theta}^T)-f^*]\le\cfrac{\Vert\theta^0-\theta^*\Vert^2+B^2(T+1)\alpha^2}{2(T+1)}\)</span></p>
+<p><span class="arithmatex">\(\xrightarrow{T-&gt;\infin}\hat{\theta}^T=\cfrac{B^2\alpha^2}{2}\)</span></p>
+<p><span class="arithmatex">\(\xRightarrow{\alpha_t=\cfrac{1}{t+1}(\text{decreasing})}\begin{cases}\sum\limits_{t=0}^\infin\alpha_t=\sum\limits_{t=1}^\infin\cfrac{1}{t}=\infin\\\sum\limits_{t=0}^\infin\alpha_t^2=\sum\limits_{t=1}^\infin\cfrac{1}{t^2}=\cfrac{\pi^2}{6}&lt;\infin\end{cases}\)</span></p>
+<div class="admonition question">
+<p class="admonition-title">proof</p>
+</div>
+<p><strong>Advantage:</strong></p>
+<ol>
+<li>计算快，最速下降法更新1次参数的时间，随机梯度下降法可以更新n次</li>
+</ol>
+<p><strong>Limitation:</strong></p>
+<ol>
+<li>Slow convergence，因为随机，所以方向摇摆不定，收敛很慢,狂走之字路线，快的是计算过程 ⇒ <u>SGD with momentum</u></li>
+<li>converge to the local optimal solution
+不经意间收敛到local就停了，（随机梯度下降法由于训练数据是随机选择的，更新参数时使用的又是选择数据时的梯度，所以容易陷入目标函数的局部最优解。</li>
+<li>converge to saddle points</li>
+<li>只能 go to some neighbourhoods of the optimal solution
+<span class="arithmatex">\(\mathbb E[f(\overline{\theta}^T)-f^*]\le\cfrac{\Vert\theta^0-\theta^*\Vert^2+B^2(T+1)\alpha^2}{2(T+1)}\rightarrow\hat{\theta}^T\text{ on a ball with radius}\cfrac{B^2\alpha^2}{2}\)</span></li>
+</ol>
+<p>每次更新参数时只使用一个样本来计算梯度，这样就避免了BGD计算非常缓慢的问题，同时SGD每次计算梯度的样本不同，所以计算出来的梯度不稳定，会出现抖动，正是这种不稳定产生的抖动，使算法可能跳出鞍点从而找到更优解。SGD每次只使用一个样本更新梯度，计算更快，并且在训练过程中可新增样本，因此适合online训练。</p>
+<p>每次使用一个样本计算梯度具有高方差性，容易受到离群点或异常数据的干扰，在优化过程中会出现严重的抖动，这种随机性便是其名字的由来</p>
+<h4 id="mini-batch-sgd">mini-batch SGD<a class="headerlink" href="#mini-batch-sgd" title="Permanent link">&para;</a></h4>
+<p>设随机选择m个训练数据的索引的集合为K，</p>
+<p>假设训练数据有100个，那么在m=10时，创建一个有10个随机数的索引的集合，例如K={61, 53, 59, 16, 30, 21, 85, 31, 51, 10}，然后重复更新参数</p>
+<p><mark>mini--batch Stochastic Gradient Descent, SGD</mark>.
+<span class="arithmatex">\(<span class="arithmatex">\(\text{Start from some }\theta^0\in\R^s,\\
+\text{ SGD updates as }\large\theta^{k+1}=\theta^k-\alpha_k\mathop{\mathbb E}\limits_{\xi_k\in\Xi_k}g(\theta^k,ξ_k)=\theta^k-\alpha_k\cdot\mathop{\mathbb E}\limits_{\xi_k\in\Xi_k}\nabla f_{\theta_k}(x_{\xi_k})\)</span>\)</span>
+<span class="arithmatex">\(g(\theta^k,\xi_k):=\)</span> the stochastic gradient computed at <span class="arithmatex">\(\theta^k\)</span>
+<span class="arithmatex">\(\Xi_k :=\)</span> the selected indexes at k round(mini-batch)</p>
+<p>In each epoch, <span class="arithmatex">\(n_E\)</span> SGD updates will be executed. Usually, we select</p>
+<p><span class="arithmatex">\(n_E=\text{ceil}(\frac{n}{p}),\quad\begin{cases}n:= \#\text{ samples in each epoch} = \#\text{ all samples}\\p:= \#\text{ samples in each mini-batch} \\n_E:=\#\text{batch in each epoch}\end{cases}\)</span></p>
+<p>不同代之间数据要shuffle</p>
+<p>采用一个<strong>小批量</strong>的数据进行梯度的计算，其目的是在保证计算速度的同时，避免SGD的随机性，降低参数更新时的方差，使收敛更稳定。</p>
+<p>MBGD容易受学习率的影响：设置得太大容易出现与SGD类似的不稳定现象，会在<strong>鞍点处振荡</strong>，甚至偏离最优解；设置得太小，会造成收敛速度过慢。
+MBGD的学习率对所有的参数更新都是一样的，如果数据是稀疏的，我们更希望对出现频率低的特征进行较大的更新，并且学习率会随着更新次数逐渐减小。显然，MBGD并不能满足这些需求，所以我们需要能够自适应学习率的算法。</p>
+<h4 id="sgd-with-momentum">SGD with Momentum<a class="headerlink" href="#sgd-with-momentum" title="Permanent link">&para;</a></h4>
+<p><mark>Momentum</mark>
+We often think of Momentum as a means of dampening oscillations and speeding up the iterations, leading to faster convergence.
+Momentum proposes the following tweak to gradient descent. We give gradient descent a short-term memory:</p>
+<blockquote>
+<p>【不那么正确但很好理解的例子】Momentum is a heavy ball rolling down the same hill. The added inertia acts both as a smoother and an accelerator, dampening oscillations and causing us to <strong>barrel through narrow valleys, small humps and local minima. 动量是一个沉重的球滚下同一座山。增加的惯性既是平滑的，也是加速器，抑制振荡，导致我们穿过狭窄的山谷、小驼峰和局部最小值。</strong></p>
+</blockquote>
+<div class="arithmatex">\[\colorbox{grey}{\text{(def)}} \text{ SGD with momentum }\\\quad \text{Start from some }\theta^0\in\R^s, v_0=g(\theta^0,\xi_0), \text{ for }k\ge0,\\[1em]\qquad v^{k+1}=\red\gamma v^k+\red{(1-\gamma)}g(\theta^k,\xi_k),\quad (\gamma \text{ usually 0.9}\\[1ex]\qquad \theta^{k+1}=\theta^k-v^{k+1}\]</div>
+<p>SGD和momentum在更新參數時，都是用同一個學習率(<em>γ</em>)</p>
+<p><a class="glightbox" href="../pics/SGD_6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/SGD_6.png" /></a></p>
+<p>主要是用在計算參數更新方向前會考慮前一次參數更新的方向 <span class="arithmatex">\((v_{t-1})\)</span>，如果當下梯度方向和歷史參數更新的方向一致（因为是累积求和的），則會增強這個方向的梯度，若當下梯度方向和歷史參數更新的方向不一致，則梯度會衰退。然後每一次對梯度作方向微調。這樣可以增加學習上的穩定性(梯度不更新太快)，這樣可以學習的更快，並且有擺脫局部最佳解的能力。</p>
+<div class="grid">
+<p><a class="glightbox" href="../pics/SGD_5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/SGD_5.png" /></a></p>
+<p>加上动量之后的SGD优化算法会沿着梯度的方向越来越快地进行更新，而不相关的方向将逐渐得到抑制，因此能减少优化过程中出现的“之”字形路线</p>
+</div>
+<p><strong>Limitation:</strong>
+momentum may be wrong。如果一辆汽车一直加速，在遇到障碍物时是否能停下来？梯度更新也是一样的，Momentum虽然能加速SGD算法，但是很容易“冲上斜坡”</p>
+<p>momentum 能逃离局部最小点，冲上小山谷，但是也有可能因为不断累积的动量太大，错过全局最小，一冲冲出去</p>
+<p><a class="glightbox" href="../pics/SGD_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/SGD_1.png" /></a></p>
+<h4 id="sgd-with-nesterov-momentum">SGD with Nesterov momentum<a class="headerlink" href="#sgd-with-nesterov-momentum" title="Permanent link">&para;</a></h4>
+<p>假设有一个“智能”的雪球从斜坡上往下滚，它在滚动过程中不仅会考虑动量为自己加速，还会思考“下一时刻是否会撞墙”，从而实现减速 —— 在计算参数的梯度时，应在损失函数中减去动量项</p>
+<p>SGD with Nesterov  momentum</p>
+<div class="arithmatex">\[\text{Start from some }\theta^0\in\R^s, v_0=g(\theta^0,\xi_0), \text{ for } k\ge0,\\
+\redν^k=\theta^k-\beta_kv^k \\
+v^{k+1}=\red\gamma v^k+\red{(1-\gamma)}g(\redν^k,\xi_k), \\
+\theta^{k+1}=\theta^k-v^{k+1}\]</div>
+<p><span class="arithmatex">\(\redν^k:=\)</span> 近似当作参数下一步会变成的值
+<span class="arithmatex">\(\gamma\)</span> usually 0.9</p>
+<p><a class="glightbox" href="../pics/SGD_7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/SGD_7.png" /></a></p>
+<p>difference between Origin and Nesterov:</p>
+<ul>
+<li>Origin momentum: 在 <span class="arithmatex">\(θ^k\)</span> 上既计算 gradient  <span class="arithmatex">\(g(θ^k,\xi_k)\)</span>, 又计算 momentum <span class="arithmatex">\(v^k\)</span><ul>
+<li>Momentum SGD先计算当前的梯度，更新后的累积梯度会出现一个大的跳跃</li>
+</ul>
+</li>
+<li>Nesterov momentum: 在 <span class="arithmatex">\(θ^k\)</span> 上先计算 momentum <span class="arithmatex">\(υ^k\)</span>, 再在新的点上计算 gradient   <span class="arithmatex">\(g(ν^k,\xi_k)\)</span> .，在NAG算法中不是计算当前位置的梯度，而是计算未来位置上（下一时刻）的梯度<ul>
+<li>NAG SGD会在前一步梯度的基础上做修正，从而得到最下面的梯度，避免速度越来越快。with a shorter step to prevent overshoot</li>
+<li>NAG算法在循环神经网络、LSTM等任务上表现良好。</li>
+</ul>
+</li>
+<li>Momentum SGD和NAG SGD这两种加速算法只针对梯度进行优化，并没有<strong>针对参数重要性进行不同程度的更新，也没有学习率的自动调整</strong></li>
+</ul>
+<h4 id="adagrad-adaptive-learning-rates">Adagrad: Adaptive Learning Rates<a class="headerlink" href="#adagrad-adaptive-learning-rates" title="Permanent link">&para;</a></h4>
+<p><mark>學習率衰減(Learning rate decay)</mark>。大的學習率可以較快走到最佳值或是跳出局部極值，但越後面到要找到極值就需要小的學習率。</p>
+<p>Rescale the learning rate of <strong>each coordinate</strong> by the <strong>historical progress</strong>.</p>
+<p><mark>Adagrad</mark>
+$$ \text{Start from some }\theta^0\in\R^s, n_g^0=0,\text{ for }k\ge0\[1em]\qquad n_g^{k+1}= n_g+<g(\theta^k,\xi_k),g(\theta^k,\xi_k)>\[1ex]\qquad \theta^{k+1}=\theta^k-\cfrac{\alpha_k}{\red{n_g+10^{-8}}}g(\theta^k,\xi_k) \qquad\text{ (rescale)}$$</p>
+<p>The learning rate (step size) goes to zero quickly.</p>
+<h4 id="rmsprop">RMSProp<a class="headerlink" href="#rmsprop" title="Permanent link">&para;</a></h4>
+<p>Discount the accumulated norm of the gradients.</p>
+<p><mark>RMSProp</mark>。
+<span class="arithmatex">\(<span class="arithmatex">\(\text{Start from some }\theta^0\in\R^s, n_g^0=0,\text{ for }k\ge0\\
+n_g^{k+1}=\red\gamma n_g+\red{(1-\gamma)}&lt;g(\theta^k,\xi_k),g(\theta^k,\xi_k)&gt;\\
+\theta^{k+1}=\theta^k-\cfrac{\alpha_kg(\theta^k,\xi_k)}{\red{n_g+10^{-8}}} \qquad\text{ (rescale)}\)</span>\)</span></p>
+<p>仍然使用指数加权平均，旨在消除梯度下降中的摆动，与 Momentum 的效果一样。如果某个维度的导数比较大，则指数加权均值就大；如果某个维度的导数比较小，则其指数加权均值就小。这样可以保证各个维度的导数都在一个量级，从而减少摆动</p>
+<h4 id="adam-adaptive-moment-estimation">ADAM, Adaptive Moment Estimation<a class="headerlink" href="#adam-adaptive-moment-estimation" title="Permanent link">&para;</a></h4>
+<p>Consider <strong>momentum</strong> and <strong>adaptive learning rate</strong> (second-order momentum) together.</p>
+<p>是另外一种计算每个参数的自适应学习率的算法，比Adadelta算法和RMSprop算法更激进，不仅考虑了指数衰减均值，降低学习率过度衰减的问题，还加入了 Momentum 的动量思想。
+<span class="arithmatex">\(m_t=\beta_1m_{t-1}+(1-\beta_1)g_t\)</span> t时刻的动量
+<span class="arithmatex">\(v_t=\beta_2v_{t-1}+(1-\beta_2)g_t^2\)</span>t时刻的指数衰减均值。
+如果 <span class="arithmatex">\(m_t，v_t\)</span> 初始化为0，则会向0偏置，因此Adam做了偏差纠正
+<span class="arithmatex">\(\hat{m}_t=\cfrac{m_t}{1-\beta_1^t}\)</span>
+<span class="arithmatex">\(\hat{v}_t=\cfrac{v_t}{1-\beta_2^t}\)</span>
+最终梯度更新
+<span class="arithmatex">\(<span class="arithmatex">\(\theta_{t+1}=\theta_t-\cfrac{\iota}{\sqrt{\hat{v}_t}+\epsilon}\hat{m}_t\)</span>\)</span></p>
+<p>建议:<span class="arithmatex">\(\alpha=0.001,\beta_1=0.9,\beta_2=0.999,\epsilon=10^{-8}\)</span></p>
+<p>大量事件表明 Adam 》 Adadelta &amp; RMSprop. <u>Transformer in CV 很爱用ADAM</u></p>
+<p><a class="glightbox" href="../pics/SGD_8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/SGD_8.png" /></a></p>
+<p>当二阶动量参数 <span class="arithmatex">\(\beta_2\)</span> 很大且一阶动量参数 <span class="arithmatex">\(\beta_1 &lt; \sqrt{\beta_2}&lt;1\)</span> 时，Adam 可以收敛。据我们所知，我们是第一个证明具有任意大 <span class="arithmatex">\(\beta_1\)</span> 的 Adam 可以在没有任何形式的有界梯度假设的情况下收敛。这个结果表明，没有任何修改的Adam在理论上仍然可以收敛。当<span class="arithmatex">\(\beta_2\)</span> 较小时，我们进一步指出Adam 可以发散到无穷。我们的发散结果考虑了与收敛结果相同的设定（提前固定优化问题），这表明当增加 <span class="arithmatex">\(\beta_2\)</span> 时存在从发散到收敛的相变。这些结果可能会为更好地调整 Adam 的超参数提供指导。</p>
+<h3 id="convergence-of-adam">convergence  of ADAM<a class="headerlink" href="#convergence-of-adam" title="Permanent link">&para;</a></h3>
+<p>But the convergence analysis contains some <strong>mistakes</strong> in the original paper. ADAM can be <strong>non-convergent</strong>!</p>
+<p><a class="glightbox" href="../pics/SGD_9.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/SGD_9.jpeg" /></a></p>
+<hr />
+<h4 id="newtons-method">Newton’s method 牛顿迭代法<a class="headerlink" href="#newtons-method" title="Permanent link">&para;</a></h4>
+<p><u>方法本身：求解非线性方程 <span class="arithmatex">\(g(x)=0\)</span> 的==近似根== <span class="arithmatex">\(x^*\)</span></u>
+在 Descent Direction 上的应用：求解  <span class="arithmatex">\(\red{\text{新}\cdot g(x) = \nabla f(x^*)=0}\)</span></p>
+<p>使用<strong>函数的泰勒级数</strong>的前面几项来寻找方程的根。</p>
+<h5 id="_3">方法本身<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>背景</strong>
+多数方程不存在求根公式，因此求精确根非常困难，甚至不可能，从而寻找方程的<u>近似根</u>就显得特别重要。方程用二次函数的形式表示出来，我们就可以通过上面的办法大踏步的前进了！由此我们祭出将任意N阶可导函数化为N次多项式的神器：<strong>N阶泰勒展开</strong></li>
+<li>
+<p><strong>思路</strong>
+设 <span class="arithmatex">\(x^*\)</span> 是 <span class="arithmatex">\(g(x)=0\)</span> 的近似根，将 <span class="arithmatex">\(g(x)\)</span> 在 <span class="arithmatex">\(x^k\)</span> 附近<strong>用一阶泰勒多项式近似</strong>
+<span class="arithmatex">\(<span class="arithmatex">\(g(x)=g(x^{k})+ \nabla g(x^k)^T\cdot (x-x^k)+o(\vert x-x_0\vert)\)</span>\)</span>
+舍去高阶项：<span class="arithmatex">\(g(x)=g(x^{k})+ \nabla g(x^k)^T\cdot (x-x^k)\)</span>
+将近似根代入：
+<a id="eq1"> <span class="arithmatex">\(<span class="arithmatex">\(\begin{align*} g(x^*)=g(x^{k})+ \nabla g(x^k)^T\cdot (x^*-x^k)=0\tag{1}\\x^*=x^k-\cfrac{g(x^k)}{g'(x^k)}\tag{2}\end{align*}\)</span>\)</span> </a>
+不能一步得到，所以需要迭代  ∴迭代公式：<span class="arithmatex">\(\red{x^{k+1}=x^k-\cfrac{f(x^k)}{f'(x^k)}}\)</span></p>
+<div class="admonition p">
+<p class="admonition-title">【说人话】</p>
+<ol>
+<li>先随机选一个点，</li>
+<li>然后求出<span class="arithmatex">\(f(x)\)</span>在该点的切线。</li>
+<li>该切线与x轴相交的点为下一次迭代的值。
+直至逼近<span class="arithmatex">\(f(x)=0\)</span>的点。</li>
+</ol>
+</div>
+<ul>
+<li><strong>停止标准</strong></li>
+<li><span class="arithmatex">\(\vert x_{k+1}-x_k\vert &lt;\epsilon_1\)</span></li>
+<li><span class="arithmatex">\(\vert f(x) \vert&lt;\epsilon_2\)</span>: <span class="arithmatex">\(f(x)\)</span>很小，小于精度，不能保证x的精度
+局限性：对于某些特殊函数，小区间急速变化</li>
+<li><strong>几何本质</strong>
+<strong>在原函数的某一点处用一个二次函数近似原函数，然后用这个二次函数的极小值点作为原函数的下一个迭代点。</strong> 基于当前迭代点的梯度信息进行搜索方向的选择的，牛顿法是通过Hessian矩阵在梯度上进行线性变换得到搜索方向</li>
+</ul>
+</li>
+</ul>
+<h5 id="_4">收敛<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h5>
+<p>fast local convergence 快速的局部收敛  + Quadratic convergence 二阶收敛性
+<span class="arithmatex">\(\iff\)</span> 牛顿法<strong>靠近最优点</strong>时是<strong>二次</strong>收敛的</p>
+<p><span class="arithmatex">\(\begin{cases}g\in C^2(\red{\R})\\g(x^*)=0\\g’(x^*) ≠0.
+\end{cases}\implies\exist \varepsilon&gt;0, \vert x^0-x^* \vert&lt;\varepsilon.\)</span> And with Newton’s iterate: <span class="arithmatex">\(x^{k+1}=x^k-\cfrac{g(x^{k})} {g'(x^{k+1})}\)</span>is well defined.
+<span class="arithmatex">\(<span class="arithmatex">\(\implies\exist M&gt;0, \vert x^{k+1}-x^k\vert≤M\Vert x^k-x^*\Vert_2\)</span>\)</span></p>
+<div class="admonition p">
+<p class="admonition-title">【说人话】就是说如果 <span class="arithmatex">\(x^0\)</span> 选的好，那么牛顿法很好用，收敛速度很快，每次迭代之后，如果 <span class="arithmatex">\(x^0\)</span> 的初始化足够接近一个好的解决方案，那么牛顿方法的定义很好，收敛速度也非常快：每次迭代的正确数字数量大约翻一番。（甚至步长都不需要确定）。所以牛顿法对函数在迭代点处的信息利用更加充分，直观来看，相比于梯度下降法，函数足够正则的情况下牛顿法迭代得更加准确，收敛速率也会更快。</p>
+<p>当x在以 <span class="arithmatex">\(x^*\)</span> 为原点，<span class="arithmatex">\(\varepsilon\)</span> 为区间的邻域内进行迭代，所有迭代过来的 <span class="arithmatex">\(x^k\)</span> 都以二次收敛的速度收敛于 <span class="arithmatex">\(x^*\)</span>【局部の二次の收敛】，其中<span class="arithmatex">\(M=\frac{\tau}{2\delta}\)</span></p>
+</div>
+<h5 id="_5">失效<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h5>
+<ol>
+<li><span class="arithmatex">\(x^0\)</span>选的不好，离<span class="arithmatex">\(x^*\)</span>很远，<span class="arithmatex">\(\exist x^k\in(x^0,x^*),g'(x^k)=0\)</span>，几何上没有升降的空间，运算上分母为0失效（更远了）</li>
+<li>due to cycling</li>
+</ol>
+<h5 id="descent-direction">在 Descent Direction 上的应用<a class="headerlink" href="#descent-direction" title="Permanent link">&para;</a></h5>
+<div class="admonition p">
+<p class="admonition-title">目标：<span class="arithmatex">\(\red{\text{新}\cdot g(x) = \nabla f(x^*)=0}\)</span></p>
+<p><span class="arithmatex">\(\exist x^{k+1}, \nabla f(x^{k+1})=0 \implies \nabla f(x)=\nabla f(x^k)+\nabla^2f(x^{k})(x-x^k)\)</span></p>
+</div>
+<p><strong>迭代方程：</strong></p>
+<p><a href="#eq1"><span class="arithmatex">\(<span class="arithmatex">\(\begin{align*} g(x^*)=g(x^{k})+ \nabla g(x^k)^T\cdot (x^*-x^k)=0\tag{1}\\x^*=x^k-\cfrac{g(x^k)}{g'(x^k)}\tag{2}\end{align*}\\\Downarrow\)</span>\)</span> </a>
+<span class="arithmatex">\(<span class="arithmatex">\(\begin{align*} \nabla f(x^*)=\nabla f(x^{k})+ \nabla^2 f(x^k)^T\cdot (x^*-x^k)=0\tag{3}\\x^*=x^k-\cfrac{\nabla f(x^k)}{\nabla^2f(x^k)}\tag{4}\end{align*}\)</span>\)</span>
+<mark>经典牛顿法</mark>:
+<span class="arithmatex">\(<span class="arithmatex">\(d^k=-\cfrac{\nabla f(x^k)}{\nabla^2f(x^k)}, \alpha\equiv1\)</span>\)</span></p>
+<p>要求：</p>
+<ol>
+<li><span class="arithmatex">\(\forall k,\nabla^2f(x^k)\)</span>可逆<span class="arithmatex">\(\iff  \in\text{sigular 非奇异矩阵}\)</span> 二阶可微函数</li>
+<li>计算<span class="arithmatex">\(\cfrac{\nabla f(x^k)}{\nabla^2f(x^k)}\)</span> 简单</li>
+</ol>
+<div class="admonition p">
+<p class="admonition-title"><span class="arithmatex">\(\text{ For k=0,1,2…,}\text{ update }x^{k+1}=x^k-\cfrac{\nabla f(x^k)}{\nabla^2f(x^k)}\)</span>.<br> 不要去求解<span class="arithmatex">\((\nabla^2f)^{-1}\)</span>然后再乘，而是把<span class="arithmatex">\(d=\cfrac{\nabla f(x^k)}{\nabla^2f(x^k)}\)</span>，解<span class="arithmatex">\(\nabla^2f(x^k)d=\nabla f(x^k)\)</span></p>
+</div>
+<p>⭐ 牛顿法也只是找到一阶导为0，也就是说朝着极值的<span class="arithmatex">\(d^k\)</span>，不一定是函数值的下降方向，还要verify <strong>通过<span class="arithmatex">\(\nabla^2 f(x^*)\)</span>去验证<span class="arithmatex">\(X=x^*\)</span>是否local minimizer</strong>
+⭐ 可以用更少的迭代次数大踏步地前进，并且前进的方向也更趋向于函数的全局最优解（即最值而非极值点），同时也能够摆脱上面梯度下降法中确定α的痛苦</p>
+<p>Here we discuss just the local rate-of-convergence properties of Newton’s method. We know that for all x in the vicinity of a solution point x∗ such that∇2 f(x∗) is positive deﬁnite, the Hessian ∇2 f(x) will also be positive deﬁnite. Newton’s method will be well deﬁned in this region and will converge quadratically, provided that the step lengths αk are eventually always 1.</p>
+<h5 id="_6">缺点<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h5>
+<ol>
+<li>每一步迭代需要求解一个 <span class="arithmatex">\(n\)</span> 维线性方程组，这导致在高维问题中计算量很大.海瑟矩阵 <span class="arithmatex">\(\nabla^2 f (x^k )\)</span> 既不容易计算又不容易储存.</li>
+<li><span class="arithmatex">\(\nabla^2 f (x^k )\)</span> 不正定时，由牛顿方程给出的解 <em>dk</em> 的性质通常比较差.例如可以验证当海瑟矩阵正定时，<em>dk</em> 是一个下降方向，而在其他情况下 <em>dk</em> 不一定为下降方向.</li>
+<li>We need to assume 𝑓 to be convex to guarantee the direction is a descent direction.</li>
+<li>
+<p>Newton’s method <strong>only converges locally, even for strongly convex functions.</strong></p>
+</li>
+<li>
+<p><strong>advantage</strong>:</p>
+</li>
+<li>
+<p>Newton’s method enjoys <strong>a local quadratic convergence rate</strong> under some assumptions:
+fast local convergence 快速的局部收敛  + Quadratic convergence 二阶收敛性
+<span class="arithmatex">\(\iff\)</span> 牛顿法<strong>靠近最优点</strong>时是<strong>二次</strong>收敛的.当x在以<span class="arithmatex">\(x^*\)</span>为原点，<span class="arithmatex">\(\varepsilon\)</span>为区间的邻域内进行迭代，所有迭代过来的<span class="arithmatex">\(x^k\)</span>都以二次收敛的速度收敛于<span class="arithmatex">\(x^*\)</span>【局部の二次の收敛】
+<span class="arithmatex">\(\exist M&gt;0 ,\vert \theta^{k+1}-x^*\vert≤M\Vert x^k-x^*\Vert^2\)</span></p>
+</li>
+</ol>
+<p><a class="glightbox" href="../pics/SGD_10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/SGD_10.png" /></a></p>
+<p>If the current iteration achieves an accuracy of the order 𝟏𝟎^-𝟑, we can expect an accuracy of the order 𝟏𝟎^-𝟔 for the next iteration!!!</p>
+<h4 id="conjugate-gradient-method">Conjugate gradient method 共轭梯度法<a class="headerlink" href="#conjugate-gradient-method" title="Permanent link">&para;</a></h4>
+<p><a class="glightbox" href="../pics/Untitled.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/Untitled.png" /></a></p>
+<p><a class="glightbox" href="../pics/Untitled2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pics/Untitled2.png" /></a></p>
+<p>Flops per iteration is <span class="arithmatex">\(O(n^2)\)</span>; It converges in at most <em>n</em> steps;
+It keeps track of <em>O</em>(1) vectors of dimension <em>n</em> per iteration.</p>
+<div class="admonition p">
+<p class="admonition-title">idea: Modify the steepest descent direction to fit the (ellipse) geometry.</p>
+</div>
+<p><mark>Projection onto v</mark>. <span class="arithmatex">\(u\in\R^n,v\in\R^n\setminus\{0\}\)</span>. The projection of u onto v <span class="arithmatex">\(\text{proj}_v(u):=w:=\cfrac{u^Tv}{\Vert v\Vert_2^2}v\)</span>
+从几何的角度：<span class="arithmatex">\(\Vert w\Vert_2=\Vert u\Vert_2\cos\theta=\Vert u\Vert_2\cfrac{u^Tv}{\Vert u\Vert_2\Vert v\Vert_2}=\cfrac{u^Tv}{\Vert v\Vert_2}\implies\)</span> Unit vector along w is <span class="arithmatex">\(\cfrac{v}{\Vert v\Vert_2}\)</span></p>
+<p><mark>Gram-Schmidt process</mark>. Given a set of linearly independent vectors <span class="arithmatex">\(\{v^0,...,v^k\} \subset\R^n, w^0\xlongequal{SET} v^0.\)</span>
+<span class="arithmatex">\(\forall j = 1,...,k, w^k=v^k-\sum\limits_{j=0}^{k-1}\cfrac{{(v^k)}^Tw^j}{\Vert w^j\Vert_2^2}w^j, \begin{cases}\forall i,w^i\ne 0\\\forall i\ne j,{(w^i)}^Tw^j=0\end{cases}\\\implies\text{Span}\{v^0,...,v^k\}=\text{Span}\{w^0,...,w^i\}\)</span></p>
+<p><mark>Generalized Gram-Schmidt process</mark>. Given <span class="arithmatex">\(A\in\R^n,A\succ0\)</span> and a set of linearly independent vectors <span class="arithmatex">\(\{v^0,...,v^k\} \subset\R^n, w^0\xlongequal{SET} v^0.\)</span>
+<span class="arithmatex">\(\forall j = 1,...,k, w^k=v^k-\sum\limits_{j=0}^{k-1}\cfrac{{(v^k)}^TAw^j}{{(w^j)}^TA w^j}w^j, \begin{cases}\forall i,w^i\ne 0\\\forall i\ne j,{(w^i)}^TAw^j=0\end{cases}\\\implies\text{Span}\{v^0,...,v^k\}=\text{Span}\{w^0,...,w^i\}\)</span></p>
+<h5 id="conjugate-gradient-method-conceptual-version">Conjugate gradient method: Conceptual version<a class="headerlink" href="#conjugate-gradient-method-conceptual-version" title="Permanent link">&para;</a></h5>
+<p>Start at <span class="arithmatex">\(x^0\in\R^n\)</span> and <span class="arithmatex">\(d^0 =-\nabla f(x^0)=b-Ax^0\)</span>.</p>
+<p>For each <em>k</em> = 0,1,2,...,</p>
+<ul>
+<li>If <span class="arithmatex">\(d^k = 0\)</span>, terminate.</li>
+<li>Pick <span class="arithmatex">\(\alpha_k\text{ s.t. }\alpha_k\in\min\{f(x^k +\alpha d^k): α\ge0\}\)</span>.</li>
+<li><span class="arithmatex">\(x^{k+1}\xlongequal{SET}x^k +α_kd^k, d^{k+1} = -\nabla f(x^{k+1})-\blue{\sum\limits_{j=0}^k\cfrac{[-\nabla f(x^{k+1})]^T Ad^j}{ (d^j)^TAd^j}}\)</span></li>
+</ul>
+<h5 id="conjugate-gradient-method-formal-version">Conjugate gradient method: Formal version<a class="headerlink" href="#conjugate-gradient-method-formal-version" title="Permanent link">&para;</a></h5>
+<p>Start at <span class="arithmatex">\(x^0\in\R^n\)</span> and <span class="arithmatex">\(d^0 =-\nabla f(x^0)=b-Ax^0\)</span>.</p>
+<p>For each <em>k</em> = 0,1,2,...,</p>
+<ul>
+<li>If <span class="arithmatex">\(d^k = 0\)</span>, terminate.</li>
+<li>Pick <span class="arithmatex">\(\alpha_k\text{ s.t. }\alpha_k\in\min\{f(x^k +\alpha d^k): \alpha\ge0\}\)</span>.</li>
+<li><span class="arithmatex">\(x^{k+1}\xlongequal{SET}x^k +\alpha_kd^k, d^{k+1} = -\nabla f(x^{k+1})-\blue{\cfrac{\Vert\nabla f(x^{k+1})\Vert_2^2}{\Vert\nabla f(x^k)\Vert_2^2}d^k}\)</span></li>
+</ul>
+<h5 id="conjugate-gradient-method-actual-version">Conjugate gradient method: Actual version<a class="headerlink" href="#conjugate-gradient-method-actual-version" title="Permanent link">&para;</a></h5>
+<p><strong>迭代过程：</strong></p>
+<p>Start at <span class="arithmatex">\(x^0\in\R^n\)</span> and <span class="arithmatex">\(\blue{r^0}=d^0 =-\nabla f(x^0)=b-Ax^0\)</span>.</p>
+<p>For each <em>k</em> = 0,1,2,...,</p>
+<ul>
+<li>If <span class="arithmatex">\(\Vert d^k\Vert \blue{\text{ is below a tolerance}}\)</span>, terminate.</li>
+<li><span class="arithmatex">\(α_k=\cfrac{(r^k)^Tr^k}{(d^k)^TAd^k}\:,\:x^{k+1}=x^k+\alpha_kd^k\:,\:r^{k+1}=r^k-\alpha_kAd^k\qquad\text{(excat line search)}\)</span>.</li>
+<li><span class="arithmatex">\(\beta_{k} =\cfrac{(r^{k+1})^Tr^{k+1}}{(r^k)^Tr^k}\:,\:d^{k+1}=r^{k+1}+\beta_kd^k\qquad\text{Update} d^{k+1}\)</span></li>
+</ul>
+<p><strong>优点:</strong></p>
+<ul>
+<li>One matrix-vector multiplication per iteration if <span class="arithmatex">\(Ad^k\)</span> is saved.</li>
+<li>Keeping track of four vectors, <span class="arithmatex">\(x^k, r^k, d^k, Ad^k\)</span> saved.</li>
+</ul>
+<p>Newton-CG啊，其实挺简单的。传统的牛顿法是每一次迭代都要求Hessian矩阵的逆，这个复杂度就很高，为了避免求矩阵的逆，Newton-CG就用CG共轭梯度法来求解线性方程组，从而避免了求矩阵逆。</p>
+<h4 id="truncated-newtons-method-hessian-free-optimization">Truncated Newton’s method (Hessian-Free Optimization)修正牛顿法<a class="headerlink" href="#truncated-newtons-method-hessian-free-optimization" title="Permanent link">&para;</a></h4>
+<p><mark>Projection onto <span class="arithmatex">\(S_+^n\)</span></mark>. <span class="arithmatex">\(A\in S^n,A = UDU^T\)</span> be its eigenvalue decomposition.
+<span class="arithmatex">\(A_+ := UD_+U^T\)</span>
+<span class="arithmatex">\(D_+\)</span> is the diagonal matrix with <span class="arithmatex">\((d_+)_{ii}=\max\{d_{ii},0\}, \forall i.\)</span>
+<span class="arithmatex">\(A_+\)</span>  is the <strong>unique</strong> solution of $ \min\Vert Y-A\Vert_F \text{ s.t.}Y\succeq0$</p>
+<h5 id="_7">定义<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h5>
+<ol>
+<li>Pick <span class="arithmatex">\(\sigma\in(0,1), \beta\in(0,1), \overline{\alpha}_k\equiv1\)</span>, a small  <span class="arithmatex">\(\eta&gt;0\)</span> and a huge  <span class="arithmatex">\(M &gt; 0\)</span>. Initialize at <span class="arithmatex">\(x^0 \in\R^n\)</span></li>
+<li>For <span class="arithmatex">\(k = 0,1,2,...,\)</span>  <ol>
+<li>let <span class="arithmatex">\(UDU^T\)</span> be an eigenvalue decomposition of <span class="arithmatex">\(\nabla^2f(x^k).\)</span></li>
+<li>Let <span class="arithmatex">\(\varLambda\)</span> be diagonal with <span class="arithmatex">\(\lambda_{ii} = \max\{\min\{M,d_{ii}\},\eta\} \qquad\text{(Project } d_{ii} \text{ on }[\eta,M])\)</span>  </li>
+<li>Set <span class="arithmatex">\(D^k \coloneqq U\varLambda U^T\)</span> and <span class="arithmatex">\(d^k\coloneqq -D^k\nabla f(x^k).\)</span>.</li>
+<li>Update <span class="arithmatex">\(x^{k+1}=x^k+\alpha^kd^k\\\qquad \alpha^k\text{ is obtained via the Armijo line search by backtracking }\)</span></li>
+</ol>
+</li>
+</ol>
+<p>Let <span class="arithmatex">\(f\in C^2(\R^n)\)</span> with <span class="arithmatex">\(\inf f &gt; 1\)</span> and let <span class="arithmatex">\(\{x^k\}\)</span> be generated by <strong>the truncated Newton’s method.</strong> Then any accumulation point of <span class="arithmatex">\(\{x^k\}\)</span> is a stationary point of f.</p>
+<h5 id="computational-concerns">Computational concerns<a class="headerlink" href="#computational-concerns" title="Permanent link">&para;</a></h5>
+<h3 id="_8">拟牛顿类算法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<div class="admonition p">
+<p>对于大规模问题，函数的海瑟矩阵计算代价特别大或者难以得到，即便得到海瑟矩阵我们还需要求解一个大规模线性方程组.
+它能够在每一步以较小的计算代价生成<strong>近似矩阵</strong>，并且使用<strong>近似矩阵代替海瑟矩阵而产生的迭代序列</strong>仍具有超线性收敛的性质.
+不计算海瑟矩阵 <span class="arithmatex">\(∇^2 f (x)\)</span>，而是构造其<strong>近似矩阵</strong> <span class="arithmatex">\(B^k\)</span> 或<strong>其逆的近似矩阵</strong> <span class="arithmatex">\(H^k\)</span></p>
+</div>
+<h4 id="basic-idea-secant-equations">Basic idea: Secant equations<a class="headerlink" href="#basic-idea-secant-equations" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>思路</strong></p>
+<p>目的：<span class="arithmatex">\(g(x)=0，g\in C^1(\R)\)</span></p>
+<p><mark>Taylor Formula</mark>. <span class="arithmatex">\(g(x^{k+1})=g(x^{k})+\nabla g(x^k)(x^{k+1}-x^k)=0\)</span>
+<span class="arithmatex">\(\implies x^{k+1}=x^k-\cfrac{g(x^k)}{\nabla g(x^k)}\)</span></p>
+<p>但当一阶导<span class="arithmatex">\(\nabla g(x)\)</span>太难求，我们就想到了割线方程 Secant equation。Use finite difference to approximate <span class="arithmatex">\(\nabla g(x)\)</span></p>
+<p><mark>Secant equations</mark>. <span class="arithmatex">\(\nabla g(x^k)\approx\cfrac{g(x^k)-g(x^{k-1})}{x^k-x^{k-1}}\)</span>
+<span class="arithmatex">\(\implies x^{k+1}=x^k-g(x^k)\cfrac{x^k-x^{k-1}}{g(x^k)-g(x^{k-1})}\)</span></p>
+</li>
+<li>
+<p>Notes:</p>
+<ol>
+<li>这里同时有k+1，k，k-1. initialized at <span class="arithmatex">\(x^0,x^{-1},g(x^0)≠g(x^{-1})\)</span></li>
+<li>The local convergence rate of the secant method is <strong>typically slower</strong> than Newton’s method. However, <strong>the computational cost</strong> per iteration can be smaller when <span class="arithmatex">\(g'\)</span> is hard to compute compared with <em>g</em></li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>Find the square root of 2 using the secant method, starting at <span class="arithmatex">\(x^{-1} = 1.4, x^0 = 1.5\)</span>, up to 4 decimal places.</p>
+</blockquote>
+</blockquote>
+<h4 id="descent-direction_1">在 descent direction 上的应用<a class="headerlink" href="#descent-direction_1" title="Permanent link">&para;</a></h4>
+<p>目的：<span class="arithmatex">\(\nabla f(x)=0\)</span></p>
+<p>same ideas: <span class="arithmatex">\(\nabla g(x^k)(x^k-x^{k-1})\approx g(x^k)-g(x^{k-1})\Downarrow\)</span>
+<span class="arithmatex">\(<span class="arithmatex">\(\nabla^2f(x^{k+1})(x^{k+1}-x^k)\approx\nabla f(x^{k+1})-\nabla f(x^k)\)</span>\)</span></p>
+<p>Notation: <span class="arithmatex">\(s^k:=x^{k+1}-x^k,\space y^k=\nabla f(x^{k+1})-\nabla f(x^k)\implies \nabla^2f(x^{k+1})s^k=y^k\)</span></p>
+<p><strong>成功的关键：</strong> 我们能够连续不断地构造矩阵<span class="arithmatex">\(\begin{cases}\text{Method 1: }B^{k+1}\approx \nabla^2f(x^{k+1})\\\text{Method 2 }H^{k+1}\approx \cfrac{1}{\nabla^2f(x^{k+1})}\end{cases}\)</span> 去拟合海塞矩阵，使得<span class="arithmatex">\(\begin{cases}  B^{k+1}s^k=y^k \\H^{k+1}y^k=s^k\end{cases}\)</span>, 因为我们是要迭代的，所以就是能连续生成迭代</p>
+<p><strong>问题：怎么迭代，迭代有什么要求?</strong></p>
+<ol>
+<li>Initialize <span class="arithmatex">\(B^0\)</span> (or <span class="arithmatex">\(*H^0*\)</span>) at a <strong>positive definite</strong> matrix.
+   <mark>proposition of BFGS</mark>. <span class="arithmatex">\(\begin{cases}H_k\succ0\\{y^k}^Ts^k&gt;0\\H_{k+1}\text{ is given by BFGS update}\end{cases}\implies H_{k+1}\succ 0.\)</span>
+   Same for B</li>
+<li>Since <span class="arithmatex">\(B^0\)</span> and <span class="arithmatex">\(H^0\)</span> were <strong>symmetric</strong> to start with, by induction, all <span class="arithmatex">\(B^k\)</span>and <span class="arithmatex">\(H^k\)</span> are <strong>symmetric</strong>.</li>
+<li>
+<p><strong>Popular update formula</strong></p>
+</li>
+<li>
+<p>Note:</p>
+<ol>
+<li>DFP and BFGS are rank-2 updates, while SR1 is rank-1 update.</li>
+<li>In practice, <strong>BFGS</strong> usually performs better.</li>
+</ol>
+</li>
+<li>Verify the secant equation for BFGS.</li>
+</ol>
+<h3 id="quasi-newton-method">Quasi-Newton method<a class="headerlink" href="#quasi-newton-method" title="Permanent link">&para;</a></h3>
+<p>Given <span class="arithmatex">\(f\in C^1(\R^n).\)</span></p>
+<p>Initialize at <span class="arithmatex">\(x^0\in\R^n\)</span> and <span class="arithmatex">\(B_0,H_0\succ 0\)</span>, is <strong>symmetric and positive definite</strong></p>
+<h4 id="quasi-newton-based-on-b_k">Quasi-Newton based on <span class="arithmatex">\(B_k\)</span><a class="headerlink" href="#quasi-newton-based-on-b_k" title="Permanent link">&para;</a></h4>
+<p>For <span class="arithmatex">\(k = 0,1,2,...\)</span>  </p>
+<ol>
+<li>Find <span class="arithmatex">\(d^k =-B_k^{-1}\nabla f(x^k).\)</span></li>
+<li>Update <span class="arithmatex">\(x^{k+1} = x^k +d^k\times 1\)</span>,</li>
+<li>Set <span class="arithmatex">\(y^k =\nabla f(x^{k+1})-\nabla f(x^k)\)</span>  and <span class="arithmatex">\(s^k = x^{k+1}-x^k\)</span>.</li>
+<li>Compute <span class="arithmatex">\(B_{k+1}\)</span> by <strong>Popular update formula</strong></li>
+</ol>
+<h3 id="bfgs">BFGS<a class="headerlink" href="#bfgs" title="Permanent link">&para;</a></h3>
+<h4 id="quasi-newton-based-on-h_k">Quasi-Newton based on <span class="arithmatex">\(H_k\)</span><a class="headerlink" href="#quasi-newton-based-on-h_k" title="Permanent link">&para;</a></h4>
+<p>For <span class="arithmatex">\(k = 0,1,2,...\)</span>  </p>
+<ol>
+<li>Find <span class="arithmatex">\(d^k =-H_k\nabla f(x^k).\)</span></li>
+<li>Update <span class="arithmatex">\(x^{k+1} = x^k +d^k\times 1\)</span>,</li>
+<li>Set <span class="arithmatex">\(y^k =\nabla f(x^{k+1})-\nabla f(x^k)\)</span>  and <span class="arithmatex">\(s^k = x^{k+1}-x^k\)</span>.</li>
+<li>Compute <span class="arithmatex">\(H_{k+1}\)</span> by <strong>Popular update formula</strong></li>
+</ol>
+<h2 id="stepsize-alpha_k">StepSize <span class="arithmatex">\(\alpha_k\)</span><a class="headerlink" href="#stepsize-alpha_k" title="Permanent link">&para;</a></h2>
+<div class="admonition p">
+<p class="admonition-title"><span class="arithmatex">\(\text{ given } x^{k} \text{ and }d^k\)</span> <br> 变成了单变量优化：<span class="arithmatex">\(\alpha^k =\min\limits_{\alpha&gt;0}\varphi(\alpha) =f(x^k+\alpha d^k)\)</span>.它是目标函数 <em>f</em> (<em>x</em>) 在射线 <span class="arithmatex">\(\{x^k + αd^k:α &gt; 0\}\)</span> 上的限制</p>
+</div>
+<div class="arithmatex">\[\alpha^k =\min\limits_{\alpha&gt;0} f(x^k+\alpha d^k)\]</div>
+<h3 id="exact-inexact">分类: exact &amp; inexact<a class="headerlink" href="#exact-inexact" title="Permanent link">&para;</a></h3>
+<p><mark>exact line search strategy</mark>. 等于求极小值点问题。</p>
+<p><span class="arithmatex">\(\nabla\varphi(\alpha)=[\nabla f(x^k+\alpha d^k)]^Td^k\xlongequal{SET}0\implies[\nabla f_{k+1}]^Td^k=0\)</span></p>
+<p>通常需要很大计算量，在实际应用中较少使用</p>
+<p><mark>inexact line search strategy</mark>。寻找<strong>步长<span class="arithmatex">\(\alpha\)</span>的一个区间</strong>，通过逐步迭代的方法去寻找<strong>仅仅是满足条件的点</strong>。当搜索结束时，需要满足该步长能够对目标函数带来<strong>充分的下降</strong>。More practical strategies perform an inexact line search to identify a step length that achieves adequate reductions in f <strong>at a minimal cost</strong>.</p>
+<h3 id="inexact-line-search-strategy">inexact line search strategy<a class="headerlink" href="#inexact-line-search-strategy" title="Permanent link">&para;</a></h3>
+<h4 id="termination-conditions">Termination conditions 线搜索准则<a class="headerlink" href="#termination-conditions" title="Permanent link">&para;</a></h4>
+<p>因为迭代：
+<span class="arithmatex">\(<span class="arithmatex">\(f(x^k + α^kd^k) = \min\limits_{α≥0}f(x^k + αd^k)\)</span>\)</span></p>
+<div class="admonition p">
+<p class="admonition-title">为提高非精确算法的搜索效率，需要确定一些termination conditions 去判断是否迭代到 <span class="arithmatex">\(\alpha^*\)</span>，确保<strong>迭代的收敛性。</strong></p>
+</div>
+<h5 id="sufficient-decrease-condition-armijo-condition">Sufficient Decrease condition (Armijo condition) 充分下降条件<a class="headerlink" href="#sufficient-decrease-condition-armijo-condition" title="Permanent link">&para;</a></h5>
+<ul>
+<li>
+<p><strong>定义：</strong></p>
+<div class="arithmatex">\[\begin{cases}x\in \R^n, d\in \R^n\\\alpha&gt;0, c_1\in(0,1)\\f(x^k+\alpha d^k)≤f(x^k)+c_1\alpha[\nabla f(x^k)]^Td^k
+\end{cases}\implies \alpha\text{ satisifies Armijo rule}\]</div>
+<p>其中：<span class="arithmatex">\(d^k\)</span>: descent direction;<span class="arithmatex">\(c_1=10^{-4}\)</span>is chosen to be quite small</p>
+<div class="admonition p">
+<p class="admonition-title"><strong>alone is not sufficient</strong> to ensure that the algorithm makes reasonable progress along the given search direction:</p>
+<p><em>α</em> = 0 显然满足条件，而这意味着迭代序列中的点固定不变，研究这样的步长是没有意义的
+是 the Wolfe conditions <span class="arithmatex">\(1^{st}\)</span>  condition
+是 the Goldstein conditions <span class="arithmatex">\(2^{nd}\)</span> inequality
+是 Backtracking line search 的停止标准stopping criterion， alone is ok</p>
+</div>
+</li>
+<li>
+<p><strong>存在性证明:</strong></p>
+<p><span class="arithmatex">\(\alpha 存在 \iff \text{Armijo rule is not valid}\)</span>，选取符合Armijo rule 确实会使得函数值下降</p>
+<p>Let <span class="arithmatex">\(f\in C^1(\R^n), x\in\R^n, d\in\R^n \text{ be a descent direction at }x\)</span>. Let <span class="arithmatex">\(\sigma\in(0,1)\)</span>. Then there <span class="arithmatex">\(\exist \alpha_1 &gt; 0\)</span> so that <span class="arithmatex">\(\forall \alpha\in[0,\alpha_1],f(x + \alpha d)≤f(x)+\alpha\sigma[\nabla f(x)]^Td.\)</span></p>
+</li>
+<li>
+<p><strong>How to execute Armijo rule in practice?</strong></p>
+<p><strong>Fix  <span class="arithmatex">\(\sigma\in(0,1)\)</span> and <span class="arithmatex">\(\beta\in(0,1)\)</span>. Given  <span class="arithmatex">\(x\in\R^n, d\in\R^n, \overline{\alpha}&gt;0\)</span>. Find the smallest nonnegative integer <span class="arithmatex">\(j = j_0\)</span> so that</strong></p>
+<p><span class="arithmatex">\(<span class="arithmatex">\(f(x +\overline{\alpha}\beta^jd)≤ f(x)+\overline{\alpha}\beta^j\sigma[\nabla f(x)]^Td\)</span>\)</span>
+normally: <span class="arithmatex">\(\sigma= 10^{-4}, \beta=\cfrac{1}{2}, \overline{\alpha}\beta^{j_0}\)</span> is the step size</p>
+<p><strong>Note:</strong></p>
+<ol>
+<li><span class="arithmatex">\(d\)</span> is a descent direction +  <span class="arithmatex">\(j\)</span> is sufﬁciently large  <span class="arithmatex">\(\rightarrow \beta^j\)</span> is sufﬁciently small → Armijo rule satisfied。</li>
+<li>可证 <span class="arithmatex">\(\overline{\alpha}\beta^j \text{ is decreasing}\therefore \text{it is called backtracking}\)</span></li>
+<li><span class="arithmatex">\(\overline{\alpha}\)</span>  选择对收敛效率来说很关键</li>
+</ol>
+</li>
+<li>
+<p><strong>Convergence under Armijo rule</strong>
+    <span class="arithmatex">\(\begin{cases}f\in C^1(\R^n),\inf f&gt;-\infin\\
+    \{\overline\alpha_k\}\subset\R ,0&lt;\inf\limits_k\overline{\alpha}_k≤\sup\limits_k\overline{\alpha}_k&lt;\infin\\
+    \sigma\in(0,1),\beta\in(0,1)\\
+    \{D_k\}\succ 0,
+    d^k=-D_k\nabla f(x^k)\\
+    x^k \text{ is non-stationary}\\
+    x^{k+1} = x^k + \alpha_kd^k
+    \end{cases}\)</span> <span class="arithmatex">\(\alpha_k\)</span> is generated via the Armijo line search by backtracking with $ x = x^k, d = d^k, \overline\alpha =\overline\alpha_k$ Then any accumulation point of  <span class="arithmatex">\(\{x^k\}\)</span> is a stationary point of  <span class="arithmatex">\(f\)</span>.normally $\sigma=10^{-4},\beta=\frac{1}{2} $</p>
+<p><u>for BFGS:</u></p>
+<p><span class="arithmatex">\(\exist M&gt;0,\Vert H_k\Vert_2\Vert H_k^{-1}\Vert_2≤M,\forall k\\\qquad\implies \lim\limits_{k\rightarrow\infin}\Vert_2=0\)</span></p>
+<p><span class="arithmatex">\(\cos\theta_k=\cfrac{{d^k}^TH_k^{-1}d^k}{\Vert d^k\Vert_2\Vert H_k^{-1}d^k\Vert_2}\ge\cfrac{{d^k}^T{H_k}^{-1}d^k}{\Vert H_k^{-1}\Vert \Vert d^k\Vert_2^2}\ge\cfrac{\lambda_{\min}(H_k^{-1})}{\Vert H_k^{-1}\Vert_2}=\cfrac{1}{\lambda_{\max}(H_k)\Vert H_k^{-1}\Vert_2}=\cfrac{1}{\Vert H_k^{-1}\Vert_2\Vert H_k\Vert_2}\ge\cfrac{1}{M}\)</span></p>
+</li>
+<li>
+<p><strong>Sufficient Decrease and Backtracking approach</strong>
+use <strong>just the sufficient decrease</strong> condition to terminate the line search procedure</p>
+</li>
+</ul>
+<h5 id="wolfe-conditions">Wolfe conditions<a class="headerlink" href="#wolfe-conditions" title="Permanent link">&para;</a></h5>
+<p><a href="https://www.notion.so/line-search-53b5a2ab0bea46bd88c2ac43ac9fc52d?pvs=21">sufficient decrease condition</a></p>
+<ul>
+<li>
+<p><strong>定义</strong>
+<span class="arithmatex">\(1^{st}\)</span> ：sufficient decrease condition：<span class="arithmatex">\(f(x^k+\alpha^k d^k)≤f(x^k)+c_1\alpha^k[\nabla f(x^k)]^Td^k\)</span>
+<span class="arithmatex">\(2^{nd}\)</span> ：curvature condition：<span class="arithmatex">\(\nabla f(x^k+\alpha^kd^k)^Td^k≥c_2\nabla f_k^Td^k\)</span>
+with <span class="arithmatex">\(0&lt;c_1&lt;c_2&lt;1，c_1\text{ usually }10^{-3},c_2\text{ usually }0.9\)</span>
+<em>φ</em>(<em>α</em>) 在点 <em>α</em> 处切线的斜率不能小于 <em>φ</em>′(0) 的 <span class="arithmatex">\(*c_2*\)</span> 倍</p>
+</li>
+<li>
+<p><mark>curvature condition</mark>
+<span class="arithmatex">\(\nabla f(x^k+\alpha^kd^k)^Td^k≥c_2\nabla f_k^Td^k\\ \qquad\qquad\parallel\qquad\qquad\qquad\parallel\\\qquad\space
+\nabla\varphi(\alpha^k)\qquad\qquad c_2\nabla\varphi(0)\)</span>
+其中：<span class="arithmatex">\(c_2=0.9\)</span> in Newton or quasi-Newton method, <span class="arithmatex">\(c_2=0.1\)</span> in a nonlinear conjugate gradient method</p>
+</li>
+<li>
+<p><strong>Wolfe conditions 存在性证明：是有区间能满足 Wolfe conditions</strong></p>
+</li>
+<li>
+<p><strong>The strong Wolfe conditions</strong>
+<u>modify the curvature condition</u> to force <span class="arithmatex">\(α^k\)</span> to lie in at least a broad neighborhood of a local minimizer or stationary point of φ.  The only difference with the Wolfe conditions is that we no longer allow the derivative <span class="arithmatex">\(φ′ (α^k )\)</span>  to be too positive.
+<span class="arithmatex">\(1^{st}\)</span> ：sufficient decrease condition：<span class="arithmatex">\(f(x^k+\alpha^k d^k)≤f(x^k)+c_1\alpha^k[\nabla f(x^k)]^Td^k\)</span>
+<span class="arithmatex">\(2^{nd}\)</span> ：<u><strong>modified</strong> curvature condition</u>：<span class="arithmatex">\(\red{\vert}\nabla f(x^k+\alpha^kd^k)^Td^k\red{\vert≤} c_2\red{\vert}\nabla f_k^Td^k\red{\vert}\)</span>
+with <span class="arithmatex">\(0&lt;c_1&lt;c_2&lt;1\)</span></p>
+</li>
+<li>
+<p><strong>Convergence under Wolfe conditions</strong>
+<mark>Zoutendijk’s theorem</mark>. <span class="arithmatex">\(f\in C^1(\R^n),\inf f &gt;-\infin,x^0\in\R^n,\\\{x^k\} \text{is a sequence of non-stationary points generated as }x^{k+1}+\alpha_kd^k, \\\begin{cases}f\in C^1(\R^n),\inf f &gt;-\infin\text{ (下有界，连续可微)}\\\exist\ell&gt;0,\Vert \nabla f(x)-\nabla f(y)\Vert_2\le\ell\Vert x-y\Vert_2，\forall x,y\in\R^n\text{ (梯度满足L-利普希茨连续)}\\d^k\text{ is a descent direction}\\\alpha_k \text{ satisfies the Wolfe conditions }\text{(Wolfe )}\end{cases}\\\qquad\implies\sum\limits_{k=0}^\infin\cos^2\theta_k\Vert\nabla f(x^k)\Vert_2^2&lt;\infin,\\\qquad\implies\exist\delta, \text{so that }  \cos\theta_k=\cfrac{-[\nabla f(x^k)]^Td^k}{\Vert\nabla f(x^k)\Vert_2\Vert d^k\Vert_2}\ge\delta,\forall k\text{(independent of k)}\)</span>
+<span class="arithmatex">\(\Vert\nabla f(x^*)\Vert=0 \rightarrow \Vert\nabla f(x^n)\Vert&lt;\varepsilon\)</span></p>
+</li>
+</ul>
+<h5 id="goldstein-conditions">Goldstein conditions 条件<a class="headerlink" href="#goldstein-conditions" title="Permanent link">&para;</a></h5>
+<ul>
+<li>定义
+<span class="arithmatex">\(f(x^k)+(1-c)\alpha^k[\nabla f(x^k)]^Td^k≤f(x^k+\alpha^k d^k)≤f(x^k)+c\alpha^k[\nabla f(x^k)]^Td^k\)</span>
+with <span class="arithmatex">\(0&lt;c&lt;\cfrac{1}{2}\)</span>
+<span class="arithmatex">\(2^{nd}\)</span> ≤ ：sufficient decrease condition
+必须在两条直线之间</li>
+</ul>
+<p>are often used in <strong>Newton-type methods</strong> but are not well suited for quasi-Newton methods that maintain a positive definite Hessian approximation</p>
+<p>Goldstein 准则能够使得函数值充分下降，但是它可能<strong>避开了最优的函数值</strong>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023 <a href="https://github.com/james-willett"  target="_blank" rel="noopener">Coconut</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/james-willett" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/TheJamesWillett" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/willettjames/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.081f42fc.min.js"></script>
+      
+        <script src="../../../javascripts/code_copy.js"></script>
+      
+        <script src="../../../javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
